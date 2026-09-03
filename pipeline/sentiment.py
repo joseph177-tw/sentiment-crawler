@@ -32,7 +32,9 @@ SYSTEM_PROMPT = """你是專門分析台灣財經社群輿情（PTT、Dcard、�
 不要只看表面字詞。只根據貼文/新聞的文字內容判斷，不要臆測未提及的資訊。
 
 對輸入的每一則貼文，輸出一個 JSON 物件，欄位如下：
-- sentiment: "positive" | "neutral" | "negative"（整體語氣）
+- sentiment: 「positive」、「neutral」或「negative」三選一，只能是這三個字串之一，
+  不可以自創其他值（例如不可以回「mixed」）。若語氣同時有正負面、難以判斷單一傾向，
+  一律歸類為「neutral」，不要發明新分類。
 - topic: 簡短話題分類（例如：股價表現、服務評價、App使用體驗、總體經濟、產業動態）
 - mentions_company: true/false（是否提及永豐金證券或其競爭對手／同業）
 - summary: 15-40字繁體中文一句話摘要
@@ -145,7 +147,11 @@ def run(offline: bool = False, day: str | None = None) -> Path:
             results = classify_batch_online(client, model, batch, max_retries)
         for rec, result in zip(batch, results):
             merged = dict(rec)
-            merged["sentiment"] = result.get("sentiment", "neutral")
+            sentiment = result.get("sentiment", "neutral")
+            if sentiment not in ("positive", "neutral", "negative"):
+                log.warning("LLM 回傳非預期的 sentiment 值 %r，正規化為 neutral", sentiment)
+                sentiment = "neutral"
+            merged["sentiment"] = sentiment
             merged["topic"] = result.get("topic", "")
             merged["mentions_company"] = bool(result.get("mentions_company", False))
             merged["summary"] = result.get("summary", "")
