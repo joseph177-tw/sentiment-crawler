@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+lxml
+pyyaml
+pandas
+jinja2
+feedparser
+anthropic
+jieba

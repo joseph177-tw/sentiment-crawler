@@ -1,0 +1,27 @@
+{
+  "經濟日報": [
+    {
+      "title": "永豐金證券App使用體驗調查：多數用戶滿意下單速度",
+      "summary": "永豐金證券近期針對大戶投App進行使用者調查，結果顯示多數用戶對下單速度與介面設計給予正面評價，但仍有部分用戶反映登入偶有延遲問題。",
+      "link": "https://money.udn.com/money/story/example1",
+      "published": "2026-09-02T09:00:00+08:00",
+      "author": "經濟日報記者"
+    },
+    {
+      "title": "台積電法說會釋利多 AI供應鏈類股齊揚",
+      "summary": "台積電法說會針對AI伺服器需求釋出樂觀展望，帶動台股AI供應鏈相關類股today同步走高。",
+      "link": "https://money.udn.com/money/story/example2",
+      "published": "2026-09-02T10:30:00+08:00",
+      "author": "經濟日報記者"
+    }
+  ],
+  "鉅亨網": [
+    {
+      "title": "央行升息機率升溫 法人籲留意台股資金動能",
+      "summary": "市場預期央行下次理監事會議可能升息，法人提醒投資人留意升息對台股資金動能的影響，尤其是高股息族群。",
+      "link": "https://news.cnyes.com/news/example3",
+      "published": "2026-09-01T15:20:00+08:00",
+      "author": ""
+    }
+  ]
+}

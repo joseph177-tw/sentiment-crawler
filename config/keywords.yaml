@@ -1,0 +1,28 @@
+# 關鍵字庫：決定爬蟲抓取範圍與 clean.py 的財經相關性過濾
+# 貼文/留言只要命中 company / competitors / industry 任一關鍵字即視為相關
+
+company:
+  - 永豐金
+  - 永豐金證券
+  - SinoPac
+  - 大戶投
+  - 豐雲學堂
+
+competitors:
+  - 元大證券
+  - 富邦證券
+  - 國泰證券
+  - 凱基證券
+
+industry:
+  - AI供應鏈
+  - 台股
+  - 總經指標
+  - 央行升息
+  - 台積電
+
+# 命中以下關鍵字的貼文/留言會被 clean.py 直接過濾掉（廣告、業配、抽獎文等噪音）
+exclude_noise:
+  - 徵才
+  - 抽獎
+  - 業配

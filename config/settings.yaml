@@ -1,0 +1,47 @@
+# 各爬蟲/pipeline 共用參數。異動排程頻率、來源範圍時只改這裡，不動程式碼。
+
+timezone: "Asia/Taipei"
+
+ptt:
+  boards: ["Stock", "Bank_Service"]
+  max_pages_per_board: 5      # 每次執行往回翻的頁數上限
+  request_delay_seconds: [1, 2]   # 每則請求間隔區間（秒），隨機取值
+
+dcard:
+  forums: ["stock", "money"]
+  max_pages_per_forum: 3
+  request_delay_seconds: [2, 3]
+
+news:
+  sources:
+    - name: "經濟日報"
+      rss: "https://money.udn.com/rssfeed/news/1001/5590/5591?ch=money"
+    - name: "工商時報"
+      rss: "https://www.ctee.com.tw/rss"
+    - name: "鉅亨網"
+      rss: "https://news.cnyes.com/rss/cat/tw_stock"
+    - name: "Yahoo奇摩財經"
+      rss: "https://tw.stock.yahoo.com/rss?category=news"
+    - name: "MoneyDJ"
+      rss: "https://www.moneydj.com/kmdj/rss/rssfinancenews.xml"
+  max_items_per_source: 30
+
+forum:
+  mobile01:
+    board_url: "https://www.mobile01.com/topiclist.php?f=291"
+  request_delay_seconds: [2, 3]
+
+clean:
+  min_content_length: 15   # 低於此字數的留言視為無效，過濾掉
+
+sentiment:
+  batch_size: 10            # 每次打包送入 LLM 的貼文數量
+  model: "claude-haiku-4-5-20251001"
+  max_retries: 2
+
+report:
+  top_topics: 10
+
+data:
+  raw_dir: "data/raw"
+  db_path: "data/db.sqlite"

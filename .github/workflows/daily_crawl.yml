@@ -1,0 +1,51 @@
+name: Daily Sentiment Crawl
+
+on:
+  schedule:
+    - cron: '0 23 * * *'   # 每日台灣時間早上7點 (UTC+8, -8hr)
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+
+      - name: Run crawlers
+        run: |
+          python crawlers/news_crawler.py
+          python crawlers/ptt_crawler.py
+          python crawlers/dcard_crawler.py
+          python crawlers/forum_crawler.py
+
+      - name: Clean and analyze
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python pipeline/clean.py
+          python pipeline/sentiment.py
+
+      - name: Persist to SQLite and render report
+        run: |
+          python pipeline/aggregate.py
+          python report/render.py
+
+      - name: Notify Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python notify/telegram_bot.py
+
+      - name: Commit data
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ report/output/
+          git commit -m "daily crawl $(date +%F)" || echo "no changes"
+          git push
