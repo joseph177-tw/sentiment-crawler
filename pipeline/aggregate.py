@@ -13,17 +13,20 @@
     python pipeline/aggregate.py --date 2026-09-03        # 寫入當日資料到 SQLite
     python pipeline/aggregate.py --weekly                  # 產出過去7天週彙整（預設以今天為終點）
     python pipeline/aggregate.py --weekly --end-date 2026-09-07
+    python pipeline/aggregate.py --keywords                # 產出累積關鍵字索引（供 keywords.html 用）
 """
 from __future__ import annotations
 
 import argparse
 import sqlite3
 import sys
+from collections import Counter
 from datetime import datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import common
+import keyword_lib
 
 log = common.setup_logging("pipeline.aggregate")
 
@@ -162,6 +165,68 @@ def build_weekly_summary(conn: sqlite3.Connection, end_date: str) -> dict:
     }
 
 
+def build_keyword_index(conn: sqlite3.Connection, top_n: int = 100, min_count: int = 2,
+                        posts_per_keyword: int = 30) -> dict:
+    """掃描 SQLite 裡累積的所有貼文（不限單日），依關鍵字彙總出現次數、來源分布、
+    總互動數（push+boo）與代表性貼文列表，供 report/render.py 產出 docs/keywords.html。"""
+    rows = conn.execute(
+        "SELECT title, summary, url, platform, board, sentiment, push, boo, day FROM posts"
+    ).fetchall()
+    cols = ["title", "summary", "url", "platform", "board", "sentiment", "push", "boo", "day"]
+    posts = [dict(zip(cols, row)) for row in rows]
+
+    counts: Counter[str] = Counter()
+    engagement: Counter[str] = Counter()
+    sources: dict[str, Counter[str]] = {}
+    post_lists: dict[str, list[dict]] = {}
+
+    for post in posts:
+        text = f"{post['title'] or ''} {post['summary'] or ''}"
+        words = set(keyword_lib.tokenize(text))
+        eng = (post["push"] or 0) + (post["boo"] or 0)
+        for word in words:
+            counts[word] += 1
+            engagement[word] += eng
+            sources.setdefault(word, Counter())[f"{post['platform']}·{post['board']}"] += 1
+            post_lists.setdefault(word, []).append(post)
+
+    keywords = []
+    for word, count in counts.most_common():
+        if count < min_count:
+            break
+        ranked_posts = sorted(
+            post_lists[word], key=lambda p: (p["push"] or 0) + (p["boo"] or 0), reverse=True
+        )[:posts_per_keyword]
+        keywords.append({
+            "word": word,
+            "count": count,
+            "total_engagement": engagement[word],
+            "sources": dict(sources[word].most_common()),
+            "posts": ranked_posts,
+        })
+        if len(keywords) >= top_n:
+            break
+
+    return {
+        "generated_at": datetime.now(common.get_timezone()).isoformat(),
+        "total_posts_scanned": len(posts),
+        "keywords": keywords,
+    }
+
+
+def run_keywords() -> Path:
+    conn = get_conn()
+    try:
+        index = build_keyword_index(conn)
+    finally:
+        conn.close()
+    out_path = common.RAW_DIR / "keyword_index.json"
+    common.write_json(out_path, index)
+    log.info("關鍵字索引完成：%s（%d 個關鍵字，掃描 %d 則貼文）",
+              out_path, len(index["keywords"]), index["total_posts_scanned"])
+    return out_path
+
+
 def run_daily(day: str) -> dict:
     conn = get_conn()
     try:
@@ -188,9 +253,12 @@ if __name__ == "__main__":
     parser.add_argument("--date", default=None, help="寫入指定日期資料到 SQLite（預設今天）")
     parser.add_argument("--weekly", action="store_true", help="產出過去7天週彙整")
     parser.add_argument("--end-date", default=None, help="週彙整終點日期，預設今天（僅搭配 --weekly）")
+    parser.add_argument("--keywords", action="store_true", help="產出累積關鍵字索引")
     args = parser.parse_args()
 
     if args.weekly:
         run_weekly(args.end_date or common.today_str())
+    elif args.keywords:
+        run_keywords()
     else:
         run_daily(args.date or common.today_str())

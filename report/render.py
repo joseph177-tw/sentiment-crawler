@@ -16,57 +16,69 @@ from __future__ import annotations
 
 import argparse
 import html
-import re
+import json
 import sys
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-import jieba
-
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import common
+import keyword_lib
 
 log = common.setup_logging("report.render")
-jieba.setLogLevel(20)  # 抑制 jieba 初始化時的 INFO log
-
-
-def _load_finance_dict() -> None:
-    """把 keywords.yaml 的公司/產業關鍵字餵給 jieba，避免「永豐金證券」「台積電」
-    這類專有名詞被預設字典拆散（例如拆成「永豐」+「金證券」）。"""
-    keywords = common.load_keywords()
-    terms = (
-        keywords.get("company", [])
-        + keywords.get("competitors", [])
-        + keywords.get("industry", [])
-    )
-    for term in terms:
-        jieba.add_word(term, freq=100000)
-
-
-_load_finance_dict()
 
 SENTIMENT_LABEL = {"positive": "正面", "neutral": "中性", "negative": "負面"}
 SENTIMENT_COLOR = {"positive": "#c62828", "neutral": "#9e9e9e", "negative": "#2e7d32"}
 
-_STOPWORDS = {
-    "的", "是", "在", "了", "與", "及", "和", "也", "就", "都", "而", "或", "被",
-    "這", "那", "有", "為", "對", "中", "上", "下", "不", "台股", "新聞",
-    "多數", "用戶", "調查", "心得", "分享",
-}
-_VALID_WORD_RE = re.compile(r"^[一-鿿A-Za-z]{2,}$")
+# 四個頁面（日報/週報/關鍵字/盤勢）共用的樣式與導覽列，拆成常數避免四邊各自維護一份
+# 幾乎一樣的 <style>，改一次顏色卻要記得改四個地方。
+BASE_CSS = """
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+"""
 
 
-def _keyword_cloud(records: list[dict], top_n: int = 20) -> list[tuple[str, int]]:
-    counter: Counter[str] = Counter()
-    for rec in records:
-        text = f"{rec.get('title', '')} {rec.get('summary', '')}"
-        for word in jieba.cut_for_search(text):
-            word = word.strip()
-            if word in _STOPWORDS or not _VALID_WORD_RE.match(word):
-                continue
-            counter[word] += 1
-    return counter.most_common(top_n)
+def _nav_html(active: str) -> str:
+    items = [("index.html", "日報"), ("weekly.html", "週報"),
+             ("keywords.html", "關鍵字"), ("market.html", "盤勢")]
+    links = "".join(
+        f'<a href="{href}"{" class=active" if key == active else ""}>{label}</a>'
+        for key, (href, label) in zip(["index", "weekly", "keywords", "market"], items)
+    )
+    return f'<nav class="topnav">{links}</nav>'
 
 
 def build_stats(records: list[dict]) -> dict:
@@ -116,11 +128,12 @@ def _topic_row(rec: dict) -> str:
 def render_html(records: list[dict], day: str, top_n: int = 10) -> str:
     stats = build_stats(records)
     topics = top_topics(records, top_n)
-    cloud = _keyword_cloud(records)
+    cloud = keyword_lib.keyword_cloud(records)
 
     topic_rows = "".join(_topic_row(r) for r in topics) or '<tr><td colspan="4" class="muted">今日無資料</td></tr>'
     cloud_html = "".join(
-        f'<span class="tag" style="font-size:{11 + min(count, 8) * 2}px">{html.escape(w)}</span>'
+        f'<a class="tag" style="font-size:{11 + min(count, 8) * 2}px" '
+        f'href="keywords.html#{html.escape(w)}">{html.escape(w)}</a>'
         for w, count in cloud
     ) or '<span class="muted">無足夠資料產生關鍵字雲</span>'
 
@@ -130,36 +143,7 @@ def render_html(records: list[dict], day: str, top_n: int = 10) -> str:
 <html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>社群輿情日報 · {day}</title>
-<style>
-:root {{ --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
-        --up:#c62828; --down:#2e7d32; --accent:#12406b; }}
-* {{ box-sizing:border-box; }}
-body {{ margin:0; background:var(--bg); color:var(--ink);
-       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }}
-.wrap {{ max-width:1180px; margin:0 auto; padding:28px 20px 60px; }}
-header {{ border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin-bottom:24px; }}
-header h1 {{ margin:0; font-size:22px; letter-spacing:1px; }}
-header .sub {{ color:var(--sub); margin-top:4px; }}
-section {{ background:var(--card); border:1px solid var(--line); border-radius:10px;
-          padding:18px 20px; margin-bottom:18px; }}
-h2 {{ font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }}
-.summary-cards {{ display:flex; gap:16px; flex-wrap:wrap; }}
-.card {{ flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }}
-.card .n {{ font-size:26px; font-weight:700; }}
-.card .l {{ font-size:12px; color:var(--sub); margin-top:4px; }}
-table {{ width:100%; border-collapse:collapse; }}
-th {{ text-align:left; font-size:12px; color:var(--sub); font-weight:500;
-     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }}
-td {{ padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }}
-tr:last-child td {{ border-bottom:none; }}
-.num {{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }}
-.up {{ color:var(--up); }} .down {{ color:var(--down); }} .muted {{ color:var(--sub); }}
-.role {{ font-size:11px; color:var(--sub); margin-top:2px; }}
-.badge {{ color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }}
-a {{ color:var(--accent); text-decoration:none; }} a:hover {{ text-decoration:underline; }}
-.tag {{ display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
-       background:#eef2f7; color:var(--accent); }}
-</style></head><body><div class="wrap">
+<style>{BASE_CSS}</style></head><body>{_nav_html('index')}<div class="wrap">
 <header>
   <h1>社群輿情日報</h1>
   <div class="sub">資料日期 {day}｜產生時間 {generated_at}（台北）｜來源：PTT / Dcard / 新聞 / 論壇</div>
@@ -262,34 +246,7 @@ def render_weekly_html(summary: dict) -> str:
 <html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>社群輿情週報 · {week_days[0]} ~ {end_date}</title>
-<style>
-:root {{ --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
-        --up:#c62828; --down:#2e7d32; --accent:#12406b; }}
-* {{ box-sizing:border-box; }}
-body {{ margin:0; background:var(--bg); color:var(--ink);
-       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }}
-.wrap {{ max-width:1180px; margin:0 auto; padding:28px 20px 60px; }}
-header {{ border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin-bottom:24px; }}
-header h1 {{ margin:0; font-size:22px; letter-spacing:1px; }}
-header .sub {{ color:var(--sub); margin-top:4px; }}
-section {{ background:var(--card); border:1px solid var(--line); border-radius:10px;
-          padding:18px 20px; margin-bottom:18px; }}
-h2 {{ font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }}
-.summary-cards {{ display:flex; gap:16px; flex-wrap:wrap; }}
-.card {{ flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }}
-.card .n {{ font-size:26px; font-weight:700; }}
-.card .l {{ font-size:12px; color:var(--sub); margin-top:4px; }}
-table {{ width:100%; border-collapse:collapse; }}
-th {{ text-align:left; font-size:12px; color:var(--sub); font-weight:500;
-     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }}
-td {{ padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }}
-tr:last-child td {{ border-bottom:none; }}
-.num {{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }}
-.up {{ color:var(--up); }} .down {{ color:var(--down); }} .muted {{ color:var(--sub); }}
-.role {{ font-size:11px; color:var(--sub); margin-top:2px; }}
-.badge {{ color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }}
-a {{ color:var(--accent); text-decoration:none; }} a:hover {{ text-decoration:underline; }}
-</style></head><body><div class="wrap">
+<style>{BASE_CSS}</style></head><body>{_nav_html('weekly')}<div class="wrap">
 <header>
   <h1>社群輿情週報</h1>
   <div class="sub">統計區間 {week_days[0]} ~ {end_date}｜產生時間 {generated_at}（台北）</div>
@@ -344,12 +301,229 @@ def run_weekly(end_date: str | None = None) -> Path:
     return out_path
 
 
+def _keyword_post_row(post: dict) -> str:
+    sentiment = post.get("sentiment", "neutral")
+    label = SENTIMENT_LABEL.get(sentiment, sentiment)
+    color = SENTIMENT_COLOR.get(sentiment, "#9e9e9e")
+    title_html = html.escape(post.get("title", ""))
+    url = html.escape(post.get("url", "") or "#")
+    eng_text = f'推{post.get("push", 0)} / 噓{post.get("boo", 0)}'
+    return (
+        f'<tr><td><a href="{url}" target="_blank">{title_html}</a>'
+        f'<div class="role">{html.escape(post.get("platform", ""))} · {html.escape(post.get("board", ""))}'
+        f' · {html.escape(post.get("day", ""))}</div></td>'
+        f'<td class="num">{eng_text}</td>'
+        f'<td><span class="badge" style="background:{color}">{label}</span></td></tr>'
+    )
+
+
+def _keyword_section(kw: dict) -> str:
+    word = html.escape(kw["word"])
+    source_chips = "".join(
+        f'<span class="chip">{html.escape(src)} × {n}</span>'
+        for src, n in kw["sources"].items()
+    )
+    rows = "".join(_keyword_post_row(p) for p in kw["posts"])
+    return f"""<section id="{word}">
+<h2>{word}<span class="badge" style="background:var(--accent); margin-left:8px;">{kw['count']} 則</span></h2>
+<div class="role" style="margin-bottom:10px;">總互動數（推+噓）{kw['total_engagement']}｜來源分布：{source_chips}</div>
+<table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
+{rows}</table>
+</section>"""
+
+
+def render_keywords_page(index: dict) -> str:
+    keywords = index.get("keywords", [])
+    generated_at = datetime.now(common.get_timezone()).strftime("%Y-%m-%d %H:%M")
+
+    index_chips = "".join(
+        f'<a class="tag" href="#{html.escape(kw["word"])}">{html.escape(kw["word"])} '
+        f'<span class="muted">({kw["count"]})</span></a>'
+        for kw in keywords
+    ) or '<span class="muted">尚無足夠資料</span>'
+
+    sections = "".join(_keyword_section(kw) for kw in keywords)
+
+    return f"""<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>關鍵字總覽 · 社群輿情</title>
+<style>{BASE_CSS}</style></head><body>{_nav_html('keywords')}<div class="wrap">
+<header>
+  <h1>關鍵字總覽</h1>
+  <div class="sub">累積掃描 {index.get('total_posts_scanned', 0)} 則貼文｜產生時間 {generated_at}（台北）
+  ｜按出現則數排序，點擊字詞可跳到下方詳細列表</div>
+</header>
+
+<section><h2>索引</h2><div>{index_chips}</div></section>
+
+{sections}
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+關鍵字取自各貼文標題與 LLM 摘要，經 jieba 斷詞後過濾常見虛詞與 PTT/Dcard 標題分類標籤
+（如「情報」「閒聊」）。「總互動數」為該關鍵字所有相關貼文的 PTT 推文數+噓文數加總
+（Dcard／新聞／論壇無推噓機制者以按讚數/留言數近似），代表社群關注度、非網頁點擊次數。
+出現次數低於 2 次的關鍵字不列入，避免單一貼文的偶發用字灌爆列表。
+</div></section>
+</div></body></html>"""
+
+
+def run_keywords() -> Path:
+    index_path = common.RAW_DIR / "keyword_index.json"
+    index = common.read_json(index_path, default=None)
+    if index is None:
+        raise FileNotFoundError(f"找不到關鍵字索引：{index_path}（請先執行 pipeline/aggregate.py --keywords）")
+
+    html_text = render_keywords_page(index)
+    pages_dir = common.BASE_DIR / "docs"
+    pages_dir.mkdir(parents=True, exist_ok=True)
+    out_path = pages_dir / "keywords.html"
+    out_path.write_text(html_text, encoding="utf-8")
+    log.info("關鍵字頁完成：%s", out_path)
+    print(str(out_path))
+    return out_path
+
+
+def _market_post_row(post: dict) -> str:
+    sentiment = post.get("sentiment", "neutral")
+    label = SENTIMENT_LABEL.get(sentiment, sentiment)
+    color = SENTIMENT_COLOR.get(sentiment, "#9e9e9e")
+    title_html = html.escape(post.get("title", ""))
+    url = html.escape(post.get("url", "") or "#")
+    eng_text = f'推{post.get("push", 0)} / 噓{post.get("boo", 0)}'
+    return (
+        f'<tr><td><a href="{url}" target="_blank">{title_html}</a>'
+        f'<div class="role">{html.escape(post.get("platform", ""))} · {html.escape(post.get("board", ""))}'
+        f' · {html.escape(post.get("day", ""))}</div></td>'
+        f'<td class="num">{eng_text}</td>'
+        f'<td><span class="badge" style="background:{color}">{label}</span></td></tr>'
+    )
+
+
+def _market_section(stock: dict) -> str:
+    code = html.escape(stock["code"])
+    name = html.escape(stock["name"])
+    rows = "".join(_market_post_row(p) for p in stock["posts"])
+    return f"""<section id="{code}">
+<h2>{name}<span class="muted" style="font-weight:400;">（{code}）</span>
+<span class="badge" style="background:var(--accent); margin-left:8px;">貼文提及 {stock['mention_count']} 次</span></h2>
+<div id="chart-{code}" style="height:360px;"></div>
+<h3 style="margin-top:14px;">相關貼文</h3>
+<table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
+{rows}</table>
+</section>"""
+
+
+def render_market_page(market_data: dict) -> str:
+    stocks = market_data.get("stocks", [])
+    generated_at = datetime.now(common.get_timezone()).strftime("%Y-%m-%d %H:%M")
+
+    index_chips = "".join(
+        f'<a class="tag" href="#{html.escape(s["code"])}">{html.escape(s["name"])} '
+        f'<span class="muted">({s["mention_count"]})</span></a>'
+        for s in stocks
+    ) or '<span class="muted">尚未偵測到任何個股提及</span>'
+
+    sections = "".join(_market_section(s) for s in stocks)
+
+    chart_payload = json.dumps(
+        {s["code"]: {"name": s["name"], "prices": s["prices"]} for s in stocks},
+        ensure_ascii=False,
+    )
+
+    chart_script = f"""<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
+<script>
+const MARKET_DATA = {chart_payload};
+Object.entries(MARKET_DATA).forEach(([code, stock]) => {{
+  const el = document.getElementById('chart-' + code);
+  if (!el) return;
+  const chart = echarts.init(el);
+  const dates = stock.prices.map(p => p.date);
+  const candles = stock.prices.map(p => [p.open, p.close, p.low, p.high]);
+  const volumes = stock.prices.map(p => p.volume);
+  chart.setOption({{
+    tooltip: {{ trigger: 'axis', axisPointer: {{ type: 'cross' }} }},
+    grid: [
+      {{ left: 56, right: 20, top: 20, height: 220 }},
+      {{ left: 56, right: 20, top: 260, height: 60 }}
+    ],
+    xAxis: [
+      {{ type: 'category', data: dates, gridIndex: 0, axisLabel: {{ show: false }} }},
+      {{ type: 'category', data: dates, gridIndex: 1, axisLabel: {{ fontSize: 10 }} }}
+    ],
+    yAxis: [
+      {{ type: 'value', gridIndex: 0, scale: true, axisLabel: {{ fontSize: 10 }} }},
+      {{ type: 'value', gridIndex: 1, show: false }}
+    ],
+    dataZoom: [
+      {{ type: 'inside', xAxisIndex: [0, 1] }},
+      {{ type: 'slider', xAxisIndex: [0, 1], height: 14, bottom: 0 }}
+    ],
+    series: [
+      {{
+        type: 'candlestick', data: candles, xAxisIndex: 0, yAxisIndex: 0,
+        itemStyle: {{ color: '#c62828', color0: '#2e7d32', borderColor: '#c62828', borderColor0: '#2e7d32' }}
+      }},
+      {{ type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: {{ color: '#9fb3c8' }} }}
+    ]
+  }});
+  window.addEventListener('resize', () => chart.resize());
+}});
+</script>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>盤勢總覽 · 社群輿情</title>
+<style>{BASE_CSS}</style></head><body>{_nav_html('market')}<div class="wrap">
+<header>
+  <h1>盤勢總覽</h1>
+  <div class="sub">產生時間 {generated_at}（台北）｜資料來源：TWSE 上市清單（自動偵測貼文提及個股）
+  ＋ Yahoo Finance 歷史價格</div>
+</header>
+
+<section><h2>索引</h2><div>{index_chips}</div></section>
+
+{sections}
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+個股偵測範圍為 TWSE 上市股票（不含上櫃 TPEx），比對方式為貼文標題／摘要與 TWSE 證券
+名稱的子字串比對，非官方全稱比對，可能有漏抓或極少數誤判。K 線圖為近半年日 K，
+資料來源 Yahoo Finance，非即時報價（有延遲），僅供研究參考，非投資建議。
+</div></section>
+</div>
+{chart_script}
+</body></html>"""
+
+
+def run_market() -> Path:
+    market_path = common.RAW_DIR / "market_data.json"
+    market_data = common.read_json(market_path, default=None)
+    if market_data is None:
+        raise FileNotFoundError(f"找不到盤勢資料：{market_path}（請先執行 pipeline/stock_detect.py）")
+
+    html_text = render_market_page(market_data)
+    pages_dir = common.BASE_DIR / "docs"
+    pages_dir.mkdir(parents=True, exist_ok=True)
+    out_path = pages_dir / "market.html"
+    out_path.write_text(html_text, encoding="utf-8")
+    log.info("盤勢頁完成：%s", out_path)
+    print(str(out_path))
+    return out_path
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="產出社群輿情報告 HTML")
     parser.add_argument("--date", default=None, help="指定日期 YYYY-MM-DD，預設今天")
     parser.add_argument("--weekly", action="store_true", help="產出週報而非日報")
+    parser.add_argument("--keywords", action="store_true", help="產出關鍵字總覽頁")
+    parser.add_argument("--market", action="store_true", help="產出盤勢總覽頁")
     args = parser.parse_args()
     if args.weekly:
         run_weekly(end_date=args.date)
+    elif args.keywords:
+        run_keywords()
+    elif args.market:
+        run_market()
     else:
         run(day=args.date)

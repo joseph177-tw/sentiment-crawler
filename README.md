@@ -4,7 +4,16 @@
 社群輿情（PTT、Dcard、新聞、Mobile01），進行 LLM 情緒分析並產出 HTML 報告、推播 Telegram。
 
 **固定報告網址（GitHub Pages）**：https://joseph177-tw.github.io/sentiment-crawler/
-（每日報告；週報在 `/weekly.html`，每次排程自動覆蓋更新，網址本身不會變）
+
+四個頁面（上方導覽列可切換），每次排程自動覆蓋更新，網址本身不會變：
+- `/`（`index.html`）：每日報告
+- `/weekly.html`：週報
+- `/keywords.html`：關鍵字總覽——累積掃描所有貼文，依出現次數列出每個關鍵字的
+  總互動數（推+噓加總）、來源分布（平台·板）、相關貼文列表；日報關鍵字雲的字都
+  可以點過去對應段落
+- `/market.html`：盤勢總覽——自動從累積貼文中偵測提到的 TWSE 上市個股（比對貼文
+  文字與 TWSE 證券名稱），依提及次數列出前 15 檔，各自畫出近半年日K線圖（含成交量）
+  ＋相關貼文列表
 
 > ⚠️ 因為 GitHub 免費方案不支援 private repo 的 Pages 功能，這個 repo 目前是 **public**
 > （原本是 private，是為了要有固定網址才改的）。代表 `config/keywords.yaml` 裡列的公司
@@ -33,6 +42,16 @@
 上實際跑都是 0 筆——Dcard 非官方 API 可能擋 GitHub runner 的 IP，Mobile01 的 CSS selector
 沒對過真實頁面、可能跟目前排版對不上，需要之後另外 debug。
 
+**後續加的功能**（架構文件原本沒有，依需求擴充）：
+- `keyword_lib.py`：共用斷詞邏輯，`report/render.py`（單日關鍵字雲）與 `pipeline/aggregate.py`
+  （累積關鍵字索引）共用同一套規則
+- `pipeline/aggregate.py --keywords`：從 SQLite 累積貼文建立關鍵字索引
+  （`data/raw/keyword_index.json`）
+- `pipeline/stock_detect.py`：抓 TWSE 上市股票清單、比對貼文偵測提及個股、
+  抓 Yahoo Finance 歷史價格（`data/raw/market_data.json`）
+- `report/render.py --keywords` / `--market`：產出 `docs/keywords.html`、`docs/market.html`
+  （K 線圖用 ECharts，CDN 載入，不需要額外安裝前端依賴）
+
 ## 安裝
 
 ```bash
@@ -52,7 +71,11 @@ python crawlers/forum_crawler.py --offline
 python pipeline/clean.py
 python pipeline/sentiment.py --offline    # 關鍵字規則模擬分類，非正式分析品質
 python pipeline/aggregate.py
+python pipeline/aggregate.py --keywords
+python pipeline/stock_detect.py --offline
 python report/render.py
+python report/render.py --keywords
+python report/render.py --market
 python notify/telegram_bot.py --dry-run
 ```
 
@@ -73,7 +96,11 @@ python crawlers/forum_crawler.py
 python pipeline/clean.py
 python pipeline/sentiment.py
 python pipeline/aggregate.py
+python pipeline/aggregate.py --keywords
+python pipeline/stock_detect.py
 python report/render.py
+python report/render.py --keywords
+python report/render.py --market
 python notify/telegram_bot.py
 ```
 

@@ -45,6 +45,10 @@ report:
   # 留空字串則 notify/telegram_bot.py 會退回附加 HTML 檔案的方式推播
   pages_base_url: "https://joseph177-tw.github.io/sentiment-crawler"
 
+market:
+  top_n: 15          # 盤勢頁面最多顯示幾檔個股（依提及次數排序）
+  price_range: "6mo"  # Yahoo Finance 歷史區間
+
 data:
   raw_dir: "data/raw"
   db_path: "data/db.sqlite"

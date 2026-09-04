@@ -35,7 +35,11 @@ jobs:
       - name: Persist to SQLite and render report
         run: |
           python pipeline/aggregate.py
+          python pipeline/aggregate.py --keywords
+          python pipeline/stock_detect.py
           python report/render.py
+          python report/render.py --keywords
+          python report/render.py --market
 
       - name: Commit data
         run: |
