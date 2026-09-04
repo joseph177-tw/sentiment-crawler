@@ -3,6 +3,15 @@
 依 `社群輿情爬蟲系統_架構文件.md` 實作，個人研究用途：每日／每週自動蒐集財經相關
 社群輿情（PTT、Dcard、新聞、Mobile01），進行 LLM 情緒分析並產出 HTML 報告、推播 Telegram。
 
+**固定報告網址（GitHub Pages）**：https://joseph177-tw.github.io/sentiment-crawler/
+（每日報告；週報在 `/weekly.html`，每次排程自動覆蓋更新，網址本身不會變）
+
+> ⚠️ 因為 GitHub 免費方案不支援 private repo 的 Pages 功能，這個 repo 目前是 **public**
+> （原本是 private，是為了要有固定網址才改的）。代表 `config/keywords.yaml` 裡列的公司
+> 名稱、競爭對手清單，以及爬蟲邏輯本身、每日報告內容，只要知道 repo 網址任何人都看得到。
+> 如果之後這點變成問題，可以考慮升級 GitHub Pro（private repo 也能用 Pages）或改回
+> Telegram 附檔的方式，把 repo 設回 private。
+
 ## 目前實作狀態
 
 架構文件第十二節建議的 10 個步驟已全部建好並以離線 fixture 資料驗證過整條 pipeline：
@@ -16,9 +25,13 @@
 | 5 | `pipeline/sentiment.py` | 完成（需 `ANTHROPIC_API_KEY`；`--offline` 用關鍵字規則模擬，僅測試串接用） |
 | 6 | `report/render.py` | 完成（日報，含摘要卡片／熱門話題／關鍵字雲） |
 | 7 | `crawlers/dcard_crawler.py`、`crawlers/forum_crawler.py` | 完成（皆支援 `--offline`） |
-| 8 | `notify/telegram_bot.py` | 完成（支援 `--dry-run`） |
-| 9 | GitHub Actions（`daily_crawl.yml` / `weekly_report.yml`） | 完成，尚未啟用 cron（見下方待辦） |
+| 8 | `notify/telegram_bot.py` | 完成，優先推播 GitHub Pages 固定連結，沒設定 `pages_base_url` 時退回附檔 |
+| 9 | GitHub Actions（`daily_crawl.yml` / `weekly_report.yml`） | **已上線**，cron 已跑過至少一次真實排程成功（2026-09-04 07:00 台灣時間自動觸發） |
 | 10 | `pipeline/aggregate.py`（週報趨勢） | 完成，但架構文件建議「觀察一週真實資料品質後再開發」—— 目前邏輯已可跑，週報趨勢的判讀價值要等累積至少 7 天真實資料後才有意義 |
+
+**已知問題（尚未修）**：`crawlers/dcard_crawler.py`、`crawlers/forum_crawler.py` 在 GitHub Actions
+上實際跑都是 0 筆——Dcard 非官方 API 可能擋 GitHub runner 的 IP，Mobile01 的 CSS selector
+沒對過真實頁面、可能跟目前排版對不上，需要之後另外 debug。
 
 ## 安裝
 
@@ -79,18 +92,25 @@ python notify/telegram_bot.py --weekly
 
 ## GitHub Actions 排程
 
-`.github/workflows/daily_crawl.yml`、`weekly_report.yml` 已建好，但**排程建議先手動測試**：
+`.github/workflows/daily_crawl.yml`（每日 07:00 台灣時間）、`weekly_report.yml`
+（每週日 07:00 台灣時間）已上線並跑過至少一次真實排程。
 
-1. 到 repo 的 `Settings > Secrets and variables > Actions` 設定：
-   - `ANTHROPIC_API_KEY`
-   - `TELEGRAM_BOT_TOKEN`
-   - `TELEGRAM_CHAT_ID`
-2. 先用 `workflow_dispatch` 手動觸發 `daily_crawl.yml`，確認整條 pipeline 在 CI 環境跑得動、
-   資料正確 commit 回 repo（`data/db.sqlite` 需要被 commit，因為 GitHub Actions runner
-   每次都是全新環境，歷史趨勢比對要靠這個檔案在 repo 裡持續累積）
-3. 確認無誤後，cron 排程即會自動生效（`daily_crawl.yml` 每日 07:00、`weekly_report.yml`
-   每週日 07:00，皆為台灣時間）
-4. 觀察至少一週的真實資料品質後，再評估是否要調整 `pipeline/aggregate.py` 的週報趨勢邏輯
+- Secrets（`Settings > Secrets and variables > Actions`）：`ANTHROPIC_API_KEY`、
+  `TELEGRAM_BOT_TOKEN`、`TELEGRAM_CHAT_ID` 已設定
+- Actions workflow 權限已設為 read-and-write（`git push` 才能把資料 commit 回 repo；
+  `data/db.sqlite` 需要被 commit，因為 GitHub Actions runner 每次都是全新環境，
+  歷史趨勢比對要靠這個檔案在 repo 裡持續累積）
+- GitHub Pages 已指向 `master` 分支的 `/docs` 目錄
+- 觀察至少一週的真實資料品質後，再評估是否要調整 `pipeline/aggregate.py` 的週報趨勢邏輯
+
+新增/修改 `.github/workflows/*.yml` 後想手動測試，可用：
+```bash
+gh workflow run daily_crawl.yml --repo joseph177-tw/sentiment-crawler
+gh run watch --repo joseph177-tw/sentiment-crawler
+```
+> 提醒：workflow 檔案第一次 push 時 GitHub 有時不會立刻註冊，需要一次「有實際改到
+> `.github/workflows/*.yml` 內容」的 push 才會觸發重新掃描（純 `git commit --allow-empty`
+> 不會觸發）。`gh workflow list --all` 查得到才代表註冊成功。
 
 ## 使用限制提醒
 
