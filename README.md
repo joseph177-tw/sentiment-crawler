@@ -33,14 +33,31 @@
 | 4 | `pipeline/clean.py` | 完成 |
 | 5 | `pipeline/sentiment.py` | 完成（需 `ANTHROPIC_API_KEY`；`--offline` 用關鍵字規則模擬，僅測試串接用） |
 | 6 | `report/render.py` | 完成（日報，含摘要卡片／熱門話題／關鍵字雲） |
-| 7 | `crawlers/dcard_crawler.py`、`crawlers/forum_crawler.py` | 完成（皆支援 `--offline`） |
+| 7 | `crawlers/dcard_crawler.py`、`crawlers/forum_crawler.py` | 程式碼完成（皆支援 `--offline`），但**已從每日排程移除**，見下方說明 |
 | 8 | `notify/telegram_bot.py` | 完成，優先推播 GitHub Pages 固定連結，沒設定 `pages_base_url` 時退回附檔 |
 | 9 | GitHub Actions（`daily_crawl.yml` / `weekly_report.yml`） | **已上線**，cron 已跑過至少一次真實排程成功（2026-09-04 07:00 台灣時間自動觸發） |
 | 10 | `pipeline/aggregate.py`（週報趨勢） | 完成，但架構文件建議「觀察一週真實資料品質後再開發」—— 目前邏輯已可跑，週報趨勢的判讀價值要等累積至少 7 天真實資料後才有意義 |
 
-**已知問題（尚未修）**：`crawlers/dcard_crawler.py`、`crawlers/forum_crawler.py` 在 GitHub Actions
-上實際跑都是 0 筆——Dcard 非官方 API 可能擋 GitHub runner 的 IP，Mobile01 的 CSS selector
-沒對過真實頁面、可能跟目前排版對不上，需要之後另外 debug。
+### Dcard / Mobile01 除錯結論（2026-09-04）
+
+實際 debug 後發現不是程式邏輯問題，是兩邊都有反爬蟲機制在請求最前端就擋下來，
+`_parse_topic_list()` / `_parse_article()` 這些解析邏輯根本沒機會執行到：
+
+- **Mobile01**：每個 request 都被 Akamai 直接回 `403 Access Denied`（`errors.edgesuite.net`），
+  換 User-Agent／Referer／完整瀏覽器 header 都一樣，連 RSS 路徑也是同樣結果。
+  用 Playwright 開真的 headless Chromium 測試，一樣馬上 403——**確認是 IP/網段層級的封鎖，
+  不是單一頁面規則，瀏覽器等級的偽裝完全沒用**，除非用不同網段的 IP（例如付費住宅代理）。
+- **Dcard**：被 Cloudflare 的 bot 防護擋下（`需要確認您的連線是安全的` 挑戰頁）。用 Playwright
+  開 headless Chromium 測試，第一次拿到 HTTP 200（可能真的過了挑戰，但當次程式因為
+  Windows 主控台編碼問題在存檔前就當掉，沒留下證據），後續幾次重試都變成 `429`
+  （`請稍候...` 頁面），懷疑是短時間內重複測試被 Cloudflare 判定為可疑流量而加強限制。
+  **目前結論：未證實 headless 瀏覽器能穩定拿到真實內容，且持續測試似乎讓封鎖變嚴重。**
+
+**目前處置**：`daily_crawl.yml` 已把這兩支爬蟲從排程移除（Mobile01 沒有意義再試；Dcard
+先讓 IP 冷卻，之後可以再用不同網路環境驗證）。程式碼保留在 `crawlers/`，之後想到別的
+繞法（例如換一台機器/網路測 Dcard、或評估付費代理）可以直接接回 `daily_crawl.yml` 的
+「Run crawlers」步驟。這次拿來測試的 Playwright 腳本只在本機臨時測試用，沒有留在
+repo 裡，`requirements.txt` 也沒有加這個依賴。
 
 **後續加的功能**（架構文件原本沒有，依需求擴充）：
 - `keyword_lib.py`：共用斷詞邏輯，`report/render.py`（單日關鍵字雲）與 `pipeline/aggregate.py`

@@ -19,11 +19,13 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Run crawlers
+        # dcard_crawler.py / forum_crawler.py 暫停排程：Dcard 是 Cloudflare 挑戰頁擋下
+        # （headless Chromium 也一樣被 429），Mobile01 是 Akamai 對整個 IP 段直接回
+        # 403 Access Denied（連 RSS 路徑都一樣，不是單一頁面規則）。細節見 README。
+        # 程式碼保留，之後想到別的繞法可以直接接回來這裡。
         run: |
           python crawlers/news_crawler.py
           python crawlers/ptt_crawler.py
-          python crawlers/dcard_crawler.py
-          python crawlers/forum_crawler.py
 
       - name: Clean and analyze
         env:
