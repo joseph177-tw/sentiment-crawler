@@ -23,16 +23,16 @@ jobs:
           python pipeline/aggregate.py --weekly
           python report/render.py --weekly
 
+      - name: Commit report
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ report/output/ docs/
+          git commit -m "weekly report $(TZ='Asia/Taipei' date +%F)" || echo "no changes"
+          git push
+
       - name: Notify Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python notify/telegram_bot.py --weekly
-
-      - name: Commit report
-        run: |
-          git config user.name "bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add data/ report/output/
-          git commit -m "weekly report $(date +%F)" || echo "no changes"
-          git push

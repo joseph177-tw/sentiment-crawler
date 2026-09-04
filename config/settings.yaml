@@ -41,6 +41,9 @@ sentiment:
 
 report:
   top_topics: 10
+  # GitHub Pages 固定網址（來源 docs/index.html、docs/weekly.html，每次排程覆蓋更新）
+  # 留空字串則 notify/telegram_bot.py 會退回附加 HTML 檔案的方式推播
+  pages_base_url: "https://joseph177-tw.github.io/sentiment-crawler"
 
 data:
   raw_dir: "data/raw"

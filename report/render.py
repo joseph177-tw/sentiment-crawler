@@ -203,7 +203,13 @@ def run(day: str | None = None, top_n: int | None = None) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"daily_{day}.html"
     out_path.write_text(html_text, encoding="utf-8")
-    log.info("報告完成：%s", out_path)
+
+    # 同步覆蓋 docs/index.html，讓 GitHub Pages 的固定網址永遠指向最新一天的報告
+    pages_dir = common.BASE_DIR / "docs"
+    pages_dir.mkdir(parents=True, exist_ok=True)
+    (pages_dir / "index.html").write_text(html_text, encoding="utf-8")
+
+    log.info("報告完成：%s（同步更新 docs/index.html）", out_path)
     print(str(out_path))
     return out_path
 
@@ -328,7 +334,12 @@ def run_weekly(end_date: str | None = None) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"weekly_{end_date}.html"
     out_path.write_text(html_text, encoding="utf-8")
-    log.info("週報完成：%s", out_path)
+
+    pages_dir = common.BASE_DIR / "docs"
+    pages_dir.mkdir(parents=True, exist_ok=True)
+    (pages_dir / "weekly.html").write_text(html_text, encoding="utf-8")
+
+    log.info("週報完成：%s（同步更新 docs/weekly.html）", out_path)
     print(str(out_path))
     return out_path
 

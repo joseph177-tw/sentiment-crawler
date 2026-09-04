@@ -3,10 +3,10 @@
 通知層（架構文件第九節）
 每日推播簡短摘要（聲量、正負面比例、Top 3 話題連結）；每週推播完整報告連結或附檔。
 
-repo 是 private，GitHub 的 blob 檢視只會顯示 HTML 原始碼、不會渲染成報告畫面，
-單純貼連結對讀者沒什麼用——所以兩種推播都直接把當次產出的 HTML 報告檔用
-sendDocument 附加上去，摘要文字放在 caption，收訊息的人直接點附檔就能在手機
-瀏覽器開啟完整報告，不需要額外登入 GitHub。找不到報告檔時退回純文字 sendMessage。
+完整報告優先用 GitHub Pages 固定網址推播（config/settings.yaml -> report.pages_base_url，
+對應 docs/index.html、docs/weekly.html，每次排程都會覆蓋更新，網址本身永遠不變）。
+若沒有設定 pages_base_url，才退回用 sendDocument 把當次 HTML 報告當附檔傳過去
+（適合不想開 GitHub Pages、報告內容不想公開變成「知道連結就能看」的情境）。
 
 直接用 Telegram Bot HTTP API，不引入 python-telegram-bot 這種非同步框架依賴——
 一支腳本、一次性發送，用 requests 就足夠。
@@ -43,6 +43,10 @@ def _html_escape(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def get_pages_url() -> str:
+    return (common.load_settings().get("report", {}) or {}).get("pages_base_url", "").rstrip("/")
+
+
 def build_daily_message(day: str) -> str:
     records = common.read_json(common.RAW_DIR / day / "sentiment.json")
     stats = build_stats(records)
@@ -63,13 +67,21 @@ def build_daily_message(day: str) -> str:
         title = _html_escape(rec.get("title", ""))
         url = rec.get("url", "")
         lines.append(f'{i}. <a href="{url}">{title}</a>')
+
+    pages_url = get_pages_url()
+    if pages_url:
+        lines += ["", f'📄 <a href="{pages_url}/">完整報告（含 Top 10、關鍵字雲）</a>']
     return "\n".join(lines)
 
 
 def build_weekly_message(has_report: bool) -> str:
     lines = ["<b>社群輿情週報</b>"]
+    pages_url = get_pages_url()
     if has_report:
-        lines.append("本週彙整報告已產出，完整內容見附檔。")
+        if pages_url:
+            lines.append(f'本週彙整報告已產出：<a href="{pages_url}/weekly.html">點此查看完整週報</a>')
+        else:
+            lines.append("本週彙整報告已產出，完整內容見附檔。")
     else:
         lines.append("（尚未產出週報，請先執行 pipeline/aggregate.py --weekly 與 report/render.py --weekly）")
     return "\n".join(lines)
@@ -136,6 +148,9 @@ def run(weekly: bool = False, day: str | None = None, dry_run: bool = False) -> 
 
     text = build_weekly_message(report_path.exists()) if weekly else build_daily_message(day)
 
+    if get_pages_url():
+        # 有固定網址就直接推文字訊息＋連結，不用每次都附檔
+        return send_message(text, dry_run=dry_run)
     if report_path.exists():
         return send_document(report_path, caption=text, dry_run=dry_run)
     log.warning("找不到報告檔 %s，改用純文字訊息", report_path)
