@@ -1,0 +1,169 @@
+{
+  "end_date": "2026-09-07",
+  "week_days": [
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-05",
+    "2026-09-06",
+    "2026-09-07"
+  ],
+  "this_week": {
+    "total": 810,
+    "positive": 252,
+    "neutral": 336,
+    "negative": 222
+  },
+  "prev_week": {
+    "total": 0,
+    "positive": 0,
+    "neutral": 0,
+    "negative": 0
+  },
+  "volume_change_pct": null,
+  "top_topics": [
+    {
+      "title": "[閒聊] 2026/09/04 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788481803.A.008.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 987,
+      "boo": 114,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/03 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788395404.A.E6C.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 920,
+      "boo": 113,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/02 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788309004.A.35A.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 925,
+      "boo": 125,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/03 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788415254.A.155.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 908,
+      "boo": 110,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/02 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788328802.A.1EA.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 873,
+      "boo": 111,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/04 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788501612.A.DC7.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 798,
+      "boo": 113,
+      "mentions_company": 1
+    },
+    {
+      "title": "[情報] 非農就業人數",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788525358.A.4D3.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 339,
+      "boo": 40,
+      "mentions_company": 0
+    },
+    {
+      "title": "[情報] 115年09月02日 三大法人買賣金額統計表",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788333448.A.AFB.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 258,
+      "boo": 33,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 欣興：載板供貨極度告急…客戶搶著要貨",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788406566.A.F1A.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 238,
+      "boo": 28,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 陳嘉偉重磅警告！金融股拉抬是「多頭最",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788571967.A.AE7.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 231,
+      "boo": 33,
+      "mentions_company": 0
+    }
+  ],
+  "topic_gaps": [
+    {
+      "title": "[心得] 真的被台新數位帳戶噁心到了",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1784862274.A.249.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 134,
+      "boo": 4
+    },
+    {
+      "title": "[新聞] 慈濟遭詐爆案外案！正達光電董座涉詐千",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788418329.A.AC8.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 49,
+      "boo": 5
+    },
+    {
+      "title": "[問題] 臺企銀第三類數位帳戶提權難不難？",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1783944710.A.FAB.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 23,
+      "boo": 0
+    },
+    {
+      "title": "[情報] 9/30 10:00新光銀行終止臺灣行動支付服務",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1785316552.A.40C.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 22,
+      "boo": 0
+    },
+    {
+      "title": "[問題] 如何減免中國信託的轉帳手續費？",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1782892106.A.210.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 22,
+      "boo": 2
+    }
+  ]
+}
