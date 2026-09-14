@@ -1,0 +1,169 @@
+{
+  "end_date": "2026-09-14",
+  "week_days": [
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-11",
+    "2026-09-12",
+    "2026-09-13",
+    "2026-09-14"
+  ],
+  "this_week": {
+    "total": 1259,
+    "positive": 367,
+    "neutral": 506,
+    "negative": 386
+  },
+  "prev_week": {
+    "total": 1027,
+    "positive": 318,
+    "neutral": 425,
+    "negative": 284
+  },
+  "volume_change_pct": 22.6,
+  "top_topics": [
+    {
+      "title": "[閒聊] 2026/09/08 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788827410.A.CB6.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 935,
+      "boo": 121,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/11 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789086607.A.0EA.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 902,
+      "boo": 130,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/10 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789000242.A.ECA.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 913,
+      "boo": 146,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/09 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788913816.A.72C.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 930,
+      "boo": 177,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/07 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788760803.A.3C5.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 864,
+      "boo": 113,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/07 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788741003.A.820.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 854,
+      "boo": 164,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/10 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789020052.A.F8E.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 791,
+      "boo": 108,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/11 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789106448.A.171.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 778,
+      "boo": 108,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/08 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788847202.A.A6D.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 794,
+      "boo": 137,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/09 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1788933621.A.F89.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 795,
+      "boo": 141,
+      "mentions_company": 1
+    }
+  ],
+  "topic_gaps": [
+    {
+      "title": "[心得] 真的被台新數位帳戶噁心到了",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1784862274.A.249.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 134,
+      "boo": 4
+    },
+    {
+      "title": "[新聞] 胡塞武裝被曝用Claude Code替代工程師開",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789201169.A.D83.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 101,
+      "boo": 3
+    },
+    {
+      "title": "[情報]",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789139628.A.F46.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 73,
+      "boo": 2
+    },
+    {
+      "title": "[新聞] 兩位AI研究員離開Anthropic與Google因安",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789211537.A.04A.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 73,
+      "boo": 12
+    },
+    {
+      "title": "Re: [新聞] 兩位AI研究員離開Anthropic與Google因安",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789225366.A.A3F.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 55,
+      "boo": 4
+    }
+  ]
+}
