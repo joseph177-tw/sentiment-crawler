@@ -573,43 +573,167 @@ Object.entries(MARKET_DATA).forEach(([code, stock]) => {{
 </body></html>"""
 
 
-def _depth_table(quote: dict) -> str:
-    bids = quote.get("bids") or []
-    asks = quote.get("asks") or []
-    bid_total = sum(b["volume"] for b in bids) or 1
-    ask_total = sum(a["volume"] for a in asks) or 1
-    bid_pct = round(bid_total / (bid_total + ask_total) * 100)
-    ask_pct = 100 - bid_pct
+def _valuation_html(valuation: dict | None) -> str:
+    if not valuation:
+        return '<div class="muted">尚無估值資料</div>'
+    items = [
+        ("本益比", valuation.get("pe"), ""), ("殖利率", valuation.get("yield_pct"), "%"),
+        ("股價淨值比", valuation.get("pb"), ""),
+    ]
+    cards = "".join(
+        f'<div class="card"><div class="n" style="font-size:18px;">{v:.2f}{suffix}</div><div class="l">{k}</div></div>'
+        for k, v, suffix in items if v is not None
+    )
+    return f'<div class="summary-cards">{cards}</div>' if cards else '<div class="muted">尚無估值資料</div>'
 
-    rows = ""
-    for i in range(max(len(bids), len(asks))):
-        b = bids[i] if i < len(bids) else None
-        a = asks[i] if i < len(asks) else None
-        rows += (
-            "<tr>"
-            f'<td class="num">{b["volume"]:,}</td>' if b else '<td class="num muted">—</td>'
-        )
-        rows += f'<td class="num up">{b["price"]:.2f}</td>' if b else '<td class="num muted">—</td>'
-        rows += f'<td class="down">{a["price"]:.2f}</td>' if a else '<td class="muted">—</td>'
-        rows += (f'<td class="num">{a["volume"]:,}</td></tr>' if a else '<td class="num muted">—</td></tr>')
 
-    return f"""<div style="display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:12px;">
-  <span class="up">委買 {bid_pct}%</span>
-  <div style="flex:1; height:8px; border-radius:4px; overflow:hidden; display:flex;">
-    <div style="width:{bid_pct}%; background:var(--up);"></div>
-    <div style="width:{ask_pct}%; background:var(--down);"></div>
-  </div>
-  <span class="down">委賣 {ask_pct}%</span>
+def _margin_html(margin: dict | None) -> str:
+    if not margin:
+        return '<div class="muted">尚無融資融券資料</div>'
+    mb, mp = margin.get("margin_balance"), margin.get("margin_prev_balance")
+    sb, sp = margin.get("short_balance"), margin.get("short_prev_balance")
+    m_change = (mb - mp) if (mb is not None and mp is not None) else None
+    s_change = (sb - sp) if (sb is not None and sp is not None) else None
+    m_cls = "up" if (m_change or 0) > 0 else ("down" if (m_change or 0) < 0 else "muted")
+    s_cls = "up" if (s_change or 0) > 0 else ("down" if (s_change or 0) < 0 else "muted")
+    return f"""<div class="summary-cards">
+  <div class="card"><div class="n" style="font-size:18px;">{mb:,}</div><div class="l">融資餘額（張）</div>
+    <div class="{m_cls}" style="font-size:11px; margin-top:2px;">較前日 {m_change:+,}</div></div>
+  <div class="card"><div class="n" style="font-size:18px;">{sb:,}</div><div class="l">融券餘額（張）</div>
+    <div class="{s_cls}" style="font-size:11px; margin-top:2px;">較前日 {s_change:+,}</div></div>
 </div>
-<table><tr><th class="num">委買量</th><th class="num">買價</th><th>賣價</th><th class="num">委賣量</th></tr>
-{rows}</table>"""
+<div class="role" style="margin-top:8px;">資料日期 {html.escape(margin.get("date", ""))}</div>""" if mb is not None and sb is not None \
+        else '<div class="muted">尚無融資融券資料</div>'
+
+
+def _revenue_html(revenue: dict | None) -> str:
+    if not revenue or revenue.get("revenue") is None:
+        return '<div class="muted">尚無月營收資料</div>'
+    ym = str(revenue.get("year_month", ""))
+    ym_text = f"{int(ym[:3]) + 1911}年{ym[3:]}月" if len(ym) >= 5 else ym
+    rev_yi = revenue["revenue"] / 1e8
+    acc_yi = (revenue.get("accumulated_revenue") or 0) / 1e8
+    mom, yoy, acc_yoy = revenue.get("mom_pct"), revenue.get("yoy_pct"), revenue.get("accumulated_yoy_pct")
+
+    def _pct_card(label, val):
+        if val is None:
+            return ""
+        cls = "up" if val > 0 else ("down" if val < 0 else "muted")
+        return f'<div class="card"><div class="n {cls}" style="font-size:18px;">{val:+.1f}%</div><div class="l">{label}</div></div>'
+
+    cards = (
+        f'<div class="card"><div class="n" style="font-size:18px;">{rev_yi:.2f} 億</div><div class="l">當月營收（{ym_text}）</div></div>'
+        + _pct_card("月增率 MoM", mom) + _pct_card("年增率 YoY", yoy)
+        + f'<div class="card"><div class="n" style="font-size:18px;">{acc_yi:.2f} 億</div><div class="l">累計營收</div></div>'
+        + _pct_card("累計年增率", acc_yoy)
+    )
+    industry = revenue.get("industry")
+    industry_html = f'<div class="role" style="margin-top:8px;">產業別：{html.escape(industry)}</div>' if industry else ""
+    return f'<div class="summary-cards">{cards}</div>{industry_html}'
+
+
+def _company_html(company: dict | None) -> str:
+    if not company:
+        return '<div class="muted">尚無公司基本資料</div>'
+    capital = company.get("capital")
+    capital_text = f"{int(capital) / 1e8:.1f} 億元" if capital and capital.isdigit() else "—"
+
+    def _date(s):
+        if not s or len(s) < 7:
+            return "—"
+        return f"{int(s[:3]) + 1911}-{s[3:5]}-{s[5:7]}"
+
+    rows = [
+        ("公司全名", company.get("full_name") or "—"),
+        ("實收資本額", capital_text),
+        ("上市日期", _date(company.get("listed_date"))),
+        ("成立日期", _date(company.get("established_date"))),
+        ("董事長", company.get("chairman") or "—"),
+        ("總經理", company.get("general_manager") or "—"),
+        ("發言人", company.get("spokesperson") or "—"),
+    ]
+    items = "".join(f'<li><b>{k}</b>：{html.escape(str(v))}</li>' for k, v in rows)
+    website = company.get("website")
+    if website:
+        items += f'<li><b>官網</b>：<a href="{html.escape(website)}" target="_blank">{html.escape(website)}</a></li>'
+    return f'<ul style="margin:0; padding-left:18px; font-size:13px; line-height:2;">{items}</ul>'
+
+
+def _institutional_html(institutional: list[dict], code: str) -> tuple[str, str]:
+    """回傳 (HTML, chart_script)。近期趨勢用 ECharts 長條圖，並列出最新一日的三大法人明細。"""
+    if not institutional:
+        return '<div class="muted">尚無三大法人買賣超資料</div>', ""
+
+    latest = institutional[-1]
+
+    def _stat(label, val):
+        cls = "up" if val > 0 else ("down" if val < 0 else "muted")
+        return (f'<div class="card"><div class="n {cls}" style="font-size:16px;">{val / 1000:+,.0f} 張</div>'
+                f'<div class="l">{label}</div></div>')
+
+    cards = (
+        _stat("外資買賣超", latest["foreign"]) + _stat("投信買賣超", latest["trust"]) +
+        _stat("自營商買賣超", latest["dealer"]) + _stat("三大法人合計", latest["total"])
+    )
+    html_out = (
+        f'<div class="role" style="margin-bottom:8px;">最新資料日期 {html.escape(latest["date"])}</div>'
+        f'<div class="summary-cards" style="margin-bottom:14px;">{cards}</div>'
+        f'<div id="inst-chart-{code}" style="height:220px;"></div>'
+    )
+
+    payload = json.dumps(institutional, ensure_ascii=False)
+    script = f"""
+(function() {{
+  const data = {payload};
+  const el = document.getElementById('inst-chart-{code}');
+  if (!el || !data.length) return;
+  const chart = echarts.init(el);
+  chart.setOption({{
+    tooltip: {{ trigger: 'axis' }},
+    legend: {{ top: 0, textStyle: {{ fontSize: 10 }} }},
+    grid: {{ left: 60, right: 20, top: 28, bottom: 24 }},
+    xAxis: {{ type: 'category', data: data.map(d => d.date), axisLabel: {{ fontSize: 10 }} }},
+    yAxis: {{ type: 'value', name: '張', axisLabel: {{ fontSize: 10, formatter: v => (v/1000).toLocaleString() }} }},
+    series: [
+      {{ name: '外資', type: 'bar', data: data.map(d => d.foreign) }},
+      {{ name: '投信', type: 'bar', data: data.map(d => d.trust) }},
+      {{ name: '自營商', type: 'bar', data: data.map(d => d.dealer) }}
+    ]
+  }});
+  window.addEventListener('resize', () => chart.resize());
+}})();
+"""
+    return html_out, script
+
+
+def _slice_indicators(indicators: dict | None, n: int) -> dict | None:
+    """把技術指標（在 2 年基礎資料上算出來的）尾端切 n 筆，對齊某個分頁籤的日期範圍。"""
+    if not indicators or n <= 0:
+        return None
+
+    def tail(arr):
+        return arr[-n:] if isinstance(arr, list) else arr
+
+    return {
+        "dates": tail(indicators["dates"]),
+        "ma": {k: tail(v) for k, v in indicators["ma"].items()},
+        "rsi14": tail(indicators["rsi14"]),
+        "macd": {k: tail(v) for k, v in indicators["macd"].items()},
+        "kd": {k: tail(v) for k, v in indicators["kd"].items()},
+        "dmi": {k: tail(v) for k, v in indicators["dmi"].items()},
+        "boll": {k: tail(v) for k, v in indicators["boll"].items()},
+        "bias20": tail(indicators["bias20"]),
+        "obv": tail(indicators["obv"]),
+    }
 
 
 def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) -> str:
     name = html.escape(stock_meta.get("name", stock_code))
     posts = stock_meta.get("posts", [])
-    quote = (detail or {}).get("quote") or {}
-    series = (detail or {}).get("series") or {}
+    detail = detail or {}
+    quote = detail.get("quote") or {}
+    series = detail.get("series") or {}
+    indicators = detail.get("indicators")
 
     price = quote.get("last_price")
     change = quote.get("change")
@@ -630,9 +754,6 @@ def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) ->
         stats_html += (f'<div class="card"><div class="n" style="font-size:18px;">'
                         f'{quote["total_volume"]:,}</div><div class="l">總量（張）</div></div>')
 
-    depth_html = _depth_table(quote) if quote.get("bids") or quote.get("asks") else \
-        '<div class="muted">尚無五檔報價資料（可能非交易時段）</div>'
-
     tab_labels = list(series.keys()) or ["六月"]
     default_tab = next((t for t in ["六月", "三月", "近月"] if t in series and series[t]), tab_labels[0])
     tabs_html = "".join(
@@ -640,10 +761,16 @@ def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) ->
         for t in tab_labels
     )
 
+    # 技術指標只對「日線」分頁（近月/三月/六月/一年）有意義，切到跟各分頁一樣的長度
+    indicators_by_tab = {
+        label: _slice_indicators(indicators, len(points))
+        for label, points in series.items() if len(points) and indicators
+    }
+
     posts_rows = "".join(_market_post_row(p) for p in posts) or \
         '<tr><td colspan="3" class="muted">尚無相關貼文</td></tr>'
 
-    perplexity = detail.get("perplexity") if detail else None
+    perplexity = detail.get("perplexity")
     if perplexity and perplexity.get("summary"):
         pplx_html = f'<div style="font-size:13px; line-height:1.8; white-space:pre-wrap;">{html.escape(perplexity["summary"])}</div>'
         if perplexity.get("citations"):
@@ -655,46 +782,119 @@ def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) ->
     else:
         pplx_html = '<div class="muted">尚未設定 Perplexity API Key，暫無深度產業/基本面分析。</div>'
 
+    institutional_html, institutional_script = _institutional_html(detail.get("institutional") or [], stock_code)
+    valuation_html_ = _valuation_html(detail.get("valuation"))
+    margin_html_ = _margin_html(detail.get("margin"))
+    revenue_html_ = _revenue_html(detail.get("revenue"))
+    company_html_ = _company_html(detail.get("company"))
+
     series_payload = json.dumps(series, ensure_ascii=False)
+    indicators_payload = json.dumps(indicators_by_tab, ensure_ascii=False)
     generated_at = datetime.now(common.get_timezone()).strftime("%Y-%m-%d %H:%M")
 
     chart_script = f"""<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
 <script>
 const SERIES = {series_payload};
+const INDICATORS_BY_TAB = {indicators_payload};
 const chartEl = document.getElementById('detail-chart');
 const chart = echarts.init(chartEl);
+
+const MA_COLORS = {{5:'#e57373', 10:'#f6b93b', 20:'#3498db', 60:'#8e44ad', 120:'#16a085', 240:'#7f8c8d'}};
+let activeMAs = new Set(['20']);
+let showBoll = false;
+let oscillator = 'rsi14';
+
+function currentTabLabel() {{
+  const btn = document.querySelector('.tab-btn.active');
+  return btn ? btn.dataset.tab : Object.keys(SERIES)[0];
+}}
+
+function buildOscillatorSeries(ind) {{
+  if (!ind || oscillator === 'none') return [];
+  if (oscillator === 'rsi14') return [
+    {{ name: 'RSI14', type: 'line', data: ind.rsi14, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }}
+  ];
+  if (oscillator === 'macd') return [
+    {{ name: 'DIF', type: 'line', data: ind.macd.dif, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }},
+    {{ name: 'DEA', type: 'line', data: ind.macd.dea, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }},
+    {{ name: 'MACD', type: 'bar', data: ind.macd.hist, xAxisIndex: 2, yAxisIndex: 2, itemStyle: {{ color: '#9fb3c8' }} }}
+  ];
+  if (oscillator === 'kd') return [
+    {{ name: 'K', type: 'line', data: ind.kd.k, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }},
+    {{ name: 'D', type: 'line', data: ind.kd.d, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }}
+  ];
+  if (oscillator === 'dmi') return [
+    {{ name: '+DI', type: 'line', data: ind.dmi.plus_di, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }},
+    {{ name: '-DI', type: 'line', data: ind.dmi.minus_di, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }},
+    {{ name: 'ADX', type: 'line', data: ind.dmi.adx, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1, type: 'dashed' }} }}
+  ];
+  if (oscillator === 'bias20') return [
+    {{ name: 'BIAS20', type: 'line', data: ind.bias20, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }}
+  ];
+  if (oscillator === 'obv') return [
+    {{ name: 'OBV', type: 'line', data: ind.obv, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: {{ width: 1 }} }}
+  ];
+  return [];
+}}
 
 function renderTab(label) {{
   const points = SERIES[label] || [];
   const dates = points.map(p => p.t);
   const candles = points.map(p => [p.open, p.close, p.low, p.high]);
   const volumes = points.map(p => p.volume);
+  const ind = INDICATORS_BY_TAB[label];
+
+  document.getElementById('indicator-controls').style.display = ind ? 'flex' : 'none';
+  document.getElementById('indicator-unavailable').style.display = ind ? 'none' : 'block';
+
+  const overlay = [];
+  if (ind) {{
+    activeMAs.forEach(n => {{
+      overlay.push({{ name: 'MA' + n, type: 'line', data: ind.ma[n], xAxisIndex: 0, yAxisIndex: 0,
+        showSymbol: false, lineStyle: {{ width: 1 }}, color: MA_COLORS[n] }});
+    }});
+    if (showBoll) {{
+      overlay.push(
+        {{ name: '布林上緣', type: 'line', data: ind.boll.upper, xAxisIndex: 0, yAxisIndex: 0, showSymbol: false, lineStyle: {{ width: 1, type: 'dashed', color: '#999' }} }},
+        {{ name: '布林中軌', type: 'line', data: ind.boll.mid, xAxisIndex: 0, yAxisIndex: 0, showSymbol: false, lineStyle: {{ width: 1, color: '#999' }} }},
+        {{ name: '布林下緣', type: 'line', data: ind.boll.lower, xAxisIndex: 0, yAxisIndex: 0, showSymbol: false, lineStyle: {{ width: 1, type: 'dashed', color: '#999' }} }}
+      );
+    }}
+  }}
+  const oscSeries = buildOscillatorSeries(ind);
+
   chart.setOption({{
     tooltip: {{ trigger: 'axis', axisPointer: {{ type: 'cross' }} }},
+    legend: {{ show: overlay.length > 0 || oscSeries.length > 1, top: 0, textStyle: {{ fontSize: 10 }} }},
     grid: [
-      {{ left: 56, right: 20, top: 20, height: 220 }},
-      {{ left: 56, right: 20, top: 260, height: 60 }}
+      {{ left: 56, right: 20, top: 26, height: 190 }},
+      {{ left: 56, right: 20, top: 220, height: 50 }},
+      {{ left: 56, right: 20, top: 288, height: 80 }}
     ],
     xAxis: [
       {{ type: 'category', data: dates, gridIndex: 0, axisLabel: {{ show: false }} }},
-      {{ type: 'category', data: dates, gridIndex: 1, axisLabel: {{ fontSize: 10 }} }}
+      {{ type: 'category', data: dates, gridIndex: 1, axisLabel: {{ show: false }} }},
+      {{ type: 'category', data: dates, gridIndex: 2, axisLabel: {{ fontSize: 10 }} }}
     ],
     yAxis: [
       {{ type: 'value', gridIndex: 0, scale: true, axisLabel: {{ fontSize: 10 }} }},
-      {{ type: 'value', gridIndex: 1, show: false }}
+      {{ type: 'value', gridIndex: 1, show: false }},
+      {{ type: 'value', gridIndex: 2, scale: true, axisLabel: {{ fontSize: 10 }} }}
     ],
     dataZoom: [
-      {{ type: 'inside', xAxisIndex: [0, 1] }},
-      {{ type: 'slider', xAxisIndex: [0, 1], height: 14, bottom: 0 }}
+      {{ type: 'inside', xAxisIndex: [0, 1, 2] }},
+      {{ type: 'slider', xAxisIndex: [0, 1, 2], height: 12, bottom: 0 }}
     ],
     series: [
       {{
         type: 'candlestick', data: candles, xAxisIndex: 0, yAxisIndex: 0,
         itemStyle: {{ color: '#c62828', color0: '#2e7d32', borderColor: '#c62828', borderColor0: '#2e7d32' }}
       }},
-      {{ type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: {{ color: '#9fb3c8' }} }}
+      ...overlay,
+      {{ type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: {{ color: '#9fb3c8' }} }},
+      ...oscSeries
     ]
-  }});
+  }}, true);
 }}
 
 document.querySelectorAll('.tab-btn').forEach(btn => {{
@@ -704,12 +904,28 @@ document.querySelectorAll('.tab-btn').forEach(btn => {{
     renderTab(btn.dataset.tab);
   }});
 }});
+document.querySelectorAll('.ma-toggle').forEach(cb => {{
+  cb.addEventListener('change', () => {{
+    if (cb.checked) activeMAs.add(cb.value); else activeMAs.delete(cb.value);
+    renderTab(currentTabLabel());
+  }});
+}});
+document.getElementById('boll-toggle').addEventListener('change', (e) => {{
+  showBoll = e.target.checked;
+  renderTab(currentTabLabel());
+}});
+document.getElementById('osc-select').addEventListener('change', (e) => {{
+  oscillator = e.target.value;
+  renderTab(currentTabLabel());
+}});
+
 renderTab('{default_tab}');
 let detailResizeTimer = null;
 window.addEventListener('resize', () => {{
   clearTimeout(detailResizeTimer);
   detailResizeTimer = setTimeout(() => chart.resize(), 200);
 }});
+{institutional_script}
 </script>"""
 
     return f"""<!DOCTYPE html>
@@ -720,6 +936,8 @@ window.addEventListener('resize', () => {{
 .tab-btn {{ border:1px solid var(--line); background:var(--card); color:var(--sub); font-size:12px;
            padding:5px 12px; border-radius:14px; cursor:pointer; margin-right:6px; }}
 .tab-btn.active {{ background:var(--accent); color:#fff; border-color:var(--accent); }}
+#indicator-controls label {{ font-size:12px; color:var(--sub); margin-right:4px; cursor:pointer; }}
+#indicator-controls select {{ font-size:12px; padding:2px 4px; }}
 </style></head><body>{_nav_html('market', prefix='../')}<div class="wrap">
 <header>
   <h1>{name}<span class="muted" style="font-weight:400; font-size:16px;">（{stock_code}）</span></h1>
@@ -735,12 +953,43 @@ window.addEventListener('resize', () => {{
 <div class="summary-cards">{stats_html}</div>
 </section>
 
-<section><h2>走勢圖</h2>
+<section><h2>走勢圖與技術指標</h2>
 <div style="margin-bottom:10px;">{tabs_html}</div>
-<div id="detail-chart" style="height:360px;"></div>
+<div id="indicator-controls" style="margin-bottom:10px; display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+  <span class="muted" style="font-size:12px;">均線：</span>
+  <label><input type="checkbox" class="ma-toggle" value="5"> MA5</label>
+  <label><input type="checkbox" class="ma-toggle" value="10"> MA10</label>
+  <label><input type="checkbox" class="ma-toggle" value="20" checked> MA20</label>
+  <label><input type="checkbox" class="ma-toggle" value="60"> MA60</label>
+  <label><input type="checkbox" class="ma-toggle" value="120"> MA120</label>
+  <label><input type="checkbox" class="ma-toggle" value="240"> MA240</label>
+  <label><input type="checkbox" id="boll-toggle"> 布林通道</label>
+  <span class="muted" style="font-size:12px;">副圖：</span>
+  <select id="osc-select">
+    <option value="rsi14" selected>RSI</option>
+    <option value="macd">MACD</option>
+    <option value="kd">KD</option>
+    <option value="dmi">DMI/ADX</option>
+    <option value="bias20">乖離率 BIAS</option>
+    <option value="obv">OBV</option>
+    <option value="none">不顯示</option>
+  </select>
+</div>
+<div id="indicator-unavailable" class="muted" style="font-size:11px; margin-bottom:6px; display:none;">
+  技術指標僅適用於「近月／三月／六月／一年」分頁（需要日線資料），當日/五日/五年不提供疊圖。
+</div>
+<div id="detail-chart" style="height:400px;"></div>
 </section>
 
-<section><h2>五檔報價</h2>{depth_html}</section>
+<section><h2>三大法人買賣超</h2>{institutional_html}</section>
+
+<section><h2>估值指標</h2>{valuation_html_}</section>
+
+<section><h2>融資融券餘額</h2>{margin_html_}</section>
+
+<section><h2>月營收</h2>{revenue_html_}</section>
+
+<section><h2>公司基本資料</h2>{company_html_}</section>
 
 <section><h2>產業/基本面深度分析</h2>{pplx_html}</section>
 
@@ -749,9 +998,11 @@ window.addEventListener('resize', () => {{
 {posts_rows}</table></section>
 
 <section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
-即時行情與五檔報價來自 TWSE 官方公開資料，依規定有揭露延遲，非逐筆真即時；
-走勢圖來自 Yahoo Finance，各分頁區間對應不同資料密度（當日/五日為分鐘線，
-其餘為日線或週線）。僅供研究參考，非投資建議。
+即時行情來自 TWSE 官方公開資料，依規定有揭露延遲，非逐筆真即時；走勢圖來自
+Yahoo Finance；技術指標（MA/RSI/MACD/KD/DMI/布林通道/BIAS/OBV）皆為本站依公開
+價格資料計算，公式為業界常見版本，非官方揭露數據，僅供參考；三大法人買賣超、
+融資融券、本益比殖利率、月營收、公司基本資料皆來自 TWSE 官方公開資料。
+僅供研究參考，非投資建議。
 </div></section>
 </div>
 {chart_script}

@@ -48,17 +48,24 @@ report:
 market:
   top_n: 15          # 盤勢頁面最多顯示幾檔個股（依提及次數排序）
   price_range: "6mo"  # Yahoo Finance 歷史區間（market.html 總覽用的單一區間）
-  # 個股詳細頁（docs/stocks/<code>.html）的分頁區間，對應畫面上的分頁籤
-  # key 是分頁顯示文字，range/interval 是 Yahoo Finance chart API 參數
+  # 個股詳細頁（docs/stocks/<code>.html）獨立抓取的分頁區間（當日/五日/五年，
+  # 資料密度跟日線差太多，各自抓）。近月/三月/六月/一年這四個分頁改成從
+  # indicator_range 抓的單一日線基礎資料尾端切片，見下方 indicator_range 與
+  # indicator_tab_days —— 這樣技術指標（MA/RSI/...）才能跟價格圖用同一份資料，
+  # 日期不會對不齊，也少打好幾次 Yahoo API。
   detail_ranges:
     - {label: "當日", range: "1d", interval: "5m"}
     - {label: "五日", range: "5d", interval: "15m"}
-    - {label: "近月", range: "1mo", interval: "1d"}
-    - {label: "三月", range: "3mo", interval: "1d"}
-    - {label: "六月", range: "6mo", interval: "1d"}
-    - {label: "一年", range: "1y", interval: "1d"}
     - {label: "五年", range: "5y", interval: "1wk"}
-  request_delay_seconds: [0.3, 0.6]  # 個股詳細頁多區間抓取，每次 Yahoo 請求間隔
+  indicator_range: "2y"   # 技術指標基礎日線資料區間，需要夠長才能算 MA240 這類長週期指標
+  indicator_tab_days:      # 從 indicator_range 尾端切幾天出來對應分頁籤
+    近月: 22
+    三月: 65
+    六月: 126
+    一年: 252
+  institutional_days: 20   # 三大法人買賣超近期趨勢要抓幾個交易日
+  institutional_lookback_days: 45  # 往回試探幾個「日曆日」去湊滿 institutional_days 個交易日（跳過假日/非交易日）
+  request_delay_seconds: [0.3, 0.6]  # 個股詳細頁多區間/多日期抓取，每次請求間隔
 
 perplexity:
   # 留空則 pipeline/perplexity_search.py 直接跳過，不影響其他功能
