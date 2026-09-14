@@ -9,9 +9,21 @@
 body { margin:0; background:var(--bg); color:var(--ink);
        font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
 .wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
-nav.topnav { display:flex; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
 nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
 nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
 header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
 header h1 { margin:0; font-size:22px; letter-spacing:1px; }
 header .sub { color:var(--sub); margin-top:4px; }
@@ -43,11 +55,53 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 .tab-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
 #indicator-controls label { font-size:12px; color:var(--sub); margin-right:4px; cursor:pointer; }
 #indicator-controls select { font-size:12px; padding:2px 4px; }
-</style></head><body><nav class="topnav"><a href="../index.html">日報</a><a href="../weekly.html">週報</a><a href="../keywords.html">關鍵字</a><a href="../market.html" class=active>盤勢</a></nav><div class="wrap">
+</style></head><body><nav class="topnav"><a href="../index.html">日報</a><a href="../weekly.html">週報</a><a href="../keywords.html">關鍵字</a><a href="../market.html" class=active>盤勢</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('../stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = '../stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
 <header>
   <h1>南亞科<span class="muted" style="font-weight:400; font-size:16px;">（2408）</span></h1>
   <div class="sub"><a href="../market.html">← 回盤勢總覽</a>｜資料時間 20260914 16:20:02
-  （台北）｜產生時間 2026-09-14 16:27</div>
+  （台北）｜產生時間 2026-09-14 16:39</div>
 </header>
 
 <section>

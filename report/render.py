@@ -40,9 +40,21 @@ BASE_CSS = """
 body { margin:0; background:var(--bg); color:var(--ink);
        font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
 .wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
-nav.topnav { display:flex; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
 nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
 nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
 header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
 header h1 { margin:0; font-size:22px; letter-spacing:1px; }
 header .sub { color:var(--sub); margin-top:4px; }
@@ -79,7 +91,54 @@ def _nav_html(active: str, prefix: str = "") -> str:
         f'<a href="{prefix}{href}"{" class=active" if key == active else ""}>{label}</a>'
         for key, (href, label) in zip(["index", "weekly", "keywords", "market"], items)
     )
-    return f'<nav class="topnav">{links}</nav>'
+
+    # 個股代號/名稱搜尋：清單來自 docs/stock_index.json（run_market() 產出，
+    # 只包含目前有 docs/stocks/<code>.html 的個股），找不到檔案時搜尋就是靜默無結果。
+    search = f"""<div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {{
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('{prefix}stock_index.json').then(r => r.ok ? r.json() : []).then(data => {{ stocks = data; }}).catch(() => {{}});
+
+  function render(matches) {{
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${{s.code}}">${{s.name}}<span class="code">${{s.code}}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }}
+
+  function doSearch(q) {{
+    q = q.trim().toLowerCase();
+    if (!q) {{ render([]); return; }}
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }}
+
+  function go(code) {{ window.location.href = '{prefix}stocks/' + code + '.html'; }}
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {{
+    if (e.key === 'Enter') {{
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }}
+  }});
+  results.addEventListener('click', (e) => {{
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  }});
+  document.addEventListener('click', (e) => {{
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  }});
+}})();
+</script>"""
+
+    return f'<nav class="topnav">{links}{search}</nav>'
 
 
 def build_stats(records: list[dict]) -> dict:
@@ -1054,7 +1113,12 @@ def run_market() -> Path:
     pages_dir.mkdir(parents=True, exist_ok=True)
     out_path = pages_dir / "market.html"
     out_path.write_text(html_text, encoding="utf-8")
-    log.info("盤勢頁完成：%s", out_path)
+
+    # 給全站導覽列的個股搜尋用：只收目前有產出詳細頁的個股（跟 docs/stocks/ 的檔案一一對應）
+    stock_index = [{"code": s["code"], "name": s["name"]} for s in market_data.get("stocks", [])]
+    common.write_json(pages_dir / "stock_index.json", stock_index)
+
+    log.info("盤勢頁完成：%s（同步更新個股搜尋索引，%d 檔）", out_path, len(stock_index))
     print(str(out_path))
     return out_path
 
