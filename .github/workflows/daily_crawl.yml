@@ -39,9 +39,18 @@ jobs:
           python pipeline/aggregate.py
           python pipeline/aggregate.py --keywords
           python pipeline/stock_detect.py
+          python pipeline/stock_detail.py
           python report/render.py
           python report/render.py --keywords
           python report/render.py --market
+          python report/render.py --stock-detail
+
+      - name: Perplexity deep-dive (skips automatically if no key set)
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: |
+          python pipeline/perplexity_search.py
+          python report/render.py --stock-detail
 
       - name: Commit data
         run: |

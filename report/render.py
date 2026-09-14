@@ -71,11 +71,12 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 """
 
 
-def _nav_html(active: str) -> str:
+def _nav_html(active: str, prefix: str = "") -> str:
+    """prefix 給子目錄頁面用（例如 docs/stocks/2330.html 要用 "../" 才能連回上層頁面）。"""
     items = [("index.html", "日報"), ("weekly.html", "週報"),
              ("keywords.html", "關鍵字"), ("market.html", "盤勢")]
     links = "".join(
-        f'<a href="{href}"{" class=active" if key == active else ""}>{label}</a>'
+        f'<a href="{prefix}{href}"{" class=active" if key == active else ""}>{label}</a>'
         for key, (href, label) in zip(["index", "weekly", "keywords", "market"], items)
     )
     return f'<nav class="topnav">{links}</nav>'
@@ -333,14 +334,69 @@ def _keyword_section(kw: dict) -> str:
 
 
 def render_keywords_page(index: dict) -> str:
-    keywords = index.get("keywords", [])
+    keywords = index.get("keywords", [])[:50]
     generated_at = datetime.now(common.get_timezone()).strftime("%Y-%m-%d %H:%M")
 
-    index_chips = "".join(
-        f'<a class="tag" href="#{html.escape(kw["word"])}">{html.escape(kw["word"])} '
-        f'<span class="muted">({kw["count"]})</span></a>'
-        for kw in keywords
-    ) or '<span class="muted">尚無足夠資料</span>'
+    bubble_payload = json.dumps(
+        [{"word": kw["word"], "count": kw["count"]} for kw in keywords], ensure_ascii=False
+    )
+    bubble_html = (
+        '<div id="bubble-chart" style="width:100%; height:520px;"></div>'
+        if keywords else '<span class="muted">尚無足夠資料</span>'
+    )
+    bubble_script = f"""<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const BUBBLE_DATA = {bubble_payload};
+if (BUBBLE_DATA.length) {{
+  const el = document.getElementById('bubble-chart');
+  const width = el.clientWidth, height = el.clientHeight;
+  const svg = d3.select(el).append('svg').attr('width', width).attr('height', height);
+
+  const root = d3.pack()
+    .size([width - 4, height - 4])
+    .padding(4)(d3.hierarchy({{children: BUBBLE_DATA}}).sum(d => d.count));
+
+  const color = d3.scaleSequential(d3.interpolateBlues)
+    .domain([0, d3.max(BUBBLE_DATA, d => d.count)]);
+
+  const node = svg.selectAll('g')
+    .data(root.leaves())
+    .join('g')
+    .attr('transform', d => `translate(${{d.x}},${{d.y}})`)
+    .style('cursor', 'pointer')
+    .on('click', (event, d) => {{
+      const target = document.getElementById(d.data.word);
+      if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+    }});
+
+  node.append('circle')
+    .attr('r', 0)
+    .attr('fill', d => color(d.data.count))
+    .attr('stroke', '#12406b')
+    .attr('stroke-width', 0.5)
+    .transition().duration(700).ease(d3.easeCubicOut)
+    .attr('r', d => d.r);
+
+  node.append('title').text(d => `${{d.data.word}}（${{d.data.count}} 則）`);
+
+  const label = node.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', '0.32em')
+    .style('fill', d => d.data.count > (d3.max(BUBBLE_DATA, x => x.count) * 0.4) ? '#fff' : '#12406b')
+    .style('font-size', 0)
+    .style('font-weight', 600)
+    .style('pointer-events', 'none')
+    .text(d => d.r > 18 ? d.data.word : '');
+
+  label.transition().delay(400).duration(400)
+    .style('font-size', d => Math.max(10, Math.min(16, d.r / 2.6)) + 'px');
+
+  window.addEventListener('resize', () => {{
+    el.innerHTML = '';
+    location.reload();
+  }}, {{ once: true }});
+}}
+</script>"""
 
     sections = "".join(_keyword_section(kw) for kw in keywords)
 
@@ -352,10 +408,10 @@ def render_keywords_page(index: dict) -> str:
 <header>
   <h1>關鍵字總覽</h1>
   <div class="sub">累積掃描 {index.get('total_posts_scanned', 0)} 則貼文｜產生時間 {generated_at}（台北）
-  ｜按出現則數排序，點擊字詞可跳到下方詳細列表</div>
+  ｜以下僅列前 50 名，泡泡大小＝出現則數，點擊泡泡可跳到下方詳細列表</div>
 </header>
 
-<section><h2>索引</h2><div>{index_chips}</div></section>
+<section><h2>關鍵字泡泡圖</h2>{bubble_html}</section>
 
 {sections}
 
@@ -365,7 +421,9 @@ def render_keywords_page(index: dict) -> str:
 （Dcard／新聞／論壇無推噓機制者以按讚數/留言數近似），代表社群關注度、非網頁點擊次數。
 出現次數低於 2 次的關鍵字不列入，避免單一貼文的偶發用字灌爆列表。
 </div></section>
-</div></body></html>"""
+</div>
+{bubble_script}
+</body></html>"""
 
 
 def run_keywords() -> Path:
@@ -405,8 +463,9 @@ def _market_section(stock: dict) -> str:
     name = html.escape(stock["name"])
     rows = "".join(_market_post_row(p) for p in stock["posts"])
     return f"""<section id="{code}">
-<h2>{name}<span class="muted" style="font-weight:400;">（{code}）</span>
-<span class="badge" style="background:var(--accent); margin-left:8px;">貼文提及 {stock['mention_count']} 次</span></h2>
+<h2><a href="stocks/{code}.html">{name}</a><span class="muted" style="font-weight:400;">（{code}）</span>
+<span class="badge" style="background:var(--accent); margin-left:8px;">貼文提及 {stock['mention_count']} 次</span>
+<a href="stocks/{code}.html" class="tag" style="margin-left:8px; font-size:12px;">詳細行情 →</a></h2>
 <div id="chart-{code}" style="height:360px;"></div>
 <h3 style="margin-top:14px;">相關貼文</h3>
 <table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
@@ -496,6 +555,209 @@ Object.entries(MARKET_DATA).forEach(([code, stock]) => {{
 </body></html>"""
 
 
+def _depth_table(quote: dict) -> str:
+    bids = quote.get("bids") or []
+    asks = quote.get("asks") or []
+    bid_total = sum(b["volume"] for b in bids) or 1
+    ask_total = sum(a["volume"] for a in asks) or 1
+    bid_pct = round(bid_total / (bid_total + ask_total) * 100)
+    ask_pct = 100 - bid_pct
+
+    rows = ""
+    for i in range(max(len(bids), len(asks))):
+        b = bids[i] if i < len(bids) else None
+        a = asks[i] if i < len(asks) else None
+        rows += (
+            "<tr>"
+            f'<td class="num">{b["volume"]:,}</td>' if b else '<td class="num muted">—</td>'
+        )
+        rows += f'<td class="num up">{b["price"]:.2f}</td>' if b else '<td class="num muted">—</td>'
+        rows += f'<td class="down">{a["price"]:.2f}</td>' if a else '<td class="muted">—</td>'
+        rows += (f'<td class="num">{a["volume"]:,}</td></tr>' if a else '<td class="num muted">—</td></tr>')
+
+    return f"""<div style="display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:12px;">
+  <span class="up">委買 {bid_pct}%</span>
+  <div style="flex:1; height:8px; border-radius:4px; overflow:hidden; display:flex;">
+    <div style="width:{bid_pct}%; background:var(--up);"></div>
+    <div style="width:{ask_pct}%; background:var(--down);"></div>
+  </div>
+  <span class="down">委賣 {ask_pct}%</span>
+</div>
+<table><tr><th class="num">委買量</th><th class="num">買價</th><th>賣價</th><th class="num">委賣量</th></tr>
+{rows}</table>"""
+
+
+def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) -> str:
+    name = html.escape(stock_meta.get("name", stock_code))
+    posts = stock_meta.get("posts", [])
+    quote = (detail or {}).get("quote") or {}
+    series = (detail or {}).get("series") or {}
+
+    price = quote.get("last_price")
+    change = quote.get("change")
+    change_pct = quote.get("change_pct")
+    price_cls = "up" if (change or 0) > 0 else ("down" if (change or 0) < 0 else "muted")
+    price_text = f"{price:.2f}" if price is not None else "—"
+    change_text = f"{change:+.2f} ({change_pct:+.2f}%)" if change is not None else "尚無即時行情資料"
+
+    stat_items = [
+        ("開盤", quote.get("open")), ("最高", quote.get("high")), ("最低", quote.get("low")),
+        ("漲停", quote.get("limit_up")), ("跌停", quote.get("limit_down")),
+    ]
+    stats_html = "".join(
+        f'<div class="card"><div class="n" style="font-size:18px;">{v:.2f}</div><div class="l">{k}</div></div>'
+        for k, v in stat_items if v is not None
+    )
+    if quote.get("total_volume"):
+        stats_html += (f'<div class="card"><div class="n" style="font-size:18px;">'
+                        f'{quote["total_volume"]:,}</div><div class="l">總量（張）</div></div>')
+
+    depth_html = _depth_table(quote) if quote.get("bids") or quote.get("asks") else \
+        '<div class="muted">尚無五檔報價資料（可能非交易時段）</div>'
+
+    tab_labels = list(series.keys()) or ["六月"]
+    default_tab = next((t for t in ["六月", "三月", "近月"] if t in series and series[t]), tab_labels[0])
+    tabs_html = "".join(
+        f'<button class="tab-btn{" active" if t == default_tab else ""}" data-tab="{html.escape(t)}">{html.escape(t)}</button>'
+        for t in tab_labels
+    )
+
+    posts_rows = "".join(_market_post_row(p) for p in posts) or \
+        '<tr><td colspan="3" class="muted">尚無相關貼文</td></tr>'
+
+    perplexity = detail.get("perplexity") if detail else None
+    if perplexity and perplexity.get("summary"):
+        pplx_html = f'<div style="font-size:13px; line-height:1.8; white-space:pre-wrap;">{html.escape(perplexity["summary"])}</div>'
+        if perplexity.get("citations"):
+            cites = "".join(
+                f'<li><a href="{html.escape(c)}" target="_blank">{html.escape(c)}</a></li>'
+                for c in perplexity["citations"][:5]
+            )
+            pplx_html += f'<ul style="margin-top:8px; font-size:11px;">{cites}</ul>'
+    else:
+        pplx_html = '<div class="muted">尚未設定 Perplexity API Key，暫無深度產業/基本面分析。</div>'
+
+    series_payload = json.dumps(series, ensure_ascii=False)
+    generated_at = datetime.now(common.get_timezone()).strftime("%Y-%m-%d %H:%M")
+
+    chart_script = f"""<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
+<script>
+const SERIES = {series_payload};
+const chartEl = document.getElementById('detail-chart');
+const chart = echarts.init(chartEl);
+
+function renderTab(label) {{
+  const points = SERIES[label] || [];
+  const dates = points.map(p => p.t);
+  const candles = points.map(p => [p.open, p.close, p.low, p.high]);
+  const volumes = points.map(p => p.volume);
+  chart.setOption({{
+    tooltip: {{ trigger: 'axis', axisPointer: {{ type: 'cross' }} }},
+    grid: [
+      {{ left: 56, right: 20, top: 20, height: 220 }},
+      {{ left: 56, right: 20, top: 260, height: 60 }}
+    ],
+    xAxis: [
+      {{ type: 'category', data: dates, gridIndex: 0, axisLabel: {{ show: false }} }},
+      {{ type: 'category', data: dates, gridIndex: 1, axisLabel: {{ fontSize: 10 }} }}
+    ],
+    yAxis: [
+      {{ type: 'value', gridIndex: 0, scale: true, axisLabel: {{ fontSize: 10 }} }},
+      {{ type: 'value', gridIndex: 1, show: false }}
+    ],
+    dataZoom: [
+      {{ type: 'inside', xAxisIndex: [0, 1] }},
+      {{ type: 'slider', xAxisIndex: [0, 1], height: 14, bottom: 0 }}
+    ],
+    series: [
+      {{
+        type: 'candlestick', data: candles, xAxisIndex: 0, yAxisIndex: 0,
+        itemStyle: {{ color: '#c62828', color0: '#2e7d32', borderColor: '#c62828', borderColor0: '#2e7d32' }}
+      }},
+      {{ type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: {{ color: '#9fb3c8' }} }}
+    ]
+  }});
+}}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTab(btn.dataset.tab);
+  }});
+}});
+renderTab('{default_tab}');
+window.addEventListener('resize', () => chart.resize());
+</script>"""
+
+    return f"""<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{name}（{stock_code}）· 個股詳情</title>
+<style>{BASE_CSS}
+.tab-btn {{ border:1px solid var(--line); background:var(--card); color:var(--sub); font-size:12px;
+           padding:5px 12px; border-radius:14px; cursor:pointer; margin-right:6px; }}
+.tab-btn.active {{ background:var(--accent); color:#fff; border-color:var(--accent); }}
+</style></head><body>{_nav_html('market', prefix='../')}<div class="wrap">
+<header>
+  <h1>{name}<span class="muted" style="font-weight:400; font-size:16px;">（{stock_code}）</span></h1>
+  <div class="sub"><a href="../market.html">← 回盤勢總覽</a>｜資料時間 {quote.get('date', '')} {quote.get('time', '')}
+  （台北）｜產生時間 {generated_at}</div>
+</header>
+
+<section>
+<div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;">
+  <div class="n {price_cls}" style="font-size:34px;">{price_text}</div>
+  <div class="{price_cls}" style="font-size:16px;">{change_text}</div>
+</div>
+<div class="summary-cards">{stats_html}</div>
+</section>
+
+<section><h2>走勢圖</h2>
+<div style="margin-bottom:10px;">{tabs_html}</div>
+<div id="detail-chart" style="height:360px;"></div>
+</section>
+
+<section><h2>五檔報價</h2>{depth_html}</section>
+
+<section><h2>產業/基本面深度分析</h2>{pplx_html}</section>
+
+<section><h2>相關貼文</h2>
+<table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
+{posts_rows}</table></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+即時行情與五檔報價來自 TWSE 官方公開資料，依規定有揭露延遲，非逐筆真即時；
+走勢圖來自 Yahoo Finance，各分頁區間對應不同資料密度（當日/五日為分鐘線，
+其餘為日線或週線）。僅供研究參考，非投資建議。
+</div></section>
+</div>
+{chart_script}
+</body></html>"""
+
+
+def run_stock_detail() -> list[Path]:
+    market_data = common.read_json(common.RAW_DIR / "market_data.json", default=None)
+    detail_data = common.read_json(common.RAW_DIR / "stock_detail.json", default=None)
+    if not market_data or not market_data.get("stocks"):
+        log.warning("找不到 market_data.json，略過個股詳細頁產出")
+        return []
+
+    details = (detail_data or {}).get("stocks", {})
+    pages_dir = common.BASE_DIR / "docs" / "stocks"
+    pages_dir.mkdir(parents=True, exist_ok=True)
+
+    out_paths = []
+    for stock in market_data["stocks"]:
+        code = stock["code"]
+        html_text = render_stock_detail_page(code, stock, details.get(code))
+        out_path = pages_dir / f"{code}.html"
+        out_path.write_text(html_text, encoding="utf-8")
+        out_paths.append(out_path)
+    log.info("個股詳細頁完成：%d 頁（docs/stocks/）", len(out_paths))
+    return out_paths
+
+
 def run_market() -> Path:
     market_path = common.RAW_DIR / "market_data.json"
     market_data = common.read_json(market_path, default=None)
@@ -518,6 +780,7 @@ if __name__ == "__main__":
     parser.add_argument("--weekly", action="store_true", help="產出週報而非日報")
     parser.add_argument("--keywords", action="store_true", help="產出關鍵字總覽頁")
     parser.add_argument("--market", action="store_true", help="產出盤勢總覽頁")
+    parser.add_argument("--stock-detail", action="store_true", help="產出個股詳細頁（docs/stocks/*.html）")
     args = parser.parse_args()
     if args.weekly:
         run_weekly(end_date=args.date)
@@ -525,5 +788,7 @@ if __name__ == "__main__":
         run_keywords()
     elif args.market:
         run_market()
+    elif args.stock_detail:
+        run_stock_detail()
     else:
         run(day=args.date)

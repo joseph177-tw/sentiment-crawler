@@ -165,7 +165,7 @@ def build_weekly_summary(conn: sqlite3.Connection, end_date: str) -> dict:
     }
 
 
-def build_keyword_index(conn: sqlite3.Connection, top_n: int = 100, min_count: int = 2,
+def build_keyword_index(conn: sqlite3.Connection, top_n: int = 50, min_count: int = 2,
                         posts_per_keyword: int = 30) -> dict:
     """掃描 SQLite 裡累積的所有貼文（不限單日），依關鍵字彙總出現次數、來源分布、
     總互動數（push+boo）與代表性貼文列表，供 report/render.py 產出 docs/keywords.html。"""
