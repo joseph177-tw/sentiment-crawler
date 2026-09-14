@@ -639,9 +639,12 @@ def _company_html(company: dict | None) -> str:
     capital_text = f"{int(capital) / 1e8:.1f} 億元" if capital and capital.isdigit() else "—"
 
     def _date(s):
-        if not s or len(s) < 7:
+        # TWSE 公司基本資料的上市/成立日期是西元 8 碼 YYYYMMDD（例如 "19940905"），
+        # 跟其他 TWSE 端點常見的民國 7 碼格式（例如出表日期 "1150913"）不一樣，
+        # 不要套用民國+1911 轉換，之前這裡搞混過導致日期整個算錯。
+        if not s or len(s) < 8 or not s.isdigit():
             return "—"
-        return f"{int(s[:3]) + 1911}-{s[3:5]}-{s[5:7]}"
+        return f"{s[:4]}-{s[4:6]}-{s[6:8]}"
 
     rows = [
         ("公司全名", company.get("full_name") or "—"),
