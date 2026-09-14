@@ -349,52 +349,66 @@ def render_keywords_page(index: dict) -> str:
 const BUBBLE_DATA = {bubble_payload};
 if (BUBBLE_DATA.length) {{
   const el = document.getElementById('bubble-chart');
-  const width = el.clientWidth, height = el.clientHeight;
-  const svg = d3.select(el).append('svg').attr('width', width).attr('height', height);
+  let lastWidth = 0;
 
-  const root = d3.pack()
-    .size([width - 4, height - 4])
-    .padding(4)(d3.hierarchy({{children: BUBBLE_DATA}}).sum(d => d.count));
-
-  const color = d3.scaleSequential(d3.interpolateBlues)
-    .domain([0, d3.max(BUBBLE_DATA, d => d.count)]);
-
-  const node = svg.selectAll('g')
-    .data(root.leaves())
-    .join('g')
-    .attr('transform', d => `translate(${{d.x}},${{d.y}})`)
-    .style('cursor', 'pointer')
-    .on('click', (event, d) => {{
-      const target = document.getElementById(d.data.word);
-      if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
-    }});
-
-  node.append('circle')
-    .attr('r', 0)
-    .attr('fill', d => color(d.data.count))
-    .attr('stroke', '#12406b')
-    .attr('stroke-width', 0.5)
-    .transition().duration(700).ease(d3.easeCubicOut)
-    .attr('r', d => d.r);
-
-  node.append('title').text(d => `${{d.data.word}}（${{d.data.count}} 則）`);
-
-  const label = node.append('text')
-    .attr('text-anchor', 'middle')
-    .attr('dy', '0.32em')
-    .style('fill', d => d.data.count > (d3.max(BUBBLE_DATA, x => x.count) * 0.4) ? '#fff' : '#12406b')
-    .style('font-size', 0)
-    .style('font-weight', 600)
-    .style('pointer-events', 'none')
-    .text(d => d.r > 18 ? d.data.word : '');
-
-  label.transition().delay(400).duration(400)
-    .style('font-size', d => Math.max(10, Math.min(16, d.r / 2.6)) + 'px');
-
-  window.addEventListener('resize', () => {{
+  function drawBubbles(animate) {{
+    const width = el.clientWidth, height = el.clientHeight;
+    if (!width || !height) return;
+    lastWidth = width;
     el.innerHTML = '';
-    location.reload();
-  }}, {{ once: true }});
+    const svg = d3.select(el).append('svg').attr('width', width).attr('height', height);
+
+    const root = d3.pack()
+      .size([width - 4, height - 4])
+      .padding(4)(d3.hierarchy({{children: BUBBLE_DATA}}).sum(d => d.count));
+
+    const color = d3.scaleSequential(d3.interpolateBlues)
+      .domain([0, d3.max(BUBBLE_DATA, d => d.count)]);
+
+    const node = svg.selectAll('g')
+      .data(root.leaves())
+      .join('g')
+      .attr('transform', d => `translate(${{d.x}},${{d.y}})`)
+      .style('cursor', 'pointer')
+      .on('click', (event, d) => {{
+        const target = document.getElementById(d.data.word);
+        if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      }});
+
+    const circle = node.append('circle')
+      .attr('fill', d => color(d.data.count))
+      .attr('stroke', '#12406b')
+      .attr('stroke-width', 0.5);
+    if (animate) {{
+      circle.attr('r', 0).transition().duration(700).ease(d3.easeCubicOut).attr('r', d => d.r);
+    }} else {{
+      circle.attr('r', d => d.r);
+    }}
+
+    node.append('title').text(d => `${{d.data.word}}（${{d.data.count}} 則）`);
+
+    node.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '0.32em')
+      .style('fill', d => d.data.count > (d3.max(BUBBLE_DATA, x => x.count) * 0.4) ? '#fff' : '#12406b')
+      .style('font-size', d => Math.max(10, Math.min(16, d.r / 2.6)) + 'px')
+      .style('font-weight', 600)
+      .style('pointer-events', 'none')
+      .text(d => d.r > 18 ? d.data.word : '');
+  }}
+
+  drawBubbles(true);
+
+  // 只在「寬度」真的變了才重畫（手機捲動時網址列收合展開只會動高度，
+  // 若不過濾會在每次捲動都觸發 resize，整頁卡住／閃爍），並且用
+  // debounce 避免拖曳視窗時瘋狂重算。
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {{
+      if (el.clientWidth !== lastWidth) drawBubbles(false);
+    }}, 200);
+  }});
 }}
 </script>"""
 
@@ -526,7 +540,11 @@ Object.entries(MARKET_DATA).forEach(([code, stock]) => {{
       {{ type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: {{ color: '#9fb3c8' }} }}
     ]
   }});
-  window.addEventListener('resize', () => chart.resize());
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => chart.resize(), 200);
+  }});
 }});
 </script>"""
 
@@ -687,7 +705,11 @@ document.querySelectorAll('.tab-btn').forEach(btn => {{
   }});
 }});
 renderTab('{default_tab}');
-window.addEventListener('resize', () => chart.resize());
+let detailResizeTimer = null;
+window.addEventListener('resize', () => {{
+  clearTimeout(detailResizeTimer);
+  detailResizeTimer = setTimeout(() => chart.resize(), 200);
+}});
 </script>"""
 
     return f"""<!DOCTYPE html>

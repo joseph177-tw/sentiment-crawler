@@ -40,7 +40,7 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 </style></head><body><nav class="topnav"><a href="index.html">日報</a><a href="weekly.html">週報</a><a href="keywords.html" class=active>關鍵字</a><a href="market.html">盤勢</a></nav><div class="wrap">
 <header>
   <h1>關鍵字總覽</h1>
-  <div class="sub">累積掃描 1012 則貼文｜產生時間 2026-09-14 15:43（台北）
+  <div class="sub">累積掃描 1012 則貼文｜產生時間 2026-09-14 15:55（台北）
   ｜以下僅列前 50 名，泡泡大小＝出現則數，點擊泡泡可跳到下方詳細列表</div>
 </header>
 
@@ -310,52 +310,66 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 const BUBBLE_DATA = [{"word": "營收", "count": 164}, {"word": "AI", "count": 97}, {"word": "億元", "count": 90}, {"word": "公司", "count": 80}, {"word": "年增", "count": 71}, {"word": "美國", "count": 60}, {"word": "市場", "count": 59}, {"word": "美元", "count": 58}, {"word": "銀行", "count": 58}, {"word": "股票", "count": 54}, {"word": "新高", "count": 52}, {"word": "預期", "count": 49}, {"word": "投資", "count": 48}, {"word": "排行", "count": 46}, {"word": "成長", "count": 46}, {"word": "升息", "count": 45}, {"word": "需求", "count": 41}, {"word": "上市", "count": 41}, {"word": "投資人", "count": 40}, {"word": "股價", "count": 39}, {"word": "交易", "count": 39}, {"word": "利率", "count": 39}, {"word": "ETF", "count": 37}, {"word": "美股", "count": 34}, {"word": "認為", "count": 33}, {"word": "期間", "count": 33}, {"word": "台灣", "count": 31}, {"word": "累計", "count": 31}, {"word": "分析", "count": 30}, {"word": "風險", "count": 30}, {"word": "日至", "count": 30}, {"word": "萬元", "count": 29}, {"word": "帳戶", "count": 29}, {"word": "強勁", "count": 28}, {"word": "下跌", "count": 28}, {"word": "伊朗", "count": 28}, {"word": "買賣", "count": 28}, {"word": "外資", "count": 28}, {"word": "科技", "count": 27}, {"word": "油價", "count": 27}, {"word": "獲利", "count": 27}, {"word": "全球", "count": 26}, {"word": "中國", "count": 26}, {"word": "增加", "count": 26}, {"word": "指數", "count": 26}, {"word": "推出", "count": 25}, {"word": "有限", "count": 25}, {"word": "表現", "count": 25}, {"word": "看好", "count": 25}, {"word": "升溫", "count": 23}];
 if (BUBBLE_DATA.length) {
   const el = document.getElementById('bubble-chart');
-  const width = el.clientWidth, height = el.clientHeight;
-  const svg = d3.select(el).append('svg').attr('width', width).attr('height', height);
+  let lastWidth = 0;
 
-  const root = d3.pack()
-    .size([width - 4, height - 4])
-    .padding(4)(d3.hierarchy({children: BUBBLE_DATA}).sum(d => d.count));
-
-  const color = d3.scaleSequential(d3.interpolateBlues)
-    .domain([0, d3.max(BUBBLE_DATA, d => d.count)]);
-
-  const node = svg.selectAll('g')
-    .data(root.leaves())
-    .join('g')
-    .attr('transform', d => `translate(${d.x},${d.y})`)
-    .style('cursor', 'pointer')
-    .on('click', (event, d) => {
-      const target = document.getElementById(d.data.word);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-
-  node.append('circle')
-    .attr('r', 0)
-    .attr('fill', d => color(d.data.count))
-    .attr('stroke', '#12406b')
-    .attr('stroke-width', 0.5)
-    .transition().duration(700).ease(d3.easeCubicOut)
-    .attr('r', d => d.r);
-
-  node.append('title').text(d => `${d.data.word}（${d.data.count} 則）`);
-
-  const label = node.append('text')
-    .attr('text-anchor', 'middle')
-    .attr('dy', '0.32em')
-    .style('fill', d => d.data.count > (d3.max(BUBBLE_DATA, x => x.count) * 0.4) ? '#fff' : '#12406b')
-    .style('font-size', 0)
-    .style('font-weight', 600)
-    .style('pointer-events', 'none')
-    .text(d => d.r > 18 ? d.data.word : '');
-
-  label.transition().delay(400).duration(400)
-    .style('font-size', d => Math.max(10, Math.min(16, d.r / 2.6)) + 'px');
-
-  window.addEventListener('resize', () => {
+  function drawBubbles(animate) {
+    const width = el.clientWidth, height = el.clientHeight;
+    if (!width || !height) return;
+    lastWidth = width;
     el.innerHTML = '';
-    location.reload();
-  }, { once: true });
+    const svg = d3.select(el).append('svg').attr('width', width).attr('height', height);
+
+    const root = d3.pack()
+      .size([width - 4, height - 4])
+      .padding(4)(d3.hierarchy({children: BUBBLE_DATA}).sum(d => d.count));
+
+    const color = d3.scaleSequential(d3.interpolateBlues)
+      .domain([0, d3.max(BUBBLE_DATA, d => d.count)]);
+
+    const node = svg.selectAll('g')
+      .data(root.leaves())
+      .join('g')
+      .attr('transform', d => `translate(${d.x},${d.y})`)
+      .style('cursor', 'pointer')
+      .on('click', (event, d) => {
+        const target = document.getElementById(d.data.word);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+    const circle = node.append('circle')
+      .attr('fill', d => color(d.data.count))
+      .attr('stroke', '#12406b')
+      .attr('stroke-width', 0.5);
+    if (animate) {
+      circle.attr('r', 0).transition().duration(700).ease(d3.easeCubicOut).attr('r', d => d.r);
+    } else {
+      circle.attr('r', d => d.r);
+    }
+
+    node.append('title').text(d => `${d.data.word}（${d.data.count} 則）`);
+
+    node.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '0.32em')
+      .style('fill', d => d.data.count > (d3.max(BUBBLE_DATA, x => x.count) * 0.4) ? '#fff' : '#12406b')
+      .style('font-size', d => Math.max(10, Math.min(16, d.r / 2.6)) + 'px')
+      .style('font-weight', 600)
+      .style('pointer-events', 'none')
+      .text(d => d.r > 18 ? d.data.word : '');
+  }
+
+  drawBubbles(true);
+
+  // 只在「寬度」真的變了才重畫（手機捲動時網址列收合展開只會動高度，
+  // 若不過濾會在每次捲動都觸發 resize，整頁卡住／閃爍），並且用
+  // debounce 避免拖曳視窗時瘋狂重算。
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (el.clientWidth !== lastWidth) drawBubbles(false);
+    }, 200);
+  });
 }
 </script>
 </body></html>

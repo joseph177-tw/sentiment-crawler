@@ -40,7 +40,7 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 </style></head><body><nav class="topnav"><a href="index.html">日報</a><a href="weekly.html">週報</a><a href="keywords.html">關鍵字</a><a href="market.html" class=active>盤勢</a></nav><div class="wrap">
 <header>
   <h1>盤勢總覽</h1>
-  <div class="sub">產生時間 2026-09-14 15:43（台北）｜資料來源：TWSE 上市清單（自動偵測貼文提及個股）
+  <div class="sub">產生時間 2026-09-14 15:55（台北）｜資料來源：TWSE 上市清單（自動偵測貼文提及個股）
   ＋ Yahoo Finance 歷史價格</div>
 </header>
 
@@ -210,7 +210,11 @@ Object.entries(MARKET_DATA).forEach(([code, stock]) => {
       { type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: { color: '#9fb3c8' } }
     ]
   });
-  window.addEventListener('resize', () => chart.resize());
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => chart.resize(), 200);
+  });
 });
 </script>
 </body></html>
