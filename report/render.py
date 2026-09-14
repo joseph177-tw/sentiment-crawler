@@ -747,6 +747,7 @@ def run_stock_detail() -> list[Path]:
     pages_dir = common.BASE_DIR / "docs" / "stocks"
     pages_dir.mkdir(parents=True, exist_ok=True)
 
+    current_codes = {stock["code"] for stock in market_data["stocks"]}
     out_paths = []
     for stock in market_data["stocks"]:
         code = stock["code"]
@@ -754,7 +755,15 @@ def run_stock_detail() -> list[Path]:
         out_path = pages_dir / f"{code}.html"
         out_path.write_text(html_text, encoding="utf-8")
         out_paths.append(out_path)
-    log.info("個股詳細頁完成：%d 頁（docs/stocks/）", len(out_paths))
+
+    # 清掉不再進 Top N 的舊個股頁，避免 docs/stocks/ 一直長出沒人連得到的孤兒頁面
+    removed = 0
+    for existing in pages_dir.glob("*.html"):
+        if existing.stem not in current_codes:
+            existing.unlink()
+            removed += 1
+
+    log.info("個股詳細頁完成：%d 頁（docs/stocks/），清除 %d 個過期頁面", len(out_paths), removed)
     return out_paths
 
 
