@@ -136,11 +136,12 @@ def fetch_price_history(code: str, offline: bool = False, range_: str = "6mo") -
 
 def run(offline: bool = False, top_n: int | None = None) -> Path:
     market_cfg = common.load_settings().get("market", {})
-    top_n = top_n or market_cfg.get("top_n", 15)
+    top_n = top_n or market_cfg.get("top_n", 200)
     price_range = market_cfg.get("price_range", "6mo")
+    min_mention_count = market_cfg.get("min_mention_count", 1)
 
     name_to_code = fetch_stock_list(offline=offline)
-    mentions = detect_mentions(name_to_code)
+    mentions = detect_mentions(name_to_code, min_count=min_mention_count)
 
     ranked = sorted(mentions.items(), key=lambda kv: kv[1]["count"], reverse=True)[:top_n]
     log.info("偵測到 %d 檔個股被提及，取前 %d 檔抓價格", len(mentions), len(ranked))

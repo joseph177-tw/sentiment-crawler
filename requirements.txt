@@ -3,6 +3,7 @@ beautifulsoup4
 lxml
 pyyaml
 pandas
+numpy
 jinja2
 feedparser
 anthropic

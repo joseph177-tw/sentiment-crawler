@@ -46,7 +46,20 @@ report:
   pages_base_url: "https://joseph177-tw.github.io/sentiment-crawler"
 
 market:
-  top_n: 15          # 盤勢頁面最多顯示幾檔個股（依提及次數排序）
+  # 只收錄「至少被提及 min_mention_count 次」的個股，濾掉單一貼文偶發提到、
+  # 沒有實際討論度的雜訊（例如某篇文章隨口列了一堆代號）。用累積 1012 則貼文
+  # 實測過：min_count=1（提過一次就算）會炸出 194 檔，逼近下面的安全上限，
+  # 且每日 Yahoo Finance 請求量、執行時間都會大幅增加；拉高到 3 才是比較
+  # 反映「真的有人在討論」的個股。想收更廣就調低這個數字，但要有心理準備
+  # 檔數、每日執行時間都會跟著漲。
+  min_mention_count: 3
+
+  # 盤勢頁面最多顯示幾檔個股，是防暴走的安全上限，不是常態會用到的裁切線。
+  # 如果哪天檔數逼近這個上限，代表 Yahoo Finance 每日請求量也會跟著大幅
+  # 增加，那時候要重新評估（分批更新／調整 request_delay_seconds／拉高
+  # min_mention_count），不要單純調高數字了事。
+  top_n: 200
+
   price_range: "6mo"  # Yahoo Finance 歷史區間（market.html 總覽用的單一區間）
   # 個股詳細頁（docs/stocks/<code>.html）獨立抓取的分頁區間（當日/五日/五年，
   # 資料密度跟日線差太多，各自抓）。近月/三月/六月/一年這四個分頁改成從
