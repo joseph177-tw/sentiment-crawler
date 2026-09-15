@@ -811,6 +811,132 @@ def _slice_indicators(indicators: dict | None, n: int) -> dict | None:
     }
 
 
+def _fundamental_score(detail: dict) -> dict:
+    """規則式綜合評分：營收面／價格動能面／籌碼面／技術面各自加減分後加總，
+    對應「強勢/偏多/中性/偏弱」訊號。比照使用者既有 05_industry_tracker 專案
+    的計分精神，改用本站個股詳細頁已經收集的資料（月營收/三大法人/技術指標/
+    走勢）純本地計算，不呼叫任何 LLM 或外部 API，免費、可重現、規則透明。"""
+    revenue = detail.get("revenue") or {}
+    institutional = detail.get("institutional") or []
+    indicators = detail.get("indicators") or {}
+    series = detail.get("series") or {}
+    breakdown = []
+
+    # 1. 營收面：月營收 YoY%
+    yoy = revenue.get("yoy_pct")
+    if yoy is None:
+        revenue_score = 0
+        breakdown.append(("營收面", 0, "缺月營收資料"))
+    elif yoy >= 20:
+        revenue_score = 2
+        breakdown.append(("營收面", 2, f"月營收 YoY {yoy:+.1f}%（≥20%）"))
+    elif yoy >= 0:
+        revenue_score = 1
+        breakdown.append(("營收面", 1, f"月營收 YoY {yoy:+.1f}%（0~20%）"))
+    else:
+        revenue_score = -1
+        breakdown.append(("營收面", -1, f"月營收 YoY {yoy:+.1f}%（負成長）"))
+
+    # 2. 價格動能面：近月（約22個交易日）報酬率
+    near_month = series.get("近月") or []
+    ret_1m = None
+    if len(near_month) >= 2:
+        first_close, last_close = near_month[0].get("close"), near_month[-1].get("close")
+        if first_close:
+            ret_1m = (last_close - first_close) / first_close * 100
+    if ret_1m is None:
+        momentum_score = 0
+        breakdown.append(("價格動能面", 0, "近月價格資料不足"))
+    elif ret_1m >= 8:
+        momentum_score = 2
+        breakdown.append(("價格動能面", 2, f"近月漲幅 {ret_1m:+.1f}%（≥8%）"))
+    elif ret_1m >= 0:
+        momentum_score = 1
+        breakdown.append(("價格動能面", 1, f"近月漲幅 {ret_1m:+.1f}%（0~8%）"))
+    else:
+        momentum_score = -1
+        breakdown.append(("價格動能面", -1, f"近月跌幅 {ret_1m:+.1f}%"))
+
+    # 3. 籌碼面：三大法人近5個交易日合計買賣超
+    recent5 = institutional[-5:]
+    net5 = sum(r.get("total", 0) for r in recent5) if recent5 else None
+    if net5 is None:
+        institutional_score = 0
+        breakdown.append(("籌碼面", 0, "缺三大法人資料"))
+    else:
+        net5_lots = net5 / 1000
+        if net5_lots >= 3000:
+            institutional_score = 2
+            breakdown.append(("籌碼面", 2, f"三大法人近5日合計買超 {net5_lots:+,.0f} 張（≥3,000張）"))
+        elif net5_lots > 0:
+            institutional_score = 1
+            breakdown.append(("籌碼面", 1, f"三大法人近5日合計買超 {net5_lots:+,.0f} 張"))
+        else:
+            institutional_score = -1
+            breakdown.append(("籌碼面", -1, f"三大法人近5日合計賣超 {net5_lots:+,.0f} 張"))
+
+    # 4. 技術面：最新 RSI14 + MACD 柱狀圖方向
+    rsi_series = indicators.get("rsi14") or []
+    macd_hist_series = (indicators.get("macd") or {}).get("hist") or []
+    rsi = next((v for v in reversed(rsi_series) if v is not None), None)
+    macd_hist = next((v for v in reversed(macd_hist_series) if v is not None), None)
+    technical_score = 0
+    if rsi is None and macd_hist is None:
+        breakdown.append(("技術面", 0, "缺技術指標資料"))
+    else:
+        parts = []
+        if rsi is not None:
+            if 50 < rsi <= 70:
+                technical_score += 1
+                parts.append(f"RSI {rsi:.1f}（健康動能區間）")
+            elif rsi > 70:
+                technical_score -= 1
+                parts.append(f"RSI {rsi:.1f}（超買）")
+            elif rsi < 30:
+                technical_score -= 1
+                parts.append(f"RSI {rsi:.1f}（超賣/弱勢）")
+            else:
+                parts.append(f"RSI {rsi:.1f}（中性）")
+        if macd_hist is not None:
+            if macd_hist > 0:
+                technical_score += 1
+                parts.append("MACD柱狀圖轉正")
+            elif macd_hist < 0:
+                technical_score -= 1
+                parts.append("MACD柱狀圖轉負")
+        breakdown.append(("技術面", technical_score, "、".join(parts)))
+
+    total = revenue_score + momentum_score + institutional_score + technical_score
+    if total >= 5:
+        signal, color = "強勢", "#c62828"
+    elif total >= 2:
+        signal, color = "偏多", "#e57373"
+    elif total >= -1:
+        signal, color = "中性", "#9e9e9e"
+    else:
+        signal, color = "偏弱", "#2e7d32"
+
+    return {"total": total, "signal": signal, "color": color, "breakdown": breakdown}
+
+
+def _score_html(score: dict) -> str:
+    rows = "".join(
+        f'<tr><td>{html.escape(dim)}</td><td class="num">{val:+d}</td><td class="muted">{html.escape(note)}</td></tr>'
+        for dim, val, note in score["breakdown"]
+    )
+    return f"""<div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+  <span class="badge" style="background:{score['color']}; font-size:16px; padding:6px 16px;">{score['signal']}</span>
+  <span class="n" style="font-size:24px;">{score['total']:+d} 分</span>
+</div>
+<table><tr><th>面向</th><th class="num">配分</th><th>依據</th></tr>{rows}</table>
+<div class="muted" style="font-size:11px; margin-top:10px;">
+規則式評分，純用本頁已收集的公開資料本地計算（不呼叫任何 LLM/API）：
+營收面看月營收 YoY、價格動能面看近月報酬率、籌碼面看三大法人近5日合計買賣超、
+技術面看最新 RSI14／MACD 柱狀圖方向。總分 ≥5 強勢、≥2 偏多、≥-1 中性、其餘偏弱。
+缺資料的面向計 0 分。僅供研究參考，非投資建議。
+</div>"""
+
+
 def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) -> str:
     name = html.escape(stock_meta.get("name", stock_code))
     posts = stock_meta.get("posts", [])
@@ -854,17 +980,7 @@ def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) ->
     posts_rows = "".join(_market_post_row(p) for p in posts) or \
         '<tr><td colspan="3" class="muted">尚無相關貼文</td></tr>'
 
-    perplexity = detail.get("perplexity")
-    if perplexity and perplexity.get("summary"):
-        pplx_html = f'<div style="font-size:13px; line-height:1.8; white-space:pre-wrap;">{html.escape(perplexity["summary"])}</div>'
-        if perplexity.get("citations"):
-            cites = "".join(
-                f'<li><a href="{html.escape(c)}" target="_blank">{html.escape(c)}</a></li>'
-                for c in perplexity["citations"][:5]
-            )
-            pplx_html += f'<ul style="margin-top:8px; font-size:11px;">{cites}</ul>'
-    else:
-        pplx_html = '<div class="muted">尚未設定 Perplexity API Key，暫無深度產業/基本面分析。</div>'
+    score_html_ = _score_html(_fundamental_score(detail))
 
     institutional_html, institutional_script = _institutional_html(detail.get("institutional") or [], stock_code)
     valuation_html_ = _valuation_html(detail.get("valuation"))
@@ -1080,7 +1196,7 @@ window.addEventListener('resize', () => {{
 <div class="role" style="margin-bottom:8px;">從偵測到這檔個股那天起累積記錄，剛開始追蹤的個股歷史會比較少</div>
 {material_info_html_}</section>
 
-<section><h2>產業/基本面深度分析</h2>{pplx_html}</section>
+<section><h2>綜合評分</h2>{score_html_}</section>
 
 <section><h2>相關貼文</h2>
 <table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
