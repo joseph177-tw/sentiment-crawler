@@ -46,13 +46,6 @@ jobs:
           python report/render.py --market
           python report/render.py --stock-detail
 
-      - name: Perplexity deep-dive (skips automatically if no key set)
-        env:
-          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
-        run: |
-          python pipeline/perplexity_search.py
-          python report/render.py --stock-detail
-
       - name: Commit data
         run: |
           git config user.name "bot"

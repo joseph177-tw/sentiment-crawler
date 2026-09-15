@@ -83,12 +83,6 @@ market:
   # 0.3-0.6 秒太積極，拉高到 1.5-2.5 秒降低單日排程觸發限流的機率。
   request_delay_seconds: [1.5, 2.5]
 
-perplexity:
-  # 留空則 pipeline/perplexity_search.py 直接跳過，不影響其他功能
-  enabled: true
-  model: "sonar"
-  cache_days: 7   # 同一檔個股幾天內不重複查詢（控制 API 成本）
-
 data:
   raw_dir: "data/raw"
   db_path: "data/db.sqlite"

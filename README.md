@@ -79,8 +79,10 @@ repo 裡，`requirements.txt` 也沒有加這個依賴。
   `material_info` 表，個股詳細頁的公告歷史長度取決於該股從哪天開始被追蹤
 - 全站導覽列個股搜尋：`docs/stock_index.json`（`run_market()` 產出）+ 前端
   篩選，輸入代號/名稱直接跳轉對應個股詳細頁
-- Perplexity 深度分析（`pipeline/perplexity_search.py`）：需要 `PERPLEXITY_API_KEY`，
-  沒設定時自動跳過，不影響其他功能，有 7 天快取控制查詢成本
+- 綜合評分（`report/render.py` 的 `_fundamental_score()`）：規則式計分（營收面／
+  價格動能面／籌碼面／技術面），純用個股詳細頁已收集的資料本地計算，不呼叫
+  任何 LLM/API。原本這裡預留給 Perplexity API 做深度分析，後來決定不接外部
+  LLM，改成完全免費、規則透明的評分
 
 ## 安裝
 
