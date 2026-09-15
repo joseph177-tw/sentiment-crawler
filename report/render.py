@@ -1030,9 +1030,12 @@ def _score_html(score: dict) -> str:
 <table><tr><th>面向</th><th class="num">配分</th><th>依據</th></tr>{rows}</table>
 <div class="muted" style="font-size:11px; margin-top:10px;">
 規則式評分，純用本頁已收集的公開資料本地計算（不呼叫任何 LLM/API）：
-營收面看月營收 YoY、價格動能面看近月報酬率、籌碼面看三大法人近5日合計買賣超、
-技術面看最新 RSI14／MACD 柱狀圖方向。總分 ≥5 強勢、≥2 偏多、≥-1 中性、其餘偏弱。
-缺資料的面向計 0 分。僅供研究參考，非投資建議。
+營收面看月營收 YoY 交叉比對累計 YoY、價格動能面看近月報酬率、籌碼面看三大法人
+近5日合計買賣超、技術面比照 TradingView Technical Rating 架構，把均線群組
+（MA5~240）與震盪指標群組（RSI／KD／MACD／DMI-ADX／BIAS／布林通道）各自
+平均成一票再相加，另外用 OBV 量價背離做 ±1 微調。總分 ≥5 強勢、≥2 偏多、
+≥-1 中性、其餘偏弱。缺資料的面向或指標計 0 分／不參與平均。僅供研究參考，
+非投資建議。
 </div>"""
 
 
