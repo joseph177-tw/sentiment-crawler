@@ -78,7 +78,10 @@ market:
     一年: 252
   institutional_days: 20   # 三大法人買賣超近期趨勢要抓幾個交易日
   institutional_lookback_days: 45  # 往回試探幾個「日曆日」去湊滿 institutional_days 個交易日（跳過假日/非交易日）
-  request_delay_seconds: [0.3, 0.6]  # 個股詳細頁多區間/多日期抓取，每次請求間隔
+  # 個股詳細頁多區間/多日期抓取，每次請求間隔。2026-09-15 實測過 Yahoo Finance
+  # 真的會限流（連續打幾次就 429，不是長期封鎖，但間隔太短會一直被擋），原本
+  # 0.3-0.6 秒太積極，拉高到 1.5-2.5 秒降低單日排程觸發限流的機率。
+  request_delay_seconds: [1.5, 2.5]
 
 perplexity:
   # 留空則 pipeline/perplexity_search.py 直接跳過，不影響其他功能
