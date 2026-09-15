@@ -68,6 +68,19 @@ repo 裡，`requirements.txt` 也沒有加這個依賴。
   抓 Yahoo Finance 歷史價格（`data/raw/market_data.json`）
 - `report/render.py --keywords` / `--market`：產出 `docs/keywords.html`、`docs/market.html`
   （K 線圖用 ECharts，CDN 載入，不需要額外安裝前端依賴）
+- 個股詳細頁（`docs/stocks/<代號>.html`）：即時行情、7 分頁走勢圖＋技術指標
+  （MA/RSI/MACD/KD/DMI/布林通道/BIAS/OBV，`pipeline/stock_detail.py` 用 pandas
+  本地計算）、三大法人買賣超、估值指標、融資融券、月營收、公司基本資料、
+  重大訊息公告。個股收錄範圍為「累積被提及 ≥3 次」（`config/settings.yaml`
+  的 `market.min_mention_count`），不是全市場，避免每日對 Yahoo Finance
+  發出過量請求
+- `pipeline/aggregate.py --material-info`：抓 TWSE 官方重大訊息公告
+  （`t187ap04_L`，只回傳最新一個交易日、無歷史查詢參數）累積寫入 SQLite
+  `material_info` 表，個股詳細頁的公告歷史長度取決於該股從哪天開始被追蹤
+- 全站導覽列個股搜尋：`docs/stock_index.json`（`run_market()` 產出）+ 前端
+  篩選，輸入代號/名稱直接跳轉對應個股詳細頁
+- Perplexity 深度分析（`pipeline/perplexity_search.py`）：需要 `PERPLEXITY_API_KEY`，
+  沒設定時自動跳過，不影響其他功能，有 7 天快取控制查詢成本
 
 ## 安裝
 

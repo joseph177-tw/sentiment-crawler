@@ -14,21 +14,28 @@
     python pipeline/aggregate.py --weekly                  # 產出過去7天週彙整（預設以今天為終點）
     python pipeline/aggregate.py --weekly --end-date 2026-09-07
     python pipeline/aggregate.py --keywords                # 產出累積關鍵字索引（供 keywords.html 用）
+    python pipeline/aggregate.py --material-info            # 抓當日重大訊息公告，累積進 SQLite
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import sqlite3
 import sys
 from collections import Counter
 from datetime import datetime, timedelta
 from pathlib import Path
 
+import requests
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import common
 import keyword_lib
 
 log = common.setup_logging("pipeline.aggregate")
+
+TWSE_MATERIAL_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap04_L"
+HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) sentiment-research/1.0"}
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS posts (
@@ -55,6 +62,20 @@ CREATE TABLE IF NOT EXISTS daily_stats (
     neutral INTEGER,
     negative INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS material_info (
+    id TEXT PRIMARY KEY,
+    code TEXT NOT NULL,
+    name TEXT,
+    announce_date TEXT,
+    announce_time TEXT,
+    fact_date TEXT,
+    subject TEXT,
+    clause TEXT,
+    detail TEXT,
+    fetched_day TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_material_code ON material_info(code);
 """
 
 
@@ -214,6 +235,85 @@ def build_keyword_index(conn: sqlite3.Connection, top_n: int = 50, min_count: in
     }
 
 
+def _roc_to_iso(s: str | None) -> str | None:
+    """民國 7 碼日期（yyyMMdd，例如「1150914」）轉西元 YYYY-MM-DD。"""
+    if not s or len(s) < 7 or not s.isdigit():
+        return None
+    return f"{int(s[:3]) + 1911}-{s[3:5]}-{s[5:7]}"
+
+
+def fetch_material_info(offline: bool = False) -> list[dict]:
+    """TWSE 官方重大訊息公告（t187ap04_L）。這個端點只回傳「最新一個交易日」的
+    公告，沒有日期查詢參數可以拿歷史資料，所以要靠每天排程呼叫本函式、
+    store_material_info() 累積進 SQLite，才能慢慢建立起歷史紀錄。"""
+    if offline:
+        return []
+    try:
+        resp = requests.get(TWSE_MATERIAL_URL, headers=HEADERS, timeout=30)
+        resp.raise_for_status()
+        rows = resp.json()
+    except (requests.RequestException, ValueError) as e:
+        log.warning("重大訊息公告抓取失敗：%s", e)
+        return []
+
+    records = []
+    for row in rows:
+        code = (row.get("公司代號") or "").strip()
+        if not code:
+            continue
+        announce_date = _roc_to_iso(row.get("發言日期"))
+        announce_time = row.get("發言時間", "")
+        subject = (row.get("主旨 ") or row.get("主旨") or "").strip()
+        raw_key = f"{code}|{announce_date}|{announce_time}|{subject}"
+        records.append({
+            "id": hashlib.sha256(raw_key.encode("utf-8")).hexdigest()[:20],
+            "code": code,
+            "name": (row.get("公司名稱") or "").strip(),
+            "announce_date": announce_date,
+            "announce_time": announce_time,
+            "fact_date": _roc_to_iso(row.get("事實發生日")),
+            "subject": subject,
+            "clause": (row.get("符合條款") or "").strip(),
+            "detail": (row.get("說明") or "").strip(),
+        })
+    return records
+
+
+def store_material_info(conn: sqlite3.Connection, records: list[dict]) -> int:
+    day = common.today_str()
+    for r in records:
+        conn.execute(
+            """INSERT OR REPLACE INTO material_info
+               (id, code, name, announce_date, announce_time, fact_date, subject, clause, detail, fetched_day)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (r["id"], r["code"], r["name"], r["announce_date"], r["announce_time"],
+             r["fact_date"], r["subject"], r["clause"], r["detail"], day),
+        )
+    conn.commit()
+    return len(records)
+
+
+def get_material_info(conn: sqlite3.Connection, code: str, limit: int = 10) -> list[dict]:
+    rows = conn.execute(
+        """SELECT announce_date, subject, clause, detail FROM material_info
+           WHERE code = ? ORDER BY announce_date DESC, announce_time DESC LIMIT ?""",
+        (code, limit),
+    ).fetchall()
+    cols = ["announce_date", "subject", "clause", "detail"]
+    return [dict(zip(cols, row)) for row in rows]
+
+
+def run_material_info(offline: bool = False) -> int:
+    records = fetch_material_info(offline=offline)
+    conn = get_conn()
+    try:
+        count = store_material_info(conn, records)
+    finally:
+        conn.close()
+    log.info("重大訊息公告完成：本次抓到 %d 筆（累積寫入 SQLite material_info）", count)
+    return count
+
+
 def run_keywords() -> Path:
     conn = get_conn()
     try:
@@ -254,11 +354,15 @@ if __name__ == "__main__":
     parser.add_argument("--weekly", action="store_true", help="產出過去7天週彙整")
     parser.add_argument("--end-date", default=None, help="週彙整終點日期，預設今天（僅搭配 --weekly）")
     parser.add_argument("--keywords", action="store_true", help="產出累積關鍵字索引")
+    parser.add_argument("--material-info", action="store_true", help="抓當日重大訊息公告，累積進 SQLite")
+    parser.add_argument("--offline", action="store_true", help="離線模式（僅搭配 --material-info，不連外網）")
     args = parser.parse_args()
 
     if args.weekly:
         run_weekly(args.end_date or common.today_str())
     elif args.keywords:
         run_keywords()
+    elif args.material_info:
+        run_material_info(offline=args.offline)
     else:
         run_daily(args.date or common.today_str())

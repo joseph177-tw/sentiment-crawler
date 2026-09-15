@@ -12,6 +12,8 @@ data/raw/market_data.json），抓取：
   6. TWSE 融資融券餘額
   7. TWSE 月營收 YoY/MoM
   8. TWSE 公司基本資料（產業別、股本、上市日期、董事長等）
+  9. TWSE 重大訊息公告（讀 SQLite material_info 表，由
+     pipeline/aggregate.py --material-info 每日累積寫入，這裡只查詢不抓取）
 供 report/render.py --stock-detail 產出 docs/stocks/<代號>.html。
 
 用法：
@@ -32,6 +34,7 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import common
+from pipeline.aggregate import get_conn, get_material_info
 
 log = common.setup_logging("pipeline.stock_detail")
 
@@ -468,6 +471,8 @@ def run(offline: bool = False) -> Path:
     revenue = fetch_monthly_revenue(codes, offline=offline)
     company = fetch_company_info(codes, offline=offline)
 
+    conn = get_conn()
+
     detail: dict[str, dict] = {}
     for stock in market_data["stocks"]:
         code, name = stock["code"], stock["name"]
@@ -498,7 +503,10 @@ def run(offline: bool = False) -> Path:
             "margin": margin.get(code),
             "revenue": revenue.get(code),
             "company": company.get(code),
+            "material_info": get_material_info(conn, code),
         }
+
+    conn.close()
 
     out_data = {"generated_at": datetime.now(common.get_timezone()).isoformat(), "stocks": detail}
     out_path = common.RAW_DIR / "stock_detail.json"

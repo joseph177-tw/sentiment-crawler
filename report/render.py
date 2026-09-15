@@ -721,6 +721,28 @@ def _company_html(company: dict | None) -> str:
     return f'<ul style="margin:0; padding-left:18px; font-size:13px; line-height:2;">{items}</ul>'
 
 
+def _material_info_html(records: list[dict]) -> str:
+    if not records:
+        return '<div class="muted">近期無重大訊息公告</div>'
+
+    items = ""
+    for r in records:
+        subject = html.escape((r.get("subject") or "").replace("\r\n", " ").strip())
+        detail = html.escape((r.get("detail") or "").strip())
+        clause = html.escape(r.get("clause") or "")
+        date = html.escape(r.get("announce_date") or "")
+        detail_html = (
+            f'<details style="margin-top:4px;"><summary class="muted" style="cursor:pointer; font-size:11px;">'
+            f'查看完整說明</summary><div style="white-space:pre-wrap; font-size:12px; margin-top:6px; '
+            f'color:var(--sub);">{detail}</div></details>' if detail else ""
+        )
+        items += (
+            f'<li style="margin-bottom:12px;"><div>{subject}</div>'
+            f'<div class="role">{date}{" · " + clause if clause else ""}</div>{detail_html}</li>'
+        )
+    return f'<ul style="margin:0; padding-left:18px; font-size:13px;">{items}</ul>'
+
+
 def _institutional_html(institutional: list[dict], code: str) -> tuple[str, str]:
     """回傳 (HTML, chart_script)。近期趨勢用 ECharts 長條圖，並列出最新一日的三大法人明細。"""
     if not institutional:
@@ -849,6 +871,7 @@ def render_stock_detail_page(stock_code: str, stock_meta: dict, detail: dict) ->
     margin_html_ = _margin_html(detail.get("margin"))
     revenue_html_ = _revenue_html(detail.get("revenue"))
     company_html_ = _company_html(detail.get("company"))
+    material_info_html_ = _material_info_html(detail.get("material_info") or [])
 
     series_payload = json.dumps(series, ensure_ascii=False)
     indicators_payload = json.dumps(indicators_by_tab, ensure_ascii=False)
@@ -1053,6 +1076,10 @@ window.addEventListener('resize', () => {{
 
 <section><h2>公司基本資料</h2>{company_html_}</section>
 
+<section><h2>重大訊息公告</h2>
+<div class="role" style="margin-bottom:8px;">從偵測到這檔個股那天起累積記錄，剛開始追蹤的個股歷史會比較少</div>
+{material_info_html_}</section>
+
 <section><h2>產業/基本面深度分析</h2>{pplx_html}</section>
 
 <section><h2>相關貼文</h2>
@@ -1063,8 +1090,10 @@ window.addEventListener('resize', () => {{
 即時行情來自 TWSE 官方公開資料，依規定有揭露延遲，非逐筆真即時；走勢圖來自
 Yahoo Finance；技術指標（MA/RSI/MACD/KD/DMI/布林通道/BIAS/OBV）皆為本站依公開
 價格資料計算，公式為業界常見版本，非官方揭露數據，僅供參考；三大法人買賣超、
-融資融券、本益比殖利率、月營收、公司基本資料皆來自 TWSE 官方公開資料。
-僅供研究參考，非投資建議。
+融資融券、本益比殖利率、月營收、公司基本資料、重大訊息公告皆來自 TWSE 官方
+公開資料。重大訊息公告的官方端點只提供最新一個交易日的資料、無法查詢歷史，
+本站每日排程抓取後累積寫入資料庫，因此個股的公告歷史長度取決於這檔個股從
+哪一天開始被本站追蹤，並非該公司完整的歷史公告紀錄。僅供研究參考，非投資建議。
 </div></section>
 </div>
 {chart_script}
