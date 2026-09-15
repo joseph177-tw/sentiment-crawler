@@ -822,20 +822,32 @@ def _fundamental_score(detail: dict) -> dict:
     series = detail.get("series") or {}
     breakdown = []
 
-    # 1. 營收面：月營收 YoY%
+    # 1. 營收面：單月 YoY 交叉比對累計 YoY，避免單月異常噴出/一次性利空被誤判成趨勢
+    # （參考：月營收「單月看爆發力、累計看續航力」的三層判讀邏輯，簡化成兩層交叉比對）
     yoy = revenue.get("yoy_pct")
+    acc_yoy = revenue.get("accumulated_yoy_pct")
     if yoy is None:
         revenue_score = 0
         breakdown.append(("營收面", 0, "缺月營收資料"))
-    elif yoy >= 20:
+    elif yoy >= 20 and (acc_yoy is None or acc_yoy >= 0):
         revenue_score = 2
-        breakdown.append(("營收面", 2, f"月營收 YoY {yoy:+.1f}%（≥20%）"))
+        acc_note = f"、累計YoY {acc_yoy:+.1f}%同步為正" if acc_yoy is not None else ""
+        breakdown.append(("營收面", 2, f"月營收 YoY {yoy:+.1f}%（≥20%）{acc_note}，動能有累計基礎支撐"))
+    elif yoy >= 20 and acc_yoy < 0:
+        revenue_score = 1
+        breakdown.append(("營收面", 1,
+                          f"月營收 YoY {yoy:+.1f}%（≥20%）但累計YoY {acc_yoy:+.1f}%仍為負，"
+                          f"單月噴出、累計趨勢未反轉，動能存疑"))
     elif yoy >= 0:
         revenue_score = 1
-        breakdown.append(("營收面", 1, f"月營收 YoY {yoy:+.1f}%（0~20%）"))
+        breakdown.append(("營收面", 1, f"月營收 YoY {yoy:+.1f}%（0~20%），穩健正成長"))
+    elif acc_yoy is not None and acc_yoy >= 0:
+        revenue_score = 0
+        breakdown.append(("營收面", 0, f"月營收 YoY {yoy:+.1f}%轉負，但累計YoY {acc_yoy:+.1f}%仍正，趨勢未確認轉弱"))
     else:
         revenue_score = -1
-        breakdown.append(("營收面", -1, f"月營收 YoY {yoy:+.1f}%（負成長）"))
+        acc_note = f"、累計YoY {acc_yoy:+.1f}%" if acc_yoy is not None else ""
+        breakdown.append(("營收面", -1, f"月營收 YoY {yoy:+.1f}%{acc_note}，同步轉弱"))
 
     # 2. 價格動能面：近月（約22個交易日）報酬率
     near_month = series.get("近月") or []
@@ -875,36 +887,123 @@ def _fundamental_score(detail: dict) -> dict:
             institutional_score = -1
             breakdown.append(("籌碼面", -1, f"三大法人近5日合計賣超 {net5_lots:+,.0f} 張"))
 
-    # 4. 技術面：最新 RSI14 + MACD 柱狀圖方向
-    rsi_series = indicators.get("rsi14") or []
-    macd_hist_series = (indicators.get("macd") or {}).get("hist") or []
-    rsi = next((v for v in reversed(rsi_series) if v is not None), None)
-    macd_hist = next((v for v in reversed(macd_hist_series) if v is not None), None)
-    technical_score = 0
-    if rsi is None and macd_hist is None:
+    # 4. 技術面：比照 TradingView Technical Rating 的「均線群組＋震盪指標群組」架構——
+    # 兩組各自把成員指標的 +1/0/-1 訊號平均後四捨五入，兩組相加成 -2~+2，
+    # 再用 OBV 量價背離做最後 ±1 微調。用上 MA5~240、RSI、KD、MACD、DMI/ADX、
+    # BIAS、布林通道、OBV 全部已計算但原本沒用到的指標。
+    close_series = indicators.get("close") or []
+    latest_idx = next((i for i in range(len(close_series) - 1, -1, -1) if close_series[i] is not None), None)
+
+    def _at(key_path):
+        """安全取出 indicators 裡某個指標在 latest_idx 的值，key_path 例如 ('ma','20') 或 ('rsi14',)。"""
+        if latest_idx is None:
+            return None
+        node = indicators
+        for key in key_path:
+            node = (node or {}).get(key)
+        if not isinstance(node, list) or latest_idx >= len(node):
+            return None
+        return node[latest_idx]
+
+    close_now = _at(("close",))
+
+    if close_now is None:
+        technical_score = 0
         breakdown.append(("技術面", 0, "缺技術指標資料"))
     else:
-        parts = []
+        # A組：均線群組——收盤站上/跌破各均線各投一票
+        ma_votes = []
+        for n in (5, 10, 20, 60, 120, 240):
+            ma_val = _at(("ma", str(n)))
+            if ma_val is not None:
+                ma_votes.append(1 if close_now > ma_val else -1)
+        ma_group = round(sum(ma_votes) / len(ma_votes)) if ma_votes else 0
+
+        # B組：震盪指標群組
+        osc_votes = []
+        osc_notes = []
+
+        rsi = _at(("rsi14",))
         if rsi is not None:
             if 50 < rsi <= 70:
-                technical_score += 1
-                parts.append(f"RSI {rsi:.1f}（健康動能區間）")
+                osc_votes.append(1); osc_notes.append(f"RSI {rsi:.1f}健康動能")
             elif rsi > 70:
-                technical_score -= 1
-                parts.append(f"RSI {rsi:.1f}（超買）")
+                osc_votes.append(-1); osc_notes.append(f"RSI {rsi:.1f}超買")
             elif rsi < 30:
-                technical_score -= 1
-                parts.append(f"RSI {rsi:.1f}（超賣/弱勢）")
+                osc_votes.append(-1); osc_notes.append(f"RSI {rsi:.1f}超賣")
             else:
-                parts.append(f"RSI {rsi:.1f}（中性）")
+                osc_votes.append(0); osc_notes.append(f"RSI {rsi:.1f}中性")
+
+        k, d = _at(("kd", "k")), _at(("kd", "d"))
+        if k is not None and d is not None:
+            if k >= 80:
+                osc_votes.append(-1); osc_notes.append(f"KD超買(K={k:.0f})")
+            elif k <= 20:
+                osc_votes.append(-1); osc_notes.append(f"KD超賣(K={k:.0f})")
+            elif k > d:
+                osc_votes.append(1); osc_notes.append("KD多方排列")
+            else:
+                osc_votes.append(0); osc_notes.append("KD中性")
+
+        macd_hist = _at(("macd", "hist"))
         if macd_hist is not None:
             if macd_hist > 0:
-                technical_score += 1
-                parts.append("MACD柱狀圖轉正")
+                osc_votes.append(1); osc_notes.append("MACD轉正")
             elif macd_hist < 0:
-                technical_score -= 1
-                parts.append("MACD柱狀圖轉負")
-        breakdown.append(("技術面", technical_score, "、".join(parts)))
+                osc_votes.append(-1); osc_notes.append("MACD轉負")
+            else:
+                osc_votes.append(0)
+
+        plus_di, minus_di, adx = _at(("dmi", "plus_di")), _at(("dmi", "minus_di")), _at(("dmi", "adx"))
+        if plus_di is not None and minus_di is not None and adx is not None:
+            if adx < 20:
+                osc_votes.append(0); osc_notes.append(f"ADX {adx:.0f}無明顯趨勢")
+            elif plus_di > minus_di:
+                osc_votes.append(1); osc_notes.append(f"ADX {adx:.0f}確認多方趨勢")
+            else:
+                osc_votes.append(-1); osc_notes.append(f"ADX {adx:.0f}確認空方趨勢")
+
+        bias = _at(("bias20",))
+        if bias is not None:
+            if abs(bias) > 8:
+                osc_votes.append(0); osc_notes.append(f"乖離率{bias:+.1f}%過大修正風險高")
+            elif bias > 0:
+                osc_votes.append(1); osc_notes.append(f"乖離率{bias:+.1f}%溫和正乖離")
+            else:
+                osc_votes.append(-1); osc_notes.append(f"乖離率{bias:+.1f}%價格在均線下方")
+
+        boll_upper, boll_lower = _at(("boll", "upper")), _at(("boll", "lower"))
+        if boll_upper is not None and boll_lower is not None:
+            if close_now > boll_upper:
+                osc_votes.append(-1); osc_notes.append("站上布林上緣（過度延伸）")
+            elif close_now < boll_lower:
+                osc_votes.append(-1); osc_notes.append("跌破布林下緣（弱勢）")
+            else:
+                osc_votes.append(0)
+
+        osc_group = round(sum(osc_votes) / len(osc_votes)) if osc_votes else 0
+        technical_score = max(-2, min(2, ma_group + osc_group))
+
+        # OBV 量價背離：近月價格漲跌方向跟 OBV 漲跌方向不一致，額外微調 ±1
+        obv_series = indicators.get("obv") or []
+        start_idx = max(0, latest_idx - 22)
+        obv_now = obv_series[latest_idx] if latest_idx < len(obv_series) else None
+        obv_then = obv_series[start_idx] if start_idx < len(obv_series) else None
+        close_then = close_series[start_idx] if start_idx < len(close_series) else None
+        divergence_note = ""
+        if None not in (obv_now, obv_then, close_then) and close_then:
+            price_up = close_now > close_then
+            obv_up = obv_now > obv_then
+            if price_up and not obv_up:
+                technical_score = max(-2, technical_score - 1)
+                divergence_note = "；近月價格上漲但OBV未同步走高（量價背離看空，-1）"
+            elif not price_up and obv_up:
+                technical_score = min(2, technical_score + 1)
+                divergence_note = "；近月價格下跌但OBV逆勢走高（量價背離看多，+1）"
+
+        ma_text = f"均線群組{ma_group:+d}（{len(ma_votes)}條均線）"
+        osc_text = f"震盪指標群組{osc_group:+d}（{'、'.join(osc_notes)}）" if osc_notes else "震盪指標群組0"
+        breakdown.append(("技術面", technical_score, f"{ma_text}；{osc_text}{divergence_note}"))
 
     total = revenue_score + momentum_score + institutional_score + technical_score
     if total >= 5:
