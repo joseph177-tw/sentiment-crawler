@@ -62,7 +62,19 @@ def _extract_json_array(text: str) -> list[dict]:
     return json.loads(match.group(0))
 
 
-def classify_batch_online(client, model: str, batch: list[dict], max_retries: int) -> list[dict]:
+def _fallback_result(rec: dict) -> dict:
+    """單則分類最終仍失敗時的保底結果——寧可讓這一則貼文的分類退化成
+    neutral／空話題，也不要讓一則貼文拖垮整批、甚至整天的 pipeline。"""
+    return {
+        "sentiment": "neutral",
+        "topic": "",
+        "mentions_company": False,
+        "summary": rec.get("title", "")[:40],
+    }
+
+
+def classify_batch_online(client, model: str, batch: list[dict], max_retries: int,
+                          allow_split_fallback: bool = True) -> list[dict]:
     prompt = _build_user_prompt(batch)
     last_err = None
     for attempt in range(max_retries + 1):
@@ -77,12 +89,27 @@ def classify_batch_online(client, model: str, batch: list[dict], max_retries: in
             results = _extract_json_array(text)
             if len(results) != len(batch):
                 raise ValueError(f"回傳筆數 {len(results)} 與輸入 {len(batch)} 不符")
+            if not all(isinstance(r, dict) for r in results):
+                raise ValueError("回傳陣列裡有元素不是 JSON 物件（格式跑掉）")
             return results
         except Exception as e:
             last_err = e
             log.warning("批次分類失敗（第 %d 次）：%s", attempt + 1, e)
             time.sleep(1.5 * (attempt + 1))
-    raise RuntimeError(f"批次分類重試 {max_retries} 次仍失敗：{last_err}")
+
+    if not allow_split_fallback or len(batch) <= 1:
+        # 單則重試也失敗：不拋例外炸掉整支 pipeline，改用保底結果讓其餘資料正常產出。
+        log.warning("單則分類重試 %d 次仍失敗，改用保底 neutral 結果：%s | 標題：%s",
+                    max_retries, last_err, batch[0].get("title", "")[:40] if batch else "")
+        return [_fallback_result(rec) for rec in batch]
+
+    # 整批重試都失敗，通常是批次裡某一則內容讓模型跳過或回應格式跑掉，不代表
+    # 整批都有問題。改成逐則重新分類，只有真的連單則都失敗的那一兩則會退化成
+    # 保底結果，其餘貼文仍能拿到正常的 LLM 分類，也不會讓當天其他階段
+    # （彙整/個股資料/報告/推播/commit）全部因此被跳過。
+    log.warning("批次（%d 則）重試後仍失敗，改成逐則分類找出問題貼文：%s", len(batch), last_err)
+    return [classify_batch_online(client, model, [rec], max_retries, allow_split_fallback=False)[0]
+            for rec in batch]
 
 
 _POSITIVE_HINTS = ["推薦", "滿意", "不錯", "順", "方便", "看好", "利多", "上漲", "強勢"]
