@@ -23,6 +23,7 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from pipeline.stock_detail import last_discontinuity_index
 import common
 import keyword_lib
 
@@ -850,24 +851,34 @@ def _fundamental_score(detail: dict) -> dict:
         breakdown.append(("營收面", -1, f"月營收 YoY {yoy:+.1f}%{acc_note}，同步轉弱"))
 
     # 2. 價格動能面：近月（約22個交易日）報酬率
+    # 先用 last_discontinuity_index() 排除面額變更/減資等公司行動造成的資料
+    # 不連續，只用「事件之後」的乾淨資料計算，避免算出失真的極端報酬率。
     near_month = series.get("近月") or []
+    nm_closes = [p.get("close") for p in near_month]
+    clean_start = last_discontinuity_index(nm_closes)
+    usable = near_month[clean_start:]
+    event_note = ""
+    if clean_start > 0:
+        event_note = f"（偵測到近月內有單日跳動過大，疑似公司行動造成資料不連續，已排除事件前資料，僅用近{len(usable)}個交易日計算）"
+
     ret_1m = None
-    if len(near_month) >= 2:
-        first_close, last_close = near_month[0].get("close"), near_month[-1].get("close")
+    if len(usable) >= 5:  # 事件剛發生、乾淨樣本太少時寧可不算，避免另一種失真
+        first_close, last_close = usable[0].get("close"), usable[-1].get("close")
         if first_close:
             ret_1m = (last_close - first_close) / first_close * 100
     if ret_1m is None:
         momentum_score = 0
-        breakdown.append(("價格動能面", 0, "近月價格資料不足"))
+        reason = "近月價格資料不足" + (event_note or "")
+        breakdown.append(("價格動能面", 0, reason))
     elif ret_1m >= 8:
         momentum_score = 2
-        breakdown.append(("價格動能面", 2, f"近月漲幅 {ret_1m:+.1f}%（≥8%）"))
+        breakdown.append(("價格動能面", 2, f"近月漲幅 {ret_1m:+.1f}%（≥8%）{event_note}"))
     elif ret_1m >= 0:
         momentum_score = 1
-        breakdown.append(("價格動能面", 1, f"近月漲幅 {ret_1m:+.1f}%（0~8%）"))
+        breakdown.append(("價格動能面", 1, f"近月漲幅 {ret_1m:+.1f}%（0~8%）{event_note}"))
     else:
         momentum_score = -1
-        breakdown.append(("價格動能面", -1, f"近月跌幅 {ret_1m:+.1f}%"))
+        breakdown.append(("價格動能面", -1, f"近月跌幅 {ret_1m:+.1f}%{event_note}"))
 
     # 3. 籌碼面：三大法人近5個交易日合計買賣超
     recent5 = institutional[-5:]
@@ -985,13 +996,17 @@ def _fundamental_score(detail: dict) -> dict:
         technical_score = max(-2, min(2, ma_group + osc_group))
 
         # OBV 量價背離：近月價格漲跌方向跟 OBV 漲跌方向不一致，額外微調 ±1
+        # 同樣用 last_discontinuity_index() 把比較起點挪到事件之後，避免公司
+        # 行動造成的價格斷層被誤判成「背離」。
         obv_series = indicators.get("obv") or []
-        start_idx = max(0, latest_idx - 22)
+        window_start = max(0, latest_idx - 22)
+        window_closes = close_series[window_start:latest_idx + 1]
+        start_idx = window_start + last_discontinuity_index(window_closes)
         obv_now = obv_series[latest_idx] if latest_idx < len(obv_series) else None
         obv_then = obv_series[start_idx] if start_idx < len(obv_series) else None
         close_then = close_series[start_idx] if start_idx < len(close_series) else None
         divergence_note = ""
-        if None not in (obv_now, obv_then, close_then) and close_then:
+        if start_idx < latest_idx - 2 and None not in (obv_now, obv_then, close_then) and close_then:
             price_up = close_now > close_then
             obv_up = obv_now > obv_then
             if price_up and not obv_up:

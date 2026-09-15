@@ -164,13 +164,51 @@ def fetch_range_series(code: str, range_: str, interval: str, offline: bool = Fa
 # 3. 技術指標（純計算，來源是 (2) 抓到的日線資料）
 # ---------------------------------------------------------------------------
 
+def last_discontinuity_index(closes: list[float | None], threshold_pct: float = 25.0) -> int:
+    """回傳收盤價序列裡「最後一次單日漲跌幅超過門檻」之後的索引，也就是可信資料
+    的起點；全程都沒有這種跳動則回傳 0（整段可信）。
+
+    台股正常交易日漲跌幅上限是 ±10%，任何遠超過這個門檻的單日跳動，在數學上
+    不可能是真實市場交易造成的，幾乎必然是股票面額變更／減資／恢復買賣等
+    公司行動，而 Yahoo Finance 的原始價格序列沒有對這類事件做分割調整
+    （已實測確認：連 adjclose 欄位都沒有處理這類台股特有的事件），導致任何
+    跨越事件邊界的計算（報酬率、滾動窗口指標）都會算出失真的極端值。
+
+    這是一個通用機制，不是針對單一個股寫死的特例：report/render.py 的評分
+    邏輯、以及這裡的 compute_indicators() 滾動窗口指標都共用同一份判斷，
+    未來遇到其他個股發生類似公司行動時會自動被抓到，不需要再個別處理。"""
+    last_break = 0
+    prev = None
+    for i, c in enumerate(closes):
+        if c is not None and prev:
+            if abs(c - prev) / prev * 100 > threshold_pct:
+                last_break = i
+        if c is not None:
+            prev = c
+    return last_break
+
+
 def compute_indicators(points: list[dict]) -> dict:
-    """回傳每個指標對齊同一組 dates 的陣列，NaN/資料不足處補 None。"""
+    """回傳每個指標對齊同一組 dates 的陣列，NaN/資料不足處補 None。
+
+    先用 last_discontinuity_index() 找出最後一次公司行動（面額變更/減資等）
+    造成的資料不連續點：MA/RSI/MACD/KD/DMI/布林通道/BIAS 這些用到滾動窗口的
+    指標，只用「事件之後」的乾淨資料計算，事件之前的日期一律補 None，避免
+    窗口跨越事件邊界時把價格斷層當成真實波動、算出失真的極端值（實際案例：
+    沛爾生醫面額變更後乖離率被算出 -91.8%，但那只是資料不連續，不是真實
+    偏離）。「dates」/「close」維持完整序列不受影響，因為那是真實成交價
+    歷史，只有「用滾動窗口算出來的衍生指標」才會失真。"""
     df = pd.DataFrame(points)
-    close, high, low, volume = df["close"], df["high"], df["low"], df["volume"]
+    close_all, high_all, low_all, volume_all = df["close"], df["high"], df["low"], df["volume"]
+
+    clean_start = last_discontinuity_index([p.get("close") for p in points])
+    close = close_all.iloc[clean_start:].reset_index(drop=True)
+    high = high_all.iloc[clean_start:].reset_index(drop=True)
+    low = low_all.iloc[clean_start:].reset_index(drop=True)
+    volume = volume_all.iloc[clean_start:].reset_index(drop=True)
 
     def ser(s) -> list[float | None]:
-        return [None if pd.isna(v) else round(float(v), 3) for v in s]
+        return [None] * clean_start + [None if pd.isna(v) else round(float(v), 3) for v in s]
 
     ma_periods = (5, 10, 20, 60, 120, 240)
     ma = {n: close.rolling(n).mean() for n in ma_periods}
@@ -198,16 +236,16 @@ def compute_indicators(points: list[dict]) -> dict:
     for i in range(1, len(rsv)):
         k_vals.append(k_vals[-1] * 2 / 3 + rsv.iloc[i] * 1 / 3)
         d_vals.append(d_vals[-1] * 2 / 3 + k_vals[-1] * 1 / 3)
-    k = pd.Series(k_vals, index=df.index)
-    d = pd.Series(d_vals, index=df.index)
+    k = pd.Series(k_vals, index=close.index)
+    d = pd.Series(d_vals, index=close.index)
     warmup = close.rolling(9).mean().isna()  # 前 8 筆資料不足，不顯示
     k[warmup] = np.nan
     d[warmup] = np.nan
 
     # DMI/ADX (14)，Wilder 平滑法的常見近似實作
     up_move, down_move = high.diff(), -low.diff()
-    plus_dm = pd.Series(np.where((up_move > down_move) & (up_move > 0), up_move, 0.0), index=df.index)
-    minus_dm = pd.Series(np.where((down_move > up_move) & (down_move > 0), down_move, 0.0), index=df.index)
+    plus_dm = pd.Series(np.where((up_move > down_move) & (up_move > 0), up_move, 0.0), index=close.index)
+    minus_dm = pd.Series(np.where((down_move > up_move) & (down_move > 0), down_move, 0.0), index=close.index)
     tr = pd.concat([
         high - low, (high - close.shift()).abs(), (low - close.shift()).abs(),
     ], axis=1).max(axis=1)
@@ -231,7 +269,7 @@ def compute_indicators(points: list[dict]) -> dict:
 
     return {
         "dates": df["t"].tolist(),
-        "close": ser(close),
+        "close": [None if pd.isna(v) else round(float(v), 3) for v in close_all],
         "ma": {str(n): ser(ma[n]) for n in ma_periods},
         "rsi14": ser(rsi14),
         "macd": {"dif": ser(dif), "dea": ser(dea), "hist": ser(macd_hist)},
@@ -239,7 +277,7 @@ def compute_indicators(points: list[dict]) -> dict:
         "dmi": {"plus_di": ser(plus_di), "minus_di": ser(minus_di), "adx": ser(adx)},
         "boll": {"upper": ser(boll_upper), "mid": ser(boll_mid), "lower": ser(boll_lower)},
         "bias20": ser(bias20),
-        "obv": [None if pd.isna(v) else int(v) for v in obv],
+        "obv": [None] * clean_start + [None if pd.isna(v) else int(v) for v in obv],
     }
 
 
