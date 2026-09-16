@@ -81,6 +81,8 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
        background:#eef2f7; color:var(--accent); }
 .chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
         background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
 """
 
 
@@ -401,7 +403,7 @@ def render_keywords_page(index: dict) -> str:
         [{"word": kw["word"], "count": kw["count"]} for kw in keywords], ensure_ascii=False
     )
     bubble_html = (
-        '<div id="bubble-chart" style="width:100%; height:520px;"></div>'
+        '<div id="bubble-chart"></div>'
         if keywords else '<span class="muted">尚無足夠資料</span>'
     )
     bubble_script = f"""<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
@@ -411,36 +413,86 @@ if (BUBBLE_DATA.length) {{
   const el = document.getElementById('bubble-chart');
   let lastWidth = 0;
 
+  // 文字要嵌進圓形裡，中文字近似正方形（寬≈字高），這裡用字數×字級估算
+  // 文字總寬，超出可用寬度就逐步縮小字級，縮到下限還放不下才截斷加「…」，
+  // 確保「每一顆泡泡都看得到字」，不是只有大泡泡才有標籤。
+  function fitLabel(word, r) {{
+    const maxFont = Math.max(7, Math.min(15, r * 0.8));
+    const minFont = 7;
+    const avail = r * 1.7;
+    const widthOf = (text, size) => text.length * size * 0.92;
+    let size = maxFont;
+    while (size > minFont && widthOf(word, size) > avail) size -= 0.5;
+    if (widthOf(word, size) <= avail) return {{ text: word, size }};
+    const maxChars = Math.max(1, Math.floor(avail / (minFont * 0.92)) - 1);
+    return {{ text: word.slice(0, maxChars) + '…', size: minFont }};
+  }}
+
   function drawBubbles(animate) {{
     const width = el.clientWidth, height = el.clientHeight;
     if (!width || !height) return;
     lastWidth = width;
     el.innerHTML = '';
-    const svg = d3.select(el).append('svg').attr('width', width).attr('height', height);
+    const svg = d3.select(el).append('svg').attr('width', width).attr('height', height)
+      .attr('viewBox', `0 0 ${{width}} ${{height}}`);
+    const defs = svg.append('defs');
+
+    const dropShadow = defs.append('filter').attr('id', 'bubble-shadow')
+      .attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+    dropShadow.append('feDropShadow').attr('dx', 0).attr('dy', 1.5)
+      .attr('stdDeviation', 1.6).attr('flood-color', '#0d2f52').attr('flood-opacity', 0.28);
 
     const root = d3.pack()
       .size([width - 4, height - 4])
-      .padding(4)(d3.hierarchy({{children: BUBBLE_DATA}}).sum(d => d.count));
+      .padding(5)(d3.hierarchy({{children: BUBBLE_DATA}}).sum(d => d.count));
+    const leaves = root.leaves();
 
-    const color = d3.scaleSequential(d3.interpolateBlues)
-      .domain([0, d3.max(BUBBLE_DATA, d => d.count)]);
+    // 多數關鍵字集中在低次數區間、少數大熱門則數遙遙領先，若配色直接
+    // 對應原始次數，長尾的泡泡幾乎都會落在色階最淺的一端、整片看起來
+    // 都是同一種很淡的藍——用 sqrt 重新映射色階，讓中低次數的泡泡也能
+    // 分出明顯深淺層次，不再一片單調。
+    const maxCount = d3.max(BUBBLE_DATA, d => d.count);
+    const color = d3.scaleSequential()
+      .domain([0, maxCount])
+      .interpolator(t => d3.interpolateRgb('#cfe6ff', '#0c3a66')(Math.sqrt(t)));
+
+    const top3 = new Set(
+      [...BUBBLE_DATA].sort((a, b) => b.count - a.count).slice(0, 3).map(d => d.word)
+    );
 
     const node = svg.selectAll('g')
-      .data(root.leaves())
+      .data(leaves)
       .join('g')
       .attr('transform', d => `translate(${{d.x}},${{d.y}})`)
       .style('cursor', 'pointer')
       .on('click', (event, d) => {{
         const target = document.getElementById(d.data.word);
         if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      }})
+      .on('mouseenter', function(event, d) {{
+        d3.select(this).select('circle').transition().duration(150).attr('r', d.r * 1.08);
+      }})
+      .on('mouseleave', function(event, d) {{
+        d3.select(this).select('circle').transition().duration(150).attr('r', d.r);
       }});
 
-    const circle = node.append('circle')
-      .attr('fill', d => color(d.data.count))
-      .attr('stroke', '#12406b')
-      .attr('stroke-width', 0.5);
+    const circle = node.append('circle').style('filter', 'url(#bubble-shadow)');
+    node.each(function(d, i) {{
+      const base = d3.color(color(d.data.count));
+      const isTop = top3.has(d.data.word);
+      const grad = defs.append('radialGradient')
+        .attr('id', `bubble-grad-${{i}}`).attr('cx', '35%').attr('cy', '28%').attr('r', '75%');
+      grad.append('stop').attr('offset', '0%').attr('stop-color', base.brighter(1.7).formatHex());
+      grad.append('stop').attr('offset', '100%').attr('stop-color', base.darker(0.4).formatHex());
+      d3.select(this).select('circle')
+        .attr('fill', `url(#bubble-grad-${{i}})`)
+        .attr('stroke', isTop ? '#e2a33d' : '#0c3a66')
+        .attr('stroke-width', isTop ? 2 : 0.75)
+        .attr('stroke-opacity', isTop ? 0.9 : 0.35);
+    }});
     if (animate) {{
-      circle.attr('r', 0).transition().duration(700).ease(d3.easeCubicOut).attr('r', d => d.r);
+      circle.attr('r', 0).transition().duration(600).delay((d, i) => Math.min(i * 12, 400))
+        .ease(d3.easeCubicOut).attr('r', d => d.r);
     }} else {{
       circle.attr('r', d => d.r);
     }}
@@ -450,11 +502,14 @@ if (BUBBLE_DATA.length) {{
     node.append('text')
       .attr('text-anchor', 'middle')
       .attr('dy', '0.32em')
-      .style('fill', d => d.data.count > (d3.max(BUBBLE_DATA, x => x.count) * 0.4) ? '#fff' : '#12406b')
-      .style('font-size', d => Math.max(10, Math.min(16, d.r / 2.6)) + 'px')
-      .style('font-weight', 600)
+      .style('fill', d => d.data.count > maxCount * 0.35 ? '#fff' : '#0c3a66')
+      .style('font-weight', d => top3.has(d.data.word) ? 700 : 600)
       .style('pointer-events', 'none')
-      .text(d => d.r > 18 ? d.data.word : '');
+      .each(function(d) {{
+        if (d.r < 9) return;
+        const {{ text, size }} = fitLabel(d.data.word, d.r);
+        d3.select(this).style('font-size', size + 'px').text(text);
+      }});
   }}
 
   drawBubbles(true);
