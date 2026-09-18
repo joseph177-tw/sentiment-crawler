@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+import time
 from pathlib import Path
 
 import requests
@@ -37,6 +38,42 @@ log = common.setup_logging("notify.telegram")
 
 TELEGRAM_API = "https://api.telegram.org/bot{token}/{method}"
 CAPTION_MAX_LEN = 1024  # Telegram sendDocument caption 上限
+MAX_RETRIES = 3
+RETRY_BACKOFF_SECONDS = 5
+
+
+def _post_with_retry(url: str, **kwargs) -> requests.Response | None:
+    """POST 加重試。Telegram API 偶爾會逾時／連線失敗（實際發生過：讀取
+    逾時 15 秒），這種暫時性網路問題不該讓整個排程 job 被標記失敗——資料
+    蒐集/清理/分析/存檔/commit 這些真正重要的步驟這時候都已經跑完了，通知
+    只是錦上添花，不該讓一次網路波動就讓整趟 run 在 Actions 歷史紀錄上
+    顯示紅色 X（之前 sentiment.py 的 LLM 批次分類也遇過類似「單一環節
+    暫時性失敗拖垮全部」的問題，修法同樣是重試 + 優雅降級）。重試幾次
+    還是失敗，才視為真的推播失敗（回傳 None），讓呼叫端記錄清楚的錯誤
+    訊息，而不是讓例外直接把整支程式炸成一段沒有脈絡的 traceback。
+
+    send_document() 會傳 files={"document": (檔名, file物件, mimetype)}；
+    如果第一次嘗試在檔案內容傳到一半時失敗，file 物件的讀取位置就不會在
+    開頭，重試時如果不 seek 回 0，會傳出被截斷的檔案。每次嘗試前都把
+    files 裡的檔案物件 seek 回開頭，對 send_message()（沒有 files 參數）
+    是無害的 no-op。"""
+    files = kwargs.get("files")
+    last_err = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        if files:
+            for value in files.values():
+                fileobj = value[1] if isinstance(value, tuple) else value
+                if hasattr(fileobj, "seek"):
+                    fileobj.seek(0)
+        try:
+            return requests.post(url, **kwargs)
+        except requests.exceptions.RequestException as e:
+            last_err = e
+            log.warning("Telegram API 連線失敗（第 %d/%d 次）：%s", attempt, MAX_RETRIES, e)
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_BACKOFF_SECONDS)
+    log.error("Telegram API 重試 %d 次仍失敗：%s", MAX_RETRIES, last_err)
+    return None
 
 
 def _html_escape(text: str) -> str:
@@ -97,7 +134,7 @@ def send_message(text: str, dry_run: bool = False) -> bool:
     if not token or not chat_id:
         raise RuntimeError("未設定 TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID 環境變數")
 
-    resp = requests.post(
+    resp = _post_with_retry(
         TELEGRAM_API.format(token=token, method="sendMessage"),
         json={
             "chat_id": chat_id,
@@ -107,6 +144,8 @@ def send_message(text: str, dry_run: bool = False) -> bool:
         },
         timeout=15,
     )
+    if resp is None:
+        return False
     if resp.status_code != 200:
         log.error("Telegram 推播失敗：%s %s", resp.status_code, resp.text)
         return False
@@ -128,12 +167,14 @@ def send_document(file_path: Path, caption: str, dry_run: bool = False) -> bool:
         caption = caption[:CAPTION_MAX_LEN - 1] + "…"
 
     with open(file_path, "rb") as f:
-        resp = requests.post(
+        resp = _post_with_retry(
             TELEGRAM_API.format(token=token, method="sendDocument"),
             data={"chat_id": chat_id, "caption": caption, "parse_mode": "HTML"},
             files={"document": (file_path.name, f, "text/html")},
             timeout=30,
         )
+    if resp is None:
+        return False
     if resp.status_code != 200:
         log.error("Telegram 附檔推播失敗：%s %s", resp.status_code, resp.text)
         return False
