@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社群輿情日報 · 2026-09-21</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+</style></head><body><nav class="topnav"><a href="index.html" class=active>日報</a><a href="weekly.html">週報</a><a href="keywords.html">關鍵字</a><a href="market.html">盤勢</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = 'stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>社群輿情日報</h1>
+  <div class="sub">資料日期 2026-09-21｜產生時間 2026-09-21 09:03（台北）｜來源：PTT / Dcard / 新聞 / 論壇</div>
+</header>
+
+<section><h2>摘要</h2>
+<div class="summary-cards">
+  <div class="card"><div class="n">30</div><div class="l">今日聲量（則）</div></div>
+  <div class="card"><div class="n up">10 (33.3%)</div><div class="l">正面</div></div>
+  <div class="card"><div class="n muted">12 (40.0%)</div><div class="l">中性</div></div>
+  <div class="card"><div class="n down">8 (26.7%)</div><div class="l">負面</div></div>
+</div></section>
+
+<section><h2>熱門話題 Top 10</h2>
+<table><tr><th>標題</th><th>摘要</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://tw.stock.yahoo.com/news/spacex%E9%82%A3%E6%8C%87100%E6%AC%8A%E9%87%8D%E5%8D%87%E8%87%B32-82-%E5%86%8D%E7%8D%B2nasa-9-46%E5%84%84%E7%BE%8E%E5%85%83%E8%BC%89%E4%BA%BA%E4%BB%BB%E5%8B%99%E5%90%88%E7%B4%84-004433802.html" target="_blank">SpaceX那指100權重升至2.82%，再獲NASA 9.46億美元載人任務合約</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">SpaceX權重大幅提升至2.82%，並獲NASA 9.46億美元載人任務合約。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/ai%E6%95%B8%E6%93%9A%E4%B8%AD%E5%BF%83%E5%82%AC%E7%86%B1%E9%95%B7%E6%99%82%E5%84%B2%E8%83%BD-%E7%BE%8E%E5%9C%8B%E9%A0%85%E7%9B%AE%E8%A6%8F%E6%A8%A1%E6%9A%B4%E5%A2%9E%E9%80%BE5%E5%80%8D-004340641.html" target="_blank">AI數據中心催熱長時儲能，美國項目規模暴增逾5倍</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">AI數據中心快速擴張帶動長時儲能商業化，美國儲能項目規模暴增逾5倍。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%9C%8B%E6%B3%B0%E9%87%919%E6%9C%88%E4%BF%A1%E5%BF%83%E8%AA%BF%E6%9F%A5-%E8%82%A1%E5%B8%82%E6%A8%82%E8%A7%80%E5%8F%8A%E9%A2%A8%E9%9A%AA%E5%81%8F%E5%A5%BD%E5%9B%9E%E5%8D%87-52-%E6%B0%91%E7%9C%BE%E7%9C%8Bgdp%E9%80%BE11-004313778.html" target="_blank">國泰金9月信心調查，股市樂觀及風險偏好回升，52%民眾看GDP逾11%</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">國泰金9月調查顯示民眾景氣樂觀，52%看好GDP超11%成長。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E9%AB%98%E5%BA%A6%E4%BE%9D%E8%B3%B4%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%A3%BD%E7%A8%8B-%E5%82%B3q4%E6%99%B6%E7%89%87%E6%BC%B2%E5%83%B910-amd%E8%82%A1%E5%83%B9%E4%B8%8A%E9%80%B1%E4%BA%94%E6%94%B6%E9%AB%982-7-004214352.html" target="_blank">高度依賴台積電製程＋傳Q4晶片漲價10%，AMD股價上週五收高2.7%</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">AMD傳計畫自2026年Q4調高晶片價格逾10%以反映台積電成本上升。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/iaea%E6%96%B0%E5%A2%9E11%E5%80%8B%E7%90%86%E4%BA%8B%E6%9C%83%E6%88%90%E5%93%A1%E5%9C%8B-%E5%B7%B4%E8%A5%BF-%E9%A6%AC%E4%BE%86%E8%A5%BF%E4%BA%9E%E7%AD%89%E5%85%A5%E5%88%97-%E4%BB%BB%E6%9C%9F%E8%87%B32028%E5%B9%B4-004158494.html" target="_blank">IAEA新增11個理事會成員國，巴西、馬來西亞等入列，任期至2028年</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">IAEA宣布11個新成員國加入理事會，任期至2028年。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E8%B1%90%E7%94%B0%E4%BC%B02028%E5%B9%B4%E8%B5%B7%E5%B7%A5%E5%BB%A0%E8%87%AA%E5%8B%95%E5%8C%96%E5%B9%B4%E6%94%AF%E5%87%BA%E4%B8%8A%E7%9C%8B1%E5%85%86%E6%97%A5%E5%9C%93-%E6%B6%B5%E8%93%8B%E9%9B%86%E5%9C%98%E8%88%87%E4%BE%9B%E6%87%89%E5%95%86-004003468.html" target="_blank">豐田估2028年起工廠自動化年支出上看1兆日圓，涵蓋集團與供應商</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">豐田估2028年起工廠自動化年支出上看1兆日圓涵蓋集團供應商。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E7%A1%AC%E9%AB%94%E6%94%B9%E8%A3%9D%E8%A7%A3%E9%8E%96%E7%AD%86%E9%9B%BB-rtx-5090-%E6%BD%9B%E8%83%BD-%E5%8A%9F%E8%80%97%E9%81%94-003923725.html" target="_blank">硬體改裝解鎖筆電 RTX 5090 潛能 功耗達 250W 效能飆四成</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">YouTuber改裝NVIDIA RTX 5090顯卡功耗增至250W效能提升四成。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/anthropic%E5%BB%B6%E8%87%B311%E6%9C%88ipo-%E6%93%AC%E8%97%89q3%E8%B2%A1%E5%A0%B1%E6%92%90%E8%85%B0-%E7%9B%AE%E6%A8%99%E4%BC%B0%E5%80%BC%E4%B8%8A%E7%9C%8B2%E5%85%86%E7%BE%8E%E5%85%83-003815062.html" target="_blank">Anthropic延至11月IPO，擬藉Q3財報撐腰，目標估值上看2兆美元</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">AI新創Anthropic延至11月IPO，目標估值上看2兆美元。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E6%B3%A2%E5%85%8B%E5%A4%8F%E5%AE%8C%E6%88%90%E4%B8%96%E4%BB%A3%E4%BA%A4%E6%A3%92-%E5%B7%B4%E8%8F%B2%E7%89%B9%E8%BD%89%E4%BB%BB%E5%90%8D%E8%AD%BD%E4%B8%BB%E5%B8%AD-%E6%83%9F%E5%B8%82%E5%A0%B4%E5%8F%8D%E6%87%89%E7%9B%B8%E5%B0%8D%E5%B9%B3%E6%B7%A1-003801434.html" target="_blank">波克夏完成世代交棒，巴菲特轉任名譽主席，惟市場反應相對平淡</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">巴菲特卸下波克夏董事會主席，市場反應相對平淡。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E8%BC%9D%E9%81%94%E8%BD%89%E6%8A%95nscale%E7%94%B3%E8%AB%8B%E7%BE%8E%E8%82%A1ipo-h1%E7%87%9F%E6%94%B6%E6%9A%B4%E5%A2%9E12%E5%80%8D%E4%BD%86%E8%99%A7%E6%90%8D%E6%93%B4%E8%87%B310-2%E5%84%84%E7%BE%8E%E5%85%83-003712678.html" target="_blank">輝達轉投Nscale申請美股IPO，H1營收暴增12倍但虧損擴至10.2億美元</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">輝達投資的Nscale申請美股IPO，H1營收暴增12倍但虧損擴至10.2億美元。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr></table></section>
+
+<section><h2>關鍵字雲</h2><div><a class="tag" style="font-size:27px" href="keywords.html#美元">美元</a><a class="tag" style="font-size:27px" href="keywords.html#AI">AI</a><a class="tag" style="font-size:25px" href="keywords.html#美股">美股</a><a class="tag" style="font-size:23px" href="keywords.html#全球">全球</a><a class="tag" style="font-size:23px" href="keywords.html#指數">指數</a><a class="tag" style="font-size:21px" href="keywords.html#市場">市場</a><a class="tag" style="font-size:19px" href="keywords.html#數據">數據</a><a class="tag" style="font-size:19px" href="keywords.html#中心">中心</a><a class="tag" style="font-size:19px" href="keywords.html#美國">美國</a><a class="tag" style="font-size:19px" href="keywords.html#暴增">暴增</a><a class="tag" style="font-size:19px" href="keywords.html#晶片">晶片</a><a class="tag" style="font-size:19px" href="keywords.html#價格">價格</a><a class="tag" style="font-size:19px" href="keywords.html#IPO">IPO</a><a class="tag" style="font-size:19px" href="keywords.html#估值">估值</a><a class="tag" style="font-size:19px" href="keywords.html#擴至">擴至</a><a class="tag" style="font-size:19px" href="keywords.html#升息">升息</a><a class="tag" style="font-size:19px" href="keywords.html#基金">基金</a><a class="tag" style="font-size:19px" href="keywords.html#最大">最大</a><a class="tag" style="font-size:19px" href="keywords.html#爆量">爆量</a><a class="tag" style="font-size:17px" href="keywords.html#儲能">儲能</a></div></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+情緒分類與話題摘要由 LLM（Claude API）逐則分析；互動分數為 PTT 推文數減噓文數，
+Dcard／新聞／論壇無推噓機制者以按讚數或留言數近似。本報告僅彙整公開社群資訊供個人研究參考，
+非公司正式輿情監測系統，亦非投資建議。
+</div></section>
+</div></body></html>
