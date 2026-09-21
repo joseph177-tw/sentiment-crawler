@@ -1,0 +1,169 @@
+{
+  "end_date": "2026-09-21",
+  "week_days": [
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-19",
+    "2026-09-20",
+    "2026-09-21"
+  ],
+  "this_week": {
+    "total": 518,
+    "positive": 96,
+    "neutral": 281,
+    "negative": 141
+  },
+  "prev_week": {
+    "total": 1259,
+    "positive": 367,
+    "neutral": 506,
+    "negative": 386
+  },
+  "volume_change_pct": -58.9,
+  "top_topics": [
+    {
+      "title": "[閒聊] 2026/09/16 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789518605.A.610.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 938,
+      "boo": 112,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/15 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789432242.A.87D.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 906,
+      "boo": 127,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/14 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789365632.A.BB3.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 811,
+      "boo": 98,
+      "mentions_company": 1
+    },
+    {
+      "title": "[閒聊] 2026/09/15 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789452003.A.B9F.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 792,
+      "boo": 113,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/09/16 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789538468.A.265.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 475,
+      "boo": 57,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 漢測（7856）抽籤38萬人搶1048張！中籤率",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789465553.A.419.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 260,
+      "boo": 11,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789397892.A.49C.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 239,
+      "boo": 30,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 獨家｜最大漁電共生「誠新綠能」爆20億黑",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789390859.A.205.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 231,
+      "boo": 27,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 警局傳憾事！疑投資失利負債　三重32歲",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789352094.A.C11.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 201,
+      "boo": 11,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 川普拋震撼彈！美伊戰爭若結束　可能留在",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789356395.A.271.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 231,
+      "boo": 41,
+      "mentions_company": 0
+    }
+  ],
+  "topic_gaps": [
+    {
+      "title": "[閒聊] 2026/09/14 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789365632.A.BB3.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 811,
+      "boo": 98
+    },
+    {
+      "title": "[新聞] 影／詭異對話曝！Meta AI問「後座兒童是",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789355363.A.3E4.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 181,
+      "boo": 40
+    },
+    {
+      "title": "[心得] 真的被台新數位帳戶噁心到了",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1784862274.A.249.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 134,
+      "boo": 4
+    },
+    {
+      "title": "[新聞] AI「急煞車」！科技股領跌美股重挫　小摩",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789449064.A.F65.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 48,
+      "boo": 7
+    },
+    {
+      "title": "Re: [標的] 上銀2049",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1789359194.A.FAD.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 34,
+      "boo": 1
+    }
+  ]
+}
