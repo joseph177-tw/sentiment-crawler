@@ -19,7 +19,7 @@ import csv
 import io
 import sys
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -59,8 +59,15 @@ def fetch_stock_list(offline: bool = False) -> dict[str, str]:
     return name_to_code
 
 
-def detect_mentions(name_to_code: dict[str, str], min_count: int = 1) -> dict[str, dict]:
-    """掃描 SQLite 累積貼文，回傳 {代號: {name, count, posts}}，依提及次數排序後由呼叫端截斷。"""
+def detect_mentions(name_to_code: dict[str, str], min_count: int = 1,
+                    recent_window_days: int = 30) -> dict[str, dict]:
+    """掃描 SQLite 累積貼文，回傳 {代號: {name, count, recent_count, posts}}，
+    依全歷史提及次數排序後由呼叫端截斷。
+
+    count 是開站以來的全部累積次數，只會增加不會減少，跑久了榜單會卡死在
+    早期衝上去的個股（就算後來完全沒人討論排名也不會掉）；recent_count 是
+    最近 recent_window_days 天內的提及次數，用來讓盤勢頁面能額外顯示「近期
+    真的在討論什麼」，兩個指標互補、不是互相替代。"""
     conn = get_conn()
     try:
         rows = conn.execute(
@@ -71,10 +78,14 @@ def detect_mentions(name_to_code: dict[str, str], min_count: int = 1) -> dict[st
     cols = ["title", "summary", "url", "platform", "board", "sentiment", "push", "boo", "day"]
     posts = [dict(zip(cols, row)) for row in rows]
 
+    tz = common.get_timezone()
+    recent_cutoff = (datetime.now(tz) - timedelta(days=recent_window_days)).strftime("%Y-%m-%d")
+
     # 名稱較長的個股優先比對，避免短名稱先命中蓋掉更精確的長名稱
     names_sorted = sorted(name_to_code.keys(), key=len, reverse=True)
 
     counts: Counter[str] = Counter()
+    recent_counts: Counter[str] = Counter()
     post_lists: dict[str, list[dict]] = {}
     for post in posts:
         text = f"{post['title'] or ''} {post['summary'] or ''}"
@@ -82,8 +93,11 @@ def detect_mentions(name_to_code: dict[str, str], min_count: int = 1) -> dict[st
         for name in names_sorted:
             if name in text:
                 matched_codes.add(name_to_code[name])
+        is_recent = (post.get("day") or "") >= recent_cutoff
         for code in matched_codes:
             counts[code] += 1
+            if is_recent:
+                recent_counts[code] += 1
             post_lists.setdefault(code, []).append(post)
 
     code_to_name = {v: k for k, v in name_to_code.items()}
@@ -94,7 +108,10 @@ def detect_mentions(name_to_code: dict[str, str], min_count: int = 1) -> dict[st
         ranked_posts = sorted(
             post_lists[code], key=lambda p: (p["push"] or 0) + (p["boo"] or 0), reverse=True
         )[:10]
-        result[code] = {"name": code_to_name[code], "count": count, "posts": ranked_posts}
+        result[code] = {
+            "name": code_to_name[code], "count": count,
+            "recent_count": recent_counts.get(code, 0), "posts": ranked_posts,
+        }
     return result
 
 
@@ -139,9 +156,11 @@ def run(offline: bool = False, top_n: int | None = None) -> Path:
     top_n = top_n or market_cfg.get("top_n", 200)
     price_range = market_cfg.get("price_range", "6mo")
     min_mention_count = market_cfg.get("min_mention_count", 1)
+    recent_window_days = market_cfg.get("recent_window_days", 30)
 
     name_to_code = fetch_stock_list(offline=offline)
-    mentions = detect_mentions(name_to_code, min_count=min_mention_count)
+    mentions = detect_mentions(name_to_code, min_count=min_mention_count,
+                               recent_window_days=recent_window_days)
 
     ranked = sorted(mentions.items(), key=lambda kv: kv[1]["count"], reverse=True)[:top_n]
     log.info("偵測到 %d 檔個股被提及，取前 %d 檔抓價格", len(mentions), len(ranked))
@@ -154,11 +173,13 @@ def run(offline: bool = False, top_n: int | None = None) -> Path:
             continue
         stocks.append({
             "code": code, "name": info["name"], "mention_count": info["count"],
+            "recent_mention_count": info["recent_count"],
             "posts": info["posts"], "prices": prices,
         })
 
     market_data = {
         "generated_at": datetime.now(common.get_timezone()).isoformat(),
+        "recent_window_days": recent_window_days,
         "stocks": stocks,
     }
     out_path = common.RAW_DIR / "market_data.json"

@@ -593,7 +593,8 @@ def _market_section(stock: dict) -> str:
     rows = "".join(_market_post_row(p) for p in stock["posts"])
     return f"""<section id="{code}">
 <h2><a href="stocks/{code}.html">{name}</a><span class="muted" style="font-weight:400;">（{code}）</span>
-<span class="badge" style="background:var(--accent); margin-left:8px;">貼文提及 {stock['mention_count']} 次</span>
+<span class="badge" style="background:var(--accent); margin-left:8px;">累積提及 {stock['mention_count']} 次</span>
+<span class="badge" style="background:#9fb3c8; margin-left:6px;">近期 {stock.get('recent_mention_count', 0)} 次</span>
 <a href="stocks/{code}.html" class="tag" style="margin-left:8px; font-size:12px;">詳細行情 →</a></h2>
 <div id="chart-{code}" style="height:360px;"></div>
 <h3 style="margin-top:14px;">相關貼文</h3>
@@ -602,15 +603,48 @@ def _market_section(stock: dict) -> str:
 </section>"""
 
 
+def _market_index_chips(stocks: list[dict], count_key: str) -> str:
+    ranked = sorted(stocks, key=lambda s: s.get(count_key, 0), reverse=True)
+    ranked = [s for s in ranked if s.get(count_key, 0) > 0]
+    return "".join(
+        f'<a class="tag" href="#{html.escape(s["code"])}">{html.escape(s["name"])} '
+        f'<span class="muted">({s[count_key]})</span></a>'
+        for s in ranked
+    ) or '<span class="muted">尚未偵測到任何個股提及</span>'
+
+
 def render_market_page(market_data: dict) -> str:
     stocks = market_data.get("stocks", [])
+    recent_window_days = market_data.get("recent_window_days", 30)
     generated_at = datetime.now(common.get_timezone()).strftime("%Y-%m-%d %H:%M")
 
-    index_chips = "".join(
-        f'<a class="tag" href="#{html.escape(s["code"])}">{html.escape(s["name"])} '
-        f'<span class="muted">({s["mention_count"]})</span></a>'
-        for s in stocks
-    ) or '<span class="muted">尚未偵測到任何個股提及</span>'
+    # 累積榜單（開站以來全部提及次數）跑久了會卡死在早期衝上去的個股——就算
+    # 後來完全沒人討論，排名還是紋風不動（2026-09-24 實測：一週前後前20名有
+    # 18檔完全相同，其中12檔提及次數一次都沒增加）。所以另外做一份「近N天」
+    # 的榜單，預設顯示這份、累積榜單用切換籤保留給想看整體討論度的情境。
+    recent_chips = _market_index_chips(stocks, "recent_mention_count")
+    cumulative_chips = _market_index_chips(stocks, "mention_count")
+    index_toggle = f"""<div style="margin-bottom:10px;">
+  <button type="button" class="badge market-tab-btn" data-tab="recent"
+          style="background:var(--accent); border:none; cursor:pointer; margin-right:6px;">近{recent_window_days}天熱門</button>
+  <button type="button" class="badge market-tab-btn" data-tab="cumulative"
+          style="background:#c9d3de; color:var(--ink); border:none; cursor:pointer;">累積熱門（開站以來）</button>
+</div>
+<div id="market-tab-recent">{recent_chips}</div>
+<div id="market-tab-cumulative" hidden>{cumulative_chips}</div>
+<script>
+document.querySelectorAll('.market-tab-btn').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    const active = btn.dataset.tab;
+    document.getElementById('market-tab-recent').hidden = active !== 'recent';
+    document.getElementById('market-tab-cumulative').hidden = active !== 'cumulative';
+    document.querySelectorAll('.market-tab-btn').forEach(b => {{
+      b.style.background = b.dataset.tab === active ? 'var(--accent)' : '#c9d3de';
+      b.style.color = b.dataset.tab === active ? '#fff' : 'var(--ink)';
+    }});
+  }});
+}});
+</script>"""
 
     sections = "".join(_market_section(s) for s in stocks)
 
@@ -674,13 +708,17 @@ Object.entries(MARKET_DATA).forEach(([code, stock]) => {{
   ＋ Yahoo Finance 歷史價格</div>
 </header>
 
-<section><h2>索引</h2><div>{index_chips}</div></section>
+<section><h2>索引</h2>{index_toggle}</section>
 
 {sections}
 
 <section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
 個股偵測範圍為 TWSE 上市股票（不含上櫃 TPEx），比對方式為貼文標題／摘要與 TWSE 證券
-名稱的子字串比對，非官方全稱比對，可能有漏抓或極少數誤判。K 線圖為近半年日 K，
+名稱的子字串比對，非官方全稱比對，可能有漏抓或極少數誤判。索引分「近{recent_window_days}天熱門」
+與「累積熱門（開站以來）」兩個榜單：累積榜單是全部歷史提及次數的加總，只會增加不會
+減少，早期衝上去的個股就算後來沒人討論、排名也不會掉；近{recent_window_days}天榜單只算
+最近這段期間的提及次數，比較能反映「最近真的在討論什麼」。兩者都收錄「累積提及次數
+達門檻」的個股，差別只在排序/篩選用哪個時間範圍的次數。K 線圖為近半年日 K，
 資料來源 Yahoo Finance，非即時報價（有延遲），僅供研究參考，非投資建議。
 </div></section>
 </div>
