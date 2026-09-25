@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社群輿情日報 · 2026-09-25</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+</style></head><body><nav class="topnav"><a href="index.html" class=active>日報</a><a href="weekly.html">週報</a><a href="keywords.html">關鍵字</a><a href="market.html">盤勢</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = 'stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>社群輿情日報</h1>
+  <div class="sub">資料日期 2026-09-25｜產生時間 2026-09-25 09:24（台北）｜來源：PTT / Dcard / 新聞 / 論壇</div>
+</header>
+
+<section><h2>摘要</h2>
+<div class="summary-cards">
+  <div class="card"><div class="n">30</div><div class="l">今日聲量（則）</div></div>
+  <div class="card"><div class="n up">7 (23.3%)</div><div class="l">正面</div></div>
+  <div class="card"><div class="n muted">16 (53.3%)</div><div class="l">中性</div></div>
+  <div class="card"><div class="n down">7 (23.3%)</div><div class="l">負面</div></div>
+</div></section>
+
+<section><h2>熱門話題 Top 10</h2>
+<table><tr><th>標題</th><th>摘要</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://tw.stock.yahoo.com/news/%E4%BA%9E%E9%A6%AC%E9%81%9C%E6%93%B4%E5%A4%A7%E7%BE%8E%E5%9C%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E8%A3%BD%E9%80%A0%E6%8A%95%E8%B3%87-%E5%9B%A0%E6%87%89%E4%BE%9B%E6%87%89%E9%8F%88%E9%87%8D%E7%B5%84%E8%88%87%E8%87%AA%E5%8B%95%E5%8C%96%E8%B6%A8%E5%8B%A2-005327728.html" target="_blank">亞馬遜擴大美國機器人製造投資 因應供應鏈重組與自動化趨勢</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">亞馬遜在美國印第安納州投資1億美元建設機器人製造工廠。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E4%BF%A0%E7%9B%9C%E7%8D%B5%E8%BB%8A%E6%89%8Bvi%E9%A0%90%E8%B3%BCps5%E5%A3%93%E5%80%92%E6%80%A7%E5%8B%9D%E5%87%BA-xbox%E5%85%A7%E9%83%A8%E6%B5%AE%E7%8F%BE%E6%93%94%E6%86%82-005223349.html" target="_blank">俠盜獵車手VI預購PS5壓倒性勝出 Xbox內部浮現擔憂</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">《俠盜獵車手VI》預購數據顯示PS5壓倒性勝出，Xbox內部表達擔憂。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/%E6%A5%B5%E7%B0%A1%E9%BB%91%E7%99%BD%E8%89%B2%E7%B3%BB%E8%A1%A3%E8%A4%B2-%E6%A2%85%E8%98%AD%E5%A6%AE%E9%9B%85%E5%9C%8B%E5%AE%B4%E8%A3%9D%E6%89%AE%E5%BC%95%E9%97%9C%E6%B3%A8-001901208.html" target="_blank">極簡黑白色系衣褲　梅蘭妮雅國宴裝扮引關注</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">美國第一夫人梅蘭妮雅穿著黑白極簡風格國宴裝扮引發關注。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%A4%A9%E6%A0%B9%E5%AE%87%E8%88%AA%E6%93%AC%E5%8B%9F3%E5%84%84%E7%BE%8E%E5%85%83%E8%A1%9D%E5%88%BA%E8%88%AA%E5%A4%AA-%E7%BE%8E%E9%A2%A8%E6%8A%95benchmark%E9%A6%96%E6%8A%95%E5%8D%B0%E5%BA%A6-004542282.html" target="_blank">天根宇航擬募3億美元衝刺航太 美風投Benchmark首投印度</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">印度航太新創天根宇航融資目標達2.8至3億美元，美風投Blackstone首投。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E6%9C%AC%E7%94%B0%E5%82%B3%E6%96%A5%E5%B7%A8%E8%B3%87%E6%96%BC%E4%BF%84%E4%BA%A5%E4%BF%84%E5%B7%9E-%E5%A2%9E%E5%BB%BA%E6%B7%B7%E8%83%BD%E8%BB%8A%E5%BB%A0%E9%A0%90%E8%A8%882030%E5%B9%B4%E6%8A%95%E7%94%A2-004415120.html" target="_blank">本田傳斥巨資於俄亥俄州 增建混能車廠預計2030年投產</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">本田計畫在美國俄亥俄州投資興建混能車廠，預計2030年投產。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E4%B8%AD%E6%9D%B1%E5%B1%80%E5%8B%A2%E6%93%BE%E5%8B%95%E6%B2%B9%E5%B8%82-%E8%B6%8A%E5%8D%97ron95%E6%B1%BD%E6%B2%B9%E6%AF%8F%E5%85%AC%E5%8D%87%E8%AA%BF%E6%BC%B2%E8%87%B327080%E8%B6%8A%E5%8D%97%E7%9B%BE-003722872.html" target="_blank">中東局勢擾動油市 越南RON95汽油每公升調漲至27080越南盾</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">中東局勢影響油市，越南RON95汽油價格調漲至每公升27080越南盾。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/ai%E7%86%B1%E6%BD%AE%E4%B8%8D%E6%98%AF%E9%9B%A8%E9%9C%B2%E5%9D%87%E9%9C%91-%E7%A7%91%E6%8A%80%E5%BB%A0%E5%85%A9%E6%A5%B5%E5%8C%96%E7%99%BC%E5%B1%95-003423314.html" target="_blank">AI熱潮不是雨露均霑　科技廠兩極化發展</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">AI熱潮帶動半導體產值超前達成1兆美元，輝達、台積電等廠商受惠。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E9%BB%91%E7%9F%B3%E6%8E%A8%E9%BB%91%E7%9F%B3%E9%9B%86%E5%9C%98%E6%B0%B8%E7%BA%8C%E5%9F%BA%E9%87%91-%E6%95%B4%E5%90%88%E5%A4%9A%E5%85%83%E5%8F%A6%E9%A1%9E%E8%B3%87%E7%94%A2-003108166.html" target="_blank">黑石推黑石集團永續基金 整合多元另類資產</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">黑石推出黑石集團永續基金，整合多元另類資產。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/2026-09-25-rti%E7%B2%BE%E9%81%B8%E6%96%B0%E8%81%9E-003009176.html" target="_blank">2026/09/25 Rti精選新聞</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">台灣最低工資調升至月薪3萬900元，789萬人健保費月均增繳26元。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E7%B4%8D%E7%B6%AD%E5%BA%B7%E5%90%8D%E7%A8%B1%E7%94%B1-%E5%A4%A0%E9%BA%BB%E5%90%89%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-%E6%9B%B4%E5%90%8D%E7%82%BA-%E7%B4%8D%E7%B6%AD%E5%BA%B7%E7%94%9F%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-001921781.html" target="_blank">【公告】納維康名稱由「夠麻吉股份有限公司」更名為「納維康生技股份有限公司」，公告期間：115年6月29日至115年9月28日</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">納維康股份有限公司由「夠麻吉股份有限公司」正式更名為「納維康生技股份有限公司」。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr></table></section>
+
+<section><h2>關鍵字雲</h2><div><a class="tag" style="font-size:27px" href="keywords.html#AI">AI</a><a class="tag" style="font-size:27px" href="keywords.html#美國">美國</a><a class="tag" style="font-size:27px" href="keywords.html#更名">更名</a><a class="tag" style="font-size:27px" href="keywords.html#股票">股票</a><a class="tag" style="font-size:27px" href="keywords.html#面額">面額</a><a class="tag" style="font-size:27px" href="keywords.html#新台幣">新台幣</a><a class="tag" style="font-size:23px" href="keywords.html#美元">美元</a><a class="tag" style="font-size:23px" href="keywords.html#科技">科技</a><a class="tag" style="font-size:23px" href="keywords.html#世紀">世紀</a><a class="tag" style="font-size:21px" href="keywords.html#投資">投資</a><a class="tag" style="font-size:21px" href="keywords.html#新高">新高</a><a class="tag" style="font-size:19px" href="keywords.html#中東">中東</a><a class="tag" style="font-size:19px" href="keywords.html#越南">越南</a><a class="tag" style="font-size:19px" href="keywords.html#黑石">黑石</a><a class="tag" style="font-size:19px" href="keywords.html#元變">元變</a><a class="tag" style="font-size:19px" href="keywords.html#天意">天意</a><a class="tag" style="font-size:19px" href="keywords.html#設備">設備</a><a class="tag" style="font-size:19px" href="keywords.html#白宮">白宮</a><a class="tag" style="font-size:19px" href="keywords.html#習近">習近</a><a class="tag" style="font-size:19px" href="keywords.html#衝擊">衝擊</a></div></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+情緒分類與話題摘要由 LLM（Claude API）逐則分析；互動分數為 PTT 推文數減噓文數，
+Dcard／新聞／論壇無推噓機制者以按讚數或留言數近似。本報告僅彙整公開社群資訊供個人研究參考，
+非公司正式輿情監測系統，亦非投資建議。
+</div></section>
+</div></body></html>
