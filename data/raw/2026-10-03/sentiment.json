@@ -1,0 +1,542 @@
+[
+  {
+    "id": "b6f4a7e9a0806058",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "【宜蘭買房超夯？專家驚揭4大地雷 沒注意小心賠慘】",
+    "content": "不動產講師、宜蘭不動產經紀人及地政士邱明芳警告，外地人到宜蘭買房，最容易忽略4大關鍵細節，包括雨天看屋、土地分區與違建風險、房貸趨嚴的財務規劃，以及生活機能與通勤成本，沒注意小心賠慘。",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:30:56 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E3%80%90%E5%AE%9C%E8%98%AD%E8%B2%B7%E6%88%BF%E8%B6%85%E5%A4%AF%EF%BC%9F%E5%B0%88%E5%AE%B6%E9%A9%9A%E6%8F%AD4%E5%A4%A7%E5%9C%B0%E9%9B%B7-%E6%B2%92%E6%B3%A8%E6%84%8F%E5%B0%8F%E5%BF%83%E8%B3%A0%E6%85%98%E3%80%91-013056645.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "negative",
+    "topic": "不動產投資風險",
+    "mentions_company": false,
+    "summary": "專家警告外地人在宜蘭買房需注意雨天看屋、土地分區、房貸審核等四大地雷。"
+  },
+  {
+    "id": "721ae4d4d890efe8",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "以太坊 Layer-2 營運困難 Blast 因成本高於收益宣布關閉",
+    "content": "商傳媒｜方承業／綜合外電報導作為以太坊（Ethereum）區塊鏈的第二層擴容解決方案（Layer-2），Blast 網路近日宣布將停止運作，原因是其營運成本已超越所能帶來的收益，難以維持長期的經濟可行",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:27:00 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E4%BB%A5%E5%A4%AA%E5%9D%8A-layer-2-%E7%87%9F%E9%81%8B%E5%9B%B0%E9%9B%A3-blast-012700102.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "negative",
+    "topic": "加密貨幣產業動態",
+    "mentions_company": false,
+    "summary": "以太坊Layer-2擴容方案Blast因營運成本超過收益而宣布關閉。"
+  },
+  {
+    "id": "d592edabca4e3b9c",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "Canary Capital 修正 PEPE ETF 申請案 預示加密市場信心回升",
+    "content": "圖／本報資料庫商傳媒｜方承業／綜合外電報導資產管理公司 Canary Capital 近期已修正向美國證管會（SEC）提交的 PEPE 指數股票型基金（ETF）申請文件。這項原於 2026 年 4 月",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:26:41 GMT",
+    "url": "https://tw.stock.yahoo.com/news/canary-capital-%E4%BF%AE%E6%AD%A3-pepe-etf-012641895.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "加密貨幣產業動態",
+    "mentions_company": false,
+    "summary": "Canary Capital修正PEPE ETF申請案，預示加密市場信心逐漸回升。"
+  },
+  {
+    "id": "816e12240a64d13f",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "蘋果與高通延長晶片合作 高通勾勒個人化 AI 願景",
+    "content": "圖／示意圖商傳媒｜責任編輯／綜合外電報導根據《Silicon Valley》報導，科技巨擘蘋果（Apple）與半導體大廠高通（Qualcomm）達成一項出乎市場意料的協議，雙方將延長行動數據晶片授權協",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:18:25 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E8%98%8B%E6%9E%9C%E8%88%87%E9%AB%98%E9%80%9A%E5%BB%B6%E9%95%B7%E6%99%B6%E7%89%87%E5%90%88%E4%BD%9C-%E9%AB%98%E9%80%9A%E5%8B%BE%E5%8B%92%E5%80%8B%E4%BA%BA%E5%8C%96-ai-%E9%A1%98%E6%99%AF-011825774.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "科技產業合作",
+    "mentions_company": false,
+    "summary": "蘋果與高通達成出乎意料的協議，將延長行動晶片授權合作。"
+  },
+  {
+    "id": "93919806025100bd",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "Ripple總裁現身韓國區塊鏈週 揭示XRP亞洲生態系布局",
+    "content": "圖／示意圖商傳媒｜吳承岳／台北報導Ripple Labs總裁Monica Long今日將於大韓民國首爾舉行的年度韓國區塊鏈週（Korea Blockchain Week）發表重要演說，聚焦機構金融領域",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:08:31 GMT",
+    "url": "https://tw.stock.yahoo.com/news/ripple%E7%B8%BD%E8%A3%81%E7%8F%BE%E8%BA%AB%E9%9F%93%E5%9C%8B%E5%8D%80%E5%A1%8A%E9%8F%88%E9%80%B1-%E6%8F%AD%E7%A4%BAxrp%E4%BA%9E%E6%B4%B2%E7%94%9F%E6%85%8B%E7%B3%BB%E5%B8%83%E5%B1%80-010831233.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "加密貨幣產業動態",
+    "mentions_company": false,
+    "summary": "Ripple總裁於韓國區塊鏈週演說，揭示XRP在亞洲的生態系布局計畫。"
+  },
+  {
+    "id": "fbbffbb805b71a58",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "巴克萊非洲集團創非洲首例 助機構客戶託管比特幣",
+    "content": "圖／示意圖商傳媒｜吳承岳／台北報導南非金融服務集團巴克萊非洲集團（Absa）已成為非洲大陸首家提供比特幣（Bitcoin）託管服務的銀行。這項創新服務於今年 9 月 21 日啟動，利用區塊鏈公司 Ri",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:04:30 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%B7%B4%E5%85%8B%E8%90%8A%E9%9D%9E%E6%B4%B2%E9%9B%86%E5%9C%98%E5%89%B5%E9%9D%9E%E6%B4%B2%E9%A6%96%E4%BE%8B-%E5%8A%A9%E6%A9%9F%E6%A7%8B%E5%AE%A2%E6%88%B6%E8%A8%97%E7%AE%A1%E6%AF%94%E7%89%B9%E5%B9%A3-010430245.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "金融服務創新",
+    "mentions_company": false,
+    "summary": "巴克萊非洲集團成為非洲首家提供比特幣託管服務的銀行。"
+  },
+  {
+    "id": "95e8920c267b8510",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "獨家／千禧年BBS小說家！18年後為何變「紅豆哥」？吳啟慎揭關鍵....",
+    "content": "論壇中心／綜合報導從BBS時代的網路小說家「cleanmoon」，到打造紅豆水爆紅的生技創業家，吳啟慎看似不斷跨界，核心卻始終是「創作與解決問題」。他享受從無到有的過程，將紅豆水研發推向國際大獎，如今",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 01:00:00 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E7%8D%A8%E5%AE%B6-%E5%8D%83%E7%A6%A7%E5%B9%B4bbs%E5%B0%8F%E8%AA%AA%E5%AE%B6-18%E5%B9%B4%E5%BE%8C%E7%82%BA%E4%BD%95%E8%AE%8A-%E7%B4%85%E8%B1%86%E5%93%A5-%E5%90%B3%E5%95%9F%E6%85%8E%E6%8F%AD%E9%97%9C%E9%8D%B5-010000958.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "創業人物專訪",
+    "mentions_company": false,
+    "summary": "前網路小說家吳啟慎創辦紅豆水事業，體現從無到有的創作精神。"
+  },
+  {
+    "id": "d29891474fba8795",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "雞肉大跌、炸雞為何不降價？韓國業者喊冤",
+    "content": "[NOWNEWS今日新聞]韓國雞肉價格近半年大幅下跌，但炸雞價格卻幾乎沒有跟著降，引發消費者對價格結構的質疑，連總統李在明也關注，聲稱會好好了解狀況。不過也有當地炸雞業者喊冤，強調除了雞肉原料外，還有",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:51:10 GMT",
+    "url": "https://tw.news.yahoo.com/%E9%9B%9E%E8%82%89%E5%A4%A7%E8%B7%8C-%E7%82%B8%E9%9B%9E%E7%82%BA%E4%BD%95%E4%B8%8D%E9%99%8D%E5%83%B9-%E9%9F%93%E5%9C%8B%E6%A5%AD%E8%80%85%E5%96%8A%E5%86%A4-005110884.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "negative",
+    "topic": "食品價格",
+    "mentions_company": false,
+    "summary": "韓國雞肉價格大跌五成，炸雞價格卻未跟降，引發消費者與總統關注。"
+  },
+  {
+    "id": "9eab0e91ec631e59",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "摩根士丹利策略師警示：五大巨頭獨撐標普500，股市恐回檔5-10%",
+    "content": "圖／本報資料庫商傳媒｜方承業／綜合外電報導摩根士丹利（Morgan Stanley）首席美國股票策略師 Mike Wilson 日前提出警示，若債券市場波動性未能穩定，美國股市標普500指數（S&P",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:49:57 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E6%91%A9%E6%A0%B9%E5%A3%AB%E4%B8%B9%E5%88%A9%E7%AD%96%E7%95%A5%E5%B8%AB%E8%AD%A6%E7%A4%BA-%E4%BA%94%E5%A4%A7%E5%B7%A8%E9%A0%AD%E7%8D%A8%E6%92%90%E6%A8%99%E6%99%AE500-%E8%82%A1%E5%B8%82%E6%81%90%E5%9B%9E%E6%AA%945-10-004957259.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "negative",
+    "topic": "股市預警",
+    "mentions_company": false,
+    "summary": "摩根士丹利策略師警示，五大巨頭過度支撐標普500，恐面臨5-10%回檔。"
+  },
+  {
+    "id": "6684ab08e0dbb07d",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "無人機威脅與烏戰陰影下 拉脫維亞舉行國會大選",
+    "content": "波羅的海3國之一的拉脫維亞今天(3日)舉行國會大選，支持烏克蘭的現任總理庫爾柏格斯(Andris Kulbergs)有望繼續執政，但嚴重的政治分歧可能使得籌組政府變得更加困難。 在當局對俄羅斯可能發動",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:47:57 GMT",
+    "url": "https://tw.news.yahoo.com/%E7%84%A1%E4%BA%BA%E6%A9%9F%E5%A8%81%E8%84%85%E8%88%87%E7%83%8F%E6%88%B0%E9%99%B0%E5%BD%B1%E4%B8%8B-%E6%8B%89%E8%84%AB%E7%B6%AD%E4%BA%9E%E8%88%89%E8%A1%8C%E5%9C%8B%E6%9C%83%E5%A4%A7%E9%81%B8-004757266.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "地緣政治",
+    "mentions_company": false,
+    "summary": "拉脫維亞舉行國會大選，現任親烏克蘭總理有望續任，惟政治分歧複雜。"
+  },
+  {
+    "id": "aa7fabe7d72867a9",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "跟進軍公教　公股行庫明年平均調薪幅度上看4%",
+    "content": "（中央社記者呂晏慈台北2026年10月3日電）軍公教人員明年將調薪4%，多家公股銀行計畫跟進，以進一步強化人才競爭力及共享經營成果，包括兆豐銀已規劃「調幅不低於軍公教平均水準」，其餘行庫也將參考經營績",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:46:40 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E8%B7%9F%E9%80%B2%E8%BB%8D%E5%85%AC%E6%95%99-%E5%85%AC%E8%82%A1%E8%A1%8C%E5%BA%AB%E6%98%8E%E5%B9%B4%E5%B9%B3%E5%9D%87%E8%AA%BF%E8%96%AA%E5%B9%85%E5%BA%A6%E4%B8%8A%E7%9C%8B4-004640285.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "人事薪酬政策",
+    "mentions_company": false,
+    "summary": "公股銀行明年跟進軍公教調薪4%，兆豐銀已規劃調幅不低於此水準。"
+  },
+  {
+    "id": "d8d3bb5fee0e78e9",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "「王者榮耀」KPL總決賽千萬獎金開打 挑戰賽戰績即時看",
+    "content": "圖／本報資料庫商傳媒｜責任編輯／綜合外電報導全球手機遊戲「王者榮耀」（Honor of Kings）最高殿堂——KPL Grand Finals 2026已於昨日盛大開打，賽事總獎金高達近 1050",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:44:13 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E7%8E%8B%E8%80%85%E6%A6%AE%E8%80%80-kpl%E7%B8%BD%E6%B1%BA%E8%B3%BD%E5%8D%83%E8%90%AC%E7%8D%8E%E9%87%91%E9%96%8B%E6%89%93-%E6%8C%91%E6%88%B0%E8%B3%BD%E6%88%B0%E7%B8%BE%E5%8D%B3%E6%99%82%E7%9C%8B-004413078.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "遊戲競賽",
+    "mentions_company": false,
+    "summary": "王者榮耀KPL總決賽開打，賽事總獎金近1050萬元。"
+  },
+  {
+    "id": "e6a7100ca5fd8aac",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "比特幣礦商Riot Platforms償清債務 轉型AI高效運算成新焦點",
+    "content": "圖／本報資料庫商傳媒｜責任編輯／綜合外電報導加密貨幣礦業公司 Riot Platforms, Inc. 近日宣布，已全數償還與 Coinbase Credit, Inc. 之間高達 2 億美元的信用貸",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:43:48 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E6%AF%94%E7%89%B9%E5%B9%A3%E7%A4%A6%E5%95%86riot-platforms%E5%84%9F%E6%B8%85%E5%82%B5%E5%8B%99-%E8%BD%89%E5%9E%8Bai%E9%AB%98%E6%95%88%E9%81%8B%E7%AE%97%E6%88%90%E6%96%B0%E7%84%A6%E9%BB%9E-004348007.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "企業財務動態",
+    "mentions_company": false,
+    "summary": "比特幣礦商Riot Platforms償清2億美元債務，轉型AI運算領域。"
+  },
+  {
+    "id": "104b8704f92a75dd",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "白宮首席經濟顧問：料聯準會今年不再升息",
+    "content": "白宮CEA主席Chris Phelan稱，9月就業疲弱與通膨放緩下，Fed今年不會再升息。 美國9月新增就業2.9萬人、失業率升至4.2%；Phelan指經濟每月僅需增約4萬職位。 PCE 8月降至3",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:40:03 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E7%99%BD%E5%AE%AE%E9%A6%96%E5%B8%AD%E7%B6%93%E6%BF%9F%E9%A1%A7%E5%95%8F-%E6%96%99%E8%81%AF%E6%BA%96%E6%9C%83%E4%BB%8A%E5%B9%B4%E4%B8%8D%E5%86%8D%E5%8D%87%E6%81%AF-004003149.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "總體經濟",
+    "mentions_company": false,
+    "summary": "白宮經濟顧問預測Fed今年不再升息，基於就業疲弱與通膨放緩。"
+  },
+  {
+    "id": "8b827403f031557b",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "吉利48億入股蔚來能源、持股30%　專家按讚：中國「反內卷」樣本",
+    "content": "蔚來與吉利合作換電及充電業務；吉利以易易互聯100%股權加6.4億現金認購蔚來能源新股，持股30%，投後估值約160億元 蔚來再以現金認購吉利浩瀚能源新股持股10%，資金將用於購買部分充電資產；兩案待",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:30:53 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%90%89%E5%88%A948%E5%84%84%E5%85%A5%E8%82%A1%E8%94%9A%E4%BE%86%E8%83%BD%E6%BA%90-%E6%8C%81%E8%82%A130-%E5%B0%88%E5%AE%B6%E6%8C%89%E8%AE%9A-%E4%B8%AD%E5%9C%8B-%E5%8F%8D%E5%85%A7%E5%8D%B7-003053282.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "產業合作動態",
+    "mentions_company": false,
+    "summary": "吉利以48億投資蔚來能源持股30%，強化新能源充換電合作。"
+  },
+  {
+    "id": "55d93511f51df7e3",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "手遊玩家與串流族注意！NordVPN 教你安全防護公共 Wi-Fi",
+    "content": "圖／本報資料庫商傳媒｜責任編輯／綜合外電報導對於手機遊戲玩家和串流影音愛好者而言，公共 Wi-Fi 雖然方便，卻潛藏資安風險。由於這些開放網路的安全性普遍較低，裝置與個人資料可能暴露於密碼竊取、資料窺",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:25:16 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E6%89%8B%E9%81%8A%E7%8E%A9%E5%AE%B6%E8%88%87%E4%B8%B2%E6%B5%81%E6%97%8F%E6%B3%A8%E6%84%8F-nordvpn-%E6%95%99%E4%BD%A0%E5%AE%89%E5%85%A8%E9%98%B2%E8%AD%B7%E5%85%AC%E5%85%B1-wi-fi-002516051.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "資安防護",
+    "mentions_company": false,
+    "summary": "NordVPN提示手遊玩家與串流族使用公共Wi-Fi的資安風險防護。"
+  },
+  {
+    "id": "342d81290cd675af",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "三星 Galaxy S26 系列多國調漲 記憶體成本成壓力",
+    "content": "商傳媒｜葉安庭／綜合外電報導根據《My Mobile India》報導，三星（Samsung）已於近日宣布調漲其 Galaxy S26 系列智慧型手機在美國、英國、歐洲、加拿大及印度等多個主要市場的售",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:22:14 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E4%B8%89%E6%98%9F-galaxy-s26-%E7%B3%BB%E5%88%97%E5%A4%9A%E5%9C%8B%E8%AA%BF%E6%BC%B2-%E8%A8%98%E6%86%B6%E9%AB%94%E6%88%90%E6%9C%AC%E6%88%90%E5%A3%93%E5%8A%9B-002214745.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "negative",
+    "topic": "產品價格調整",
+    "mentions_company": false,
+    "summary": "三星Galaxy S26系列在多國調漲，記憶體成本成主要壓力。"
+  },
+  {
+    "id": "14700332a7595556",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "G7計劃釋出戰略儲備  柴油價格大跌",
+    "content": "（中央社紐約2026年10月2日綜合外電報導）七大工業國集團（G7）表示，將釋出緊急儲備以緩解能源成本飆升給消費者帶來的部分壓力，柴油價格今天大跌。歐洲柴油價格一度暴跌逾8%，隨後收斂跌幅；美國柴油期",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:17:16 GMT",
+    "url": "https://tw.stock.yahoo.com/news/g7%E8%A8%88%E5%8A%83%E9%87%8B%E5%87%BA%E6%88%B0%E7%95%A5%E5%84%B2%E5%82%99-%E6%9F%B4%E6%B2%B9%E5%83%B9%E6%A0%BC%E5%A4%A7%E8%B7%8C-001716520.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "能源政策",
+    "mentions_company": false,
+    "summary": "G7計劃釋出戰略儲備緩解能源成本，柴油價格大幅下跌逾8%。"
+  },
+  {
+    "id": "2933145fb2053706",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "就業數據欠佳降低聯準會升息機率　美股收紅",
+    "content": "（中央社紐約2026年10月2日綜合外電報導）美國新出爐就業數據不如預期理想，降低聯邦準備理事會（Fed）10月升息機率，加上油價拉回，美股今天收紅。道瓊工業指數終場上漲250.40點，或0.49%，",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:17:14 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%B0%B1%E6%A5%AD%E6%95%B8%E6%93%9A%E6%AC%A0%E4%BD%B3%E9%99%8D%E4%BD%8E%E8%81%AF%E6%BA%96%E6%9C%83%E5%8D%87%E6%81%AF%E6%A9%9F%E7%8E%87-%E7%BE%8E%E8%82%A1%E6%94%B6%E7%B4%85-001714367.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "股市表現",
+    "mentions_company": false,
+    "summary": "美股收紅，就業數據欠佳降低Fed升息機率，道指上漲0.49%。"
+  },
+  {
+    "id": "e7bc128f05b9dcd5",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "美媒：川普擬任命國家情報總監克雷頓擔任「AI沙皇」",
+    "content": "（中央社華盛頓2026年10月2日綜合外電報導）有線電視新聞網（CNN）和其他美國媒體今天報導，美國總統川普預計將任命國家情報總監克雷頓（JayClayton）擔任白宮新的「AI沙皇」。哥倫比亞廣播公",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:17:12 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E5%AA%92-%E5%B7%9D%E6%99%AE%E6%93%AC%E4%BB%BB%E5%91%BD%E5%9C%8B%E5%AE%B6%E6%83%85%E5%A0%B1%E7%B8%BD%E7%9B%A3%E5%85%8B%E9%9B%B7%E9%A0%93%E6%93%94%E4%BB%BB-ai%E6%B2%99%E7%9A%87-001712259.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "政策人事",
+    "mentions_company": false,
+    "summary": "川普擬任命國家情報總監克雷頓擔任白宮「AI沙皇」新職位。"
+  },
+  {
+    "id": "62668a072963240b",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "特斯拉全球電動車銷售量優於預期　股價勁揚",
+    "content": "（中央社紐約2026年10月2日綜合外電報導）電動車製造商特斯拉（Tesla）表示，第三季全球電動車銷售量雖較去年同期下滑，但高於市場預期，消息公布後，特斯拉股價今天勁揚。法新社報導，億萬富豪馬斯克（",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:16:10 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E7%89%B9%E6%96%AF%E6%8B%89%E5%85%A8%E7%90%83%E9%9B%BB%E5%8B%95%E8%BB%8A%E9%8A%B7%E5%94%AE%E9%87%8F%E5%84%AA%E6%96%BC%E9%A0%90%E6%9C%9F-%E8%82%A1%E5%83%B9%E5%8B%81%E6%8F%9A-001610624.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "股價表現",
+    "mentions_company": false,
+    "summary": "特斯拉第三季銷售量超預期，股價勁揚。"
+  },
+  {
+    "id": "2f20f5aaf8d791e2",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "油價拉回和升息預期降低　歐股收紅",
+    "content": "（中央社倫敦2026年10月2日綜合外電報導）七大工業國集團（G7）同意大規模釋出燃料儲備，國際油價下挫，加上美國公布9月就業成長趨緩，讓外界對聯準會10月升息預期降低，歐洲股市今天收紅。倫敦FTSE",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:15:08 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E6%B2%B9%E5%83%B9%E6%8B%89%E5%9B%9E%E5%92%8C%E5%8D%87%E6%81%AF%E9%A0%90%E6%9C%9F%E9%99%8D%E4%BD%8E-%E6%AD%90%E8%82%A1%E6%94%B6%E7%B4%85-001508599.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "總體經濟",
+    "mentions_company": false,
+    "summary": "油價下跌升息預期降低，歐股收紅。"
+  },
+  {
+    "id": "923bde74b9681d5f",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "遏制燃料價格　G7同意4個月釋出1億桶柴油及原油",
+    "content": "（中央社巴(黎)2026年10月2日綜合外電報導）美國施壓要求遏制燃料價格上漲後，七大工業國集團（G7）今天宣布，已經同意於未來4個月內釋出1億桶柴油和原油儲備。法國總統馬克宏（Emmanuel Ma",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:14:06 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E9%81%8F%E5%88%B6%E7%87%83%E6%96%99%E5%83%B9%E6%A0%BC-g7%E5%90%8C%E6%84%8F4%E5%80%8B%E6%9C%88%E9%87%8B%E5%87%BA1%E5%84%84%E6%A1%B6%E6%9F%B4%E6%B2%B9%E5%8F%8A%E5%8E%9F%E6%B2%B9-001406401.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "總體經濟",
+    "mentions_company": false,
+    "summary": "G7同意4個月釋出1億桶油品以遏制燃料價格。"
+  },
+  {
+    "id": "25355a937ba1e423",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "【公告】沛爾生醫*-創股票面額由「新台幣10元」變更為「新台幣0.5元」，公告期間：115年08月06日至115年11月05日。",
+    "content": "日 期：2026年10月03日公司名稱：沛爾生醫*-創(6949)主 旨：沛爾生醫*-創股票面額由「新台幣10元」變更為「新台幣0.5元」，公告期間：115年08月06日至115年11月05日。發言人",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:14:04 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E6%B2%9B%E7%88%BE%E7%94%9F%E9%86%AB-%E5%89%B5%E8%82%A1%E7%A5%A8%E9%9D%A2%E9%A1%8D%E7%94%B1-%E6%96%B0%E5%8F%B0%E5%B9%A310%E5%85%83-%E8%AE%8A%E6%9B%B4%E7%82%BA-001404211.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "產業動態",
+    "mentions_company": false,
+    "summary": "沛爾生醫股票面額由10元變更為0.5元。"
+  },
+  {
+    "id": "686c916730519f5b",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "【公告】仁新*股票面額由「新台幣10元」變更為「新台幣1元」，公告期間：115年8月5日至115年11月4日。",
+    "content": "日 期：2026年10月03日公司名稱：仁新*(6696)主 旨：仁新*股票面額由「新台幣10元」變更為「新台幣1元」，公告期間：115年8月5日至115年11月4日。發言人：王正琪說 明：1.事實發",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:14:02 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E4%BB%81%E6%96%B0-%E8%82%A1%E7%A5%A8%E9%9D%A2%E9%A1%8D%E7%94%B1-%E6%96%B0%E5%8F%B0%E5%B9%A310%E5%85%83-%E8%AE%8A%E6%9B%B4%E7%82%BA-001402267.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "產業動態",
+    "mentions_company": false,
+    "summary": "仁新股票面額由10元變更為1元。"
+  },
+  {
+    "id": "6228547d70b84104",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "【公告】強生*股票面額由「新台幣10元」變更為「新台幣5元」公告期間：115年7月22日至115年10月21日",
+    "content": "日 期：2026年10月03日公司名稱：強生*(4747)主 旨：強生*股票面額由「新台幣10元」變更為「新台幣5元」公告期間：115年7月22日至115年10月21日發言人：林俊巍說 明：1.事實發",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:14:00 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E5%BC%B7%E7%94%9F-%E8%82%A1%E7%A5%A8%E9%9D%A2%E9%A1%8D%E7%94%B1-%E6%96%B0%E5%8F%B0%E5%B9%A310%E5%85%83-%E8%AE%8A%E6%9B%B4%E7%82%BA-001400899.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "產業動態",
+    "mentions_company": false,
+    "summary": "強生股票面額由10元變更為5元。"
+  },
+  {
+    "id": "e40df8fa29adc565",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "因應觀光大增　京都巴士擬設「非市民」票價",
+    "content": "[NOWNEWS今日新聞]新冠疫情解封後，日本是全球旅客造訪的熱門國度之一，京都等城市更迎來大量觀光熱潮，卻也給在地人帶來不少困擾。據悉，京都市擬為市營公車推出「市民優先價格」，未來同一班公車可能出現",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:13:48 GMT",
+    "url": "https://tw.news.yahoo.com/%E5%9B%A0%E6%87%89%E8%A7%80%E5%85%89%E5%A4%A7%E5%A2%9E-%E4%BA%AC%E9%83%BD%E5%B7%B4%E5%A3%AB%E6%93%AC%E8%A8%AD-%E9%9D%9E%E5%B8%82%E6%B0%91-%E7%A5%A8%E5%83%B9-001348720.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "產業動態",
+    "mentions_company": false,
+    "summary": "京都巴士擬設市民與非市民差異票價因應觀光人潮。"
+  },
+  {
+    "id": "15a01a0d986c3024",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "【公告】天意能創名稱由「宏易創新國際股份有限公司」更名為「天意能創股份有限公司」，公告期間：115年7月09日至115年10月08日。",
+    "content": "日 期：2026年10月03日公司名稱：天意能創(4530)主 旨：天意能創名稱由「宏易創新國際股份有限公司」更名為「天意能創股份有限公司」，公告期間：115年7月09日至115年10月08日。發言人",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:12:58 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E5%A4%A9%E6%84%8F%E8%83%BD%E5%89%B5%E5%90%8D%E7%A8%B1%E7%94%B1-%E5%AE%8F%E6%98%93%E5%89%B5%E6%96%B0%E5%9C%8B%E9%9A%9B%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-%E6%9B%B4%E5%90%8D%E7%82%BA-%E5%A4%A9%E6%84%8F%E8%83%BD%E5%89%B5%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-001258134.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "產業動態",
+    "mentions_company": false,
+    "summary": "天意能創公司名稱由宏易創新國際更名。"
+  },
+  {
+    "id": "c460c1c6ec6e68f6",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "【公告】世紀風電名稱由「世紀離岸風電設備股份有限公司」更名為「世紀能源設備股份有限公司」，公告期間：115年8月26日至115年11月25日。",
+    "content": "日 期：2026年10月03日公司名稱：世紀風電(2072)主 旨：世紀風電名稱由「世紀離岸風電設備股份有限公司」更名為「世紀能源設備股份有限公司」，公告期間：115年8月26日至115年11月25日",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:12:55 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E4%B8%96%E7%B4%80%E9%A2%A8%E9%9B%BB%E5%90%8D%E7%A8%B1%E7%94%B1-%E4%B8%96%E7%B4%80%E9%9B%A2%E5%B2%B8%E9%A2%A8%E9%9B%BB%E8%A8%AD%E5%82%99%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-%E6%9B%B4%E5%90%8D%E7%82%BA-%E4%B8%96%E7%B4%80%E8%83%BD%E6%BA%90%E8%A8%AD%E5%82%99%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-001255905.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "neutral",
+    "topic": "產業動態",
+    "mentions_company": false,
+    "summary": "世紀風電公司名稱更名為世紀能源設備。"
+  },
+  {
+    "id": "71c4124ae1f3f62a",
+    "platform": "News",
+    "board": "Yahoo奇摩財經",
+    "title": "輝達股價創歷史新高市值達 5.7 兆美元 AI 晶片需求續帶動成長",
+    "content": "商傳媒｜方承業／綜合外電報導全球人工智慧（AI）晶片龍頭輝達（Nvidia）股價上週五（10月2日）收盤寫下歷史新高，市場價值約達 5.7 兆美元。這股漲勢主要受惠於 AI 晶片持續強勁的需求以及公司",
+    "author": "",
+    "timestamp": "Sat, 03 Oct 2026 00:11:35 GMT",
+    "url": "https://tw.stock.yahoo.com/news/%E8%BC%9D%E9%81%94%E8%82%A1%E5%83%B9%E5%89%B5%E6%AD%B7%E5%8F%B2%E6%96%B0%E9%AB%98%E5%B8%82%E5%80%BC%E9%81%94-5-7-%E5%85%86%E7%BE%8E%E5%85%83-ai-001135532.html",
+    "engagement": {
+      "push": 0,
+      "boo": 0
+    },
+    "sentiment": "positive",
+    "topic": "股價表現",
+    "mentions_company": false,
+    "summary": "輝達股價創歷史新高，市值達5.7兆美元。"
+  }
+]
