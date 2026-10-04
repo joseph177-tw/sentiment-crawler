@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社群輿情日報 · 2026-10-04</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+</style></head><body><nav class="topnav"><a href="index.html" class=active>日報</a><a href="weekly.html">週報</a><a href="keywords.html">關鍵字</a><a href="market.html">盤勢</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = 'stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>社群輿情日報</h1>
+  <div class="sub">資料日期 2026-10-04｜產生時間 2026-10-04 10:39（台北）｜來源：PTT / Dcard / 新聞 / 論壇</div>
+</header>
+
+<section><h2>摘要</h2>
+<div class="summary-cards">
+  <div class="card"><div class="n">30</div><div class="l">今日聲量（則）</div></div>
+  <div class="card"><div class="n up">6 (20.0%)</div><div class="l">正面</div></div>
+  <div class="card"><div class="n muted">19 (63.3%)</div><div class="l">中性</div></div>
+  <div class="card"><div class="n down">5 (16.7%)</div><div class="l">負面</div></div>
+</div></section>
+
+<section><h2>熱門話題 Top 10</h2>
+<table><tr><th>標題</th><th>摘要</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://tw.news.yahoo.com/%E5%87%BA%E7%9B%A3%E5%B0%B1%E6%A5%AD%E4%B8%8D%E8%84%AB%E7%AF%80-%E7%9F%AF%E6%AD%A3%E7%BD%B2%E6%8E%A8%E5%8B%95%E8%81%B7%E8%A8%93%E8%88%87%E5%9C%A8%E5%9C%B0%E7%94%A2%E6%A5%AD%E6%8E%A5%E8%BB%8C-020000120.html" target="_blank">出監就業不脫節 矯正署推動職訓與在地產業接軌</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">法務部矯正署調整職訓課程，使收容人出監技能與在地產業需求接軌。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E5%BC%B7%E7%94%9F-%E8%82%A1%E7%A5%A8%E9%9D%A2%E9%A1%8D%E7%94%B1-%E6%96%B0%E5%8F%B0%E5%B9%A310%E5%85%83-%E8%AE%8A%E6%9B%B4%E7%82%BA-014913474.html" target="_blank">【公告】強生*股票面額由「新台幣10元」變更為「新台幣5元」公告期間：115年7月22日至115年10月21日</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">強生股票面額由10元變更為5元，公告期間為115年7月至10月。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E4%BB%81%E6%96%B0-%E8%82%A1%E7%A5%A8%E9%9D%A2%E9%A1%8D%E7%94%B1-%E6%96%B0%E5%8F%B0%E5%B9%A310%E5%85%83-%E8%AE%8A%E6%9B%B4%E7%82%BA-014911340.html" target="_blank">【公告】仁新*股票面額由「新台幣10元」變更為「新台幣1元」，公告期間：115年8月5日至115年11月4日。</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">仁新股票面額由10元變更為1元，公告期間為115年8月至11月。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E6%B2%9B%E7%88%BE%E7%94%9F%E9%86%AB-%E5%89%B5%E8%82%A1%E7%A5%A8%E9%9D%A2%E9%A1%8D%E7%94%B1-%E6%96%B0%E5%8F%B0%E5%B9%A310%E5%85%83-%E8%AE%8A%E6%9B%B4%E7%82%BA-014909819.html" target="_blank">【公告】沛爾生醫*-創股票面額由「新台幣10元」變更為「新台幣0.5元」，公告期間：115年08月06日至115年11月05日。</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">沛爾生醫股票面額由10元變更為0.5元，公告期間為115年8月至11月。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E9%87%8D%E9%87%8F%E7%B4%9A%E6%B3%95%E8%AA%AA%E6%9C%83%E7%99%BB%E5%A0%B4-%E6%B3%95%E4%BA%BA-%E9%9C%87%E7%9B%AA%E7%9B%A4%E5%A0%85-014907067.html" target="_blank">台股重量級法說會登場　法人：震盪盤堅</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">台股續創新高，美股全面上揚，法人預期本週除受美股影響外，營收公布為關注焦點。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/%E8%83%A1%E5%A1%9E%E6%AD%A6%E8%A3%9D%E7%A8%B1%E6%94%BB%E6%93%8A%E9%98%BF%E7%BE%8E%E7%9F%B3%E6%B2%B9%E8%A8%AD%E6%96%BD-%E7%81%AB%E5%85%89%E6%BF%83%E7%85%99%E7%AB%84%E5%87%BA-014646717.html" target="_blank">胡塞武裝稱攻擊阿美石油設施　火光濃煙竄出</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">親伊朗胡塞武裝宣稱以飛彈及無人機攻擊沙烏地阿美石油設施。</td><td class="num">—</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/%E7%BD%95%E8%A6%8B%E9%BE%8D%E6%8D%B2%E9%A2%A8%E4%BE%B5%E8%A5%B2%E6%BE%B3%E6%B4%B2%E5%9F%8E%E9%8E%AE-%E5%BA%97%E5%AE%B6%E8%A2%AB%E8%BF%AB%E6%8F%90%E5%89%8D%E6%89%93%E7%83%8A%E6%B8%85%E7%90%86-014102316.html" target="_blank">罕見龍捲風侵襲澳洲城鎮 店家被迫提前打烊清理</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">澳洲烏拉杜拉鎮遭龍捲風侵襲，導致商家損毀被迫提前打烊清理。</td><td class="num">—</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%A4%A7%E7%9B%A4%E7%99%BB%E9%A0%82%E8%AA%B0%E6%9C%80%E8%B3%BA-18%E6%AA%94etf%E5%90%8C%E5%89%B5%E6%96%B0%E9%AB%98-%E4%B8%BB%E5%8B%95%E5%BC%8F-%E5%B8%82%E5%80%BC%E5%9E%8B-%E6%B5%B7%E5%A4%96%E7%A7%91%E6%8A%80%E5%85%A8%E4%B8%8A%E6%A6%9C-012003133.html" target="_blank">大盤登頂誰最賺？18檔ETF同創新高 主動式、市值型、海外科技全上榜</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">台股創新高時18檔ETF同步創高，主動式、市值型、海外科技ETF全上榜。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/ai%E7%86%B1%E6%BD%AE%E6%8E%A8%E5%8D%873c%E5%83%B9%E6%A0%BC-%E8%88%8A%E6%AC%BE%E9%99%8D%E5%83%B9%E6%99%82%E4%BB%A3%E6%81%90%E5%91%8A%E7%B5%82-010004713.html" target="_blank">AI熱潮推升3C價格 舊款降價時代恐告終</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">AI熱潮推升3C產品成本上漲，舊款降價時代恐告終，消費電子面臨漲價壓力。</td><td class="num">—</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/%E8%BF%911500%E5%90%8D%E7%B7%AC%E7%94%B8%E7%A7%BB%E6%B0%91%E9%81%AD%E9%81%A3%E8%BF%94-%E5%B0%87%E5%BE%9E%E5%A4%A7%E9%A6%AC%E8%BF%94%E6%8A%B5%E6%88%B0%E7%81%AB%E8%B9%82%E8%BA%AA%E5%AE%B6%E9%84%89-005554644.html" target="_blank">近1500名緬甸移民遭遣返 將從大馬返抵戰火蹂躪家鄉</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">近1500名緬甸移民從馬來西亞被遣返回國，返回飽受戰火蹂躪的家鄉。</td><td class="num">—</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr></table></section>
+
+<section><h2>關鍵字雲</h2><div><a class="tag" style="font-size:27px" href="keywords.html#股票">股票</a><a class="tag" style="font-size:27px" href="keywords.html#面額">面額</a><a class="tag" style="font-size:27px" href="keywords.html#新台幣">新台幣</a><a class="tag" style="font-size:23px" href="keywords.html#元變">元變</a><a class="tag" style="font-size:23px" href="keywords.html#公司">公司</a><a class="tag" style="font-size:23px" href="keywords.html#台幣">台幣</a><a class="tag" style="font-size:21px" href="keywords.html#ETF">ETF</a><a class="tag" style="font-size:21px" href="keywords.html#AI">AI</a><a class="tag" style="font-size:21px" href="keywords.html#世紀">世紀</a><a class="tag" style="font-size:19px" href="keywords.html#強生">強生</a><a class="tag" style="font-size:19px" href="keywords.html#仁新">仁新</a><a class="tag" style="font-size:19px" href="keywords.html#沛爾生醫">沛爾生醫</a><a class="tag" style="font-size:19px" href="keywords.html#天意">天意</a><a class="tag" style="font-size:19px" href="keywords.html#能創">能創</a><a class="tag" style="font-size:19px" href="keywords.html#更名">更名</a><a class="tag" style="font-size:17px" href="keywords.html#新高">新高</a><a class="tag" style="font-size:17px" href="keywords.html#美股">美股</a><a class="tag" style="font-size:17px" href="keywords.html#伊朗">伊朗</a><a class="tag" style="font-size:17px" href="keywords.html#美國">美國</a><a class="tag" style="font-size:17px" href="keywords.html#升息">升息</a></div></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+情緒分類與話題摘要由 LLM（Claude API）逐則分析；互動分數為 PTT 推文數減噓文數，
+Dcard／新聞／論壇無推噓機制者以按讚數或留言數近似。本報告僅彙整公開社群資訊供個人研究參考，
+非公司正式輿情監測系統，亦非投資建議。
+</div></section>
+</div></body></html>

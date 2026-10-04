@@ -102,8 +102,8 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 </script></nav><div class="wrap">
 <header>
   <h1>卓越<span class="muted" style="font-weight:400; font-size:16px;">（2496）</span></h1>
-  <div class="sub"><a href="../market.html">← 回盤勢總覽</a>｜資料時間 20261002 10:02:30
-  （台北）｜產生時間 2026-10-03 10:03</div>
+  <div class="sub"><a href="../market.html">← 回盤勢總覽</a>｜資料時間 20261004 10:38:01
+  （台北）｜產生時間 2026-10-04 10:39</div>
 </header>
 
 <section>
@@ -111,7 +111,7 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
   <div class="n muted" style="font-size:34px;">55.10</div>
   <div class="muted" style="font-size:16px;">+0.00 (+0.00%)</div>
 </div>
-<div class="summary-cards"><div class="card"><div class="n" style="font-size:18px;">55.00</div><div class="l">開盤</div></div><div class="card"><div class="n" style="font-size:18px;">55.40</div><div class="l">最高</div></div><div class="card"><div class="n" style="font-size:18px;">54.30</div><div class="l">最低</div></div><div class="card"><div class="n" style="font-size:18px;">60.60</div><div class="l">漲停</div></div><div class="card"><div class="n" style="font-size:18px;">49.60</div><div class="l">跌停</div></div><div class="card"><div class="n" style="font-size:18px;">16</div><div class="l">總量（張）</div></div></div>
+<div class="summary-cards"><div class="card"><div class="n" style="font-size:18px;">60.60</div><div class="l">漲停</div></div><div class="card"><div class="n" style="font-size:18px;">49.60</div><div class="l">跌停</div></div></div>
 </section>
 
 <section><h2>走勢圖與技術指標</h2>
@@ -144,7 +144,7 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 
 <section><h2>三大法人買賣超</h2><div class="role" style="margin-bottom:8px;">最新資料日期 2026-10-02</div><div class="summary-cards" style="margin-bottom:14px;"><div class="card"><div class="n up" style="font-size:16px;">+2 張</div><div class="l">外資買賣超</div></div><div class="card"><div class="n muted" style="font-size:16px;">+0 張</div><div class="l">投信買賣超</div></div><div class="card"><div class="n muted" style="font-size:16px;">+0 張</div><div class="l">自營商買賣超</div></div><div class="card"><div class="n up" style="font-size:16px;">+2 張</div><div class="l">三大法人合計</div></div></div><div id="inst-chart-2496" style="height:220px;"></div></section>
 
-<section><h2>估值指標</h2><div class="muted">尚無估值資料</div></section>
+<section><h2>估值指標</h2><div class="summary-cards"><div class="card"><div class="n" style="font-size:18px;">9.15</div><div class="l">本益比</div></div><div class="card"><div class="n" style="font-size:18px;">9.07%</div><div class="l">殖利率</div></div><div class="card"><div class="n" style="font-size:18px;">1.26</div><div class="l">股價淨值比</div></div></div></section>
 
 <section><h2>融資融券餘額</h2><div class="summary-cards">
   <div class="card"><div class="n" style="font-size:18px;">33</div><div class="l">融資餘額（張）</div>
@@ -361,7 +361,7 @@ window.addEventListener('resize', () => {
 });
 
 (function() {
-  const data = [{"date": "2026-09-30", "foreign": 1000, "trust": 0, "dealer": 0, "total": 1000}, {"date": "2026-10-01", "foreign": -1000, "trust": 0, "dealer": 0, "total": -1000}, {"date": "2026-10-02", "foreign": 1900, "trust": 0, "dealer": 0, "total": 1900}];
+  const data = [{"date": "2026-09-03", "foreign": 2000, "trust": 0, "dealer": 0, "total": 2000}, {"date": "2026-09-04", "foreign": 0, "trust": 0, "dealer": 0, "total": 0}, {"date": "2026-09-07", "foreign": 3000, "trust": 0, "dealer": 0, "total": 3000}, {"date": "2026-09-08", "foreign": -827, "trust": 0, "dealer": 0, "total": -827}, {"date": "2026-09-09", "foreign": -3000, "trust": 0, "dealer": 0, "total": -3000}, {"date": "2026-09-10", "foreign": 1050, "trust": 0, "dealer": 0, "total": 1050}, {"date": "2026-09-11", "foreign": -2000, "trust": 0, "dealer": 0, "total": -2000}, {"date": "2026-09-14", "foreign": -1000, "trust": 0, "dealer": 0, "total": -1000}, {"date": "2026-09-17", "foreign": -1000, "trust": 0, "dealer": 0, "total": -1000}, {"date": "2026-09-21", "foreign": -2000, "trust": 0, "dealer": 1000, "total": -1000}, {"date": "2026-09-23", "foreign": 1000, "trust": 0, "dealer": 0, "total": 1000}, {"date": "2026-09-30", "foreign": 1000, "trust": 0, "dealer": 0, "total": 1000}, {"date": "2026-10-01", "foreign": -1000, "trust": 0, "dealer": 0, "total": -1000}, {"date": "2026-10-02", "foreign": 1900, "trust": 0, "dealer": 0, "total": 1900}];
   const el = document.getElementById('inst-chart-2496');
   if (!el || !data.length) return;
   const chart = echarts.init(el);
