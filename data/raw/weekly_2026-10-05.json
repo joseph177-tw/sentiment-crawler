@@ -1,0 +1,145 @@
+{
+  "end_date": "2026-10-05",
+  "week_days": [
+    "2026-09-29",
+    "2026-09-30",
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-05"
+  ],
+  "this_week": {
+    "total": 180,
+    "positive": 57,
+    "neutral": 86,
+    "negative": 37
+  },
+  "prev_week": {
+    "total": 210,
+    "positive": 58,
+    "neutral": 117,
+    "negative": 35
+  },
+  "volume_change_pct": -14.3,
+  "top_topics": [
+    {
+      "title": "房貸保證人｜連帶保證、一般保證差很大　最長15年責任一次看懂",
+      "url": "https://tw.stock.yahoo.com/news/%E6%88%BF%E8%B2%B8%E4%BF%9D%E8%AD%89%E4%BA%BA%EF%BD%9C%E9%80%A3%E5%B8%B6%E4%BF%9D%E8%AD%89%E3%80%81%E4%B8%80%E8%88%AC%E4%BF%9D%E8%AD%89%E5%B7%AE%E5%BE%88%E5%A4%A7-%E6%9C%80%E9%95%B715%E5%B9%B4%E8%B2%AC%E4%BB%BB%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82-022349792.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "創意「關禁閉」首日下跌逾5% 分析師：靜待處置結束",
+      "url": "https://tw.stock.yahoo.com/news/%E5%89%B5%E6%84%8F%E3%80%8C%E9%97%9C%E7%A6%81%E9%96%89%E3%80%8D%E9%A6%96%E6%97%A5%E4%B8%8B%E8%B7%8C%E9%80%BE5-%E5%88%86%E6%9E%90%E5%B8%AB%EF%BC%9A%E9%9D%9C%E5%BE%85%E8%99%95%E7%BD%AE%E7%B5%90%E6%9D%9F-022321001.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "美禁令催出「中國版輝達」？華為揭「三年AI晶片藍圖」，強項與隱憂一次看",
+      "url": "https://tw.news.yahoo.com/%E7%BE%8E%E7%A6%81%E4%BB%A4%E5%82%AC%E5%87%BA%E3%80%8C%E4%B8%AD%E5%9C%8B%E7%89%88%E8%BC%9D%E9%81%94%E3%80%8D%EF%BC%9F%E8%8F%AF%E7%82%BA%E6%8F%AD%E3%80%8C%E4%B8%89%E5%B9%B4ai%E6%99%B6%E7%89%87%E8%97%8D%E5%9C%96%E3%80%8D%EF%BC%8C%E5%BC%B7%E9%A0%85%E8%88%87%E9%9A%B1%E6%86%82%E4%B8%80%E6%AC%A1%E7%9C%8B-021836133.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "韓國財長示警公債殖利率過快上升，必要時將回購國債",
+      "url": "https://tw.stock.yahoo.com/news/%E9%9F%93%E5%9C%8B%E8%B2%A1%E9%95%B7%E7%A4%BA%E8%AD%A6%E5%85%AC%E5%82%B5%E6%AE%96%E5%88%A9%E7%8E%87%E9%81%8E%E5%BF%AB%E4%B8%8A%E5%8D%87-%E5%BF%85%E8%A6%81%E6%99%82%E5%B0%87%E5%9B%9E%E8%B3%BC%E5%9C%8B%E5%82%B5-021822012.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "中小型股接棒！櫃買逆勢翻紅走揚 分析師：中秋連假後內資回補",
+      "url": "https://tw.stock.yahoo.com/news/%E4%B8%AD%E5%B0%8F%E5%9E%8B%E8%82%A1%E6%8E%A5%E6%A3%92%EF%BC%81%E6%AB%83%E8%B2%B7%E9%80%86%E5%8B%A2%E7%BF%BB%E7%B4%85%E8%B5%B0%E6%8F%9A-%E5%88%86%E6%9E%90%E5%B8%AB%EF%BC%9A%E4%B8%AD%E7%A7%8B%E9%80%A3%E5%81%87%E5%BE%8C%E5%85%A7%E8%B3%87%E5%9B%9E%E8%A3%9C-021554583.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "positive",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "片山皋月重申日圓遭低估，日美將加強合作穩定匯市",
+      "url": "https://tw.stock.yahoo.com/news/%E7%89%87%E5%B1%B1%E7%9A%8B%E6%9C%88%E9%87%8D%E7%94%B3%E6%97%A5%E5%9C%93%E9%81%AD%E4%BD%8E%E4%BC%B0-%E6%97%A5%E7%BE%8E%E5%B0%87%E5%8A%A0%E5%BC%B7%E5%90%88%E4%BD%9C%E7%A9%A9%E5%AE%9A%E5%8C%AF%E5%B8%82-021316809.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "AI自主行動風險升高　輝達出手設防",
+      "url": "https://tw.news.yahoo.com/ai%E8%87%AA%E4%B8%BB%E8%A1%8C%E5%8B%95%E9%A2%A8%E9%9A%AA%E5%8D%87%E9%AB%98-%E8%BC%9D%E9%81%94%E5%87%BA%E6%89%8B%E8%A8%AD%E9%98%B2-021102880.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "特斯拉FSD歐洲擴展受阻 法規與路況成難題",
+      "url": "https://tw.stock.yahoo.com/news/%E7%89%B9%E6%96%AF%E6%8B%89fsd%E6%AD%90%E6%B4%B2%E6%93%B4%E5%B1%95%E5%8F%97%E9%98%BB-%E6%B3%95%E8%A6%8F%E8%88%87%E8%B7%AF%E6%B3%81%E6%88%90%E9%9B%A3%E9%A1%8C-021050879.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "金融科技Fiserv財報顯疲態 分析師：市場錯判非本業衰退",
+      "url": "https://tw.stock.yahoo.com/news/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80fiserv%E8%B2%A1%E5%A0%B1%E9%A1%AF%E7%96%B2%E6%85%8B-%E5%88%86%E6%9E%90%E5%B8%AB-%E5%B8%82%E5%A0%B4%E9%8C%AF%E5%88%A4%E9%9D%9E%E6%9C%AC%E6%A5%AD%E8%A1%B0%E9%80%80-020942373.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "希音季獲利驟減67%，在港股價早盤急跌近6%",
+      "url": "https://tw.stock.yahoo.com/news/%E5%B8%8C%E9%9F%B3%E5%AD%A3%E7%8D%B2%E5%88%A9%E9%A9%9F%E6%B8%9B67-%E5%9C%A8%E6%B8%AF%E8%82%A1%E5%83%B9%E6%97%A9%E7%9B%A4%E6%80%A5%E8%B7%8C%E8%BF%916-020857834.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    }
+  ],
+  "topic_gaps": [
+    {
+      "title": "節後補跌！元大陸股2倍槓桿ETF爆量大跌近5% 11檔同步沈淪",
+      "url": "https://tw.stock.yahoo.com/news/%E7%AF%80%E5%BE%8C%E8%A3%9C%E8%B7%8C%EF%BC%81%E5%85%83%E5%A4%A7%E9%99%B8%E8%82%A12%E5%80%8D%E6%A7%93%E6%A1%BFetf%E7%88%86%E9%87%8F%E5%A4%A7%E8%B7%8C%E8%BF%915-11%E6%AA%94%E5%90%8C%E6%AD%A5%E6%B2%88%E6%B7%AA-015115035.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "push": 0,
+      "boo": 0
+    },
+    {
+      "title": "賣老股認新股？凱基金現增行情失靈股價下挫3% 分析師這麼看",
+      "url": "https://tw.stock.yahoo.com/news/%E8%B3%A3%E8%80%81%E8%82%A1%E8%AA%8D%E6%96%B0%E8%82%A1%EF%BC%9F%E5%87%B1%E5%9F%BA%E9%87%91%E7%8F%BE%E5%A2%9E%E8%A1%8C%E6%83%85%E5%A4%B1%E9%9D%88%E8%82%A1%E5%83%B9%E4%B8%8B%E6%8C%AB3-%E5%88%86%E6%9E%90%E5%B8%AB%E9%80%99%E9%BA%BC%E7%9C%8B-014226483.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "push": 0,
+      "boo": 0
+    }
+  ]
+}
