@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社群輿情日報 · 2026-10-09</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+</style></head><body><nav class="topnav"><a href="index.html" class=active>日報</a><a href="weekly.html">週報</a><a href="keywords.html">關鍵字</a><a href="market.html">盤勢</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = 'stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>社群輿情日報</h1>
+  <div class="sub">資料日期 2026-10-09｜產生時間 2026-10-09 11:01（台北）｜來源：PTT / Dcard / 新聞 / 論壇</div>
+</header>
+
+<section><h2>摘要</h2>
+<div class="summary-cards">
+  <div class="card"><div class="n">30</div><div class="l">今日聲量（則）</div></div>
+  <div class="card"><div class="n up">12 (40.0%)</div><div class="l">正面</div></div>
+  <div class="card"><div class="n muted">15 (50.0%)</div><div class="l">中性</div></div>
+  <div class="card"><div class="n down">3 (10.0%)</div><div class="l">負面</div></div>
+</div></section>
+
+<section><h2>熱門話題 Top 10</h2>
+<table><tr><th>標題</th><th>摘要</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://tw.news.yahoo.com/rti%E7%B2%BE%E9%81%B8%E5%B0%88%E9%A1%8C%E5%B0%8E%E8%AE%80-z%E4%B8%96%E4%BB%A3%E6%80%92%E5%90%BC-%E6%B3%95%E5%9C%8B%E5%AD%B8%E7%94%9F%E6%8A%97%E8%AD%B0%E6%81%90-%E5%B7%A6%E5%8F%B3-2027%E5%A4%A7%E9%81%B8-023000158.html" target="_blank">Rti精選專題導讀／Z世代怒吼 法國學生抗議恐「左右」2027大選</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">法國Z世代學生抗議活動擴大，可能影響2027年大選走向。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.news.yahoo.com/%E4%B9%98%E5%AE%A2%E6%A9%9F%E4%B8%8A-%E7%8F%BE%E5%8C%85-%E7%94%9C%E9%BB%9E-%E7%B6%B2-%E7%9C%BC%E8%AA%8D%E5%87%BA%E6%B3%B0%E5%9C%8B%E5%90%8D%E7%89%A9-021305921.html" target="_blank">乘客機上「現包」甜點　網一眼認出泰國名物</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">乘客機上包泰國甜點，引發網友熱議和開玩笑。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E7%84%A1%E4%BA%BA%E6%A9%9F%E7%A0%94%E7%99%BC%E8%A3%9C%E5%8A%A9%E6%93%B4%E5%A4%A7-%E7%B6%93%E9%83%A8%E6%A0%B8%E5%AE%9A27%E6%A1%88%E6%BC%A2%E7%BF%94%E7%8D%B21%E5%84%84%E6%9C%80%E5%A4%9A-021232658.html" target="_blank">無人機研發補助擴大　經部核定27案漢翔獲1億最多</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">經濟部核定27案無人機研發補助，漢翔獲最高1億元補助。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E6%8A%8A%E9%97%9C%E8%B7%A8%E5%A2%83%E7%B6%B2%E8%B3%BC%E9%9B%BB%E5%99%A8%E5%AE%89%E5%85%A8-%E6%A8%99%E6%BA%96%E5%B1%80%E5%B9%B4%E8%99%95%E7%90%86%E8%BF%912%E8%90%AC%E4%BB%B6%E9%81%95%E8%A6%8F%E5%95%86%E5%93%81%E7%B6%B2%E9%A0%81-021129469.html" target="_blank">把關跨境網購電器安全　標準局年處理近2萬件違規商品網頁</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">標準檢驗局年處理近2萬件跨境網購電器違規網頁。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/ai%E6%8E%80%E7%BC%BA%E8%B2%A8%E6%BD%AE%E5%8F%B2%E4%B8%8A%E9%A6%96%E8%A6%8B-%E8%A8%98%E6%86%B6%E9%AB%94%E5%BB%A0%E7%A0%B86744%E5%84%84%E5%85%83%E5%8F%B0%E7%81%A3%E6%93%B4%E7%94%A2-021027644.html" target="_blank">AI掀缺貨潮史上首見　記憶體廠砸6744億元台灣擴產</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">AI熱潮導致記憶體供應緊張，廠商砸千億元擴產至2027年。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%91%8A%E5%88%A5%E4%BE%BF%E5%AE%9C%E6%96%B0%E5%8F%B0%E5%B9%A3%E6%99%82%E4%BB%A3-%E9%8A%80%E8%A1%8C%E6%8E%80lcr%E9%98%B2%E8%A1%9B%E6%88%B0-020623815.html" target="_blank">告別便宜新台幣時代？銀行掀LCR防衛戰</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">台灣銀行因資金需求升溫，調整存放款利率因應市場變化。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E6%9D%BE%E5%B1%B1%E6%A9%9F%E5%A0%B4%E9%81%B7%E5%BB%BA-4%E5%8D%80%E6%88%BF%E5%83%B9%E8%B5%B7%E9%A3%9B-%E5%B0%88%E5%AE%B6%E6%8F%AD%E5%85%A9%E5%A4%A7%E9%9B%A3%E9%97%9C-%E6%81%90%E9%9B%A3%E5%AF%A6%E7%8F%BE-020448533.html" target="_blank">松山機場遷建 4區房價起飛？專家揭兩大難關：恐難實現</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">松山機場遷建計畫存在難度，專家指出兩大障礙恐難實現。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%A4%A7%E8%8F%AF%E8%B3%87%E7%94%A2%E7%AE%A1%E7%90%86%E8%81%9A%E7%84%A6%E5%85%A8%E7%90%83%E6%94%BF%E7%AD%96%E6%A0%BC%E5%B1%80%E8%BD%89%E8%AE%8A%E4%B8%AD%E7%9A%84%E6%8A%95%E8%B3%87%E6%A9%9F%E9%81%87-020000503.html" target="_blank">大華資產管理聚焦全球政策格局轉變中的投資機遇</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">大華資產管理認為全球政策變化中仍存投資機遇。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%B1%8B%E9%BD%A1%E6%8F%9B%E7%A9%BA%E9%96%93%EF%BC%81%E6%96%B0%E5%8C%9740%E5%9D%AA%E4%BB%A5%E4%B8%8A%E6%96%B0%E8%88%8A%E5%B1%8B%E3%80%8C%E5%83%B9%E5%B7%AE775%E8%90%AC%E3%80%8D-20%E5%9D%AA%E8%80%81%E5%B1%8B%E5%9D%87%E5%83%B9607%E8%90%AC-020000569.html" target="_blank">屋齡換空間！新北40坪以上新舊屋「價差775萬」　20坪老屋均價607萬</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">新北市不同屋齡坪數住宅價差達775萬，屋齡影響房價明顯。</td><td class="num">—</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/google%E6%8A%8Atpu%E9%80%81%E4%B8%8A%E5%A4%AA%E7%A9%BA-%E4%BD%8E%E8%BB%8C%E8%A1%9B%E6%98%9F%E9%97%9C%E9%8D%B5%E6%8A%80%E8%A1%93%E5%8D%87%E7%B4%9A-7%E5%A4%A7%E6%A6%82%E5%BF%B5%E8%82%A1-%E6%AC%A1%E7%9C%8B-020000323.html" target="_blank">Google把TPU送上太空！ 低軌衛星關鍵技術升級 7大概念股一次看</a><div class="role">News · Yahoo奇摩財經</div></td><td class="muted">Google太空衛星升級AI基礎建設，帶動低軌衛星概念股上揚。</td><td class="num">—</td><td><span class="badge" style="background:#c62828">正面</span></td></tr></table></section>
+
+<section><h2>關鍵字雲</h2><div><a class="tag" style="font-size:27px" href="keywords.html#AI">AI</a><a class="tag" style="font-size:23px" href="keywords.html#億元">億元</a><a class="tag" style="font-size:23px" href="keywords.html#營收">營收</a><a class="tag" style="font-size:21px" href="keywords.html#市場">市場</a><a class="tag" style="font-size:19px" href="keywords.html#安全">安全</a><a class="tag" style="font-size:19px" href="keywords.html#專家">專家</a><a class="tag" style="font-size:19px" href="keywords.html#Google">Google</a><a class="tag" style="font-size:19px" href="keywords.html#太空">太空</a><a class="tag" style="font-size:19px" href="keywords.html#概念">概念</a><a class="tag" style="font-size:19px" href="keywords.html#概念股">概念股</a><a class="tag" style="font-size:19px" href="keywords.html#RTX">RTX</a><a class="tag" style="font-size:19px" href="keywords.html#Spark">Spark</a><a class="tag" style="font-size:19px" href="keywords.html#公司">公司</a><a class="tag" style="font-size:19px" href="keywords.html#升息">升息</a><a class="tag" style="font-size:19px" href="keywords.html#Meta">Meta</a><a class="tag" style="font-size:19px" href="keywords.html#工具">工具</a><a class="tag" style="font-size:17px" href="keywords.html#補助">補助</a><a class="tag" style="font-size:17px" href="keywords.html#台灣">台灣</a><a class="tag" style="font-size:17px" href="keywords.html#聚焦">聚焦</a><a class="tag" style="font-size:17px" href="keywords.html#軌衛星">軌衛星</a></div></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+情緒分類與話題摘要由 LLM（Claude API）逐則分析；互動分數為 PTT 推文數減噓文數，
+Dcard／新聞／論壇無推噓機制者以按讚數或留言數近似。本報告僅彙整公開社群資訊供個人研究參考，
+非公司正式輿情監測系統，亦非投資建議。
+</div></section>
+</div></body></html>
