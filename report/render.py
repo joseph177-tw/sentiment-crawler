@@ -89,10 +89,10 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 def _nav_html(active: str, prefix: str = "") -> str:
     """prefix 給子目錄頁面用（例如 docs/stocks/2330.html 要用 "../" 才能連回上層頁面）。"""
     items = [("index.html", "日報"), ("weekly.html", "週報"),
-             ("keywords.html", "關鍵字"), ("market.html", "盤勢")]
+             ("keywords.html", "關鍵字"), ("market.html", "盤勢"), ("quant/index.html", "量化選股")]
     links = "".join(
         f'<a href="{prefix}{href}"{" class=active" if key == active else ""}>{label}</a>'
-        for key, (href, label) in zip(["index", "weekly", "keywords", "market"], items)
+        for key, (href, label) in zip(["index", "weekly", "keywords", "market", "quant"], items)
     )
 
     # 個股代號/名稱搜尋：清單來自 docs/stock_index.json（run_market() 產出，

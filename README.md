@@ -21,6 +21,16 @@
 > 如果之後這點變成問題，可以考慮升級 GitHub Pro（private repo 也能用 Pages）或改回
 > Telegram 附檔的方式，把 repo 設回 private。
 
+## 量化選股頁（`/quant/`）
+
+導覽列的「量化選股」是每日模型排名：每檔入選股票都列出因子數值與百分位、對綜合分數的貢獻、篩選條件、入選理由與注意事項，
+另有模型持股（每 60 個交易日換股）、回測績效、前瞻追蹤與研究報告（`docs/quant/research/`）。
+
+**資料不是在 GitHub Actions 抓的**：TWSE 的三大法人（T86）、外資持股（MI_QFIIS）、除權息等 `www.twse.com.tw/rwd` 端點擋海外 IP，
+Actions 上會拿到非 JSON 回應（`stock_detail.py` 的 T86 例外也是這個原因）。所以量化資料由本機的
+`../quant-factor-ic/publish.py` 抓取與計算，Windows 工作排程器每個交易日 22:40、每週六 10:00 執行，
+只把 `docs/quant/` 的產出 commit 推上來；`report/render_quant.py` 負責把 `docs/quant/picks.json` 排成網站風格的頁面。
+
 ## 目前實作狀態
 
 架構文件第十二節建議的 10 個步驟已全部建好並以離線 fixture 資料驗證過整條 pipeline：
