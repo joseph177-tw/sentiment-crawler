@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>泰合（6467）· 個股詳情</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+
+.tab-btn { border:1px solid var(--line); background:var(--card); color:var(--sub); font-size:12px;
+           padding:5px 12px; border-radius:14px; cursor:pointer; margin-right:6px; }
+.tab-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+#indicator-controls label { font-size:12px; color:var(--sub); margin-right:4px; cursor:pointer; }
+#indicator-controls select { font-size:12px; padding:2px 4px; }
+</style></head><body><nav class="topnav"><a href="../index.html">日報</a><a href="../weekly.html">週報</a><a href="../keywords.html">關鍵字</a><a href="../market.html" class=active>盤勢</a><a href="../quant/index.html">量化選股</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('../stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = '../stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>泰合<span class="muted" style="font-weight:400; font-size:16px;">（6467）</span></h1>
+  <div class="sub"><a href="../market.html">← 回盤勢總覽</a>｜資料時間 20261021 09:24:23
+  （台北）｜產生時間 2026-10-21 09:31</div>
+</header>
+
+<section>
+<div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;">
+  <div class="n muted" style="font-size:34px;">200.00</div>
+  <div class="muted" style="font-size:16px;">+0.00 (+0.00%)</div>
+</div>
+<div class="summary-cards"><div class="card"><div class="n" style="font-size:18px;">196.50</div><div class="l">開盤</div></div><div class="card"><div class="n" style="font-size:18px;">201.50</div><div class="l">最高</div></div><div class="card"><div class="n" style="font-size:18px;">190.00</div><div class="l">最低</div></div><div class="card"><div class="n" style="font-size:18px;">392</div><div class="l">總量（張）</div></div></div>
+</section>
+
+<section><h2>走勢圖與技術指標</h2>
+<div style="margin-bottom:10px;"><button class="tab-btn" data-tab="當日">當日</button><button class="tab-btn" data-tab="五日">五日</button><button class="tab-btn" data-tab="五年">五年</button><button class="tab-btn" data-tab="近月">近月</button><button class="tab-btn" data-tab="三月">三月</button><button class="tab-btn active" data-tab="六月">六月</button><button class="tab-btn" data-tab="一年">一年</button></div>
+<div id="indicator-controls" style="margin-bottom:10px; display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+  <span class="muted" style="font-size:12px;">均線：</span>
+  <label><input type="checkbox" class="ma-toggle" value="5"> MA5</label>
+  <label><input type="checkbox" class="ma-toggle" value="10"> MA10</label>
+  <label><input type="checkbox" class="ma-toggle" value="20" checked> MA20</label>
+  <label><input type="checkbox" class="ma-toggle" value="60"> MA60</label>
+  <label><input type="checkbox" class="ma-toggle" value="120"> MA120</label>
+  <label><input type="checkbox" class="ma-toggle" value="240"> MA240</label>
+  <label><input type="checkbox" id="boll-toggle"> 布林通道</label>
+  <span class="muted" style="font-size:12px;">副圖：</span>
+  <select id="osc-select">
+    <option value="rsi14" selected>RSI</option>
+    <option value="macd">MACD</option>
+    <option value="kd">KD</option>
+    <option value="dmi">DMI/ADX</option>
+    <option value="bias20">乖離率 BIAS</option>
+    <option value="obv">OBV</option>
+    <option value="none">不顯示</option>
+  </select>
+</div>
+<div id="indicator-unavailable" class="muted" style="font-size:11px; margin-bottom:6px; display:none;">
+  技術指標僅適用於「近月／三月／六月／一年」分頁（需要日線資料），當日/五日/五年不提供疊圖。
+</div>
+<div id="detail-chart" style="height:400px;"></div>
+</section>
+
+<section><h2>三大法人買賣超</h2><div class="role" style="margin-bottom:8px;">最新資料日期 2026-10-20</div><div class="summary-cards" style="margin-bottom:14px;"><div class="card"><div class="n up" style="font-size:16px;">+421 張</div><div class="l">外資買賣超</div></div><div class="card"><div class="n muted" style="font-size:16px;">+0 張</div><div class="l">投信買賣超</div></div><div class="card"><div class="n muted" style="font-size:16px;">+0 張</div><div class="l">自營商買賣超</div></div><div class="card"><div class="n up" style="font-size:16px;">+421 張</div><div class="l">三大法人合計</div></div></div><div id="inst-chart-6467" style="height:220px;"></div></section>
+
+<section><h2>估值指標</h2><div class="summary-cards"><div class="card"><div class="n" style="font-size:18px;">0.00%</div><div class="l">殖利率</div></div><div class="card"><div class="n" style="font-size:18px;">30.40</div><div class="l">股價淨值比</div></div></div></section>
+
+<section><h2>融資融券餘額</h2><div class="muted">尚無融資融券資料</div></section>
+
+<section><h2>月營收</h2><div class="muted">尚無月營收資料</div></section>
+
+<section><h2>公司基本資料</h2><ul style="margin:0; padding-left:18px; font-size:13px; line-height:2;"><li><b>公司全名</b>：泰合生技藥品股份有限公司</li><li><b>實收資本額</b>：6.0 億元</li><li><b>上市日期</b>：2026-10-20</li><li><b>成立日期</b>：2010-07-07</li><li><b>董事長</b>：李世仁</li><li><b>總經理</b>：李世仁</li><li><b>發言人</b>：李世仁</li><li><b>官網</b>：<a href="www.tahopharma.com" target="_blank">www.tahopharma.com</a></li></ul></section>
+
+<section><h2>重大訊息公告</h2>
+<div class="role" style="margin-bottom:8px;">從偵測到這檔個股那天起累積記錄，剛開始追蹤的個股歷史會比較少</div>
+<ul style="margin:0; padding-left:18px; font-size:13px;"><li style="margin-bottom:12px;"><div>本公司股票即將終止興櫃交易並轉至臺灣 證券交易所上市交易</div><div class="role">2026-10-19 · 第28款</div><details style="margin-top:4px;"><summary class="muted" style="cursor:pointer; font-size:11px;">查看完整說明</summary><div style="white-space:pre-wrap; font-size:12px; margin-top:6px; color:var(--sub);">1.事實發生日:115/10/19
+2.停止或終止有價證券登錄興櫃股票之原因:轉至臺灣證券交易所上市交易
+3.預計或實際停止或終止有價證券登錄興櫃股票之日期:115/10/20
+4.其它應敘明事項:
+(1)本公司申請股票初次上市案，業經臺灣證券交易所股份有限公司
+   115年5月28日臺證上一字第1151802009號函及8月26日臺證上一字第
+   1150016472號函核准上市。
+(2)本公司為配合初次上市前公開承銷辦理現金增資新台幣75,000,000元，
+   發行普通股7,500,000股，每股面額新台幣10元，業經臺灣證券交易所股份
+   有限公司115年6月30日臺證上一字第1150011791號及8月26日臺證上一
+   字第1150017046號函核准生效在案。
+(3)本公司向臺灣證券交易所股份有限公司洽定上市買賣開始日為115年10月
+   20日，並自同日起終止興櫃買賣。</div></details></li></ul></section>
+
+<section><h2>綜合評分</h2><div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+  <span class="badge" style="background:#9e9e9e; font-size:16px; padding:6px 16px;">中性</span>
+  <span class="n" style="font-size:24px;">+0 分</span>
+</div>
+<table><tr><th>面向</th><th class="num">配分</th><th>依據</th></tr><tr><td>營收面</td><td class="num">+0</td><td class="muted">缺月營收資料</td></tr><tr><td>價格動能面</td><td class="num">-1</td><td class="muted">近月跌幅 -14.3%</td></tr><tr><td>籌碼面</td><td class="num">+1</td><td class="muted">三大法人近5日合計買超 +421 張</td></tr><tr><td>技術面</td><td class="num">+0</td><td class="muted">缺技術指標資料</td></tr></table>
+<div class="muted" style="font-size:11px; margin-top:10px;">
+規則式評分，純用本頁已收集的公開資料本地計算（不呼叫任何 LLM/API）：
+營收面看月營收 YoY 交叉比對累計 YoY、價格動能面看近月報酬率、籌碼面看三大法人
+近5日合計買賣超、技術面比照 TradingView Technical Rating 架構，把均線群組
+（MA5~240）與震盪指標群組（RSI／KD／MACD／DMI-ADX／BIAS／布林通道）各自
+平均成一票再相加，另外用 OBV 量價背離做 ±1 微調。總分 ≥5 強勢、≥2 偏多、
+≥-1 中性、其餘偏弱。缺資料的面向或指標計 0 分／不參與平均。僅供研究參考，
+非投資建議。
+</div></section>
+
+<section><h2>相關貼文</h2>
+<table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1788579305.A.F7C.html" target="_blank">[新聞] 漢達抗癌新藥 獲美 FDA 許可 逸達、泰合</a><div class="role">PTT · Stock · 2026-09-07</div></td><td class="num">推9 / 噓2</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E6%B3%B0%E5%90%88%E5%B0%87%E6%96%BC115%E5%B9%B49%E6%9C%8816%E6%97%A5%E5%8F%AC%E9%96%8B%E4%B8%8A%E5%B8%82%E5%89%8D%E6%A5%AD%E7%B8%BE%E7%99%BC%E8%A1%A8%E6%9C%83-090510125.html" target="_blank">【公告】泰合將於115年9月16日召開上市前業績發表會</a><div class="role">News · Yahoo奇摩財經 · 2026-09-03</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E6%B3%B0%E5%90%88%E5%85%A8%E7%90%83%E9%A6%96%E5%89%B5apixaban%E5%8F%A3%E6%BA%B6%E8%86%9C-%E7%8D%B2%E7%BE%8Efda%E5%8F%97%E7%90%86nda-%E6%8B%9A%E6%98%8E%E5%B9%B44%E6%9C%88%E5%89%8D%E5%8F%96%E8%AD%89-002951961.html" target="_blank">泰合全球首創Apixaban口溶膜，獲美FDA受理NDA，拚明年4月前取證</a><div class="role">News · Yahoo奇摩財經 · 2026-09-07</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E7%84%A6%E9%BB%9E%E8%82%A1-%E6%B3%B0%E5%90%88%E5%8A%91%E5%9E%8B%E5%B9%B3%E5%8F%B0%E6%90%B6%E5%85%A8%E7%90%83%E6%8A%97%E8%A1%80%E6%A0%93%E8%97%8D%E6%B5%B7-%E4%BB%8A%E6%8E%9B%E7%89%8C%E4%B8%8A%E5%B8%82%E8%B7%B3%E7%A9%BA%E5%A4%A7%E6%BC%B2-011024004.html" target="_blank">焦點股：泰合劑型平台搶全球抗血栓藍海，今掛牌上市跳空大漲</a><div class="role">News · Yahoo奇摩財經 · 2026-10-20</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#c62828">正面</span></td></tr></table></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+即時行情來自 TWSE 官方公開資料，依規定有揭露延遲，非逐筆真即時；走勢圖來自
+Yahoo Finance；技術指標（MA/RSI/MACD/KD/DMI/布林通道/BIAS/OBV）皆為本站依公開
+價格資料計算，公式為業界常見版本，非官方揭露數據，僅供參考；三大法人買賣超、
+融資融券、本益比殖利率、月營收、公司基本資料、重大訊息公告皆來自 TWSE 官方
+公開資料。重大訊息公告的官方端點只提供最新一個交易日的資料、無法查詢歷史，
+本站每日排程抓取後累積寫入資料庫，因此個股的公告歷史長度取決於這檔個股從
+哪一天開始被本站追蹤，並非該公司完整的歷史公告紀錄。僅供研究參考，非投資建議。
+</div></section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
+<script>
+const SERIES = {"當日": [{"t": "09:00", "open": 196.5, "high": 200.5, "low": 191.5, "close": 200.5, "volume": 35000}, {"t": "09:04", "open": 200.5, "high": 200.5, "low": 200.5, "close": 200.5, "volume": 0}], "五日": [{"t": "09:00", "open": 179.0, "high": 186.0, "low": 168.0, "close": 184.0, "volume": 399445}, {"t": "09:15", "open": 183.5, "high": 188.5, "low": 182.0, "close": 185.5, "volume": 245809}, {"t": "09:30", "open": 185.5, "high": 199.5, "low": 184.5, "close": 195.5, "volume": 311903}, {"t": "09:45", "open": 195.5, "high": 200.5, "low": 195.0, "close": 199.5, "volume": 153638}, {"t": "10:00", "open": 199.5, "high": 210.5, "low": 199.5, "close": 210.0, "volume": 204248}, {"t": "10:15", "open": 209.0, "high": 219.0, "low": 209.0, "close": 219.0, "volume": 97790}, {"t": "10:30", "open": 219.0, "high": 219.5, "low": 208.5, "close": 210.0, "volume": 2700071}, {"t": "10:45", "open": 210.0, "high": 211.5, "low": 209.5, "close": 210.0, "volume": 24079}, {"t": "11:00", "open": 210.0, "high": 211.5, "low": 210.0, "close": 211.0, "volume": 43531}, {"t": "11:15", "open": 211.0, "high": 211.5, "low": 209.0, "close": 210.5, "volume": 41823}, {"t": "11:30", "open": 211.0, "high": 211.0, "low": 210.5, "close": 210.5, "volume": 21550}, {"t": "11:45", "open": 210.5, "high": 211.0, "low": 210.0, "close": 210.0, "volume": 27591}, {"t": "12:00", "open": 210.0, "high": 210.0, "low": 203.5, "close": 203.5, "volume": 50995}, {"t": "12:15", "open": 203.0, "high": 204.5, "low": 203.0, "close": 203.0, "volume": 14300}, {"t": "12:30", "open": 203.0, "high": 203.0, "low": 201.0, "close": 201.0, "volume": 21262}, {"t": "12:45", "open": 201.0, "high": 201.0, "low": 195.0, "close": 199.0, "volume": 75523}, {"t": "13:00", "open": 198.0, "high": 198.5, "low": 196.0, "close": 197.0, "volume": 35871}, {"t": "13:15", "open": 198.0, "high": 199.5, "low": 198.0, "close": 199.5, "volume": 21327}, {"t": "09:00", "open": 196.5, "high": 200.5, "low": 191.5, "close": 200.5, "volume": 35000}, {"t": "09:04", "open": 200.0, "high": 200.0, "low": 200.0, "close": 200.0, "volume": 0}], "五年": [{"t": "2026-10-12", "open": 225.0, "high": 237.0, "low": 212.0, "close": 219.0, "volume": 2673998}, {"t": "2026-10-19", "open": 220.0, "high": 220.0, "low": 168.0, "close": 200.0, "volume": 4034692}, {"t": "2026-10-21", "open": 196.5, "high": 201.5, "low": 191.5, "close": 200.0, "volume": 112000}], "近月": [{"t": "2026-10-12", "open": 225.0, "high": 237.0, "low": 221.5, "close": 233.5, "volume": 881486}, {"t": "2026-10-13", "open": 233.5, "high": 236.0, "low": 225.0, "close": 228.0, "volume": 430134}, {"t": "2026-10-14", "open": 233.0, "high": 233.0, "low": 223.0, "close": 227.5, "volume": 416755}, {"t": "2026-10-15", "open": 225.5, "high": 227.5, "low": 212.0, "close": 220.5, "volume": 545014}, {"t": "2026-10-16", "open": 221.0, "high": 223.0, "low": 217.0, "close": 219.0, "volume": 400609}, {"t": "2026-10-19", "open": 220.0, "high": 220.0, "low": 197.0, "close": 199.0, "volume": 933895}, {"t": "2026-10-20", "open": 179.0, "high": 219.5, "low": 168.0, "close": 200.0, "volume": 3100797}, {"t": "2026-10-21", "open": 196.5, "high": 201.5, "low": 191.5, "close": 200.0, "volume": 112000}], "三月": [{"t": "2026-10-12", "open": 225.0, "high": 237.0, "low": 221.5, "close": 233.5, "volume": 881486}, {"t": "2026-10-13", "open": 233.5, "high": 236.0, "low": 225.0, "close": 228.0, "volume": 430134}, {"t": "2026-10-14", "open": 233.0, "high": 233.0, "low": 223.0, "close": 227.5, "volume": 416755}, {"t": "2026-10-15", "open": 225.5, "high": 227.5, "low": 212.0, "close": 220.5, "volume": 545014}, {"t": "2026-10-16", "open": 221.0, "high": 223.0, "low": 217.0, "close": 219.0, "volume": 400609}, {"t": "2026-10-19", "open": 220.0, "high": 220.0, "low": 197.0, "close": 199.0, "volume": 933895}, {"t": "2026-10-20", "open": 179.0, "high": 219.5, "low": 168.0, "close": 200.0, "volume": 3100797}, {"t": "2026-10-21", "open": 196.5, "high": 201.5, "low": 191.5, "close": 200.0, "volume": 112000}], "六月": [{"t": "2026-10-12", "open": 225.0, "high": 237.0, "low": 221.5, "close": 233.5, "volume": 881486}, {"t": "2026-10-13", "open": 233.5, "high": 236.0, "low": 225.0, "close": 228.0, "volume": 430134}, {"t": "2026-10-14", "open": 233.0, "high": 233.0, "low": 223.0, "close": 227.5, "volume": 416755}, {"t": "2026-10-15", "open": 225.5, "high": 227.5, "low": 212.0, "close": 220.5, "volume": 545014}, {"t": "2026-10-16", "open": 221.0, "high": 223.0, "low": 217.0, "close": 219.0, "volume": 400609}, {"t": "2026-10-19", "open": 220.0, "high": 220.0, "low": 197.0, "close": 199.0, "volume": 933895}, {"t": "2026-10-20", "open": 179.0, "high": 219.5, "low": 168.0, "close": 200.0, "volume": 3100797}, {"t": "2026-10-21", "open": 196.5, "high": 201.5, "low": 191.5, "close": 200.0, "volume": 112000}], "一年": [{"t": "2026-10-12", "open": 225.0, "high": 237.0, "low": 221.5, "close": 233.5, "volume": 881486}, {"t": "2026-10-13", "open": 233.5, "high": 236.0, "low": 225.0, "close": 228.0, "volume": 430134}, {"t": "2026-10-14", "open": 233.0, "high": 233.0, "low": 223.0, "close": 227.5, "volume": 416755}, {"t": "2026-10-15", "open": 225.5, "high": 227.5, "low": 212.0, "close": 220.5, "volume": 545014}, {"t": "2026-10-16", "open": 221.0, "high": 223.0, "low": 217.0, "close": 219.0, "volume": 400609}, {"t": "2026-10-19", "open": 220.0, "high": 220.0, "low": 197.0, "close": 199.0, "volume": 933895}, {"t": "2026-10-20", "open": 179.0, "high": 219.5, "low": 168.0, "close": 200.0, "volume": 3100797}, {"t": "2026-10-21", "open": 196.5, "high": 201.5, "low": 191.5, "close": 200.0, "volume": 112000}]};
+const INDICATORS_BY_TAB = {};
+const chartEl = document.getElementById('detail-chart');
+const chart = echarts.init(chartEl);
+
+const MA_COLORS = {5:'#e57373', 10:'#f6b93b', 20:'#3498db', 60:'#8e44ad', 120:'#16a085', 240:'#7f8c8d'};
+let activeMAs = new Set(['20']);
+let showBoll = false;
+let oscillator = 'rsi14';
+
+function currentTabLabel() {
+  const btn = document.querySelector('.tab-btn.active');
+  return btn ? btn.dataset.tab : Object.keys(SERIES)[0];
+}
+
+function buildOscillatorSeries(ind) {
+  if (!ind || oscillator === 'none') return [];
+  if (oscillator === 'rsi14') return [
+    { name: 'RSI14', type: 'line', data: ind.rsi14, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } }
+  ];
+  if (oscillator === 'macd') return [
+    { name: 'DIF', type: 'line', data: ind.macd.dif, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } },
+    { name: 'DEA', type: 'line', data: ind.macd.dea, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } },
+    { name: 'MACD', type: 'bar', data: ind.macd.hist, xAxisIndex: 2, yAxisIndex: 2, itemStyle: { color: '#9fb3c8' } }
+  ];
+  if (oscillator === 'kd') return [
+    { name: 'K', type: 'line', data: ind.kd.k, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } },
+    { name: 'D', type: 'line', data: ind.kd.d, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } }
+  ];
+  if (oscillator === 'dmi') return [
+    { name: '+DI', type: 'line', data: ind.dmi.plus_di, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } },
+    { name: '-DI', type: 'line', data: ind.dmi.minus_di, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } },
+    { name: 'ADX', type: 'line', data: ind.dmi.adx, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1, type: 'dashed' } }
+  ];
+  if (oscillator === 'bias20') return [
+    { name: 'BIAS20', type: 'line', data: ind.bias20, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } }
+  ];
+  if (oscillator === 'obv') return [
+    { name: 'OBV', type: 'line', data: ind.obv, xAxisIndex: 2, yAxisIndex: 2, showSymbol: false, lineStyle: { width: 1 } }
+  ];
+  return [];
+}
+
+function renderTab(label) {
+  const points = SERIES[label] || [];
+  const dates = points.map(p => p.t);
+  const candles = points.map(p => [p.open, p.close, p.low, p.high]);
+  const volumes = points.map(p => p.volume);
+  const ind = INDICATORS_BY_TAB[label];
+
+  document.getElementById('indicator-controls').style.display = ind ? 'flex' : 'none';
+  document.getElementById('indicator-unavailable').style.display = ind ? 'none' : 'block';
+
+  const overlay = [];
+  if (ind) {
+    activeMAs.forEach(n => {
+      overlay.push({ name: 'MA' + n, type: 'line', data: ind.ma[n], xAxisIndex: 0, yAxisIndex: 0,
+        showSymbol: false, lineStyle: { width: 1 }, color: MA_COLORS[n] });
+    });
+    if (showBoll) {
+      overlay.push(
+        { name: '布林上緣', type: 'line', data: ind.boll.upper, xAxisIndex: 0, yAxisIndex: 0, showSymbol: false, lineStyle: { width: 1, type: 'dashed', color: '#999' } },
+        { name: '布林中軌', type: 'line', data: ind.boll.mid, xAxisIndex: 0, yAxisIndex: 0, showSymbol: false, lineStyle: { width: 1, color: '#999' } },
+        { name: '布林下緣', type: 'line', data: ind.boll.lower, xAxisIndex: 0, yAxisIndex: 0, showSymbol: false, lineStyle: { width: 1, type: 'dashed', color: '#999' } }
+      );
+    }
+  }
+  const oscSeries = buildOscillatorSeries(ind);
+
+  chart.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
+    legend: { show: overlay.length > 0 || oscSeries.length > 1, top: 0, textStyle: { fontSize: 10 } },
+    grid: [
+      { left: 56, right: 20, top: 26, height: 190 },
+      { left: 56, right: 20, top: 220, height: 50 },
+      { left: 56, right: 20, top: 288, height: 80 }
+    ],
+    xAxis: [
+      { type: 'category', data: dates, gridIndex: 0, axisLabel: { show: false } },
+      { type: 'category', data: dates, gridIndex: 1, axisLabel: { show: false } },
+      { type: 'category', data: dates, gridIndex: 2, axisLabel: { fontSize: 10 } }
+    ],
+    yAxis: [
+      { type: 'value', gridIndex: 0, scale: true, axisLabel: { fontSize: 10 } },
+      { type: 'value', gridIndex: 1, show: false },
+      { type: 'value', gridIndex: 2, scale: true, axisLabel: { fontSize: 10 } }
+    ],
+    dataZoom: [
+      { type: 'inside', xAxisIndex: [0, 1, 2] },
+      { type: 'slider', xAxisIndex: [0, 1, 2], height: 12, bottom: 0 }
+    ],
+    series: [
+      {
+        type: 'candlestick', data: candles, xAxisIndex: 0, yAxisIndex: 0,
+        itemStyle: { color: '#c62828', color0: '#2e7d32', borderColor: '#c62828', borderColor0: '#2e7d32' }
+      },
+      ...overlay,
+      { type: 'bar', data: volumes, xAxisIndex: 1, yAxisIndex: 1, itemStyle: { color: '#9fb3c8' } },
+      ...oscSeries
+    ]
+  }, true);
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTab(btn.dataset.tab);
+  });
+});
+document.querySelectorAll('.ma-toggle').forEach(cb => {
+  cb.addEventListener('change', () => {
+    if (cb.checked) activeMAs.add(cb.value); else activeMAs.delete(cb.value);
+    renderTab(currentTabLabel());
+  });
+});
+document.getElementById('boll-toggle').addEventListener('change', (e) => {
+  showBoll = e.target.checked;
+  renderTab(currentTabLabel());
+});
+document.getElementById('osc-select').addEventListener('change', (e) => {
+  oscillator = e.target.value;
+  renderTab(currentTabLabel());
+});
+
+renderTab('六月');
+let detailResizeTimer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(detailResizeTimer);
+  detailResizeTimer = setTimeout(() => chart.resize(), 200);
+});
+
+(function() {
+  const data = [{"date": "2026-10-20", "foreign": 421452, "trust": 0, "dealer": 0, "total": 421452}];
+  const el = document.getElementById('inst-chart-6467');
+  if (!el || !data.length) return;
+  const chart = echarts.init(el);
+  chart.setOption({
+    tooltip: { trigger: 'axis' },
+    legend: { top: 0, textStyle: { fontSize: 10 } },
+    grid: { left: 60, right: 20, top: 28, bottom: 24 },
+    xAxis: { type: 'category', data: data.map(d => d.date), axisLabel: { fontSize: 10 } },
+    yAxis: { type: 'value', name: '張', axisLabel: { fontSize: 10, formatter: v => (v/1000).toLocaleString() } },
+    series: [
+      { name: '外資', type: 'bar', data: data.map(d => d.foreign) },
+      { name: '投信', type: 'bar', data: data.map(d => d.trust) },
+      { name: '自營商', type: 'bar', data: data.map(d => d.dealer) }
+    ]
+  });
+  window.addEventListener('resize', () => chart.resize());
+})();
+
+</script>
+</body></html>
