@@ -1,0 +1,137 @@
+{
+  "end_date": "2026-10-26",
+  "week_days": [
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-26"
+  ],
+  "this_week": {
+    "total": 180,
+    "positive": 45,
+    "neutral": 95,
+    "negative": 40
+  },
+  "prev_week": {
+    "total": 210,
+    "positive": 60,
+    "neutral": 86,
+    "negative": 64
+  },
+  "volume_change_pct": -14.3,
+  "top_topics": [
+    {
+      "title": "都市熱島效應升溫 「高綠覆率」成豪宅市場新指標",
+      "url": "https://tw.stock.yahoo.com/news/%E9%83%BD%E5%B8%82%E7%86%B1%E5%B3%B6%E6%95%88%E6%87%89%E5%8D%87%E6%BA%AB-%E3%80%8C%E9%AB%98%E7%B6%A0%E8%A6%86%E7%8E%87%E3%80%8D%E6%88%90%E8%B1%AA%E5%AE%85%E5%B8%82%E5%A0%B4%E6%96%B0%E6%8C%87%E6%A8%99-012341924.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "台積電摔20元！光一檔就拖累大盤160點 分析師：季線下是買點",
+      "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E6%91%9420%E5%85%83%EF%BC%81%E5%85%89%E4%B8%80%E6%AA%94%E5%B0%B1%E6%8B%96%E7%B4%AF%E5%A4%A7%E7%9B%A4160%E9%BB%9E-%E5%88%86%E6%9E%90%E5%B8%AB%EF%BC%9A%E5%AD%A3%E7%B7%9A%E4%B8%8B%E6%98%AF%E8%B2%B7%E9%BB%9E-012150993.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "Lombard Odier估，美國成長前景將推動美元進一步走強",
+      "url": "https://tw.stock.yahoo.com/news/lombard-odier%E4%BC%B0-%E7%BE%8E%E5%9C%8B%E6%88%90%E9%95%B7%E5%89%8D%E6%99%AF%E5%B0%87%E6%8E%A8%E5%8B%95%E7%BE%8E%E5%85%83%E9%80%B2-%E6%AD%A5%E8%B5%B0%E5%BC%B7-012145417.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "全球科技股遭拋售，高盛揭對沖基金減持速度創十年新高",
+      "url": "https://tw.stock.yahoo.com/news/%E5%85%A8%E7%90%83%E7%A7%91%E6%8A%80%E8%82%A1%E9%81%AD%E6%8B%8B%E5%94%AE-%E9%AB%98%E7%9B%9B%E6%8F%AD%E5%B0%8D%E6%B2%96%E5%9F%BA%E9%87%91%E6%B8%9B%E6%8C%81%E9%80%9F%E5%BA%A6%E5%89%B5%E5%8D%81%E5%B9%B4%E6%96%B0%E9%AB%98-012036875.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "兩大期油12月期約亞洲盤初連袂小跌0.5%，市場權衡俄羅斯制裁鬆綁等風險",
+      "url": "https://tw.stock.yahoo.com/news/%E5%85%A9%E5%A4%A7%E6%9C%9F%E6%B2%B912%E6%9C%88%E6%9C%9F%E7%B4%84%E4%BA%9E%E6%B4%B2%E7%9B%A4%E5%88%9D%E9%80%A3%E8%A2%82%E5%B0%8F%E8%B7%8C0-5-%E5%B8%82%E5%A0%B4%E6%AC%8A%E8%A1%A1%E4%BF%84%E7%BE%85%E6%96%AF%E5%88%B6%E8%A3%81%E9%AC%86%E7%B6%81%E7%AD%89%E9%A2%A8%E9%9A%AA-011854210.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "NewtekOne 整合 Zelle 拓展中小企支付平台 提供即時金流服務",
+      "url": "https://tw.stock.yahoo.com/news/newtekone-%E6%95%B4%E5%90%88-zelle-%E6%8B%93%E5%B1%95%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%94%AF%E4%BB%98%E5%B9%B3%E5%8F%B0-%E6%8F%90%E4%BE%9B%E5%8D%B3%E6%99%82%E9%87%91%E6%B5%81%E6%9C%8D%E5%8B%99-011603254.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "positive",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "澳洲國民銀行擬裁員2500人，因應競爭、經濟低迷和科技快速變革",
+      "url": "https://tw.stock.yahoo.com/news/%E6%BE%B3%E6%B4%B2%E5%9C%8B%E6%B0%91%E9%8A%80%E8%A1%8C%E6%93%AC%E8%A3%81%E5%93%A12500%E4%BA%BA-%E5%9B%A0%E6%87%89%E7%AB%B6%E7%88%AD-%E7%B6%93%E6%BF%9F%E4%BD%8E%E8%BF%B7%E5%92%8C%E7%A7%91%E6%8A%80%E5%BF%AB%E9%80%9F%E8%AE%8A%E9%9D%A9-011459905.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "美國防部首席技術長稱，五角大廈考慮投資微電子企業",
+      "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E5%9C%8B%E9%98%B2%E9%83%A8%E9%A6%96%E5%B8%AD%E6%8A%80%E8%A1%93%E9%95%B7%E7%A8%B1-%E4%BA%94%E8%A7%92%E5%A4%A7%E5%BB%88%E8%80%83%E6%85%AE%E6%8A%95%E8%B3%87%E5%BE%AE%E9%9B%BB%E5%AD%90%E4%BC%81%E6%A5%AD-011344641.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "neutral",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 1
+    },
+    {
+      "title": "台股跌219點！PCB逆勢上攻 台郡漲停、台虹噴6%",
+      "url": "https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E8%B7%8C219%E9%BB%9E-pcb%E9%80%86%E5%8B%A2%E4%B8%8A%E6%94%BB-%E5%8F%B0%E9%83%A1%E6%BC%B2%E5%81%9C-%E5%8F%B0%E8%99%B9%E5%99%B46-011300755.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "negative",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    },
+    {
+      "title": "AI高速傳輸點火！ 從玻纖布到微型鑽孔 8台廠串起PCB關鍵供應鏈",
+      "url": "https://tw.stock.yahoo.com/news/ai%E9%AB%98%E9%80%9F%E5%82%B3%E8%BC%B8%E9%BB%9E%E7%81%AB-%E5%BE%9E%E7%8E%BB%E7%BA%96%E5%B8%83%E5%88%B0%E5%BE%AE%E5%9E%8B%E9%91%BD%E5%AD%94-8%E5%8F%B0%E5%BB%A0%E4%B8%B2%E8%B5%B7pcb%E9%97%9C%E9%8D%B5%E4%BE%9B%E6%87%89%E9%8F%88-011200828.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "sentiment": "positive",
+      "push": 0,
+      "boo": 0,
+      "mentions_company": 0
+    }
+  ],
+  "topic_gaps": [
+    {
+      "title": "訊連部分產品於Apple平台停止提供下載，佔公司114年營收14.69%",
+      "url": "https://tw.stock.yahoo.com/news/%E8%A8%8A%E9%80%A3%E9%83%A8%E5%88%86%E7%94%A2%E5%93%81%E6%96%BCapple%E5%B9%B3%E5%8F%B0%E5%81%9C%E6%AD%A2%E6%8F%90%E4%BE%9B%E4%B8%8B%E8%BC%89-%E4%BD%94%E5%85%AC%E5%8F%B8114%E5%B9%B4%E7%87%9F%E6%94%B614-69-224700053.html",
+      "platform": "News",
+      "board": "Yahoo奇摩財經",
+      "push": 0,
+      "boo": 0
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社群輿情週報 · 2026-10-20 ~ 2026-10-26</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+</style></head><body><nav class="topnav"><a href="index.html">日報</a><a href="weekly.html" class=active>週報</a><a href="keywords.html">關鍵字</a><a href="market.html">盤勢</a><a href="quant/index.html">量化選股</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = 'stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>社群輿情週報</h1>
+  <div class="sub">統計區間 2026-10-20 ~ 2026-10-26｜產生時間 2026-10-26 08:54（台北）</div>
+</header>
+
+<section><h2>本週 vs 上週</h2>
+<div class="summary-cards">
+  <div class="card"><div class="n">180</div><div class="l">本週聲量（上週 210）</div></div>
+  <div class="card"><div class="n down">-14.3%</div><div class="l">聲量變化</div></div>
+  <div class="card"><div class="n up">45</div><div class="l">正面（上週 60）</div></div>
+  <div class="card"><div class="n down">40</div><div class="l">負面（上週 64）</div></div>
+</div></section>
+
+<section><h2>本週熱門話題 Top 10</h2>
+<table><tr><th>標題</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://tw.stock.yahoo.com/news/%E9%83%BD%E5%B8%82%E7%86%B1%E5%B3%B6%E6%95%88%E6%87%89%E5%8D%87%E6%BA%AB-%E3%80%8C%E9%AB%98%E7%B6%A0%E8%A6%86%E7%8E%87%E3%80%8D%E6%88%90%E8%B1%AA%E5%AE%85%E5%B8%82%E5%A0%B4%E6%96%B0%E6%8C%87%E6%A8%99-012341924.html" target="_blank">都市熱島效應升溫 「高綠覆率」成豪宅市場新指標</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%8F%B0%E7%A9%8D%E9%9B%BB%E6%91%9420%E5%85%83%EF%BC%81%E5%85%89%E4%B8%80%E6%AA%94%E5%B0%B1%E6%8B%96%E7%B4%AF%E5%A4%A7%E7%9B%A4160%E9%BB%9E-%E5%88%86%E6%9E%90%E5%B8%AB%EF%BC%9A%E5%AD%A3%E7%B7%9A%E4%B8%8B%E6%98%AF%E8%B2%B7%E9%BB%9E-012150993.html" target="_blank">台積電摔20元！光一檔就拖累大盤160點 分析師：季線下是買點</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/lombard-odier%E4%BC%B0-%E7%BE%8E%E5%9C%8B%E6%88%90%E9%95%B7%E5%89%8D%E6%99%AF%E5%B0%87%E6%8E%A8%E5%8B%95%E7%BE%8E%E5%85%83%E9%80%B2-%E6%AD%A5%E8%B5%B0%E5%BC%B7-012145417.html" target="_blank">Lombard Odier估，美國成長前景將推動美元進一步走強</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%A8%E7%90%83%E7%A7%91%E6%8A%80%E8%82%A1%E9%81%AD%E6%8B%8B%E5%94%AE-%E9%AB%98%E7%9B%9B%E6%8F%AD%E5%B0%8D%E6%B2%96%E5%9F%BA%E9%87%91%E6%B8%9B%E6%8C%81%E9%80%9F%E5%BA%A6%E5%89%B5%E5%8D%81%E5%B9%B4%E6%96%B0%E9%AB%98-012036875.html" target="_blank">全球科技股遭拋售，高盛揭對沖基金減持速度創十年新高</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%85%A9%E5%A4%A7%E6%9C%9F%E6%B2%B912%E6%9C%88%E6%9C%9F%E7%B4%84%E4%BA%9E%E6%B4%B2%E7%9B%A4%E5%88%9D%E9%80%A3%E8%A2%82%E5%B0%8F%E8%B7%8C0-5-%E5%B8%82%E5%A0%B4%E6%AC%8A%E8%A1%A1%E4%BF%84%E7%BE%85%E6%96%AF%E5%88%B6%E8%A3%81%E9%AC%86%E7%B6%81%E7%AD%89%E9%A2%A8%E9%9A%AA-011854210.html" target="_blank">兩大期油12月期約亞洲盤初連袂小跌0.5%，市場權衡俄羅斯制裁鬆綁等風險</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/newtekone-%E6%95%B4%E5%90%88-zelle-%E6%8B%93%E5%B1%95%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%94%AF%E4%BB%98%E5%B9%B3%E5%8F%B0-%E6%8F%90%E4%BE%9B%E5%8D%B3%E6%99%82%E9%87%91%E6%B5%81%E6%9C%8D%E5%8B%99-011603254.html" target="_blank">NewtekOne 整合 Zelle 拓展中小企支付平台 提供即時金流服務</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E6%BE%B3%E6%B4%B2%E5%9C%8B%E6%B0%91%E9%8A%80%E8%A1%8C%E6%93%AC%E8%A3%81%E5%93%A12500%E4%BA%BA-%E5%9B%A0%E6%87%89%E7%AB%B6%E7%88%AD-%E7%B6%93%E6%BF%9F%E4%BD%8E%E8%BF%B7%E5%92%8C%E7%A7%91%E6%8A%80%E5%BF%AB%E9%80%9F%E8%AE%8A%E9%9D%A9-011459905.html" target="_blank">澳洲國民銀行擬裁員2500人，因應競爭、經濟低迷和科技快速變革</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E7%BE%8E%E5%9C%8B%E9%98%B2%E9%83%A8%E9%A6%96%E5%B8%AD%E6%8A%80%E8%A1%93%E9%95%B7%E7%A8%B1-%E4%BA%94%E8%A7%92%E5%A4%A7%E5%BB%88%E8%80%83%E6%85%AE%E6%8A%95%E8%B3%87%E5%BE%AE%E9%9B%BB%E5%AD%90%E4%BC%81%E6%A5%AD-011344641.html" target="_blank">美國防部首席技術長稱，五角大廈考慮投資微電子企業</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/%E5%8F%B0%E8%82%A1%E8%B7%8C219%E9%BB%9E-pcb%E9%80%86%E5%8B%A2%E4%B8%8A%E6%94%BB-%E5%8F%B0%E9%83%A1%E6%BC%B2%E5%81%9C-%E5%8F%B0%E8%99%B9%E5%99%B46-011300755.html" target="_blank">台股跌219點！PCB逆勢上攻 台郡漲停、台虹噴6%</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://tw.stock.yahoo.com/news/ai%E9%AB%98%E9%80%9F%E5%82%B3%E8%BC%B8%E9%BB%9E%E7%81%AB-%E5%BE%9E%E7%8E%BB%E7%BA%96%E5%B8%83%E5%88%B0%E5%BE%AE%E5%9E%8B%E9%91%BD%E5%AD%94-8%E5%8F%B0%E5%BB%A0%E4%B8%B2%E8%B5%B7pcb%E9%97%9C%E9%8D%B5%E4%BE%9B%E6%87%89%E9%8F%88-011200828.html" target="_blank">AI高速傳輸點火！ 從玻纖布到微型鑽孔 8台廠串起PCB關鍵供應鏈</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td><td><span class="badge" style="background:#c62828">正面</span></td></tr></table></section>
+
+<section><h2>話題缺口（討論度高、情緒偏負、提及公司）</h2>
+<div class="role" style="margin-bottom:8px;">近似指標，非公司官方回應狀態的精確判定，僅供人工複核參考</div>
+<table><tr><th>標題</th><th class="num">互動</th></tr>
+<tr><td><a href="https://tw.stock.yahoo.com/news/%E8%A8%8A%E9%80%A3%E9%83%A8%E5%88%86%E7%94%A2%E5%93%81%E6%96%BCapple%E5%B9%B3%E5%8F%B0%E5%81%9C%E6%AD%A2%E6%8F%90%E4%BE%9B%E4%B8%8B%E8%BC%89-%E4%BD%94%E5%85%AC%E5%8F%B8114%E5%B9%B4%E7%87%9F%E6%94%B614-69-224700053.html" target="_blank">訊連部分產品於Apple平台停止提供下載，佔公司114年營收14.69%</a><div class="role">News · Yahoo奇摩財經</div></td><td class="num">推0 / 噓0</td></tr></table></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+本週彙整比對過去7天與前7天的聲量、情緒分布變化；話題缺口以「高互動 + 負面情緒 + 提及公司」
+做為近似指標，用於提醒需人工複核，非精確判定公司是否已official回應。
+本報告僅彙整公開社群資訊供個人研究參考，非公司正式輿情監測系統，亦非投資建議。
+</div></section>
+</div></body></html>
