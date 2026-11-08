@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社群輿情日報 · 2026-11-08</title>
+<style>
+:root { --ink:#1a2332; --sub:#5a6a7e; --line:#dfe5ec; --bg:#f5f7fa; --card:#ffffff;
+        --up:#c62828; --down:#2e7d32; --accent:#12406b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:14px; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+nav.topnav { display:flex; align-items:center; gap:18px; padding:12px 20px; background:var(--accent); }
+nav.topnav a { color:#fff; opacity:.75; font-size:13px; font-weight:500; text-decoration:none; }
+nav.topnav a.active, nav.topnav a:hover { opacity:1; text-decoration:underline; }
+.nav-search { position:relative; margin-left:auto; }
+.nav-search input { border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+                     border-radius:6px; padding:5px 10px; font-size:13px; width:160px; outline:none; }
+.nav-search input::placeholder { color:rgba(255,255,255,.65); }
+.nav-search input:focus { background:rgba(255,255,255,.2); }
+.nav-search .results { position:absolute; top:34px; right:0; background:var(--card); border:1px solid var(--line);
+                        border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.18); min-width:200px; max-height:280px;
+                        overflow-y:auto; z-index:50; display:none; }
+.nav-search .results.show { display:block; }
+.nav-search .result-item { padding:8px 12px; font-size:13px; color:var(--ink); cursor:pointer; }
+.nav-search .result-item:hover { background:#eef2f7; }
+.nav-search .result-item .code { color:var(--sub); font-size:11px; margin-left:6px; }
+header { border-left:6px solid var(--accent); padding:4px 0 4px 16px; margin:24px 0; }
+header h1 { margin:0; font-size:22px; letter-spacing:1px; }
+header .sub { color:var(--sub); margin-top:4px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          padding:18px 20px; margin-bottom:18px; }
+h2 { font-size:15px; margin:0 0 12px; color:var(--accent); letter-spacing:.5px; }
+h3 { font-size:14px; margin:0 0 8px; color:var(--ink); }
+.summary-cards { display:flex; gap:16px; flex-wrap:wrap; }
+.card { flex:1; min-width:140px; border:1px solid var(--line); border-radius:8px; padding:14px 16px; }
+.card .n { font-size:26px; font-weight:700; }
+.card .l { font-size:12px; color:var(--sub); margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; color:var(--sub); font-weight:500;
+     border-bottom:2px solid var(--line); padding:6px 8px; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.up { color:var(--up); } .down { color:var(--down); } .muted { color:var(--sub); }
+.role { font-size:11px; color:var(--sub); margin-top:2px; }
+.badge { color:#fff; font-size:11px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.tag { display:inline-block; margin:3px 6px 3px 0; padding:2px 8px; border-radius:12px;
+       background:#eef2f7; color:var(--accent); }
+.chip { display:inline-block; margin:2px 6px 2px 0; padding:2px 8px; border-radius:10px;
+        background:#eef2f7; color:var(--sub); font-size:11px; }
+#bubble-chart { width:100%; height:560px; }
+@media (max-width:640px) { #bubble-chart { height:440px; } }
+</style></head><body><nav class="topnav"><a href="index.html" class=active>日報</a><a href="weekly.html">週報</a><a href="keywords.html">關鍵字</a><a href="market.html">盤勢</a><a href="quant/index.html">量化選股</a><div class="nav-search">
+  <input type="text" id="stock-search-input" placeholder="搜尋個股代號/名稱" autocomplete="off">
+  <div class="results" id="stock-search-results"></div>
+</div>
+<script>
+(function() {
+  const input = document.getElementById('stock-search-input');
+  const results = document.getElementById('stock-search-results');
+  let stocks = [];
+  fetch('stock_index.json').then(r => r.ok ? r.json() : []).then(data => { stocks = data; }).catch(() => {});
+
+  function render(matches) {
+    results.innerHTML = matches.map(s =>
+      `<div class="result-item" data-code="${s.code}">${s.name}<span class="code">${s.code}</span></div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  }
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const matches = stocks.filter(s => s.code.includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+    render(matches);
+  }
+
+  function go(code) { window.location.href = 'stocks/' + code + '.html'; }
+
+  input.addEventListener('input', () => doSearch(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const first = results.querySelector('.result-item');
+      if (first) go(first.dataset.code);
+    }
+  });
+  results.addEventListener('click', (e) => {
+    const item = e.target.closest('.result-item');
+    if (item) go(item.dataset.code);
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) results.classList.remove('show');
+  });
+})();
+</script></nav><div class="wrap">
+<header>
+  <h1>社群輿情日報</h1>
+  <div class="sub">資料日期 2026-11-08｜產生時間 2026-11-08 10:31（台北）｜來源：PTT / Dcard / 新聞 / 論壇</div>
+</header>
+
+<section><h2>摘要</h2>
+<div class="summary-cards">
+  <div class="card"><div class="n">217</div><div class="l">今日聲量（則）</div></div>
+  <div class="card"><div class="n up">37 (17.1%)</div><div class="l">正面</div></div>
+  <div class="card"><div class="n muted">108 (49.8%)</div><div class="l">中性</div></div>
+  <div class="card"><div class="n down">72 (33.2%)</div><div class="l">負面</div></div>
+</div></section>
+
+<section><h2>熱門話題 Top 10</h2>
+<table><tr><th>標題</th><th>摘要</th><th class="num">互動</th><th>情緒</th></tr>
+<tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1793944806.A.AF9.html" target="_blank">[閒聊] 2026/11/06 盤後閒聊</a><div class="role">PTT · Stock</div></td><td class="muted">台股盤後下跌1884點跌幅4.53%，24檔股票跌停，市場悲觀氛圍濃厚</td><td class="num">推703 / 噓91</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1793969758.A.01E.html" target="_blank">[情報] 115年11月06日信用交易統計</a><div class="role">PTT · Stock</div></td><td class="muted">台股融資單日減少423.56億元創新高，融資維持率接近130%，市場風險加劇。</td><td class="num">推488 / 噓40</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1793964658.A.DEE.html" target="_blank">[新聞] 美國德州新州長：不討厭AI資料中心</a><div class="role">PTT · Stock</div></td><td class="muted">德州新當選民主黨州長願與馬斯克合作資料中心，惟須在制定保護措施後才能推進。</td><td class="num">推347 / 噓24</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1794034728.A.8D9.html" target="_blank">[新聞] 全球股市慘跌原因曝！謝金河示警AI燒錢</a><div class="role">PTT · Stock</div></td><td class="muted">謝金河分析全球股市慘跌源於AI軍備競賽燒錢、科技巨頭財報暴雷等因素，斷言台股5萬點無望。</td><td class="num">推294 / 噓25</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1793971823.A.E54.html" target="_blank">[情報] 美國10月非農就業人數&amp;失業率</a><div class="role">PTT · Stock</div></td><td class="muted">美國10月非農就業人數16.5萬優於預期6.5萬，失業率降至4.10%，整體就業數據良好。</td><td class="num">推244 / 噓14</td><td><span class="badge" style="background:#c62828">正面</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1793978736.A.383.html" target="_blank">[新聞] 傳輝達找台積電生產3D DRAMAI記憶體供應</a><div class="role">PTT · Stock</div></td><td class="muted">傳台積電評估生產3D DRAM應輝達要求，擴展至記憶體製造。</td><td class="num">推178 / 噓8</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1794010676.A.DF0.html" target="_blank">[新聞] 「五貸同堂」重押正2ETF！28歲男慘賠700萬　月剩2000元靠外送還債</a><div class="role">PTT · Stock</div></td><td class="muted">28歲男子因槓桿投資正2ETF慘賠700萬元，動用五貸同堂籌資，淪為月剩2000元靠外送還債。</td><td class="num">推223 / 噓62</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1794088476.A.BE5.html" target="_blank">[新聞] 國安基金下周一進場護盤！阮清華嫌2000</a><div class="role">PTT · Stock</div></td><td class="muted">台股暴跌逾1800點失守4萬點，國安基金啟動護盤並擬擴大至1兆元規模</td><td class="num">推172 / 噓22</td><td><span class="badge" style="background:#2e7d32">負面</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Bank_Service/M.1304445622.A.37B.html" target="_blank">[分享] 七大行庫等／五大外銀優惠匯率比較＆常見問答整理</a><div class="role">PTT · Bank_Service</div></td><td class="muted">PTT文章整理七大行庫與五大外銀匯率與優惠比較，提供常見問答資訊供板友參考。</td><td class="num">推142 / 噓3</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr><tr><td><a href="https://www.ptt.cc/bbs/Stock/M.1794049232.A.6EA.html" target="_blank">[心得] 主動ETF經理人，今年真的有贏0050嗎？</a><div class="role">PTT · Stock</div></td><td class="muted">市場研究主動型ETF今年表現是否超越0050，多數主動基金表現不如被動指數。</td><td class="num">推147 / 噓12</td><td><span class="badge" style="background:#9e9e9e">中性</span></td></tr></table></section>
+
+<section><h2>關鍵字雲</h2><div><a class="tag" style="font-size:27px" href="keywords.html#銀行">銀行</a><a class="tag" style="font-size:27px" href="keywords.html#AI">AI</a><a class="tag" style="font-size:27px" href="keywords.html#帳戶">帳戶</a><a class="tag" style="font-size:27px" href="keywords.html#定存">定存</a><a class="tag" style="font-size:27px" href="keywords.html#王道">王道</a><a class="tag" style="font-size:27px" href="keywords.html#中心">中心</a><a class="tag" style="font-size:27px" href="keywords.html#營收">營收</a><a class="tag" style="font-size:27px" href="keywords.html#資料">資料</a><a class="tag" style="font-size:27px" href="keywords.html#美國">美國</a><a class="tag" style="font-size:27px" href="keywords.html#億元">億元</a><a class="tag" style="font-size:27px" href="keywords.html#永豐">永豐</a><a class="tag" style="font-size:27px" href="keywords.html#ATM">ATM</a><a class="tag" style="font-size:27px" href="keywords.html#金融">金融</a><a class="tag" style="font-size:27px" href="keywords.html#年增">年增</a><a class="tag" style="font-size:27px" href="keywords.html#基金">基金</a><a class="tag" style="font-size:27px" href="keywords.html#數位">數位</a><a class="tag" style="font-size:27px" href="keywords.html#國安">國安</a><a class="tag" style="font-size:27px" href="keywords.html#交易">交易</a><a class="tag" style="font-size:27px" href="keywords.html#德州">德州</a><a class="tag" style="font-size:27px" href="keywords.html#轉帳">轉帳</a></div></section>
+
+<section><h2>方法論</h2><div class="muted" style="font-size:12px; line-height:1.7;">
+情緒分類與話題摘要由 LLM（Claude API）逐則分析；互動分數為 PTT 推文數減噓文數，
+Dcard／新聞／論壇無推噓機制者以按讚數或留言數近似。本報告僅彙整公開社群資訊供個人研究參考，
+非公司正式輿情監測系統，亦非投資建議。
+</div></section>
+</div></body></html>
