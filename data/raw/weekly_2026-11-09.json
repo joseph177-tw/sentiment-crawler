@@ -1,0 +1,169 @@
+{
+  "end_date": "2026-11-09",
+  "week_days": [
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-09"
+  ],
+  "this_week": {
+    "total": 367,
+    "positive": 92,
+    "neutral": 157,
+    "negative": 118
+  },
+  "prev_week": {
+    "total": 207,
+    "positive": 53,
+    "neutral": 86,
+    "negative": 68
+  },
+  "volume_change_pct": 77.3,
+  "top_topics": [
+    {
+      "title": "[閒聊] 2026/11/06 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1793944806.A.AF9.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 703,
+      "boo": 91,
+      "mentions_company": 0
+    },
+    {
+      "title": "[情報] 115年11月06日信用交易統計",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1793969758.A.01E.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 488,
+      "boo": 40,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 美國德州新州長：不討厭AI資料中心",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1793964658.A.DEE.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 347,
+      "boo": 24,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 全球股市慘跌原因曝！謝金河示警AI燒錢",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794034728.A.8D9.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 294,
+      "boo": 25,
+      "mentions_company": 0
+    },
+    {
+      "title": "[情報] 美國10月非農就業人數&失業率",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1793971823.A.E54.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "positive",
+      "push": 244,
+      "boo": 14,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 傳輝達找台積電生產3D DRAMAI記憶體供應",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1793978736.A.383.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 178,
+      "boo": 8,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 「五貸同堂」重押正2ETF！28歲男慘賠700萬　月剩2000元靠外送還債",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794010676.A.DF0.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 223,
+      "boo": 62,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 國安基金下周一進場護盤！阮清華嫌2000",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794088476.A.BE5.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "negative",
+      "push": 172,
+      "boo": 22,
+      "mentions_company": 0
+    },
+    {
+      "title": "[分享] 七大行庫等／五大外銀優惠匯率比較＆常見問答整理",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1304445622.A.37B.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "sentiment": "neutral",
+      "push": 142,
+      "boo": 3,
+      "mentions_company": 0
+    },
+    {
+      "title": "[心得] 主動ETF經理人，今年真的有贏0050嗎？",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794049232.A.6EA.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 147,
+      "boo": 12,
+      "mentions_company": 0
+    }
+  ],
+  "topic_gaps": [
+    {
+      "title": "[新聞] 黃仁勳捲共諜＋不倫風波！去年三六食府餐",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794038739.A.F5D.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 103,
+      "boo": 16
+    },
+    {
+      "title": "永豐銀行帳戶莫名被轉走10萬",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1793679955.A.DED.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 48,
+      "boo": 0
+    },
+    {
+      "title": "[新聞] 黃仁勳遭指曾與中國女間諜交往　金融時報",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794037667.A.A8B.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "push": 54,
+      "boo": 9
+    },
+    {
+      "title": "[討論] 永豐新聞稿：異常轉帳為駭客資安事件",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1793782980.A.928.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 44,
+      "boo": 1
+    },
+    {
+      "title": "[新聞] 永豐銀驚傳異常轉帳 北富銀急凍結受款帳",
+      "url": "https://www.ptt.cc/bbs/Bank_Service/M.1793688799.A.A7D.html",
+      "platform": "PTT",
+      "board": "Bank_Service",
+      "push": 45,
+      "boo": 2
+    }
+  ]
+}
