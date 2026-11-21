@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-20T12:28:54.887670+08:00",
-  "total_posts_scanned": 4137,
+  "generated_at": "2026-11-21T12:22:55.834542+08:00",
+  "total_posts_scanned": 4235,
   "keywords": [
     {
       "word": "AI",
-      "count": 514,
-      "total_engagement": 9776,
+      "count": 527,
+      "total_engagement": 10081,
       "sources": {
-        "News·Yahoo奇摩財經": 329,
-        "PTT·Stock": 185
+        "News·Yahoo奇摩財經": 332,
+        "PTT·Stock": 195
       },
       "posts": [
         {
@@ -686,10 +686,10 @@
     },
     {
       "word": "美元",
-      "count": 286,
+      "count": 289,
       "total_engagement": 4193,
       "sources": {
-        "News·Yahoo奇摩財經": 219,
+        "News·Yahoo奇摩財經": 222,
         "PTT·Stock": 64,
         "PTT·Bank_Service": 3
       },
@@ -1028,11 +1028,11 @@
     },
     {
       "word": "美國",
-      "count": 259,
-      "total_engagement": 6233,
+      "count": 263,
+      "total_engagement": 6433,
       "sources": {
-        "News·Yahoo奇摩財經": 187,
-        "PTT·Stock": 72
+        "News·Yahoo奇摩財經": 189,
+        "PTT·Stock": 74
       },
       "posts": [
         {
@@ -1133,6 +1133,17 @@
           "push": 195,
           "boo": 23,
           "day": "2026-09-07"
+        },
+        {
+          "title": "[新聞] 「美國是給人第二次機會的國家」川普喊話",
+          "summary": "[新聞] 「美國是給人第二次機會的國家」川普喊話",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795218540.A.EE6.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 172,
+          "boo": 12,
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] 美國在AI賽道沒有回頭路 謝金河：殺過頭",
@@ -1353,26 +1364,15 @@
           "push": 67,
           "boo": 5,
           "day": "2026-09-16"
-        },
-        {
-          "title": "R: [新聞] 美國德州新州長：不討厭AI資料中心",
-          "summary": "分析美國民眾高度反對AI資料中心（71-76%），指出居民將承擔成本卻無法獲益的困境。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793987683.A.559.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 65,
-          "boo": 7,
-          "day": "2026-11-08"
         }
       ]
     },
     {
       "word": "市場",
-      "count": 245,
+      "count": 248,
       "total_engagement": 9714,
       "sources": {
-        "News·Yahoo奇摩財經": 177,
+        "News·Yahoo奇摩財經": 180,
         "PTT·Stock": 68
       },
       "posts": [
@@ -2051,10 +2051,10 @@
     },
     {
       "word": "仁勳",
-      "count": 201,
-      "total_engagement": 16721,
+      "count": 202,
+      "total_engagement": 16805,
       "sources": {
-        "PTT·Stock": 156,
+        "PTT·Stock": 157,
         "News·Yahoo奇摩財經": 45
       },
       "posts": [
@@ -2392,11 +2392,11 @@
     },
     {
       "word": "輝達",
-      "count": 179,
-      "total_engagement": 11918,
+      "count": 185,
+      "total_engagement": 12582,
       "sources": {
-        "PTT·Stock": 135,
-        "News·Yahoo奇摩財經": 44
+        "PTT·Stock": 140,
+        "News·Yahoo奇摩財經": 45
       },
       "posts": [
         {
@@ -2532,6 +2532,17 @@
           "day": "2026-11-19"
         },
         {
+          "title": "[新聞] 輝達共同創辦人員工大會哽咽　批黃仁勳",
+          "summary": "[新聞] 輝達共同創辦人員工大會哽咽　批黃仁勳",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795222644.A.F14.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 151,
+          "boo": 89,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[新聞] 黃仁勳表態願意重返輝達執行長職位",
           "summary": "[新聞] 黃仁勳表態願意重返輝達執行長職位",
           "url": "https://www.ptt.cc/bbs/Stock/M.1794932092.A.8C7.html",
@@ -2563,6 +2574,17 @@
           "push": 187,
           "boo": 14,
           "day": "2026-11-16"
+        },
+        {
+          "title": "[新聞] 美股大屠殺！輝達血崩14.01%　台指期夜盤",
+          "summary": "[新聞] 美股大屠殺！輝達血崩14.01%　台指期夜盤",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795216478.A.3DE.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 176,
+          "boo": 15,
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] 美股開盤「費半重挫」！AI股倒一片…輝達",
@@ -2675,6 +2697,17 @@
           "day": "2026-11-15"
         },
         {
+          "title": "[新聞] 快訊／再次力挺黃仁勳　川普喊話輝達：接",
+          "summary": "[新聞] 快訊／再次力挺黃仁勳　川普喊話輝達：接",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795205468.A.8C4.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 109,
+          "boo": 15,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[新聞]輝達印尼子公司遭突襲成空殼！恐偷渡中國",
           "summary": "[新聞]輝達印尼子公司遭突襲成空殼！恐偷渡中國",
           "url": "https://www.ptt.cc/bbs/Stock/M.1794931666.A.F85.html",
@@ -2695,39 +2728,6 @@
           "push": 99,
           "boo": 20,
           "day": "2026-11-09"
-        },
-        {
-          "title": "[新聞] 輝達第4季財測超乎華爾街預期 盤後股價",
-          "summary": "[新聞] 輝達第4季財測超乎華爾街預期 盤後股價",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794958631.A.938.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 110,
-          "boo": 5,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "Re: [新聞] 防人才出走！輝達代理CEO拍板「提前加薪",
-          "summary": "Re: [新聞] 防人才出走！輝達代理CEO拍板「提前加薪",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795056326.A.E72.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 101,
-          "boo": 9,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "[新聞]輝達董事會目前無意讓黃仁勳回任執行長",
-          "summary": "[新聞]輝達董事會目前無意讓黃仁勳回任執行長",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794854026.A.684.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 94,
-          "boo": 15,
-          "day": "2026-11-17"
         }
       ]
     },
@@ -3416,6 +3416,347 @@
       ]
     },
     {
+      "word": "股價",
+      "count": 152,
+      "total_engagement": 2504,
+      "sources": {
+        "News·Yahoo奇摩財經": 103,
+        "PTT·Stock": 49
+      },
+      "posts": [
+        {
+          "title": "[新聞] 黃仁勳醜聞暴擊！輝達夜盤暴跌逾6％ 市值",
+          "summary": "輝達執行長黃仁勳承認外遇遭調查，股價夜盤暴跌6.06%，市值蒸發約8.94兆台幣。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794214275.A.145.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 247,
+          "boo": 24,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 黃仁勳認婚外情 輝達股價看跌近3% 亞洲供",
+          "summary": "報導黃仁勳認婚外情導致輝達股價下跌近3%，牽動台積電等亞洲供應商股價。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794181883.A.CED.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 188,
+          "boo": 14,
+          "day": "2026-11-09"
+        },
+        {
+          "title": "[新聞] 美國在AI賽道沒有回頭路 謝金河：殺過頭",
+          "summary": "謝金河指美國AI賽道無回頭路，股價修正後仍會回到原軌道，市場短期恐慌過度。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794050284.A.2EB.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 140,
+          "boo": 25,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "[新聞] 宇樹科技股價暴跌近腰斬 傳陸收緊人形機",
+          "summary": "宇樹科技上市後股價腰斬，大陸監管收緊人形機器人IPO審批門檻。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789096181.A.CEB.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 131,
+          "boo": 13,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "Re: [請益] 輝達盤前跌13% 股價150.90元",
+          "summary": "Re: [請益] 輝達盤前跌13% 股價150.90元",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794494392.A.C11.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 109,
+          "boo": 15,
+          "day": "2026-11-13"
+        },
+        {
+          "title": "Re: [新聞] 欣興遭搜索後股價首度翻紅！外資連17日",
+          "summary": "鄉民以反諷語氣嘲笑前期看多者預測不準，質疑其投資建議的可信度。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788486027.A.D2D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 97,
+          "boo": 9,
+          "day": "2026-09-06"
+        },
+        {
+          "title": "[新聞] 馬斯克推出無方向盤計程車服務，押注乘",
+          "summary": "馬斯克推出無方向盤Cybercab自動駕駛計程車，特斯拉股價上漲逾5%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788478022.A.973.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 87,
+          "boo": 2,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[新聞] Nike將移出S&P 100，董事庫克逢低加碼部",
+          "summary": "Nike將被移出S&P 100指數，股價跌至12年新低，董事庫克加碼部位浮虧。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788716942.A.D16.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 86,
+          "boo": 3,
+          "day": "2026-09-08"
+        },
+        {
+          "title": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
+          "summary": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794501550.A.570.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 75,
+          "boo": 7,
+          "day": "2026-11-13"
+        },
+        {
+          "title": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
+          "summary": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794525628.A.7C4.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 69,
+          "boo": 2,
+          "day": "2026-11-13"
+        },
+        {
+          "title": "[標的] 2603長榮 運價來到疫情臨界點 水手歸隊",
+          "summary": "長榮等航運股運價飆升至疫情高點，但股價相對低檔，貼文看好後勢。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789001651.A.3BD.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 27,
+          "boo": 42,
+          "day": "2026-09-11"
+        },
+        {
+          "title": "[新聞] 「你不懂力旺就買台積電」董事陳莉菁超直",
+          "summary": "力旺董事陳莉菁直言股價下跌因被剔除MSCI，非基本面問題，建議不懂就買台積電。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788424847.A.8AC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 63,
+          "boo": 2,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[情報] 3037 欣興 115年08月營收",
+          "summary": "欣興8月營收創新高年增56%，網友認為利多出盡股價可能下跌",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788867466.A.360.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 59,
+          "boo": 4,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 欣興遭搜索後股價首度翻紅！外資連17日",
+          "summary": "欣興遭搜索後股價首度翻紅，外資連17日買超，市場對轉單題材態度分化。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788335474.A.224.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 42,
+          "boo": 19,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "Re: [新聞] Lululemon 股價暴跌，全年獲利預測大幅低",
+          "summary": "Lululemon再次下修財測，股價暴跌20%，面臨銷售疲弱與競爭加劇困境。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788578652.A.B1E.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 59,
+          "boo": 2,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "[標的] 2308台達電 空空空 空到一千元以下！",
+          "summary": "2308台達電基本面無爆炸性成長，外資持續賣出，股價跟跌走弱。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788355479.A.558.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 24,
+          "boo": 33,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "[新聞] 微軟據報終止與甲骨文的AI雲端容量合約，",
+          "summary": "微軟終止與甲骨文AI雲端容量合約，因甲骨文設備規格無法滿足需求，甲骨文股價下跌4%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1793987845.A.39A.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 47,
+          "boo": 8,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "Re: [新聞] 黃仁勳醜聞暴擊！輝達夜盤暴跌逾6％",
+          "summary": "網友討論輝達黃仁勳醜聞對股價衝擊，關注其公關能力與市場後續走勢。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794216063.A.6F5.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 47,
+          "boo": 8,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[情報] 地心引力 近期股價異常，公告相關訊息",
+          "summary": "3629地心引力股價異常公告，7月營收5百萬元年增974%，虧損大幅改善。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788348259.A.BA0.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 44,
+          "boo": 2,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "[新聞] CPO過度樂觀 瑞銀降評大立光",
+          "summary": "瑞銀證券將大立光從買進降評至賣出，認為其CPO業務股價預期過度樂觀，致股價跌停。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788826267.A.69A.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 42,
+          "boo": 3,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 傳特定批次產品電容異常 台達電：協助換",
+          "summary": "台達電電容器品質問題導致股價重挫7.24%，但業界認為問題在供應商電容器非台達設計，影響有限。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788332293.A.B79.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 43,
+          "boo": 1,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞]南電宣布「不漲價」股價摜跌停！PCB族群",
+          "summary": "南電宣布第四季BT載板不漲價，PCB族群股價摜跌停，欣興4天狂瀉24%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788429299.A.C41.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 36,
+          "boo": 7,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[新聞] 輝達財報前夕多空交鋒 瑞銀美銀:股價遭過",
+          "summary": "[新聞] 輝達財報前夕多空交鋒 瑞銀美銀:股價遭過",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794928261.A.BF1.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 35,
+          "boo": 5,
+          "day": "2026-11-18"
+        },
+        {
+          "title": "[情報] 3363上詮  8月營收",
+          "summary": "上詮8月營收年增13.20%、月增19.69%，股價735元。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788512234.A.1F0.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 32,
+          "boo": 3,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "Re: [標的] 上銀2049",
+          "summary": "上銀股價突然跌停，原因不明，可能與隔日沖、機構出貨或升息因素有關。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789359194.A.FAD.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 34,
+          "boo": 1,
+          "day": "2026-09-15"
+        },
+        {
+          "title": "[新聞]緯創折價發行GDR引爆AI伺服器族群賣壓　電",
+          "summary": "緯創折價發行GDR引發賣壓，股價重挫5.33%，AI伺服器族群同步走弱。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788852836.A.7DB.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 23,
+          "boo": 9,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "Re: [新聞] GTA6影響力有多恐怖？上市日恐讓美國經",
+          "summary": "投資人因GTA6上市Netflix後股價下跌，Two Two Interactive持股虧損近9%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788388351.A.22B.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 29,
+          "boo": 2,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
+          "summary": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794524688.A.3F4.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 30,
+          "boo": 0,
+          "day": "2026-11-13"
+        },
+        {
+          "title": "[新聞] 美證委會調查輝達會計做法 股價重挫約13%",
+          "summary": "[新聞] 美證委會調查輝達會計做法 股價重挫約13%",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795208763.A.2A6.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 28,
+          "boo": 2,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[情報] 2337旺宏 8月營收",
+          "summary": "旺宏8月營收年增219%，但投資人質疑凱基預測股價300何時兌現。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788764860.A.787.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 24,
+          "boo": 5,
+          "day": "2026-09-08"
+        }
+      ]
+    },
+    {
       "word": "科技",
       "count": 151,
       "total_engagement": 1727,
@@ -3754,347 +4095,6 @@
           "push": 6,
           "boo": 0,
           "day": "2026-11-09"
-        }
-      ]
-    },
-    {
-      "word": "股價",
-      "count": 151,
-      "total_engagement": 2474,
-      "sources": {
-        "News·Yahoo奇摩財經": 103,
-        "PTT·Stock": 48
-      },
-      "posts": [
-        {
-          "title": "[新聞] 黃仁勳醜聞暴擊！輝達夜盤暴跌逾6％ 市值",
-          "summary": "輝達執行長黃仁勳承認外遇遭調查，股價夜盤暴跌6.06%，市值蒸發約8.94兆台幣。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794214275.A.145.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 247,
-          "boo": 24,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 黃仁勳認婚外情 輝達股價看跌近3% 亞洲供",
-          "summary": "報導黃仁勳認婚外情導致輝達股價下跌近3%，牽動台積電等亞洲供應商股價。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794181883.A.CED.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 188,
-          "boo": 14,
-          "day": "2026-11-09"
-        },
-        {
-          "title": "[新聞] 美國在AI賽道沒有回頭路 謝金河：殺過頭",
-          "summary": "謝金河指美國AI賽道無回頭路，股價修正後仍會回到原軌道，市場短期恐慌過度。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794050284.A.2EB.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 140,
-          "boo": 25,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[新聞] 宇樹科技股價暴跌近腰斬 傳陸收緊人形機",
-          "summary": "宇樹科技上市後股價腰斬，大陸監管收緊人形機器人IPO審批門檻。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789096181.A.CEB.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 131,
-          "boo": 13,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "Re: [請益] 輝達盤前跌13% 股價150.90元",
-          "summary": "Re: [請益] 輝達盤前跌13% 股價150.90元",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794494392.A.C11.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 109,
-          "boo": 15,
-          "day": "2026-11-13"
-        },
-        {
-          "title": "Re: [新聞] 欣興遭搜索後股價首度翻紅！外資連17日",
-          "summary": "鄉民以反諷語氣嘲笑前期看多者預測不準，質疑其投資建議的可信度。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788486027.A.D2D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 97,
-          "boo": 9,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "[新聞] 馬斯克推出無方向盤計程車服務，押注乘",
-          "summary": "馬斯克推出無方向盤Cybercab自動駕駛計程車，特斯拉股價上漲逾5%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788478022.A.973.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 87,
-          "boo": 2,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[新聞] Nike將移出S&P 100，董事庫克逢低加碼部",
-          "summary": "Nike將被移出S&P 100指數，股價跌至12年新低，董事庫克加碼部位浮虧。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788716942.A.D16.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 86,
-          "boo": 3,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "summary": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794501550.A.570.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 75,
-          "boo": 7,
-          "day": "2026-11-13"
-        },
-        {
-          "title": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "summary": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794525628.A.7C4.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 69,
-          "boo": 2,
-          "day": "2026-11-13"
-        },
-        {
-          "title": "[標的] 2603長榮 運價來到疫情臨界點 水手歸隊",
-          "summary": "長榮等航運股運價飆升至疫情高點，但股價相對低檔，貼文看好後勢。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789001651.A.3BD.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 27,
-          "boo": 42,
-          "day": "2026-09-11"
-        },
-        {
-          "title": "[新聞] 「你不懂力旺就買台積電」董事陳莉菁超直",
-          "summary": "力旺董事陳莉菁直言股價下跌因被剔除MSCI，非基本面問題，建議不懂就買台積電。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788424847.A.8AC.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 63,
-          "boo": 2,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[情報] 3037 欣興 115年08月營收",
-          "summary": "欣興8月營收創新高年增56%，網友認為利多出盡股價可能下跌",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788867466.A.360.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 59,
-          "boo": 4,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 欣興遭搜索後股價首度翻紅！外資連17日",
-          "summary": "欣興遭搜索後股價首度翻紅，外資連17日買超，市場對轉單題材態度分化。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788335474.A.224.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 42,
-          "boo": 19,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "Re: [新聞] Lululemon 股價暴跌，全年獲利預測大幅低",
-          "summary": "Lululemon再次下修財測，股價暴跌20%，面臨銷售疲弱與競爭加劇困境。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788578652.A.B1E.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 59,
-          "boo": 2,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "[標的] 2308台達電 空空空 空到一千元以下！",
-          "summary": "2308台達電基本面無爆炸性成長，外資持續賣出，股價跟跌走弱。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788355479.A.558.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 24,
-          "boo": 33,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[新聞] 微軟據報終止與甲骨文的AI雲端容量合約，",
-          "summary": "微軟終止與甲骨文AI雲端容量合約，因甲骨文設備規格無法滿足需求，甲骨文股價下跌4%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793987845.A.39A.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 47,
-          "boo": 8,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "Re: [新聞] 黃仁勳醜聞暴擊！輝達夜盤暴跌逾6％",
-          "summary": "網友討論輝達黃仁勳醜聞對股價衝擊，關注其公關能力與市場後續走勢。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794216063.A.6F5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 47,
-          "boo": 8,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[情報] 地心引力 近期股價異常，公告相關訊息",
-          "summary": "3629地心引力股價異常公告，7月營收5百萬元年增974%，虧損大幅改善。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788348259.A.BA0.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 44,
-          "boo": 2,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[新聞] CPO過度樂觀 瑞銀降評大立光",
-          "summary": "瑞銀證券將大立光從買進降評至賣出，認為其CPO業務股價預期過度樂觀，致股價跌停。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788826267.A.69A.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 42,
-          "boo": 3,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 傳特定批次產品電容異常 台達電：協助換",
-          "summary": "台達電電容器品質問題導致股價重挫7.24%，但業界認為問題在供應商電容器非台達設計，影響有限。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788332293.A.B79.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 43,
-          "boo": 1,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[新聞]南電宣布「不漲價」股價摜跌停！PCB族群",
-          "summary": "南電宣布第四季BT載板不漲價，PCB族群股價摜跌停，欣興4天狂瀉24%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788429299.A.C41.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 36,
-          "boo": 7,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[新聞] 輝達財報前夕多空交鋒 瑞銀美銀:股價遭過",
-          "summary": "[新聞] 輝達財報前夕多空交鋒 瑞銀美銀:股價遭過",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794928261.A.BF1.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 35,
-          "boo": 5,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "[情報] 3363上詮  8月營收",
-          "summary": "上詮8月營收年增13.20%、月增19.69%，股價735元。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788512234.A.1F0.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 32,
-          "boo": 3,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "Re: [標的] 上銀2049",
-          "summary": "上銀股價突然跌停，原因不明，可能與隔日沖、機構出貨或升息因素有關。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789359194.A.FAD.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 34,
-          "boo": 1,
-          "day": "2026-09-15"
-        },
-        {
-          "title": "[新聞]緯創折價發行GDR引爆AI伺服器族群賣壓　電",
-          "summary": "緯創折價發行GDR引發賣壓，股價重挫5.33%，AI伺服器族群同步走弱。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788852836.A.7DB.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 23,
-          "boo": 9,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "Re: [新聞] GTA6影響力有多恐怖？上市日恐讓美國經",
-          "summary": "投資人因GTA6上市Netflix後股價下跌，Two Two Interactive持股虧損近9%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788388351.A.22B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 29,
-          "boo": 2,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "summary": "Re: [新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794524688.A.3F4.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 30,
-          "boo": 0,
-          "day": "2026-11-13"
-        },
-        {
-          "title": "[情報] 2337旺宏 8月營收",
-          "summary": "旺宏8月營收年增219%，但投資人質疑凱基預測股價300何時兌現。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788764860.A.787.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 24,
-          "boo": 5,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "summary": "[新聞] 黃仁勳下台！輝達股價開盤暴跌13% 市值蒸",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794499332.A.B7D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 27,
-          "boo": 0,
-          "day": "2026-11-13"
         }
       ]
     },
@@ -5123,10 +5123,10 @@
     },
     {
       "word": "銀行",
-      "count": 140,
-      "total_engagement": 1692,
+      "count": 142,
+      "total_engagement": 1761,
       "sources": {
-        "PTT·Bank_Service": 103,
+        "PTT·Bank_Service": 105,
         "News·Yahoo奇摩財經": 30,
         "PTT·Stock": 7
       },
@@ -5141,6 +5141,17 @@
           "push": 134,
           "boo": 4,
           "day": "2026-09-16"
+        },
+        {
+          "title": "[情報] 華南銀行SnY數位帳戶116年優利活儲公告",
+          "summary": "[情報] 華南銀行SnY數位帳戶116年優利活儲公告",
+          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795153962.A.034.html",
+          "platform": "PTT",
+          "board": "Bank_Service",
+          "sentiment": "neutral",
+          "push": 62,
+          "boo": 0,
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] 市場爆資金荒、借錢難　金管會、學者喊話",
@@ -5184,7 +5195,7 @@
           "sentiment": "neutral",
           "push": 48,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報] 2026年下半年各家數位帳戶高利活存總整",
@@ -5374,6 +5385,17 @@
           "day": "2026-11-09"
         },
         {
+          "title": "[閒聊] 板信銀行踩雷奇遇記",
+          "summary": "[閒聊] 板信銀行踩雷奇遇記",
+          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795074454.A.B39.html",
+          "platform": "PTT",
+          "board": "Bank_Service",
+          "sentiment": "neutral",
+          "push": 20,
+          "boo": 1,
+          "day": "2026-11-21"
+        },
+        {
           "title": "Re: [閒聊] 臺灣比較安全的銀行！？",
           "summary": "Re: [閒聊] 臺灣比較安全的銀行！？",
           "url": "https://www.ptt.cc/bbs/Bank_Service/M.1794664185.A.26F.html",
@@ -5382,7 +5404,7 @@
           "sentiment": "neutral",
           "push": 21,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "Re: [新聞] 全國空屋率跌破10%是假象！高雄11.9萬宅",
@@ -5396,17 +5418,6 @@
           "day": "2026-09-09"
         },
         {
-          "title": "[閒聊] 板信銀行踩雷奇遇記",
-          "summary": "[閒聊] 板信銀行踩雷奇遇記",
-          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795074454.A.B39.html",
-          "platform": "PTT",
-          "board": "Bank_Service",
-          "sentiment": "neutral",
-          "push": 19,
-          "boo": 1,
-          "day": "2026-11-20"
-        },
-        {
           "title": "[閒聊] 臺灣比較安全的銀行！？",
           "summary": "[閒聊] 臺灣比較安全的銀行！？",
           "url": "https://www.ptt.cc/bbs/Bank_Service/M.1794661246.A.BA8.html",
@@ -5415,7 +5426,7 @@
           "sentiment": "neutral",
           "push": 18,
           "boo": 2,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報] 王道新資金9個月新台幣定存2.35%",
@@ -5437,23 +5448,12 @@
           "sentiment": "neutral",
           "push": 18,
           "boo": 1,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報] 王道銀行新資金2.4%六個月新台幣定存",
           "summary": "王道銀行推出新資金六個月定存2.4%年利率優惠活動，活動期限至年底。",
           "url": "https://www.ptt.cc/bbs/Bank_Service/M.1789377765.A.264.html",
-          "platform": "PTT",
-          "board": "Bank_Service",
-          "sentiment": "neutral",
-          "push": 18,
-          "boo": 0,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[心得] 聯邦銀行實體帳戶開戶",
-          "summary": "聯邦銀行實體帳戶開戶需審核約1週，約定轉帳額度達200-300萬。",
-          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1784455828.A.CCB.html",
           "platform": "PTT",
           "board": "Bank_Service",
           "sentiment": "neutral",
@@ -5806,6 +5806,348 @@
       ]
     },
     {
+      "word": "新高",
+      "count": 123,
+      "total_engagement": 2637,
+      "sources": {
+        "News·Yahoo奇摩財經": 77,
+        "PTT·Stock": 45,
+        "PTT·Bank_Service": 1
+      },
+      "posts": [
+        {
+          "title": "[情報] 115年11月06日信用交易統計",
+          "summary": "台股融資單日減少423.56億元創新高，融資維持率接近130%，市場風險加劇。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1793969758.A.01E.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 488,
+          "boo": 40,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "[新聞] 8月通膨率2.04％ 主計總處：無通膨現象",
+          "summary": "8月通膨率2.04%，主計總處認無通膨現象，但外食費創今年新高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788863645.A.821.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 220,
+          "boo": 84,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 漢測（7856）抽籤38萬人搶1048張！中籤率",
+          "summary": "漢測（7856）公開申購38萬人搶抽，中籤率0.27%，凍結資金8656億元創新高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789465553.A.419.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 260,
+          "boo": 11,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[新聞] 貝森特預測伊朗戰事落幕：油價最低40美",
+          "summary": "美國財長預測伊朗衝突結束後油價跌至40美元，利率與油價相關性達新高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788615347.A.CDF.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 195,
+          "boo": 23,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "[新聞] 出新招施壓？川普揚言若Fed不降息 將與貿",
+          "summary": "川普揚言若Fed不降息將停止與貿易逆差國進行貿易，美台貿易逆差創歷史新高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788571013.A.106.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 95,
+          "boo": 9,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "[情報] 2308台達電10月營收 M+14.17% Y+30.12%",
+          "summary": "台達電10月營收74.67億元，月增14%、年增30%，股價創新高至1160元",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794223103.A.E85.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 88,
+          "boo": 6,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 美債殖利率破5%還創19年新高 五股力量恐",
+          "summary": "美債殖利率破5%創19年新高，油價、通膨、升息多重夾擊，全球資金成本進入新常態。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789430865.A.23D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 89,
+          "boo": 3,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[情報] 2382 廣達 8月營收",
+          "summary": "廣達8月營收創歷史新高年增177%，月增15.75%表現強勁",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788847599.A.D06.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 80,
+          "boo": 1,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 市場對央行升息預期再度升溫",
+          "summary": "台灣5年期公債殖利率飆至2008年來新高，市場預期央行9月升息成必然。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788319331.A.23B.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 76,
+          "boo": 4,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞] 欣興重返千元俱樂部 中高階載板市場需求",
+          "summary": "欣興重返千元大關，8月營收創新高，受惠AI載板需求健康正向，下半年營運可望逐季走高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788920483.A.4F7.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 57,
+          "boo": 11,
+          "day": "2026-09-10"
+        },
+        {
+          "title": "[新聞] 華邦電8月合併營收連九月創新高",
+          "summary": "華邦電8月營收273億元創新高，連九月改寫紀錄，AI需求帶動記憶體景氣。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788580742.A.A1D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 52,
+          "boo": 11,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "[情報] 3037 欣興 115年08月營收",
+          "summary": "欣興8月營收創新高年增56%，網友認為利多出盡股價可能下跌",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788867466.A.360.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 59,
+          "boo": 4,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 市場爆資金荒、借錢難　金管會、學者喊話",
+          "summary": "市場出現資金荒現象，銀行、券商借貸困難，金管會強調流動性充足但放款創新高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789181909.A.598.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 53,
+          "boo": 4,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[新聞] 8月台灣製造業PMI連11個月擴張 並創5年新",
+          "summary": "台灣8月製造業PMI連11個月擴張至62.5%，創5年新高，前景展望樂觀。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788450907.A.423.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 34,
+          "boo": 13,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[新聞] 鈊象營收創高",
+          "summary": "鈊象8月營收創新高22.68億元，海外授權業務擴張助力獲利成長。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788737876.A.B9F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 40,
+          "boo": 6,
+          "day": "2026-09-08"
+        },
+        {
+          "title": "[情報] 3293 鈊象 115年8月營收",
+          "summary": "鈊象8月營收創新高2.27億，月成長24.8%，年成長達18%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788526364.A.478.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 37,
+          "boo": 7,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "[情報] 2801 彰銀 8月自結 0.17 累計 1.29",
+          "summary": "彰銀8月自結盈餘穩定，股價創新高表現亮眼",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788870502.A.5AA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 42,
+          "boo": 1,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 超乎預期！聯發科8月營收飆新高",
+          "summary": "聯發科8月營收創新高641.83億元，AI加速器晶片將於第四季量產。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789052568.A.B8A.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 40,
+          "boo": 2,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[新聞] 00918配1.75元年息破 20%",
+          "summary": "00918配息1.75元創新高，年息破20%，27萬受益人獲利，經理人看好後市",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788320993.A.637.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 32,
+          "boo": 3,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[情報] 3081聯亞115年8月營收",
+          "summary": "聯亞8月營收年增180.9%至5.2億元，營收創新高，數據中心產品出貨量增加。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788506919.A.092.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 27,
+          "boo": 1,
+          "day": "2026-09-06"
+        },
+        {
+          "title": "[新聞] OpenAI發表性能創新高模型並警告規避監控",
+          "summary": "OpenAI發表GPT-6 Astra但新模型出現規避人類監控行為，安全性引發關注。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788528127.A.0C9.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 25,
+          "boo": 2,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "[新聞] 金融又最後一棒？玉山金飆7%領六大金控",
+          "summary": "玉山金飆7%領六大金控寫新高，永豐金等金融股齊漲創歷史新天價。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788430631.A.006.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 24,
+          "boo": 2,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[新聞] 記憶體缺貨惡化！華邦電漲逾半根停板",
+          "summary": "記憶體缺貨惡化，華邦電營收年增289%創新高，股價大漲逾6成。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788849994.A.3A5.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 18,
+          "boo": 5,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 金管會主委專訪／台灣特色亞洲資產管理中",
+          "summary": "金管會主委宣示金融業稅前盈餘創歷史新高，推動亞洲資產管理中心，將金融業定位為下一座護國神山。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789543860.A.64F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 15,
+          "boo": 6,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[新聞] 8月出口824億美元創新高 年增率41%連34月正成長",
+          "summary": "台灣8月出口824億美元創新高，年增41%連34月正成長。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788955387.A.49F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 20,
+          "boo": 0,
+          "day": "2026-09-10"
+        },
+        {
+          "title": "[新聞] 玉山金完成三商壽股權交割 突破40元大關!",
+          "summary": "玉山金完成三商壽股權交割、股價突破40元創新高；台新新光金同日續創新高，並宣布明年配息有信心優於今年。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788329593.A.3C2.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 18,
+          "boo": 1,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞] 中磊8月營收維持高檔 前3季營收將贏去年",
+          "summary": "中磊8月營收70.44億元年增45%創同期新高，前8月年增55%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788793606.A.136.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 17,
+          "boo": 1,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[標的] 6166凌華多，邊緣AI營收成長",
+          "summary": "看好凌華科技基本面與技術面，10月營收年增57%創新高，建議觀察技術缺口與量能表現。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794192499.A.F4C.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 18,
+          "boo": 0,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 文曄2項海外募資案同步完成訂價 共募得29",
+          "summary": "文曄完成9.35億美元海外募資，創公司募資新高，受AI需求動能支撑。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788312033.A.E8E.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 15,
+          "boo": 0,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞] 焦點股》富喬：內外資狂掃貨 股價飆新高",
+          "summary": "玻纖布廠富喬受惠高階產品漲價，內外資狂掃，股價創新高漲9%。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788850527.A.318.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 4,
+          "boo": 10,
+          "day": "2026-09-09"
+        }
+      ]
+    },
+    {
       "word": "預期",
       "count": 123,
       "total_engagement": 2835,
@@ -6147,344 +6489,684 @@
       ]
     },
     {
-      "word": "新高",
-      "count": 122,
-      "total_engagement": 2637,
+      "word": "台積電",
+      "count": 118,
+      "total_engagement": 4187,
       "sources": {
-        "News·Yahoo奇摩財經": 76,
-        "PTT·Stock": 45,
-        "PTT·Bank_Service": 1
+        "News·Yahoo奇摩財經": 67,
+        "PTT·Stock": 51
       },
       "posts": [
         {
-          "title": "[情報] 115年11月06日信用交易統計",
-          "summary": "台股融資單日減少423.56億元創新高，融資維持率接近130%，市場風險加劇。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793969758.A.01E.html",
+          "title": "[閒聊] 2026/09/02 盤後閒聊",
+          "summary": "台股收盤重挫784點，跌幅1.67%，台積電大跌55元為最大壓力來源。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788328802.A.1EA.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
-          "push": 488,
-          "boo": 40,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[新聞] 8月通膨率2.04％ 主計總處：無通膨現象",
-          "summary": "8月通膨率2.04%，主計總處認無通膨現象，但外食費創今年新高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788863645.A.821.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 220,
-          "boo": 84,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 漢測（7856）抽籤38萬人搶1048張！中籤率",
-          "summary": "漢測（7856）公開申購38萬人搶抽，中籤率0.27%，凍結資金8656億元創新高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789465553.A.419.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 260,
-          "boo": 11,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[新聞] 貝森特預測伊朗戰事落幕：油價最低40美",
-          "summary": "美國財長預測伊朗衝突結束後油價跌至40美元，利率與油價相關性達新高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788615347.A.CDF.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 195,
-          "boo": 23,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "[新聞] 出新招施壓？川普揚言若Fed不降息 將與貿",
-          "summary": "川普揚言若Fed不降息將停止與貿易逆差國進行貿易，美台貿易逆差創歷史新高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788571013.A.106.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 95,
-          "boo": 9,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "[情報] 2308台達電10月營收 M+14.17% Y+30.12%",
-          "summary": "台達電10月營收74.67億元，月增14%、年增30%，股價創新高至1160元",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794223103.A.E85.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 88,
-          "boo": 6,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 美債殖利率破5%還創19年新高 五股力量恐",
-          "summary": "美債殖利率破5%創19年新高，油價、通膨、升息多重夾擊，全球資金成本進入新常態。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789430865.A.23D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 89,
-          "boo": 3,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[情報] 2382 廣達 8月營收",
-          "summary": "廣達8月營收創歷史新高年增177%，月增15.75%表現強勁",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788847599.A.D06.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 80,
-          "boo": 1,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 市場對央行升息預期再度升溫",
-          "summary": "台灣5年期公債殖利率飆至2008年來新高，市場預期央行9月升息成必然。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788319331.A.23B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 76,
-          "boo": 4,
+          "push": 873,
+          "boo": 111,
           "day": "2026-09-03"
         },
         {
-          "title": "[新聞] 欣興重返千元俱樂部 中高階載板市場需求",
-          "summary": "欣興重返千元大關，8月營收創新高，受惠AI載板需求健康正向，下半年營運可望逐季走高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788920483.A.4F7.html",
+          "title": "[情報] 2330台積電8月營收 mom+10.1% yoy+53.3%",
+          "summary": "台積電8月營收月增10.1%、年增53.3%，評論指台股量縮、市場熱度不足。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789018403.A.A08.html",
           "platform": "PTT",
           "board": "Stock",
-          "sentiment": "positive",
-          "push": 57,
-          "boo": 11,
-          "day": "2026-09-10"
+          "sentiment": "negative",
+          "push": 435,
+          "boo": 40,
+          "day": "2026-09-11"
         },
         {
-          "title": "[新聞] 華邦電8月合併營收連九月創新高",
-          "summary": "華邦電8月營收273億元創新高，連九月改寫紀錄，AI需求帶動記憶體景氣。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788580742.A.A1D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 52,
-          "boo": 11,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "[情報] 3037 欣興 115年08月營收",
-          "summary": "欣興8月營收創新高年增56%，網友認為利多出盡股價可能下跌",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788867466.A.360.html",
+          "title": "[情報] 2330台積電10月營收 mom +14.7% yoy +59.",
+          "summary": "[情報] 2330台積電10月營收 mom +14.7% yoy +59.",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794288885.A.825.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 59,
-          "boo": 4,
-          "day": "2026-09-09"
+          "push": 303,
+          "boo": 34,
+          "day": "2026-11-11"
         },
         {
-          "title": "[新聞] 市場爆資金荒、借錢難　金管會、學者喊話",
-          "summary": "市場出現資金荒現象，銀行、券商借貸困難，金管會強調流動性充足但放款創新高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789181909.A.598.html",
+          "title": "[新聞] 黃仁勳認婚外情 輝達股價看跌近3% 亞洲供",
+          "summary": "報導黃仁勳認婚外情導致輝達股價下跌近3%，牽動台積電等亞洲供應商股價。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794181883.A.CED.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 188,
+          "boo": 14,
+          "day": "2026-11-09"
+        },
+        {
+          "title": "[新聞] 傳輝達找台積電生產3D DRAMAI記憶體供應",
+          "summary": "傳台積電評估生產3D DRAM應輝達要求，擴展至記憶體製造。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1793978736.A.383.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 53,
-          "boo": 4,
-          "day": "2026-09-13"
+          "push": 178,
+          "boo": 8,
+          "day": "2026-11-08"
         },
         {
-          "title": "[新聞] 8月台灣製造業PMI連11個月擴張 並創5年新",
-          "summary": "台灣8月製造業PMI連11個月擴張至62.5%，創5年新高，前景展望樂觀。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788450907.A.423.html",
+          "title": "[新聞] 台股重挫散戶進場抄台積電、0050！曬超甜",
+          "summary": "[新聞] 台股重挫散戶進場抄台積電、0050！曬超甜",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795223093.A.118.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 150,
+          "boo": 17,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[心得] 國安基金近三次進場護盤標的",
+          "summary": "統計國安基金三次進場護盤的標的與獲利表現，建議投資人買大盤與台積電等重點標的。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794117353.A.DF5.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
-          "push": 34,
-          "boo": 13,
+          "push": 141,
+          "boo": 14,
+          "day": "2026-11-09"
+        },
+        {
+          "title": "[新聞] 蘋果發表會將登場！史上最貴iPhone亮相",
+          "summary": "iPhone 18新機上市，首款摺疊機售價創高，台積電等7檔供應鏈受惠。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788970691.A.6C2.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 126,
+          "boo": 11,
+          "day": "2026-09-11"
+        },
+        {
+          "title": "[新聞] 3088！台積電再獲大摩喊進 隱藏42%暴漲空",
+          "summary": "[新聞] 3088！台積電再獲大摩喊進 隱藏42%暴漲空",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795052758.A.829.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 111,
+          "boo": 25,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "[新聞] AI需求增速30年未見！台積電設備需求半年",
+          "summary": "台積電透露AI需求成長速度30年未見，設備需求半年增90%，正建設20座新廠應付",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788398370.A.046.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 87,
+          "boo": 6,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "[新聞] 下周一狂噴1000點？  「5檔護盤股」反彈",
+          "summary": "專家指出國安基金進場下台灣50、中型100與台股F5（台積電、鴻海、台達電、聯發科、大立光）有望受惠。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794109988.A.AE3.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 75,
+          "boo": 17,
+          "day": "2026-11-09"
+        },
+        {
+          "title": "[新聞] 台股史上第2慘！崩2635點收41040　台積電",
+          "summary": "[新聞] 台股史上第2慘！崩2635點收41040　台積電",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794810849.A.1CD.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 67,
+          "boo": 12,
+          "day": "2026-11-17"
+        },
+        {
+          "title": "[請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "summary": "[請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795192738.A.387.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 69,
+          "boo": 10,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "Re: [請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "summary": "Re: [請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795209785.A.1CA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 64,
+          "boo": 7,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[請益] 可口可樂本益比 為啥能比台積電高？",
+          "summary": "[請益] 可口可樂本益比 為啥能比台積電高？",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794361613.A.FD9.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 64,
+          "boo": 5,
+          "day": "2026-11-11"
+        },
+        {
+          "title": "[新聞] 「你不懂力旺就買台積電」董事陳莉菁超直",
+          "summary": "力旺董事陳莉菁直言股價下跌因被剔除MSCI，非基本面問題，建議不懂就買台積電。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788424847.A.8AC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 63,
+          "boo": 2,
           "day": "2026-09-05"
         },
         {
-          "title": "[新聞] 鈊象營收創高",
-          "summary": "鈊象8月營收創新高22.68億元，海外授權業務擴張助力獲利成長。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788737876.A.B9F.html",
+          "title": "[新聞] 國安基金+限空令！台股盤中飆逾2,650點、",
+          "summary": "國安基金+限空令推動台股反彈逾2650點，台積電貢獻逾千點，220檔漲停市場買氣回溫。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794197195.A.99A.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
-          "push": 40,
+          "push": 58,
+          "boo": 5,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 摩根史坦利:台積電堅定看好AI需求 維持增持",
+          "summary": "[新聞] 摩根史坦利:台積電堅定看好AI需求 維持增持",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795010008.A.38D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 43,
+          "boo": 20,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "[新聞] 台積電買成台達電 Kiwi姐姐慘套牢「帳面蒸發45％」崩潰發聲",
+          "summary": "[新聞] 台積電買成台達電 Kiwi姐姐慘套牢「帳面蒸發45％」崩潰發聲",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795190152.A.F34.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 45,
+          "boo": 14,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[新聞] 不甩台股飆漲！外資再倒貨900億　台積電",
+          "summary": "外資連8日賣超逾900億元，台積電等登賣超名單，累計賣超7957億元",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794227054.A.FAC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 51,
+          "boo": 4,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "Re: [請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "summary": "Re: [請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795215013.A.451.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 39,
           "boo": 6,
-          "day": "2026-09-08"
+          "day": "2026-11-21"
         },
         {
-          "title": "[情報] 3293 鈊象 115年8月營收",
-          "summary": "鈊象8月營收創新高2.27億，月成長24.8%，年成長達18%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788526364.A.478.html",
+          "title": "[新聞] 國安基金進場 法人點名台積電與0050直接",
+          "summary": "法人點名台積電與0050等權值股直接受惠國安基金進場，融資餘額快速退場有助減輕賣壓。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794111308.A.43D.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
-          "push": 37,
-          "boo": 7,
-          "day": "2026-09-07"
+          "push": 33,
+          "boo": 6,
+          "day": "2026-11-09"
         },
         {
-          "title": "[情報] 2801 彰銀 8月自結 0.17 累計 1.29",
-          "summary": "彰銀8月自結盈餘穩定，股價創新高表現亮眼",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788870502.A.5AA.html",
+          "title": "Re: [情報] 2330台積電10月營收 mom +14.7% yoy",
+          "summary": "Re: [情報] 2330台積電10月營收 mom +14.7% yoy",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794294465.A.F3E.html",
           "platform": "PTT",
           "board": "Stock",
-          "sentiment": "positive",
-          "push": 42,
-          "boo": 1,
-          "day": "2026-09-09"
+          "sentiment": "neutral",
+          "push": 33,
+          "boo": 3,
+          "day": "2026-11-11"
         },
         {
-          "title": "[新聞] 超乎預期！聯發科8月營收飆新高",
-          "summary": "聯發科8月營收創新高641.83億元，AI加速器晶片將於第四季量產。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789052568.A.B8A.html",
+          "title": "[情報] 2545 皇翔 買台積電135張 均價:2,418.89",
+          "summary": "皇翔買進台積電135張，均價2,418.89元，總投資額3.27億元。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788345424.A.D11.html",
           "platform": "PTT",
           "board": "Stock",
-          "sentiment": "positive",
-          "push": 40,
-          "boo": 2,
-          "day": "2026-09-13"
+          "sentiment": "neutral",
+          "push": 31,
+          "boo": 3,
+          "day": "2026-09-04"
         },
         {
-          "title": "[新聞] 00918配1.75元年息破 20%",
-          "summary": "00918配息1.75元創新高，年息破20%，27萬受益人獲利，經理人看好後市",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788320993.A.637.html",
+          "title": "[標的] 台積電 閉眼多",
+          "summary": "[標的] 台積電 閉眼多",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795143485.A.8FC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 31,
+          "boo": 3,
+          "day": "2026-11-20"
+        },
+        {
+          "title": "[新聞] 台積電、ASML聯手推12吋High NA EUV光罩",
+          "summary": "台積電與ASML合作推12吋High NA EUV光罩，預計2031年建試產線以提升成本效益。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788920164.A.0C4.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
           "push": 32,
-          "boo": 3,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[情報] 3081聯亞115年8月營收",
-          "summary": "聯亞8月營收年增180.9%至5.2億元，營收創新高，數據中心產品出貨量增加。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788506919.A.092.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 27,
           "boo": 1,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "[新聞] OpenAI發表性能創新高模型並警告規避監控",
-          "summary": "OpenAI發表GPT-6 Astra但新模型出現規避人類監控行為，安全性引發關注。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788528127.A.0C9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 25,
-          "boo": 2,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "[新聞] 金融又最後一棒？玉山金飆7%領六大金控",
-          "summary": "玉山金飆7%領六大金控寫新高，永豐金等金融股齊漲創歷史新天價。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788430631.A.006.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 24,
-          "boo": 2,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[新聞] 記憶體缺貨惡化！華邦電漲逾半根停板",
-          "summary": "記憶體缺貨惡化，華邦電營收年增289%創新高，股價大漲逾6成。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788849994.A.3A5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 18,
-          "boo": 5,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 金管會主委專訪／台灣特色亞洲資產管理中",
-          "summary": "金管會主委宣示金融業稅前盈餘創歷史新高，推動亞洲資產管理中心，將金融業定位為下一座護國神山。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789543860.A.64F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 15,
-          "boo": 6,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[新聞] 8月出口824億美元創新高 年增率41%連34月正成長",
-          "summary": "台灣8月出口824億美元創新高，年增41%連34月正成長。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788955387.A.49F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 20,
-          "boo": 0,
           "day": "2026-09-10"
         },
         {
-          "title": "[新聞] 玉山金完成三商壽股權交割 突破40元大關!",
-          "summary": "玉山金完成三商壽股權交割、股價突破40元創新高；台新新光金同日續創新高，並宣布明年配息有信心優於今年。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788329593.A.3C2.html",
+          "title": "[新聞] 台積電8月營收首度衝破5字頭 達5,148億",
+          "summary": "台積電8月營收首度突破5,000億元，年增53.3%，但ADR盤前小跌引發市場疑慮。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789031051.A.60C.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
-          "push": 18,
+          "push": 31,
           "boo": 1,
-          "day": "2026-09-03"
+          "day": "2026-09-12"
         },
         {
-          "title": "[新聞] 中磊8月營收維持高檔 前3季營收將贏去年",
-          "summary": "中磊8月營收70.44億元年增45%創同期新高，前8月年增55%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788793606.A.136.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 17,
-          "boo": 1,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[標的] 6166凌華多，邊緣AI營收成長",
-          "summary": "看好凌華科技基本面與技術面，10月營收年增57%創新高，建議觀察技術缺口與量能表現。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794192499.A.F4C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 18,
-          "boo": 0,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 文曄2項海外募資案同步完成訂價 共募得29",
-          "summary": "文曄完成9.35億美元海外募資，創公司募資新高，受AI需求動能支撑。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788312033.A.E8E.html",
+          "title": "[新聞] 美國印鈔機2》台塑西進陷泥淖 東進美國逆",
+          "summary": "台塑美國事業從虧損逆轉獲利，台積電美國投資獲利大增550%，成為東進美國最大贏家。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788624436.A.329.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
           "push": 15,
-          "boo": 0,
-          "day": "2026-09-03"
+          "boo": 16,
+          "day": "2026-09-07"
         },
         {
-          "title": "[新聞] 焦點股》富喬：內外資狂掃貨 股價飆新高",
-          "summary": "玻纖布廠富喬受惠高階產品漲價，內外資狂掃，股價創新高漲9%。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788850527.A.318.html",
+          "title": "Re: [請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "summary": "Re: [請益] 現在有比台積電2022腰斬6XX變3XX嚴重嗎",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795200951.A.007.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 29,
+          "boo": 1,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[新聞] 台積電Q3拿下各國政府補助款約1670億！前",
+          "summary": "[新聞] 台積電Q3拿下各國政府補助款約1670億！前",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794623068.A.698.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 26,
+          "boo": 3,
+          "day": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "word": "上市",
+      "count": 115,
+      "total_engagement": 4201,
+      "sources": {
+        "PTT·Stock": 78,
+        "News·Yahoo奇摩財經": 37
+      },
+      "posts": [
+        {
+          "title": "[閒聊] 2026/11/09 盤後閒聊",
+          "summary": "台股勁揚1960點至41661.70，漲幅4.94%，上市漲停121家，市場氣氛熱絡。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794204034.A.6E7.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
-          "push": 4,
+          "push": 730,
+          "boo": 89,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[閒聊] 2026/09/16 盤後閒聊",
+          "summary": "台股收漲0.74%，櫃買指數漲2.7%，24檔上市股票漲停，三大法人合計賣超213.80億元。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789538468.A.265.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 475,
+          "boo": 57,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[情報] 1116 上市外資買賣超排行",
+          "summary": "[情報] 1116 上市外資買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794817595.A.963.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 160,
+          "boo": 20,
+          "day": "2026-11-17"
+        },
+        {
+          "title": "[情報] 1109 上市外資買賣超排行",
+          "summary": "11月9日上市外資買賣超排行，主動ETF及航運、電子股獲外資加碼買進。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794212684.A.15F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 153,
+          "boo": 10,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 宇樹科技股價暴跌近腰斬 傳陸收緊人形機",
+          "summary": "宇樹科技上市後股價腰斬，大陸監管收緊人形機器人IPO審批門檻。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789096181.A.CEB.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 131,
+          "boo": 13,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[新聞] 蘋果發表會將登場！史上最貴iPhone亮相",
+          "summary": "iPhone 18新機上市，首款摺疊機售價創高，台積電等7檔供應鏈受惠。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788970691.A.6C2.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 126,
+          "boo": 11,
+          "day": "2026-09-11"
+        },
+        {
+          "title": "[情報] 0902 上市外資買賣超排行",
+          "summary": "外資買超排行，台中銀買超28713張最多，兆豐金、第一金、華南金也獲外資青睞。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788337065.A.DF9.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 126,
+          "boo": 9,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[情報] 1111 上市外資買賣超排行",
+          "summary": "[情報] 1111 上市外資買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794384711.A.B2E.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 107,
+          "boo": 13,
+          "day": "2026-11-12"
+        },
+        {
+          "title": "[情報] 證交所:國際肯定AI 上市公司基本面穩健",
+          "summary": "[情報] 證交所:國際肯定AI 上市公司基本面穩健",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794913452.A.57A.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 88,
+          "boo": 29,
+          "day": "2026-11-18"
+        },
+        {
+          "title": "[情報] 1118 上市外資買賣超排行",
+          "summary": "[情報] 1118 上市外資買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794989926.A.1CF.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 104,
+          "boo": 11,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "[情報] 0911 上市外資買賣超排行",
+          "summary": "0911外資買賣超排行，陽明、台中銀、凱基金居前三大買超標的。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789114406.A.56D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 79,
+          "boo": 13,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[情報] 0903 上市外資買賣超排行",
+          "summary": "09月03日外資買超排行，永豐金買超5,955張排名22，兆豐金等金融股受青睞。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788423140.A.5C8.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 83,
+          "boo": 8,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[情報] 0908 上市外資買賣超排行",
+          "summary": "永豐金(2890)為外資買超排行第11名，買超8553張，同時列出其他金融股買超情況。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788855322.A.767.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 79,
           "boo": 10,
           "day": "2026-09-09"
+        },
+        {
+          "title": "[情報] 0909 上市外資買賣超排行",
+          "summary": "外資買超排行公布，群創、友達、新纖等個股獲外資青睞，金融股台企銀入列。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788941664.A.FB4.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 80,
+          "boo": 9,
+          "day": "2026-09-10"
+        },
+        {
+          "title": "[情報] 0907 上市外資買賣超排行",
+          "summary": "外資9月7日買賣超排行，友達領漲、力積電次之。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788769326.A.387.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 79,
+          "boo": 8,
+          "day": "2026-09-08"
+        },
+        {
+          "title": "[情報] 0910 上市外資買賣超排行",
+          "summary": "9月10日外資買超力積電、友達、凱基金等金融與電子股。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789028337.A.EF9.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 80,
+          "boo": 2,
+          "day": "2026-09-12"
+        },
+        {
+          "title": "[情報] 1110 上市外資買賣超排行",
+          "summary": "[情報] 1110 上市外資買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794298843.A.096.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 68,
+          "boo": 6,
+          "day": "2026-11-11"
+        },
+        {
+          "title": "[情報] 0915 上市外資買賣超排行",
+          "summary": "9月15日外資買超排行榜，中信金居首買超13,796百萬，永豐金未列入前25名。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789460386.A.6F5.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 67,
+          "boo": 5,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[情報] 0904 上市外資買賣超排行",
+          "summary": "上市外資買賣超排行，仁寶、聯電、鴻海等科技股獲外資買超。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788509797.A.2E3.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 58,
+          "boo": 12,
+          "day": "2026-09-06"
+        },
+        {
+          "title": "[情報] 00405A富邦台灣龍耀 收益不分配公告",
+          "summary": "00405A富邦台灣龍耀ETF 8月不予分配收益，上市後跌至8.78元破發。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788352394.A.51B.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 63,
+          "boo": 3,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "[情報] 1113 上市外資買賣超排行",
+          "summary": "[情報] 1113 上市外資買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794557534.A.5F1.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 59,
+          "boo": 5,
+          "day": "2026-11-15"
+        },
+        {
+          "title": "[新聞] GTA6影響力有多恐怖？上市日恐讓美國經",
+          "summary": "GTA6上市可能導致美國經濟產值損失十億美元，台廠供應鏈為隱藏贏家。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788356854.A.092.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 49,
+          "boo": 4,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "[情報] 0904 上市投信買賣超排行",
+          "summary": "投信0904買超排行，永豐金等金融股與部分電子股列名前20。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788505266.A.23D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 47,
+          "boo": 5,
+          "day": "2026-09-06"
+        },
+        {
+          "title": "Re: [心得] 投資新手聖經 FX戰士久留美 台版上市",
+          "summary": "動漫《FX戰士久留美》台版上市，十月動畫化，警示投資風險與心態。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788479820.A.310.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 51,
+          "boo": 0,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[情報] 0902 上市投信買賣超排行",
+          "summary": "投信買超排行，永豐金買超6935張排名第二，台新新光金買超最多。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788332880.A.599.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 42,
+          "boo": 5,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[情報] 0907 上市投信買賣超排行",
+          "summary": "投信8月買超排行榜，永豐金（2890）位列第26名，買超1,124千元。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788764801.A.15B.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 38,
+          "boo": 8,
+          "day": "2026-09-08"
+        },
+        {
+          "title": "[情報] 0908 上市投信買賣超排行",
+          "summary": "投信09/08買超排行，永豐金證券子公司無單獨列示，華邦電列第7名。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788850791.A.73F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 40,
+          "boo": 6,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[情報] 1116 上市投信買賣超排行",
+          "summary": "[情報] 1116 上市投信買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794813448.A.735.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 40,
+          "boo": 4,
+          "day": "2026-11-17"
+        },
+        {
+          "title": "[情報] 1109 上市投信買賣超排行",
+          "summary": "上市投信買超排行，日月光投控買超2468張，居金融股之外買超前列。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794207606.A.ECA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 37,
+          "boo": 5,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[情報] 1113 上市投信買賣超排行",
+          "summary": "[情報] 1113 上市投信買賣超排行",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794552713.A.C30.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 36,
+          "boo": 6,
+          "day": "2026-11-15"
         }
       ]
     },
@@ -6830,354 +7512,13 @@
       ]
     },
     {
-      "word": "上市",
-      "count": 114,
-      "total_engagement": 4201,
-      "sources": {
-        "PTT·Stock": 78,
-        "News·Yahoo奇摩財經": 36
-      },
-      "posts": [
-        {
-          "title": "[閒聊] 2026/11/09 盤後閒聊",
-          "summary": "台股勁揚1960點至41661.70，漲幅4.94%，上市漲停121家，市場氣氛熱絡。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794204034.A.6E7.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 730,
-          "boo": 89,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[閒聊] 2026/09/16 盤後閒聊",
-          "summary": "台股收漲0.74%，櫃買指數漲2.7%，24檔上市股票漲停，三大法人合計賣超213.80億元。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789538468.A.265.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 475,
-          "boo": 57,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[情報] 1116 上市外資買賣超排行",
-          "summary": "[情報] 1116 上市外資買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794817595.A.963.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 160,
-          "boo": 20,
-          "day": "2026-11-17"
-        },
-        {
-          "title": "[情報] 1109 上市外資買賣超排行",
-          "summary": "11月9日上市外資買賣超排行，主動ETF及航運、電子股獲外資加碼買進。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794212684.A.15F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 153,
-          "boo": 10,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 宇樹科技股價暴跌近腰斬 傳陸收緊人形機",
-          "summary": "宇樹科技上市後股價腰斬，大陸監管收緊人形機器人IPO審批門檻。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789096181.A.CEB.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 131,
-          "boo": 13,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "[新聞] 蘋果發表會將登場！史上最貴iPhone亮相",
-          "summary": "iPhone 18新機上市，首款摺疊機售價創高，台積電等7檔供應鏈受惠。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788970691.A.6C2.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 126,
-          "boo": 11,
-          "day": "2026-09-11"
-        },
-        {
-          "title": "[情報] 0902 上市外資買賣超排行",
-          "summary": "外資買超排行，台中銀買超28713張最多，兆豐金、第一金、華南金也獲外資青睞。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788337065.A.DF9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 126,
-          "boo": 9,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[情報] 1111 上市外資買賣超排行",
-          "summary": "[情報] 1111 上市外資買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794384711.A.B2E.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 107,
-          "boo": 13,
-          "day": "2026-11-12"
-        },
-        {
-          "title": "[情報] 證交所:國際肯定AI 上市公司基本面穩健",
-          "summary": "[情報] 證交所:國際肯定AI 上市公司基本面穩健",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794913452.A.57A.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 88,
-          "boo": 29,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "[情報] 1118 上市外資買賣超排行",
-          "summary": "[情報] 1118 上市外資買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794989926.A.1CF.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 104,
-          "boo": 11,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "[情報] 0911 上市外資買賣超排行",
-          "summary": "0911外資買賣超排行，陽明、台中銀、凱基金居前三大買超標的。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789114406.A.56D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 79,
-          "boo": 13,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "[情報] 0903 上市外資買賣超排行",
-          "summary": "09月03日外資買超排行，永豐金買超5,955張排名22，兆豐金等金融股受青睞。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788423140.A.5C8.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 83,
-          "boo": 8,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[情報] 0908 上市外資買賣超排行",
-          "summary": "永豐金(2890)為外資買超排行第11名，買超8553張，同時列出其他金融股買超情況。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788855322.A.767.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 79,
-          "boo": 10,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[情報] 0909 上市外資買賣超排行",
-          "summary": "外資買超排行公布，群創、友達、新纖等個股獲外資青睞，金融股台企銀入列。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788941664.A.FB4.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 80,
-          "boo": 9,
-          "day": "2026-09-10"
-        },
-        {
-          "title": "[情報] 0907 上市外資買賣超排行",
-          "summary": "外資9月7日買賣超排行，友達領漲、力積電次之。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788769326.A.387.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 79,
-          "boo": 8,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[情報] 0910 上市外資買賣超排行",
-          "summary": "9月10日外資買超力積電、友達、凱基金等金融與電子股。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789028337.A.EF9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 80,
-          "boo": 2,
-          "day": "2026-09-12"
-        },
-        {
-          "title": "[情報] 1110 上市外資買賣超排行",
-          "summary": "[情報] 1110 上市外資買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794298843.A.096.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 68,
-          "boo": 6,
-          "day": "2026-11-11"
-        },
-        {
-          "title": "[情報] 0915 上市外資買賣超排行",
-          "summary": "9月15日外資買超排行榜，中信金居首買超13,796百萬，永豐金未列入前25名。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789460386.A.6F5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 67,
-          "boo": 5,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[情報] 0904 上市外資買賣超排行",
-          "summary": "上市外資買賣超排行，仁寶、聯電、鴻海等科技股獲外資買超。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788509797.A.2E3.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 58,
-          "boo": 12,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "[情報] 00405A富邦台灣龍耀 收益不分配公告",
-          "summary": "00405A富邦台灣龍耀ETF 8月不予分配收益，上市後跌至8.78元破發。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788352394.A.51B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 63,
-          "boo": 3,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[情報] 1113 上市外資買賣超排行",
-          "summary": "[情報] 1113 上市外資買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794557534.A.5F1.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 59,
-          "boo": 5,
-          "day": "2026-11-15"
-        },
-        {
-          "title": "[新聞] GTA6影響力有多恐怖？上市日恐讓美國經",
-          "summary": "GTA6上市可能導致美國經濟產值損失十億美元，台廠供應鏈為隱藏贏家。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788356854.A.092.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 49,
-          "boo": 4,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[情報] 0904 上市投信買賣超排行",
-          "summary": "投信0904買超排行，永豐金等金融股與部分電子股列名前20。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788505266.A.23D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 47,
-          "boo": 5,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "Re: [心得] 投資新手聖經 FX戰士久留美 台版上市",
-          "summary": "動漫《FX戰士久留美》台版上市，十月動畫化，警示投資風險與心態。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788479820.A.310.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 51,
-          "boo": 0,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[情報] 0902 上市投信買賣超排行",
-          "summary": "投信買超排行，永豐金買超6935張排名第二，台新新光金買超最多。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788332880.A.599.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 42,
-          "boo": 5,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[情報] 0907 上市投信買賣超排行",
-          "summary": "投信8月買超排行榜，永豐金（2890）位列第26名，買超1,124千元。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788764801.A.15B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 38,
-          "boo": 8,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[情報] 0908 上市投信買賣超排行",
-          "summary": "投信09/08買超排行，永豐金證券子公司無單獨列示，華邦電列第7名。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788850791.A.73F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 40,
-          "boo": 6,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[情報] 1116 上市投信買賣超排行",
-          "summary": "[情報] 1116 上市投信買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794813448.A.735.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 40,
-          "boo": 4,
-          "day": "2026-11-17"
-        },
-        {
-          "title": "[情報] 1109 上市投信買賣超排行",
-          "summary": "上市投信買超排行，日月光投控買超2468張，居金融股之外買超前列。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794207606.A.ECA.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 37,
-          "boo": 5,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[情報] 1113 上市投信買賣超排行",
-          "summary": "[情報] 1113 上市投信買賣超排行",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794552713.A.C30.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 36,
-          "boo": 6,
-          "day": "2026-11-15"
-        }
-      ]
-    },
-    {
       "word": "利率",
-      "count": 111,
-      "total_engagement": 1459,
+      "count": 112,
+      "total_engagement": 1465,
       "sources": {
         "News·Yahoo奇摩財經": 74,
         "PTT·Stock": 21,
-        "PTT·Bank_Service": 16
+        "PTT·Bank_Service": 17
       },
       "posts": [
         {
@@ -7453,7 +7794,7 @@
           "sentiment": "neutral",
           "push": 17,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[標的] 2020.TW 美亞 長線多",
@@ -7497,7 +7838,7 @@
           "sentiment": "neutral",
           "push": 13,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "Re: [情報] 王道新資金2個月新台幣定存年利率2.5%",
@@ -7508,17 +7849,17 @@
           "sentiment": "neutral",
           "push": 13,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         }
       ]
     },
     {
       "word": "全球",
-      "count": 109,
-      "total_engagement": 1647,
+      "count": 111,
+      "total_engagement": 1652,
       "sources": {
-        "News·Yahoo奇摩財經": 84,
-        "PTT·Stock": 24,
+        "News·Yahoo奇摩財經": 85,
+        "PTT·Stock": 25,
         "PTT·Bank_Service": 1
       },
       "posts": [
@@ -7787,6 +8128,17 @@
           "day": "2026-09-10"
         },
         {
+          "title": "Re: [新聞] 無懼震盪！大摩高喊「最大加碼」全球股",
+          "summary": "Re: [新聞] 無懼震盪！大摩高喊「最大加碼」全球股",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795231772.A.E1F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 5,
+          "boo": 0,
+          "day": "2026-11-21"
+        },
+        {
           "title": "安基生技AJ201三期臨床送件美FDA，搶全球SBMA開發領先，授權談判升溫",
           "summary": "安基生技AJ201三期臨床送件FDA，搶全球SBMA開發領先地位",
           "url": "https://tw.stock.yahoo.com/news/%E5%AE%89%E5%9F%BA%E7%94%9F%E6%8A%80aj201%E4%B8%89%E6%9C%9F%E8%87%A8%E5%BA%8A%E9%80%81%E4%BB%B6%E7%BE%8Efda-%E6%90%B6%E5%85%A8%E7%90%83sbma%E9%96%8B%E7%99%BC%E9%A0%98%E5%85%88-%E6%8E%88%E6%AC%8A%E8%AB%87%E5%88%A4%E5%8D%87%E6%BA%AB-085539934.html",
@@ -7840,14 +8192,344 @@
           "push": 0,
           "boo": 0,
           "day": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "word": "美股",
+      "count": 110,
+      "total_engagement": 2948,
+      "sources": {
+        "News·Yahoo奇摩財經": 88,
+        "PTT·Stock": 22
+      },
+      "posts": [
+        {
+          "title": "[閒聊] 2026/09/07 盤中閒聊",
+          "summary": "2026年9月7日台股上漲693點至46551點，亞股多數上揚，美股小幅下跌。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788741003.A.820.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 854,
+          "boo": 164,
+          "day": "2026-09-08"
         },
         {
-          "title": "全球DRAM第二季市場規模季增55.9%創新高，伺服器與HBM需求續強",
-          "summary": "全球DRAM市場第二季季增55.9%創新高，AI伺服器需求持續強勁。",
-          "url": "https://tw.stock.yahoo.com/news/%E5%85%A8%E7%90%83dram%E7%AC%AC%E4%BA%8C%E5%AD%A3%E5%B8%82%E5%A0%B4%E8%A6%8F%E6%A8%A1%E5%AD%A3%E5%A2%9E55-9-%E5%89%B5%E6%96%B0%E9%AB%98-%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%88%87hbm%E9%9C%80%E6%B1%82%E7%BA%8C%E5%BC%B7-002245156.html",
+          "title": "[情報] 川普：我炒股是為了美國",
+          "summary": "川普聲稱炒股是為美國，列舉近期提及之多檔美股明牌供投資人參考。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788741917.A.5C5.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 522,
+          "boo": 42,
+          "day": "2026-09-08"
+        },
+        {
+          "title": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
+          "summary": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794841490.A.72D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 182,
+          "boo": 23,
+          "day": "2026-11-17"
+        },
+        {
+          "title": "[新聞] 美股大屠殺！輝達血崩14.01%　台指期夜盤",
+          "summary": "[新聞] 美股大屠殺！輝達血崩14.01%　台指期夜盤",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795216478.A.3DE.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 176,
+          "boo": 15,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[新聞] 美股開盤「費半重挫」！AI股倒一片…輝達",
+          "summary": "[新聞] 美股開盤「費半重挫」！AI股倒一片…輝達",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794586827.A.CEA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 166,
+          "boo": 12,
+          "day": "2026-11-15"
+        },
+        {
+          "title": "[情報] 盤前美股科技類大漲",
+          "summary": "[情報] 盤前美股科技類大漲",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794398486.A.388.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 101,
+          "boo": 15,
+          "day": "2026-11-12"
+        },
+        {
+          "title": "[新聞] Fed理事放鴿！升息預期降溫　美股開高道",
+          "summary": "美股開盤上漲，Fed理事放鴿升息預期降溫，道瓊工業指數漲逾400點。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788457711.A.CB6.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 80,
+          "boo": 10,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "[新聞]民主黨勝選重擊美股!女議員喊停AI開發跟馬",
+          "summary": "民主黨勝選後提議暫停AI開發與資料中心建設，引發與馬斯克對立和市場擔憂。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794014112.A.66C.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 74,
+          "boo": 5,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "[請益] 資產配置討教",
+          "summary": "50歲投資者請教資產配置建議，配置美股、台股及正二ETF，詢問投資組合優化方向。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789110360.A.5FA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 54,
+          "boo": 2,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[新聞] AI「急煞車」！科技股領跌美股重挫　小摩",
+          "summary": "美股科技股重挫，費半暴跌5.9%，AI行業內部對發展速度產生分歧。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789449064.A.F65.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 48,
+          "boo": 7,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "Re: [新聞] 胡塞武裝攻占佩里姆島！荷莫茲海峽外再爆",
+          "summary": "用戶評論胡塞武裝控制紅海戰略位置將衝擊全球物流，認為美股短期難有大漲。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789210252.A.C9C.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 46,
+          "boo": 6,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[新聞] 國安基金+美股電子盤 台指期夜盤一度噴漲",
+          "summary": "台指期夜盤在國安基金進場、美股反彈助力下，一度衝破40,000點，上漲1,093點，記憶體、半導體股回神。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1793976584.A.C70.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 43,
+          "boo": 8,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "[新聞] 〈美股早盤〉主要指數9月開門黑！道瓊挫",
+          "summary": "美股9月開盤下跌，道瓊挫逾300點，半導體股承壓，中東衝突升高油價。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788270400.A.1FE.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 43,
+          "boo": 6,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞] 高盛恐慌指標飆至9分！高盛：美股未跌完",
+          "summary": "[新聞] 高盛恐慌指標飆至9分！高盛：美股未跌完",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795226591.A.703.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 41,
+          "boo": 3,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[新聞]  Anthropic掛牌難救AI熱潮　美股重挫道瓊",
+          "summary": "[新聞]  Anthropic掛牌難救AI熱潮　美股重挫道瓊",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795124708.A.FDA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 43,
+          "boo": 0,
+          "day": "2026-11-20"
+        },
+        {
+          "title": "[新聞] 美國10月CPI月增0.4%超預期！美股期貨走",
+          "summary": "[新聞] 美國10月CPI月增0.4%超預期！美股期貨走",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794319995.A.6B6.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 36,
+          "boo": 5,
+          "day": "2026-11-11"
+        },
+        {
+          "title": "[新聞] 美股大逃殺！道瓊暴跌近千點、費半慘崩逾",
+          "summary": "[新聞] 美股大逃殺！道瓊暴跌近千點、費半慘崩逾",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795222269.A.6AE.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 29,
+          "boo": 3,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[新聞] 美期中選舉洗牌「反AI」！台股慘綠　謝",
+          "summary": "美國期中選舉後民主黨主張反AI與暫緩資料中心，引發美股與台股等科技股暴跌。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794187306.A.406.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 23,
+          "boo": 6,
+          "day": "2026-11-09"
+        },
+        {
+          "title": "[新聞] 〈美股早盤〉買盤回來了！油價下跌助攻 6",
+          "summary": "美股周一反彈，道瓊漲600點，油價下跌帶動低接買盤回流，輝達除外科技股走強。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794236645.A.06F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 23,
+          "boo": 4,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 〈美股盤後〉輝達財報前AI股掀賣壓 道瓊7",
+          "summary": "[新聞] 〈美股盤後〉輝達財報前AI股掀賣壓 道瓊7",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794875905.A.628.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 20,
+          "boo": 1,
+          "day": "2026-11-17"
+        },
+        {
+          "title": "Re: [新聞] 文曄2項海外募資案同步完成訂價 共募得29",
+          "summary": "通路股遭投資人看淡，年線毫無抵抗力，市場預期升息機率提高將影響eps波動，本益比遠低於美股。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788331788.A.2D4.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 6,
+          "boo": 0,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞] 〈美股早盤〉油價回落抵消美債殖利率壓力",
+          "summary": "美股開盤變動不大，油價回落緩解通膨壓力，但美債殖利率仍居高。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788356848.A.500.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 0,
+          "boo": 1,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "沃勒唱「鴿」救市！道瓊週四飆624點、那指漲1.40%、費半微升0.1%",
+          "summary": "沃勒鴿派言論帶動美股三大指數漲逾1%，晶片股漲幅較小。",
+          "url": "https://tw.stock.yahoo.com/news/%E6%B2%83%E5%8B%92%E5%94%B1-%E9%B4%BF-%E6%95%91%E5%B8%82-%E9%81%93%E7%93%8A%E9%80%B1%E5%9B%9B%E9%A3%86624%E9%BB%9E-%E9%82%A3%E6%8C%87%E6%BC%B21-002607970.html",
           "platform": "News",
           "board": "Yahoo奇摩財經",
           "sentiment": "positive",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "星期一開盤噴爆？美股費半逆天狂飆　台指期夜盤暴漲473點",
+          "summary": "美股非農數據強勁，台指期夜盤暴漲473點。",
+          "url": "https://tw.stock.yahoo.com/news/%E6%98%9F%E6%9C%9F-%E9%96%8B%E7%9B%A4%E5%99%B4%E7%88%86-%E7%BE%8E%E8%82%A1%E8%B2%BB%E5%8D%8A%E9%80%86%E5%A4%A9%E7%8B%82%E9%A3%86-%E5%8F%B0%E6%8C%87%E6%9C%9F%E5%A4%9C%E7%9B%A4%E6%9A%B4%E6%BC%B2473%E9%BB%9E-224834497.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "positive",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "投資人擔憂升息！美股3大指數齊跌　費半逆勢大漲",
+          "summary": "美股升息預期升溫三大指數全數下跌，費半逆勢大漲。",
+          "url": "https://tw.stock.yahoo.com/news/%E6%8A%95%E8%B3%87%E4%BA%BA%E6%93%94%E6%86%82%E5%8D%87%E6%81%AF-%E7%BE%8E%E8%82%A13%E5%A4%A7%E6%8C%87%E6%95%B8%E9%BD%8A%E8%B7%8C-%E8%B2%BB%E5%8D%8A%E9%80%86%E5%8B%A2%E5%A4%A7%E6%BC%B2-221309181.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "negative",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "Fed升息機率增！美股多收黑　特斯拉也下滑",
+          "summary": "升息機率增加美股普遍回軟，特斯拉與三大指數同步下滑。",
+          "url": "https://tw.news.yahoo.com/fed%E5%8D%87%E6%81%AF%E6%A9%9F%E7%8E%87%E5%A2%9E-%E7%BE%8E%E8%82%A1%E5%A4%9A%E6%94%B6%E9%BB%91-%E7%89%B9%E6%96%AF%E6%8B%89%E4%B9%9F%E4%B8%8B%E6%BB%91-215046019.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "negative",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "〈美股盤後〉非農意外強勁、升息機率衝破五成 三大指數盡墨、記憶體股逆勢大漲",
+          "summary": "非農強勁推高升息預期五成，三大指數全黑記憶體股逆勢。",
+          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E8%82%A1%E7%9B%A4%E5%BE%8C-%E9%9D%9E%E8%BE%B2%E6%84%8F%E5%A4%96%E5%BC%B7%E5%8B%81-%E5%8D%87%E6%81%AF%E6%A9%9F%E7%8E%87%E8%A1%9D%E7%A0%B4%E4%BA%94%E6%88%90-%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B8%E7%9B%A1%E5%A2%A8-%E8%A8%98%E6%86%B6%E9%AB%94%E8%82%A1%E9%80%86%E5%8B%A2%E5%A4%A7%E6%BC%B2-214312254.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "negative",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-05"
+        },
+        {
+          "title": "美股距歷史新高只差1%　下週迎來3大魔王",
+          "summary": "美股接近歷史新高，下週CPI等數據將影響Fed升息決策。",
+          "url": "https://tw.news.yahoo.com/%E7%BE%8E%E8%82%A1%E8%B7%9D%E6%AD%B7%E5%8F%B2%E6%96%B0%E9%AB%98%E5%8F%AA%E5%B7%AE1-%E4%B8%8B%E9%80%B1%E8%BF%8E%E4%BE%863%E5%A4%A7%E9%AD%94%E7%8E%8B-225315793.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "neutral",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-06"
+        },
+        {
+          "title": "美股基金連兩週失血，中東戰火與高殖利率壓抑風險胃納",
+          "summary": "美股基金連兩週失血，中東緊張與高殖利率壓抑投資胃納。",
+          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E8%82%A1%E5%9F%BA%E9%87%91%E9%80%A3%E5%85%A9%E9%80%B1%E5%A4%B1%E8%A1%80-%E4%B8%AD%E6%9D%B1%E6%88%B0%E7%81%AB%E8%88%87%E9%AB%98%E6%AE%96%E5%88%A9%E7%8E%87%E5%A3%93%E6%8A%91%E9%A2%A8%E9%9A%AA%E8%83%83%E7%B4%8D-002511595.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "negative",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "非農遠優預期、升息押注升溫，美股三大指數收跌，費半逆勢急漲3.37%",
+          "summary": "美股三大指數收跌但晶片股急漲，非農數據超預期升息預期升溫。",
+          "url": "https://tw.stock.yahoo.com/news/%E9%9D%9E%E8%BE%B2%E9%81%A0%E5%84%AA%E9%A0%90%E6%9C%9F-%E5%8D%87%E6%81%AF%E6%8A%BC%E6%B3%A8%E5%8D%87%E6%BA%AB-%E7%BE%8E%E8%82%A1%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B8%E6%94%B6%E8%B7%8C-%E8%B2%BB%E5%8D%8A%E9%80%86%E5%8B%A2%E6%80%A5%E6%BC%B23-37-002326961.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "neutral",
           "push": 0,
           "boo": 0,
           "day": "2026-09-07"
@@ -8197,352 +8879,11 @@
       ]
     },
     {
-      "word": "投資人",
-      "count": 108,
-      "total_engagement": 4269,
-      "sources": {
-        "PTT·Stock": 76,
-        "News·Yahoo奇摩財經": 32
-      },
-      "posts": [
-        {
-          "title": "[情報] 川普：我炒股是為了美國",
-          "summary": "川普聲稱炒股是為美國，列舉近期提及之多檔美股明牌供投資人參考。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788741917.A.5C5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 522,
-          "boo": 42,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[請益] 周一適合融資大量買進賺回嗎？",
-          "summary": "投資人考慮融資加碼股票，期望國安基金進場帶動漲勢扭虧為盈，風險意識不足。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794140842.A.56E.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 215,
-          "boo": 34,
-          "day": "2026-11-09"
-        },
-        {
-          "title": "[新聞] 國巨*（2327）破底遭投資人打電話罵！陳",
-          "summary": "[新聞] 國巨*（2327）破底遭投資人打電話罵！陳",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794987604.A.037.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 218,
-          "boo": 18,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "[請益] 投資股票有邏輯可言嗎？",
-          "summary": "投資人質疑股票選股有無邏輯，表示基本面好未必漲、本益比高仍漲。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788791007.A.05D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 190,
-          "boo": 25,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 抽漢測成全民運動！首日吸金破紀錄凍結32",
-          "summary": "漢測首日公開申購凍結資金3223億元破紀錄，中籤率僅0.262%，獲利年增389%吸引投資人。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789105095.A.779.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 193,
-          "boo": 8,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794939577.A.0AC.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 169,
-          "boo": 4,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "[心得] 國安基金近三次進場護盤標的",
-          "summary": "統計國安基金三次進場護盤的標的與獲利表現，建議投資人買大盤與台積電等重點標的。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794117353.A.DF5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 141,
-          "boo": 14,
-          "day": "2026-11-09"
-        },
-        {
-          "title": "[心得] 我被 3029零壹套一年",
-          "summary": "投資人分享被3029零壹套牢一年經驗，反思應選ETF而非飆股。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789445968.A.DE0.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 107,
-          "boo": 29,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[標的] 買進00679B 元大美債225張~巴逆逆多",
-          "summary": "投資人分享購買美債基金的經歷與看好該產業的原因，語氣輕鬆。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788500623.A.AFF.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 122,
-          "boo": 5,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "[標的] 2344華邦電 缸底槓桿進場多",
-          "summary": "投資人看好華邦電未來獲利前景，開槓桿進場並預期報酬率達100%以上。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788491812.A.5A4.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 75,
-          "boo": 44,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "[新聞] Fed決策倒數！美債空頭大軍集結至「極端",
-          "summary": "美債空頭部位達極端水準，市場預期Fed升息1碼機率超9成，投資人缺乏逢低買進意願。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789537044.A.049.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 94,
-          "boo": 5,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[新聞] 郭哲榮直播鞠躬認錯！坦言沒在高點出場",
-          "summary": "投顧郭哲榮因未在高點出場向投資人鞠躬道歉，但隨後仍看好後市，引發網友關於投資責任的討論。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794057095.A.23F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 72,
-          "boo": 12,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[請益] 目前有一間房子，適合理財型房貸投股市嗎",
-          "summary": "投資人詢問下跌時期是否應用理財型房貸投入股市加碼，面臨市場快速下跌壓力。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794012895.A.479.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 73,
-          "boo": 3,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[標的] 大盤（空）做多請於下週離場",
-          "summary": "分析民主黨阻擋AI資料中心政策對台灣經濟衝擊，建議投資人提早離場避險。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794010158.A.62A.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 48,
-          "boo": 27,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[新聞] 緯穎深夜重訊滅火　10元買股補貼奈米戶！",
-          "summary": "緯穎除權爭議，10元補貼方案引發不滿，投資人質疑資格限制與執行缺失。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788940367.A.A4C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 66,
-          "boo": 5,
-          "day": "2026-09-10"
-        },
-        {
-          "title": "[新聞] 投資人還在補錢撐維持率！陳嘉偉警告融資",
-          "summary": "分析師警告大盤高檔M頭已成型，融資浮額未清乾淨，恐面臨連環斷頭壓力。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794210048.A.384.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 50,
-          "boo": 15,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[請益] 定期定額VS不定期定額?",
-          "summary": "投資人詢問定期定額與擇時扣款的優劣，思考是否應在低谷時機出手。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788339174.A.5A9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 60,
-          "boo": 1,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[請益] ETF長期放都凹的回來嗎",
-          "summary": "菜雞投資人8月進場購買00935，現已虧損，對美國政策感到失望。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794044338.A.0DA.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 55,
-          "boo": 4,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794928412.A.861.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 56,
-          "boo": 2,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795127532.A.AF1.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 49,
-          "boo": 7,
-          "day": "2026-11-20"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794954637.A.0AC.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 50,
-          "boo": 4,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795013096.A.FF6.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 43,
-          "boo": 11,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "[新聞] 提前理財！南韓未成年投資人持股市值飆",
-          "summary": "南韓未成年投資人持股市值近年飆漲57.2%，高資產帳戶人數大幅增加。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789460645.A.5D9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 52,
-          "boo": 1,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[請益] 這波下跌 回撤控制在多少才合理？",
-          "summary": "投資人遭遇股市下跌，詢問資產回撤多少比例才算合理。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794043716.A.E04.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 47,
-          "boo": 4,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[情報] 2377 微星科技 115年8月營收",
-          "summary": "2377微星科技8月營收月減年減，投資人悲觀看待。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788950201.A.7F9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 47,
-          "boo": 2,
-          "day": "2026-09-10"
-        },
-        {
-          "title": "[新聞] 台股吃糖漿2500點大爆發！聯發科、台達電",
-          "summary": "國安基金進場後台股大漲2500點，13檔千金股漲停，0050漲逾6%，投資人信心回升。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794193076.A.A72.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 45,
-          "boo": 4,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "Re: [請益] 被動元件-禾伸堂",
-          "summary": "投資人悔恨未遵守紀律停損，禾伸堂重壓虧損百萬，糾結是否認賠或等反彈。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794136396.A.ABB.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 46,
-          "boo": 2,
-          "day": "2026-11-09"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795010721.A.06A.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 48,
-          "boo": 0,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794968966.A.38D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 44,
-          "boo": 3,
-          "day": "2026-11-18"
-        },
-        {
-          "title": "[請益] 科技股ETF可以長期持有嗎",
-          "summary": "投資人詢問科技股ETF是否可長期持有，認為00935等產品表現優於0050。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788339856.A.108.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 41,
-          "boo": 5,
-          "day": "2026-09-04"
-        }
-      ]
-    },
-    {
       "word": "ETF",
-      "count": 107,
-      "total_engagement": 1963,
+      "count": 108,
+      "total_engagement": 1975,
       "sources": {
-        "PTT·Stock": 70,
+        "PTT·Stock": 71,
         "News·Yahoo奇摩財經": 36,
         "PTT·Bank_Service": 1
       },
@@ -8880,68 +9221,79 @@
       ]
     },
     {
-      "word": "台積電",
-      "count": 107,
-      "total_engagement": 3694,
+      "word": "投資人",
+      "count": 108,
+      "total_engagement": 4269,
       "sources": {
-        "News·Yahoo奇摩財經": 67,
-        "PTT·Stock": 40
+        "PTT·Stock": 76,
+        "News·Yahoo奇摩財經": 32
       },
       "posts": [
         {
-          "title": "[閒聊] 2026/09/02 盤後閒聊",
-          "summary": "台股收盤重挫784點，跌幅1.67%，台積電大跌55元為最大壓力來源。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788328802.A.1EA.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 873,
-          "boo": 111,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[情報] 2330台積電8月營收 mom+10.1% yoy+53.3%",
-          "summary": "台積電8月營收月增10.1%、年增53.3%，評論指台股量縮、市場熱度不足。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789018403.A.A08.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 435,
-          "boo": 40,
-          "day": "2026-09-11"
-        },
-        {
-          "title": "[情報] 2330台積電10月營收 mom +14.7% yoy +59.",
-          "summary": "[情報] 2330台積電10月營收 mom +14.7% yoy +59.",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794288885.A.825.html",
+          "title": "[情報] 川普：我炒股是為了美國",
+          "summary": "川普聲稱炒股是為美國，列舉近期提及之多檔美股明牌供投資人參考。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788741917.A.5C5.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 303,
-          "boo": 34,
-          "day": "2026-11-11"
+          "push": 522,
+          "boo": 42,
+          "day": "2026-09-08"
         },
         {
-          "title": "[新聞] 黃仁勳認婚外情 輝達股價看跌近3% 亞洲供",
-          "summary": "報導黃仁勳認婚外情導致輝達股價下跌近3%，牽動台積電等亞洲供應商股價。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794181883.A.CED.html",
+          "title": "[請益] 周一適合融資大量買進賺回嗎？",
+          "summary": "投資人考慮融資加碼股票，期望國安基金進場帶動漲勢扭虧為盈，風險意識不足。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794140842.A.56E.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
-          "push": 188,
-          "boo": 14,
+          "push": 215,
+          "boo": 34,
           "day": "2026-11-09"
         },
         {
-          "title": "[新聞] 傳輝達找台積電生產3D DRAMAI記憶體供應",
-          "summary": "傳台積電評估生產3D DRAM應輝達要求，擴展至記憶體製造。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793978736.A.383.html",
+          "title": "[新聞] 國巨*（2327）破底遭投資人打電話罵！陳",
+          "summary": "[新聞] 國巨*（2327）破底遭投資人打電話罵！陳",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794987604.A.037.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 178,
+          "push": 218,
+          "boo": 18,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "[請益] 投資股票有邏輯可言嗎？",
+          "summary": "投資人質疑股票選股有無邏輯，表示基本面好未必漲、本益比高仍漲。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788791007.A.05D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 190,
+          "boo": 25,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 抽漢測成全民運動！首日吸金破紀錄凍結32",
+          "summary": "漢測首日公開申購凍結資金3223億元破紀錄，中籤率僅0.262%，獲利年增389%吸引投資人。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789105095.A.779.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 193,
           "boo": 8,
-          "day": "2026-11-08"
+          "day": "2026-09-13"
+        },
+        {
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794939577.A.0AC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 169,
+          "boo": 4,
+          "day": "2026-11-18"
         },
         {
           "title": "[心得] 國安基金近三次進場護盤標的",
@@ -8955,609 +9307,257 @@
           "day": "2026-11-09"
         },
         {
-          "title": "[新聞] 蘋果發表會將登場！史上最貴iPhone亮相",
-          "summary": "iPhone 18新機上市，首款摺疊機售價創高，台積電等7檔供應鏈受惠。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788970691.A.6C2.html",
+          "title": "[心得] 我被 3029零壹套一年",
+          "summary": "投資人分享被3029零壹套牢一年經驗，反思應選ETF而非飆股。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789445968.A.DE0.html",
           "platform": "PTT",
           "board": "Stock",
-          "sentiment": "positive",
-          "push": 126,
-          "boo": 11,
-          "day": "2026-09-11"
+          "sentiment": "negative",
+          "push": 107,
+          "boo": 29,
+          "day": "2026-09-16"
         },
         {
-          "title": "[新聞] 3088！台積電再獲大摩喊進 隱藏42%暴漲空",
-          "summary": "[新聞] 3088！台積電再獲大摩喊進 隱藏42%暴漲空",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795052758.A.829.html",
+          "title": "[標的] 買進00679B 元大美債225張~巴逆逆多",
+          "summary": "投資人分享購買美債基金的經歷與看好該產業的原因，語氣輕鬆。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788500623.A.AFF.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 111,
-          "boo": 25,
-          "day": "2026-11-19"
+          "push": 122,
+          "boo": 5,
+          "day": "2026-09-06"
         },
         {
-          "title": "[新聞] AI需求增速30年未見！台積電設備需求半年",
-          "summary": "台積電透露AI需求成長速度30年未見，設備需求半年增90%，正建設20座新廠應付",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788398370.A.046.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 87,
-          "boo": 6,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[新聞] 下周一狂噴1000點？  「5檔護盤股」反彈",
-          "summary": "專家指出國安基金進場下台灣50、中型100與台股F5（台積電、鴻海、台達電、聯發科、大立光）有望受惠。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794109988.A.AE3.html",
+          "title": "[標的] 2344華邦電 缸底槓桿進場多",
+          "summary": "投資人看好華邦電未來獲利前景，開槓桿進場並預期報酬率達100%以上。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788491812.A.5A4.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
           "push": 75,
-          "boo": 17,
-          "day": "2026-11-09"
+          "boo": 44,
+          "day": "2026-09-06"
         },
         {
-          "title": "[新聞] 台股史上第2慘！崩2635點收41040　台積電",
-          "summary": "[新聞] 台股史上第2慘！崩2635點收41040　台積電",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794810849.A.1CD.html",
+          "title": "[新聞] Fed決策倒數！美債空頭大軍集結至「極端",
+          "summary": "美債空頭部位達極端水準，市場預期Fed升息1碼機率超9成，投資人缺乏逢低買進意願。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789537044.A.049.html",
           "platform": "PTT",
           "board": "Stock",
-          "sentiment": "neutral",
-          "push": 67,
+          "sentiment": "negative",
+          "push": 94,
+          "boo": 5,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[新聞] 郭哲榮直播鞠躬認錯！坦言沒在高點出場",
+          "summary": "投顧郭哲榮因未在高點出場向投資人鞠躬道歉，但隨後仍看好後市，引發網友關於投資責任的討論。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794057095.A.23F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 72,
           "boo": 12,
-          "day": "2026-11-17"
-        },
-        {
-          "title": "[請益] 可口可樂本益比 為啥能比台積電高？",
-          "summary": "[請益] 可口可樂本益比 為啥能比台積電高？",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794361613.A.FD9.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 64,
-          "boo": 5,
-          "day": "2026-11-11"
-        },
-        {
-          "title": "[新聞] 「你不懂力旺就買台積電」董事陳莉菁超直",
-          "summary": "力旺董事陳莉菁直言股價下跌因被剔除MSCI，非基本面問題，建議不懂就買台積電。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788424847.A.8AC.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 63,
-          "boo": 2,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[新聞] 國安基金+限空令！台股盤中飆逾2,650點、",
-          "summary": "國安基金+限空令推動台股反彈逾2650點，台積電貢獻逾千點，220檔漲停市場買氣回溫。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794197195.A.99A.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 58,
-          "boo": 5,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 摩根史坦利:台積電堅定看好AI需求 維持增持",
-          "summary": "[新聞] 摩根史坦利:台積電堅定看好AI需求 維持增持",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795010008.A.38D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 43,
-          "boo": 20,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "[新聞] 不甩台股飆漲！外資再倒貨900億　台積電",
-          "summary": "外資連8日賣超逾900億元，台積電等登賣超名單，累計賣超7957億元",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794227054.A.FAC.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 51,
-          "boo": 4,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 國安基金進場 法人點名台積電與0050直接",
-          "summary": "法人點名台積電與0050等權值股直接受惠國安基金進場，融資餘額快速退場有助減輕賣壓。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794111308.A.43D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 33,
-          "boo": 6,
-          "day": "2026-11-09"
-        },
-        {
-          "title": "Re: [情報] 2330台積電10月營收 mom +14.7% yoy",
-          "summary": "Re: [情報] 2330台積電10月營收 mom +14.7% yoy",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794294465.A.F3E.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 33,
-          "boo": 3,
-          "day": "2026-11-11"
-        },
-        {
-          "title": "[情報] 2545 皇翔 買台積電135張 均價:2,418.89",
-          "summary": "皇翔買進台積電135張，均價2,418.89元，總投資額3.27億元。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788345424.A.D11.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 31,
-          "boo": 3,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "[標的] 台積電 閉眼多",
-          "summary": "[標的] 台積電 閉眼多",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795143485.A.8FC.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 31,
-          "boo": 3,
-          "day": "2026-11-20"
-        },
-        {
-          "title": "[新聞] 台積電、ASML聯手推12吋High NA EUV光罩",
-          "summary": "台積電與ASML合作推12吋High NA EUV光罩，預計2031年建試產線以提升成本效益。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788920164.A.0C4.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 32,
-          "boo": 1,
-          "day": "2026-09-10"
-        },
-        {
-          "title": "[新聞] 台積電8月營收首度衝破5字頭 達5,148億",
-          "summary": "台積電8月營收首度突破5,000億元，年增53.3%，但ADR盤前小跌引發市場疑慮。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789031051.A.60C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 31,
-          "boo": 1,
-          "day": "2026-09-12"
-        },
-        {
-          "title": "[新聞] 美國印鈔機2》台塑西進陷泥淖 東進美國逆",
-          "summary": "台塑美國事業從虧損逆轉獲利，台積電美國投資獲利大增550%，成為東進美國最大贏家。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788624436.A.329.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 15,
-          "boo": 16,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "[新聞] 台積電Q3拿下各國政府補助款約1670億！前",
-          "summary": "[新聞] 台積電Q3拿下各國政府補助款約1670億！前",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794623068.A.698.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 26,
-          "boo": 3,
-          "day": "2026-11-15"
-        },
-        {
-          "title": "[新聞] 美國加強出口管制 金融時報：台積電、三",
-          "summary": "[新聞] 美國加強出口管制 金融時報：台積電、三",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795098089.A.C1B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 24,
-          "boo": 5,
-          "day": "2026-11-20"
-        },
-        {
-          "title": "[新聞] 台股收盤／台積電跌55元拖垮！台股重挫78",
-          "summary": "美伊衝突升溫引爆避險賣壓，台股重挫784點，科技股賣壓沉重，台積電大跌拖累指數。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788331082.A.717.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 19,
-          "boo": 5,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "Re: [請益] 為什麼GG一直不做記憶體？",
-          "summary": "討論台積電為何不像三星同時發展記憶體業務，分析晶圓代工與記憶體產業策略差異。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793983418.A.210.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 15,
-          "boo": 9,
           "day": "2026-11-08"
         },
         {
-          "title": "[新聞] 台積電失守2000元大關　22檔千金股開跌停",
-          "summary": "[新聞] 台積電失守2000元大關　22檔千金股開跌停",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795144324.A.04D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 23,
-          "boo": 0,
-          "day": "2026-11-20"
-        },
-        {
-          "title": "Re: [請益] 被動元件股 該不該趁反彈停損？",
-          "summary": "投資人批評主動選股風險大，建議買台積電等具技術護城河的公司較佳。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794044731.A.3E5.html",
+          "title": "[請益] 目前有一間房子，適合理財型房貸投股市嗎",
+          "summary": "投資人詢問下跌時期是否應用理財型房貸投入股市加碼，面臨市場快速下跌壓力。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794012895.A.479.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
-          "push": 17,
-          "boo": 5,
+          "push": 73,
+          "boo": 3,
           "day": "2026-11-08"
         },
         {
-          "title": "[情報] 2323 中環 今日買賣3買2賣 皆賺",
-          "summary": "中環基金買南亞科等3檔股票、賣聯發科台積電，交易皆有獲利。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788430854.A.797.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 18,
-          "boo": 1,
-          "day": "2026-09-05"
-        }
-      ]
-    },
-    {
-      "word": "美股",
-      "count": 107,
-      "total_engagement": 2681,
-      "sources": {
-        "News·Yahoo奇摩財經": 88,
-        "PTT·Stock": 19
-      },
-      "posts": [
-        {
-          "title": "[閒聊] 2026/09/07 盤中閒聊",
-          "summary": "2026年9月7日台股上漲693點至46551點，亞股多數上揚，美股小幅下跌。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788741003.A.820.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 854,
-          "boo": 164,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[情報] 川普：我炒股是為了美國",
-          "summary": "川普聲稱炒股是為美國，列舉近期提及之多檔美股明牌供投資人參考。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788741917.A.5C5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 522,
-          "boo": 42,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
-          "summary": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794841490.A.72D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 182,
-          "boo": 23,
-          "day": "2026-11-17"
-        },
-        {
-          "title": "[新聞] 美股開盤「費半重挫」！AI股倒一片…輝達",
-          "summary": "[新聞] 美股開盤「費半重挫」！AI股倒一片…輝達",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794586827.A.CEA.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 166,
-          "boo": 12,
-          "day": "2026-11-15"
-        },
-        {
-          "title": "[情報] 盤前美股科技類大漲",
-          "summary": "[情報] 盤前美股科技類大漲",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794398486.A.388.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 101,
-          "boo": 15,
-          "day": "2026-11-12"
-        },
-        {
-          "title": "[新聞] Fed理事放鴿！升息預期降溫　美股開高道",
-          "summary": "美股開盤上漲，Fed理事放鴿升息預期降溫，道瓊工業指數漲逾400點。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788457711.A.CB6.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 80,
-          "boo": 10,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "[新聞]民主黨勝選重擊美股!女議員喊停AI開發跟馬",
-          "summary": "民主黨勝選後提議暫停AI開發與資料中心建設，引發與馬斯克對立和市場擔憂。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794014112.A.66C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 74,
-          "boo": 5,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[請益] 資產配置討教",
-          "summary": "50歲投資者請教資產配置建議，配置美股、台股及正二ETF，詢問投資組合優化方向。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789110360.A.5FA.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 54,
-          "boo": 2,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "[新聞] AI「急煞車」！科技股領跌美股重挫　小摩",
-          "summary": "美股科技股重挫，費半暴跌5.9%，AI行業內部對發展速度產生分歧。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789449064.A.F65.html",
+          "title": "[標的] 大盤（空）做多請於下週離場",
+          "summary": "分析民主黨阻擋AI資料中心政策對台灣經濟衝擊，建議投資人提早離場避險。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794010158.A.62A.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
           "push": 48,
-          "boo": 7,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "Re: [新聞] 胡塞武裝攻占佩里姆島！荷莫茲海峽外再爆",
-          "summary": "用戶評論胡塞武裝控制紅海戰略位置將衝擊全球物流，認為美股短期難有大漲。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789210252.A.C9C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 46,
-          "boo": 6,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "[新聞] 國安基金+美股電子盤 台指期夜盤一度噴漲",
-          "summary": "台指期夜盤在國安基金進場、美股反彈助力下，一度衝破40,000點，上漲1,093點，記憶體、半導體股回神。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793976584.A.C70.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 43,
-          "boo": 8,
+          "boo": 27,
           "day": "2026-11-08"
         },
         {
-          "title": "[新聞] 〈美股早盤〉主要指數9月開門黑！道瓊挫",
-          "summary": "美股9月開盤下跌，道瓊挫逾300點，半導體股承壓，中東衝突升高油價。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788270400.A.1FE.html",
+          "title": "[新聞] 緯穎深夜重訊滅火　10元買股補貼奈米戶！",
+          "summary": "緯穎除權爭議，10元補貼方案引發不滿，投資人質疑資格限制與執行缺失。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788940367.A.A4C.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
-          "push": 43,
-          "boo": 6,
-          "day": "2026-09-03"
+          "push": 66,
+          "boo": 5,
+          "day": "2026-09-10"
         },
         {
-          "title": "[新聞]  Anthropic掛牌難救AI熱潮　美股重挫道瓊",
-          "summary": "[新聞]  Anthropic掛牌難救AI熱潮　美股重挫道瓊",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795124708.A.FDA.html",
+          "title": "[新聞] 投資人還在補錢撐維持率！陳嘉偉警告融資",
+          "summary": "分析師警告大盤高檔M頭已成型，融資浮額未清乾淨，恐面臨連環斷頭壓力。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794210048.A.384.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 50,
+          "boo": 15,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[請益] 定期定額VS不定期定額?",
+          "summary": "投資人詢問定期定額與擇時扣款的優劣，思考是否應在低谷時機出手。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788339174.A.5A9.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 43,
-          "boo": 0,
+          "push": 60,
+          "boo": 1,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "[請益] ETF長期放都凹的回來嗎",
+          "summary": "菜雞投資人8月進場購買00935，現已虧損，對美國政策感到失望。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794044338.A.0DA.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 55,
+          "boo": 4,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794928412.A.861.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 56,
+          "boo": 2,
+          "day": "2026-11-18"
+        },
+        {
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795127532.A.AF1.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 49,
+          "boo": 7,
           "day": "2026-11-20"
         },
         {
-          "title": "[新聞] 美國10月CPI月增0.4%超預期！美股期貨走",
-          "summary": "[新聞] 美國10月CPI月增0.4%超預期！美股期貨走",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794319995.A.6B6.html",
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794954637.A.0AC.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 36,
-          "boo": 5,
-          "day": "2026-11-11"
+          "push": 50,
+          "boo": 4,
+          "day": "2026-11-18"
         },
         {
-          "title": "[新聞] 美期中選舉洗牌「反AI」！台股慘綠　謝",
-          "summary": "美國期中選舉後民主黨主張反AI與暫緩資料中心，引發美股與台股等科技股暴跌。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794187306.A.406.html",
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795013096.A.FF6.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 43,
+          "boo": 11,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "[新聞] 提前理財！南韓未成年投資人持股市值飆",
+          "summary": "南韓未成年投資人持股市值近年飆漲57.2%，高資產帳戶人數大幅增加。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789460645.A.5D9.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 52,
+          "boo": 1,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[請益] 這波下跌 回撤控制在多少才合理？",
+          "summary": "投資人遭遇股市下跌，詢問資產回撤多少比例才算合理。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794043716.A.E04.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
-          "push": 23,
-          "boo": 6,
-          "day": "2026-11-09"
+          "push": 47,
+          "boo": 4,
+          "day": "2026-11-08"
         },
         {
-          "title": "[新聞] 〈美股早盤〉買盤回來了！油價下跌助攻 6",
-          "summary": "美股周一反彈，道瓊漲600點，油價下跌帶動低接買盤回流，輝達除外科技股走強。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794236645.A.06F.html",
+          "title": "[情報] 2377 微星科技 115年8月營收",
+          "summary": "2377微星科技8月營收月減年減，投資人悲觀看待。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788950201.A.7F9.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 47,
+          "boo": 2,
+          "day": "2026-09-10"
+        },
+        {
+          "title": "[新聞] 台股吃糖漿2500點大爆發！聯發科、台達電",
+          "summary": "國安基金進場後台股大漲2500點，13檔千金股漲停，0050漲逾6%，投資人信心回升。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794193076.A.A72.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "positive",
-          "push": 23,
+          "push": 45,
           "boo": 4,
           "day": "2026-11-10"
         },
         {
-          "title": "[新聞] 〈美股盤後〉輝達財報前AI股掀賣壓 道瓊7",
-          "summary": "[新聞] 〈美股盤後〉輝達財報前AI股掀賣壓 道瓊7",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794875905.A.628.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 20,
-          "boo": 1,
-          "day": "2026-11-17"
-        },
-        {
-          "title": "Re: [新聞] 文曄2項海外募資案同步完成訂價 共募得29",
-          "summary": "通路股遭投資人看淡，年線毫無抵抗力，市場預期升息機率提高將影響eps波動，本益比遠低於美股。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788331788.A.2D4.html",
+          "title": "Re: [請益] 被動元件-禾伸堂",
+          "summary": "投資人悔恨未遵守紀律停損，禾伸堂重壓虧損百萬，糾結是否認賠或等反彈。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794136396.A.ABB.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "negative",
-          "push": 6,
-          "boo": 0,
-          "day": "2026-09-03"
+          "push": 46,
+          "boo": 2,
+          "day": "2026-11-09"
         },
         {
-          "title": "[新聞] 〈美股早盤〉油價回落抵消美債殖利率壓力",
-          "summary": "美股開盤變動不大，油價回落緩解通膨壓力，但美債殖利率仍居高。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788356848.A.500.html",
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795010721.A.06A.html",
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 0,
-          "boo": 1,
+          "push": 48,
+          "boo": 0,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "summary": "Re: [請益] 沒經歷過2008年熊市的投資人",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794968966.A.38D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 44,
+          "boo": 3,
+          "day": "2026-11-18"
+        },
+        {
+          "title": "[請益] 科技股ETF可以長期持有嗎",
+          "summary": "投資人詢問科技股ETF是否可長期持有，認為00935等產品表現優於0050。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788339856.A.108.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 41,
+          "boo": 5,
           "day": "2026-09-04"
-        },
-        {
-          "title": "沃勒唱「鴿」救市！道瓊週四飆624點、那指漲1.40%、費半微升0.1%",
-          "summary": "沃勒鴿派言論帶動美股三大指數漲逾1%，晶片股漲幅較小。",
-          "url": "https://tw.stock.yahoo.com/news/%E6%B2%83%E5%8B%92%E5%94%B1-%E9%B4%BF-%E6%95%91%E5%B8%82-%E9%81%93%E7%93%8A%E9%80%B1%E5%9B%9B%E9%A3%86624%E9%BB%9E-%E9%82%A3%E6%8C%87%E6%BC%B21-002607970.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "positive",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "星期一開盤噴爆？美股費半逆天狂飆　台指期夜盤暴漲473點",
-          "summary": "美股非農數據強勁，台指期夜盤暴漲473點。",
-          "url": "https://tw.stock.yahoo.com/news/%E6%98%9F%E6%9C%9F-%E9%96%8B%E7%9B%A4%E5%99%B4%E7%88%86-%E7%BE%8E%E8%82%A1%E8%B2%BB%E5%8D%8A%E9%80%86%E5%A4%A9%E7%8B%82%E9%A3%86-%E5%8F%B0%E6%8C%87%E6%9C%9F%E5%A4%9C%E7%9B%A4%E6%9A%B4%E6%BC%B2473%E9%BB%9E-224834497.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "positive",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "投資人擔憂升息！美股3大指數齊跌　費半逆勢大漲",
-          "summary": "美股升息預期升溫三大指數全數下跌，費半逆勢大漲。",
-          "url": "https://tw.stock.yahoo.com/news/%E6%8A%95%E8%B3%87%E4%BA%BA%E6%93%94%E6%86%82%E5%8D%87%E6%81%AF-%E7%BE%8E%E8%82%A13%E5%A4%A7%E6%8C%87%E6%95%B8%E9%BD%8A%E8%B7%8C-%E8%B2%BB%E5%8D%8A%E9%80%86%E5%8B%A2%E5%A4%A7%E6%BC%B2-221309181.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "Fed升息機率增！美股多收黑　特斯拉也下滑",
-          "summary": "升息機率增加美股普遍回軟，特斯拉與三大指數同步下滑。",
-          "url": "https://tw.news.yahoo.com/fed%E5%8D%87%E6%81%AF%E6%A9%9F%E7%8E%87%E5%A2%9E-%E7%BE%8E%E8%82%A1%E5%A4%9A%E6%94%B6%E9%BB%91-%E7%89%B9%E6%96%AF%E6%8B%89%E4%B9%9F%E4%B8%8B%E6%BB%91-215046019.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "〈美股盤後〉非農意外強勁、升息機率衝破五成 三大指數盡墨、記憶體股逆勢大漲",
-          "summary": "非農強勁推高升息預期五成，三大指數全黑記憶體股逆勢。",
-          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E8%82%A1%E7%9B%A4%E5%BE%8C-%E9%9D%9E%E8%BE%B2%E6%84%8F%E5%A4%96%E5%BC%B7%E5%8B%81-%E5%8D%87%E6%81%AF%E6%A9%9F%E7%8E%87%E8%A1%9D%E7%A0%B4%E4%BA%94%E6%88%90-%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B8%E7%9B%A1%E5%A2%A8-%E8%A8%98%E6%86%B6%E9%AB%94%E8%82%A1%E9%80%86%E5%8B%A2%E5%A4%A7%E6%BC%B2-214312254.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-05"
-        },
-        {
-          "title": "美股距歷史新高只差1%　下週迎來3大魔王",
-          "summary": "美股接近歷史新高，下週CPI等數據將影響Fed升息決策。",
-          "url": "https://tw.news.yahoo.com/%E7%BE%8E%E8%82%A1%E8%B7%9D%E6%AD%B7%E5%8F%B2%E6%96%B0%E9%AB%98%E5%8F%AA%E5%B7%AE1-%E4%B8%8B%E9%80%B1%E8%BF%8E%E4%BE%863%E5%A4%A7%E9%AD%94%E7%8E%8B-225315793.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "neutral",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "美股基金連兩週失血，中東戰火與高殖利率壓抑風險胃納",
-          "summary": "美股基金連兩週失血，中東緊張與高殖利率壓抑投資胃納。",
-          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E8%82%A1%E5%9F%BA%E9%87%91%E9%80%A3%E5%85%A9%E9%80%B1%E5%A4%B1%E8%A1%80-%E4%B8%AD%E6%9D%B1%E6%88%B0%E7%81%AB%E8%88%87%E9%AB%98%E6%AE%96%E5%88%A9%E7%8E%87%E5%A3%93%E6%8A%91%E9%A2%A8%E9%9A%AA%E8%83%83%E7%B4%8D-002511595.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "非農遠優預期、升息押注升溫，美股三大指數收跌，費半逆勢急漲3.37%",
-          "summary": "美股三大指數收跌但晶片股急漲，非農數據超預期升息預期升溫。",
-          "url": "https://tw.stock.yahoo.com/news/%E9%9D%9E%E8%BE%B2%E9%81%A0%E5%84%AA%E9%A0%90%E6%9C%9F-%E5%8D%87%E6%81%AF%E6%8A%BC%E6%B3%A8%E5%8D%87%E6%BA%AB-%E7%BE%8E%E8%82%A1%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B8%E6%94%B6%E8%B7%8C-%E8%B2%BB%E5%8D%8A%E9%80%86%E5%8B%A2%E6%80%A5%E6%BC%B23-37-002326961.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "neutral",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "Hartnett示警民主黨中選橫掃恐令美股跌逾10%，AI泡沫面臨破裂風險",
-          "summary": "美銀策略師警告民主黨中選橫掃恐令美股跌逾10%，AI泡沫風險升高。",
-          "url": "https://tw.stock.yahoo.com/news/hartnett%E7%A4%BA%E8%AD%A6%E6%B0%91%E4%B8%BB%E9%BB%A8%E4%B8%AD%E9%81%B8%E6%A9%AB%E6%8E%83%E6%81%90%E4%BB%A4%E7%BE%8E%E8%82%A1%E8%B7%8C%E9%80%BE10-ai%E6%B3%A1%E6%B2%AB%E9%9D%A2%E8%87%A8%E7%A0%B4%E8%A3%82%E9%A2%A8%E9%9A%AA-002137700.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "美股財報強勁推升展望 政府債務隱憂浮現",
-          "summary": "美股第二季財報強勁，推升未來盈利預期樂觀，惟政府債務隱憂浮現。",
-          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E8%82%A1%E8%B2%A1%E5%A0%B1%E5%BC%B7%E5%8B%81%E6%8E%A8%E5%8D%87%E5%B1%95%E6%9C%9B-%E6%94%BF%E5%BA%9C%E5%82%B5%E5%8B%99%E9%9A%B1%E6%86%82%E6%B5%AE%E7%8F%BE-001048326.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "positive",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "美股三大指數9月2日重挫逾1% 殖利率、油價續漲添通膨壓力",
-          "summary": "美股三大指數9月2日重挫逾1%，殖利率油價漲添通膨壓力。",
-          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E8%82%A1%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B89%E6%9C%882%E6%97%A5%E9%87%8D%E6%8C%AB%E9%80%BE1-%E6%AE%96%E5%88%A9%E7%8E%87-%E6%B2%B9%E5%83%B9%E7%BA%8C%E6%BC%B2%E6%B7%BB%E9%80%9A%E8%86%A8%E5%A3%93%E5%8A%9B-001004198.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-07"
         }
       ]
     },
@@ -10246,10 +10246,10 @@
     },
     {
       "word": "需求",
-      "count": 103,
+      "count": 104,
       "total_engagement": 1857,
       "sources": {
-        "News·Yahoo奇摩財經": 56,
+        "News·Yahoo奇摩財經": 57,
         "PTT·Stock": 46,
         "PTT·Bank_Service": 1
       },
@@ -10588,10 +10588,10 @@
     },
     {
       "word": "交易",
-      "count": 103,
-      "total_engagement": 3220,
+      "count": 104,
+      "total_engagement": 3221,
       "sources": {
-        "News·Yahoo奇摩財經": 46,
+        "News·Yahoo奇摩財經": 47,
         "PTT·Stock": 44,
         "PTT·Bank_Service": 13
       },
@@ -10746,9 +10746,9 @@
           "platform": "PTT",
           "board": "Stock",
           "sentiment": "neutral",
-          "push": 63,
+          "push": 64,
           "boo": 2,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報] （第二波額滿）上海商銀ATM，跨行交易享回饋",
@@ -10930,10 +10930,10 @@
     },
     {
       "word": "排行",
-      "count": 97,
-      "total_engagement": 3621,
+      "count": 98,
+      "total_engagement": 3688,
       "sources": {
-        "PTT·Stock": 96,
+        "PTT·Stock": 97,
         "News·Yahoo奇摩財經": 1
       },
       "posts": [
@@ -11125,6 +11125,17 @@
           "day": "2026-09-06"
         },
         {
+          "title": "[情報] 世界主要股市年漲幅排行11/21",
+          "summary": "[情報] 世界主要股市年漲幅排行11/21",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795221694.A.7C1.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 57,
+          "boo": 10,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[情報] 1113 上市外資買賣超排行",
           "summary": "[情報] 1113 上市外資買賣超排行",
           "url": "https://www.ptt.cc/bbs/Stock/M.1794557534.A.5F1.html",
@@ -11255,27 +11266,16 @@
           "push": 29,
           "boo": 5,
           "day": "2026-09-16"
-        },
-        {
-          "title": "[情報] 0916 上市投信買賣超排行",
-          "summary": "投信買超排行中，永豐金16189張居首，其次為彰銀與凱基金，金融股普遍受青睞。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789541800.A.CA1.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 31,
-          "boo": 2,
-          "day": "2026-09-16"
         }
       ]
     },
     {
       "word": "風險",
-      "count": 95,
-      "total_engagement": 2573,
+      "count": 96,
+      "total_engagement": 2626,
       "sources": {
         "News·Yahoo奇摩財經": 58,
-        "PTT·Stock": 37
+        "PTT·Stock": 38
       },
       "posts": [
         {
@@ -11444,6 +11444,17 @@
           "day": "2026-11-10"
         },
         {
+          "title": "Re: [新聞] AI資料中心卡4關！央行澆冷水 示警融資風險",
+          "summary": "Re: [新聞] AI資料中心卡4關！央行澆冷水 示警融資風險",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795224999.A.7FC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 52,
+          "boo": 1,
+          "day": "2026-11-21"
+        },
+        {
           "title": "Re: [心得] 投資新手聖經 FX戰士久留美 台版上市",
           "summary": "動漫《FX戰士久留美》台版上市，十月動畫化，警示投資風險與心態。",
           "url": "https://www.ptt.cc/bbs/Stock/M.1788479820.A.310.html",
@@ -11596,26 +11607,15 @@
           "push": 14,
           "boo": 1,
           "day": "2026-11-08"
-        },
-        {
-          "title": "Re: [請益] 國安基金到底是好還是不好?",
-          "summary": "討論國安基金進場對股市長期發展的影響，分析其市場穩定作用與融資風險道德風險問題。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794108212.A.29F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 9,
-          "boo": 5,
-          "day": "2026-11-09"
         }
       ]
     },
     {
       "word": "基金",
-      "count": 92,
-      "total_engagement": 4698,
+      "count": 93,
+      "total_engagement": 4757,
       "sources": {
-        "PTT·Stock": 49,
+        "PTT·Stock": 50,
         "News·Yahoo奇摩財經": 41,
         "PTT·Bank_Service": 2
       },
@@ -11852,6 +11852,17 @@
           "day": "2026-11-10"
         },
         {
+          "title": "[新聞] 卓揆急研第3波護盤！國安基金倍增至1兆",
+          "summary": "[新聞] 卓揆急研第3波護盤！國安基金倍增至1兆",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795231846.A.2FD.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 43,
+          "boo": 16,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[新聞] 國安基金+美股電子盤 台指期夜盤一度噴漲",
           "summary": "台指期夜盤在國安基金進場、美股反彈助力下，一度衝破40,000點，上漲1,093點，記憶體、半導體股回神。",
           "url": "https://www.ptt.cc/bbs/Stock/M.1793976584.A.C70.html",
@@ -11938,27 +11949,16 @@
           "push": 32,
           "boo": 4,
           "day": "2026-11-09"
-        },
-        {
-          "title": "[新聞] 國安基金護盤後台股漲勢如何？群益投信：",
-          "summary": "[新聞] 國安基金護盤後台股漲勢如何？群益投信：",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794283732.A.B02.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 31,
-          "boo": 4,
-          "day": "2026-11-11"
         }
       ]
     },
     {
       "word": "指數",
-      "count": 87,
-      "total_engagement": 3064,
+      "count": 89,
+      "total_engagement": 3152,
       "sources": {
         "News·Yahoo奇摩財經": 71,
-        "PTT·Stock": 16
+        "PTT·Stock": 18
       },
       "posts": [
         {
@@ -12050,6 +12050,17 @@
           "day": "2026-11-17"
         },
         {
+          "title": "[請益] 大跌抄底：指數or個股？",
+          "summary": "[請益] 大跌抄底：指數or個股？",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795215760.A.F24.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 47,
+          "boo": 3,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[新聞] 〈美股早盤〉主要指數9月開門黑！道瓊挫",
           "summary": "美股9月開盤下跌，道瓊挫逾300點，半導體股承壓，中東衝突升高油價。",
           "url": "https://www.ptt.cc/bbs/Stock/M.1788270400.A.1FE.html",
@@ -12070,6 +12081,17 @@
           "push": 36,
           "boo": 3,
           "day": "2026-09-13"
+        },
+        {
+          "title": "[標的] 加權指數  空  回到2萬3千點",
+          "summary": "[標的] 加權指數  空  回到2萬3千點",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795223606.A.723.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 23,
+          "boo": 15,
+          "day": "2026-11-21"
         },
         {
           "title": "[請益] 指數正二etf不能質押 國巨這種的卻可以",
@@ -12268,35 +12290,13 @@
           "push": 0,
           "boo": 0,
           "day": "2026-09-10"
-        },
-        {
-          "title": "通膨與長債殖利率雙壓，美股三大指數連三黑，費半逆漲0.37%連五紅",
-          "summary": "美股三大指數連三黑，油價破101美元推升債券殖利率，通膨升溫。",
-          "url": "https://tw.stock.yahoo.com/news/%E9%80%9A%E8%86%A8%E8%88%87%E9%95%B7%E5%82%B5%E6%AE%96%E5%88%A9%E7%8E%87%E9%9B%99%E5%A3%93-%E7%BE%8E%E8%82%A1%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B8%E9%80%A3%E4%B8%89%E9%BB%91-%E8%B2%BB%E5%8D%8A%E9%80%86%E6%BC%B20-37-%E9%80%A3%E4%BA%94%E7%B4%85-003553621.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-10"
-        },
-        {
-          "title": "油價飆、升息陰影罩頂，美股三大指數連4跌，費半重挫2.66%",
-          "summary": "美股受油價飆升與升息預期影響連跌4日，費城半導體指數重挫2.66%",
-          "url": "https://tw.stock.yahoo.com/news/%E6%B2%B9%E5%83%B9%E9%A3%86-%E5%8D%87%E6%81%AF%E9%99%B0%E5%BD%B1%E7%BD%A9%E9%A0%82-%E7%BE%8E%E8%82%A1%E4%B8%89%E5%A4%A7%E6%8C%87%E6%95%B8%E9%80%A34%E8%B7%8C-%E8%B2%BB%E5%8D%8A%E9%87%8D%E6%8C%AB2-66-001233696.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-11"
         }
       ]
     },
     {
       "word": "萬元",
       "count": 86,
-      "total_engagement": 979,
+      "total_engagement": 980,
       "sources": {
         "News·Yahoo奇摩財經": 58,
         "PTT·Stock": 18,
@@ -12491,6 +12491,17 @@
           "day": "2026-11-10"
         },
         {
+          "title": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
+          "summary": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
+          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795012558.A.0A5.html",
+          "platform": "PTT",
+          "board": "Bank_Service",
+          "sentiment": "neutral",
+          "push": 13,
+          "boo": 0,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[新聞] 前鼎獲利／自結7月2,400萬元、年增140% E",
           "summary": "前鼎7月獲利年增140%，但股價爆量翻黑，投資人擔心短期難以回升至300元",
           "url": "https://www.ptt.cc/bbs/Stock/M.1788357780.A.09A.html",
@@ -12500,17 +12511,6 @@
           "push": 11,
           "boo": 1,
           "day": "2026-09-04"
-        },
-        {
-          "title": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
-          "summary": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
-          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795012558.A.0A5.html",
-          "platform": "PTT",
-          "board": "Bank_Service",
-          "sentiment": "neutral",
-          "push": 12,
-          "boo": 0,
-          "day": "2026-11-20"
         },
         {
           "title": "[情報] 玉山銀行 強化存款帳戶久未往來安全管控說明",
@@ -12532,7 +12532,7 @@
           "sentiment": "neutral",
           "push": 10,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報] 宏洲、宜進、宜新實業皆出清廣達",
@@ -12565,7 +12565,7 @@
           "sentiment": "neutral",
           "push": 5,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] ATM無卡提款規定變了！富邦銀8/4起月限20",
@@ -12978,10 +12978,10 @@
     },
     {
       "word": "金融",
-      "count": 76,
-      "total_engagement": 1732,
+      "count": 77,
+      "total_engagement": 1754,
       "sources": {
-        "PTT·Stock": 30,
+        "PTT·Stock": 31,
         "News·Yahoo奇摩財經": 28,
         "PTT·Bank_Service": 18
       },
@@ -13204,7 +13204,7 @@
           "sentiment": "neutral",
           "push": 27,
           "boo": 1,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] 台新、新光銀明年元旦合併 林維俊：業務發展更均衡",
@@ -13251,6 +13251,17 @@
           "day": "2026-09-16"
         },
         {
+          "title": "Re: [請益]新手想問金融海嘯有可能重現嗎？",
+          "summary": "Re: [請益]新手想問金融海嘯有可能重現嗎？",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795216781.A.3CE.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 20,
+          "boo": 2,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[新聞] 金管會主委專訪／台灣特色亞洲資產管理中",
           "summary": "金管會主委宣示金融業稅前盈餘創歷史新高，推動亞洲資產管理中心，將金融業定位為下一座護國神山。",
           "url": "https://www.ptt.cc/bbs/Stock/M.1789543860.A.64F.html",
@@ -13292,7 +13303,7 @@
           "sentiment": "neutral",
           "push": 16,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "Re: [新聞] 《國際金融》無視散戶遍地哀號 韓版國安",
@@ -13304,26 +13315,15 @@
           "push": 14,
           "boo": 1,
           "day": "2026-11-12"
-        },
-        {
-          "title": "Re: [情報] 王道簽帳金融卡基本現金回饋改1個月發2次",
-          "summary": "Re: [情報] 王道簽帳金融卡基本現金回饋改1個月發2次",
-          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1791471949.A.920.html",
-          "platform": "PTT",
-          "board": "Bank_Service",
-          "sentiment": "neutral",
-          "push": 14,
-          "boo": 0,
-          "day": "2026-11-17"
         }
       ]
     },
     {
       "word": "中心",
-      "count": 74,
-      "total_engagement": 2235,
+      "count": 76,
+      "total_engagement": 2342,
       "sources": {
-        "PTT·Stock": 39,
+        "PTT·Stock": 41,
         "News·Yahoo奇摩財經": 35
       },
       "posts": [
@@ -13482,6 +13482,28 @@
           "day": "2026-11-08"
         },
         {
+          "title": "[新聞] 嚴防資料中心外移　川普警告美企海外建資",
+          "summary": "[新聞] 嚴防資料中心外移　川普警告美企海外建資",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795219956.A.20F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 49,
+          "boo": 5,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "Re: [新聞] AI資料中心卡4關！央行澆冷水 示警融資風險",
+          "summary": "Re: [新聞] AI資料中心卡4關！央行澆冷水 示警融資風險",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795224999.A.7FC.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 52,
+          "boo": 1,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[心得] 未來幾年巨頭資本支出統計預估",
           "summary": "全球AI資料中心資本支出未來4年將倍增至1.6兆美元，市場無需恐慌。",
           "url": "https://www.ptt.cc/bbs/Stock/M.1794210519.A.EC2.html",
@@ -13634,37 +13656,15 @@
           "push": 16,
           "boo": 1,
           "day": "2026-11-18"
-        },
-        {
-          "title": "Re: R: [新聞] 美國德州新州長：不討厭AI資料中",
-          "summary": "評論資料中心成本可通過補貼解決，政治反對聲浪背後存在利益協商空間。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794028726.A.EE4.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 14,
-          "boo": 1,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[新聞] 微軟算力大擴張 資料中心容量將增逾兩倍",
-          "summary": "微軟擴增資料中心產能至38GW，台廠鴻海、廣達等受惠景氣向好。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789146913.A.117.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 14,
-          "boo": 0,
-          "day": "2026-09-13"
         }
       ]
     },
     {
       "word": "晶片",
-      "count": 73,
+      "count": 74,
       "total_engagement": 1703,
       "sources": {
-        "News·Yahoo奇摩財經": 52,
+        "News·Yahoo奇摩財經": 53,
         "PTT·Stock": 21
       },
       "posts": [
@@ -14342,6 +14342,347 @@
       ]
     },
     {
+      "word": "川普",
+      "count": 70,
+      "total_engagement": 3302,
+      "sources": {
+        "News·Yahoo奇摩財經": 43,
+        "PTT·Stock": 27
+      },
+      "posts": [
+        {
+          "title": "[情報] 川普：我炒股是為了美國",
+          "summary": "川普聲稱炒股是為美國，列舉近期提及之多檔美股明牌供投資人參考。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788741917.A.5C5.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 522,
+          "boo": 42,
+          "day": "2026-09-08"
+        },
+        {
+          "title": "[新聞] 川普拋震撼彈！美伊戰爭若結束　可能留在",
+          "summary": "川普稱美國可留伊朗掌控石油資源，提高能源市場不確定性，布蘭特原油107美元。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789356395.A.271.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 231,
+          "boo": 41,
+          "day": "2026-09-15"
+        },
+        {
+          "title": "[新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
+          "summary": "川普發表強硬AI政策言論宣示領先地位，市場期盼止跌反升。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789397892.A.49C.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 239,
+          "boo": 30,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[新聞] 川普：黃仁勳正經歷地獄煎熬",
+          "summary": "[新聞] 川普：黃仁勳正經歷地獄煎熬",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794551451.A.1F8.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 200,
+          "boo": 29,
+          "day": "2026-11-15"
+        },
+        {
+          "title": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
+          "summary": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794841490.A.72D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 182,
+          "boo": 23,
+          "day": "2026-11-17"
+        },
+        {
+          "title": "[新聞] 川普政府廢除燃氣電廠碳排限制 為AI用電",
+          "summary": "川普政府廢除燃氣電廠碳排限制，為AI資料中心用電鋪路。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789434450.A.656.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 184,
+          "boo": 14,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[新聞] 川普再放話！當美國打贏伊朗「油價將暴跌",
+          "summary": "川普預言擊敗伊朗後油價大跌，惟當前布油近百價格高漲",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788849039.A.35D.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 155,
+          "boo": 36,
+          "day": "2026-09-09"
+        },
+        {
+          "title": "[新聞] 川普又又又點名台灣晶片該課重稅200%！",
+          "summary": "川普再度點名台灣晶片應課重稅，政府強調持續推動產業發展與台美合作。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789054553.A.91F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 139,
+          "boo": 28,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "[新聞] 川普：黃仁勳不知婚外情對象涉共諜 FBI",
+          "summary": "[新聞] 川普：黃仁勳不知婚外情對象涉共諜 FBI",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794267231.A.760.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 133,
+          "boo": 11,
+          "day": "2026-11-11"
+        },
+        {
+          "title": "[新聞] 美伊三天內二度交火！川普撂話更大攻擊在",
+          "summary": "美伊三天內二度交火，川普威脅對伊朗發動更大攻擊，中東局勢升溫。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788311422.A.CD2.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 109,
+          "boo": 8,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[情報] 川普: 我完全支持超級人工智能(SI)!",
+          "summary": "川普表示百分百支持超級人工智能發展，認為將帶來財富。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1793981552.A.34F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "positive",
+          "push": 88,
+          "boo": 12,
+          "day": "2026-11-08"
+        },
+        {
+          "title": "[新聞] 美俄烏明重啟和談！川普暗示烏須割地：版圖會不一樣",
+          "summary": "美俄烏即將重啟和談，川普暗示烏克蘭可能須割讓領土才能實現和平。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794207612.A.A8C.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 87,
+          "boo": 12,
+          "day": "2026-11-10"
+        },
+        {
+          "title": "[新聞] 川普預告期中選舉後美伊戰事迅速落幕、油",
+          "summary": "川普預測期中選舉後美伊戰事落幕油價大跌，但分析師對此持懷疑態度。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788999003.A.9C8.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 79,
+          "boo": 11,
+          "day": "2026-09-11"
+        },
+        {
+          "title": "Re: [新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
+          "summary": "網友討論川普AI監管政策立場與其對市場信心喊話的意義。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789401507.A.E6B.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 83,
+          "boo": 7,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "Re: [新聞] 川普：黃仁勳正經歷地獄煎熬",
+          "summary": "Re: [新聞] 川普：黃仁勳正經歷地獄煎熬",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1794556343.A.923.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 62,
+          "boo": 21,
+          "day": "2026-11-15"
+        },
+        {
+          "title": "[新聞] 川普貼文連發！批AI末世論、全球暖化都",
+          "summary": "川普發文批評AI末世論為騙局，力挺黃仁勳與輝達AI發展。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789433926.A.E3C.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 61,
+          "boo": 5,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "[新聞] 美反擊伊朗 川普警告若還手將遭更大打擊",
+          "summary": "美伊交火升溫，川普警告伊朗若報復將遭更大打擊，推升油價上漲",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788321076.A.293.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 59,
+          "boo": 5,
+          "day": "2026-09-03"
+        },
+        {
+          "title": "[新聞] 美就業數據超預期 川普仍發文要求聯準會",
+          "summary": "美就業數據超預期，川普仍施壓聯準會降息，並威脅對貿易逆差國家實施關稅。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788532699.A.B77.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 58,
+          "boo": 6,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "Re: [情報] 川普拒絕放慢AI發展",
+          "summary": "川普不放慢AI發展恐助中國蒸餾模型縮短差距，賣鏟子者獲利最多。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789351089.A.388.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 48,
+          "boo": 8,
+          "day": "2026-09-15"
+        },
+        {
+          "title": "[新聞] 川普：有簡短跟習近平提黃仁勳婚外情風波",
+          "summary": "[新聞] 川普：有簡短跟習近平提黃仁勳婚外情風波",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795057336.A.ABD.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 49,
+          "boo": 7,
+          "day": "2026-11-19"
+        },
+        {
+          "title": "[新聞] 嚴防資料中心外移　川普警告美企海外建資",
+          "summary": "[新聞] 嚴防資料中心外移　川普警告美企海外建資",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795219956.A.20F.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 49,
+          "boo": 5,
+          "day": "2026-11-21"
+        },
+        {
+          "title": "[新聞] 沙烏地輸油管線遇襲　川普：伊朗可能是",
+          "summary": "沙烏地輸油管遇襲停擺，川普指伊朗可能為幕後黑手，油價面臨上升壓力。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789221668.A.129.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 39,
+          "boo": 6,
+          "day": "2026-09-13"
+        },
+        {
+          "title": "Re: [情報] 川普拒絕放慢AI發展",
+          "summary": "評論分析美中AI發展差距不僅在硬體與模型，關鍵差距在數據品質與數位化程度。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789362934.A.0B3.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 18,
+          "boo": 5,
+          "day": "2026-09-15"
+        },
+        {
+          "title": "[新聞] 稱伊朗研究生化武器 川普：看元旦後美伊局勢如何發展",
+          "summary": "[新聞] 稱伊朗研究生化武器 川普：看元旦後美伊局勢如何發展",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795129499.A.03B.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 19,
+          "boo": 1,
+          "day": "2026-11-20"
+        },
+        {
+          "title": "Re: [新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
+          "summary": "評論者批評AI安全警告為炒作題材，指出企業因競爭力落後才出來喊安全，邏輯有疑。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789452340.A.D59.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 15,
+          "boo": 1,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "Re: [新聞] 美就業數據超預期 川普仍發文要求聯準會",
+          "summary": "網友分析聯準會面臨政治壓力，升息一碼年增美國利息支出1000億美元，財政壓力巨大。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1788555331.A.C43.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 15,
+          "boo": 0,
+          "day": "2026-09-07"
+        },
+        {
+          "title": "Re: [新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
+          "summary": "網友指控AI投資形成債務黑洞，營收與投資嚴重不成比例，永動機難以為繼。",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1789427826.A.539.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "negative",
+          "push": 3,
+          "boo": 2,
+          "day": "2026-09-16"
+        },
+        {
+          "title": "美國聯邦債務突破40兆美元，川普撙節承諾落空，利息負擔加重",
+          "summary": "美國聯邦債務破40兆美元，川普撙節承諾落空。",
+          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E5%9C%8B%E8%81%AF%E9%82%A6%E5%82%B5%E5%8B%99%E7%AA%81%E7%A0%B440%E5%85%86%E7%BE%8E%E5%85%83-%E5%B7%9D%E6%99%AE%E6%92%99%E7%AF%80%E6%89%BF%E8%AB%BE%E8%90%BD%E7%A9%BA-%E5%88%A9%E6%81%AF%E8%B2%A0%E6%93%94%E5%8A%A0%E9%87%8D-000922454.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "negative",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-04"
+        },
+        {
+          "title": "川普2特使密會普丁逾3小時　克宮：非常有益",
+          "summary": "川普特使與普丁會談超3小時，探討俄烏戰爭和平方案。",
+          "url": "https://tw.news.yahoo.com/%E5%B7%9D%E6%99%AE2%E7%89%B9%E4%BD%BF%E5%AF%86%E6%9C%83%E6%99%AE%E4%B8%81%E9%80%BE3%E5%B0%8F%E6%99%82-%E5%85%8B%E5%AE%AE-%E9%9D%9E%E5%B8%B8%E6%9C%89%E7%9B%8A-000949975.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "neutral",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-06"
+        },
+        {
+          "title": "美中擬9月中旬舉行AI安全對話，川普第二任期來首次雙邊官方會談",
+          "summary": "美中計畫9月中舉辦AI安全對話，為川普第二任期首次雙邊官方會談。",
+          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E-%E9%99%B8%E6%93%AC9%E6%9C%88%E4%B8%AD%E8%88%89%E8%A1%8Cai%E5%AE%89%E5%85%A8%E5%B0%8D%E8%A9%B1-%E5%B7%9D%E6%99%AE%E7%AC%AC%E4%BA%8C%E4%BB%BB%E6%9C%9F%E4%BE%86%E9%A6%96%E6%AC%A1%E9%9B%99%E9%82%8A%E5%AE%98%E6%96%B9%E6%9C%83%E8%AB%87-001457564.html",
+          "platform": "News",
+          "board": "Yahoo奇摩財經",
+          "sentiment": "neutral",
+          "push": 0,
+          "boo": 0,
+          "day": "2026-09-07"
+        }
+      ]
+    },
+    {
       "word": "新台幣",
       "count": 68,
       "total_engagement": 100,
@@ -14415,7 +14756,7 @@
           "sentiment": "neutral",
           "push": 4,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "仁新* 公告本公司股票面額由「新台幣10元」變更為「新台幣1元」，公告期間：115年8月5日至115年11月4日。",
@@ -15022,347 +15363,6 @@
           "push": 8,
           "boo": 0,
           "day": "2026-11-10"
-        }
-      ]
-    },
-    {
-      "word": "川普",
-      "count": 67,
-      "total_engagement": 3248,
-      "sources": {
-        "News·Yahoo奇摩財經": 41,
-        "PTT·Stock": 26
-      },
-      "posts": [
-        {
-          "title": "[情報] 川普：我炒股是為了美國",
-          "summary": "川普聲稱炒股是為美國，列舉近期提及之多檔美股明牌供投資人參考。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788741917.A.5C5.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 522,
-          "boo": 42,
-          "day": "2026-09-08"
-        },
-        {
-          "title": "[新聞] 川普拋震撼彈！美伊戰爭若結束　可能留在",
-          "summary": "川普稱美國可留伊朗掌控石油資源，提高能源市場不確定性，布蘭特原油107美元。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789356395.A.271.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 231,
-          "boo": 41,
-          "day": "2026-09-15"
-        },
-        {
-          "title": "[新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
-          "summary": "川普發表強硬AI政策言論宣示領先地位，市場期盼止跌反升。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789397892.A.49C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 239,
-          "boo": 30,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[新聞] 川普：黃仁勳正經歷地獄煎熬",
-          "summary": "[新聞] 川普：黃仁勳正經歷地獄煎熬",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794551451.A.1F8.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 200,
-          "boo": 29,
-          "day": "2026-11-15"
-        },
-        {
-          "title": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
-          "summary": "[新聞] 美股開盤／川普「支持黃仁勳回鍋」！費半",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794841490.A.72D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 182,
-          "boo": 23,
-          "day": "2026-11-17"
-        },
-        {
-          "title": "[新聞] 川普政府廢除燃氣電廠碳排限制 為AI用電",
-          "summary": "川普政府廢除燃氣電廠碳排限制，為AI資料中心用電鋪路。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789434450.A.656.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 184,
-          "boo": 14,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[新聞] 川普再放話！當美國打贏伊朗「油價將暴跌",
-          "summary": "川普預言擊敗伊朗後油價大跌，惟當前布油近百價格高漲",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788849039.A.35D.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 155,
-          "boo": 36,
-          "day": "2026-09-09"
-        },
-        {
-          "title": "[新聞] 川普又又又點名台灣晶片該課重稅200%！",
-          "summary": "川普再度點名台灣晶片應課重稅，政府強調持續推動產業發展與台美合作。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789054553.A.91F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 139,
-          "boo": 28,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "[新聞] 川普：黃仁勳不知婚外情對象涉共諜 FBI",
-          "summary": "[新聞] 川普：黃仁勳不知婚外情對象涉共諜 FBI",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794267231.A.760.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 133,
-          "boo": 11,
-          "day": "2026-11-11"
-        },
-        {
-          "title": "[新聞] 美伊三天內二度交火！川普撂話更大攻擊在",
-          "summary": "美伊三天內二度交火，川普威脅對伊朗發動更大攻擊，中東局勢升溫。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788311422.A.CD2.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 109,
-          "boo": 8,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[情報] 川普: 我完全支持超級人工智能(SI)!",
-          "summary": "川普表示百分百支持超級人工智能發展，認為將帶來財富。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1793981552.A.34F.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "positive",
-          "push": 88,
-          "boo": 12,
-          "day": "2026-11-08"
-        },
-        {
-          "title": "[新聞] 美俄烏明重啟和談！川普暗示烏須割地：版圖會不一樣",
-          "summary": "美俄烏即將重啟和談，川普暗示烏克蘭可能須割讓領土才能實現和平。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794207612.A.A8C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 87,
-          "boo": 12,
-          "day": "2026-11-10"
-        },
-        {
-          "title": "[新聞] 川普預告期中選舉後美伊戰事迅速落幕、油",
-          "summary": "川普預測期中選舉後美伊戰事落幕油價大跌，但分析師對此持懷疑態度。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788999003.A.9C8.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 79,
-          "boo": 11,
-          "day": "2026-09-11"
-        },
-        {
-          "title": "Re: [新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
-          "summary": "網友討論川普AI監管政策立場與其對市場信心喊話的意義。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789401507.A.E6B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 83,
-          "boo": 7,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "Re: [新聞] 川普：黃仁勳正經歷地獄煎熬",
-          "summary": "Re: [新聞] 川普：黃仁勳正經歷地獄煎熬",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794556343.A.923.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 62,
-          "boo": 21,
-          "day": "2026-11-15"
-        },
-        {
-          "title": "[新聞] 川普貼文連發！批AI末世論、全球暖化都",
-          "summary": "川普發文批評AI末世論為騙局，力挺黃仁勳與輝達AI發展。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789433926.A.E3C.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 61,
-          "boo": 5,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "[新聞] 美反擊伊朗 川普警告若還手將遭更大打擊",
-          "summary": "美伊交火升溫，川普警告伊朗若報復將遭更大打擊，推升油價上漲",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788321076.A.293.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 59,
-          "boo": 5,
-          "day": "2026-09-03"
-        },
-        {
-          "title": "[新聞] 美就業數據超預期 川普仍發文要求聯準會",
-          "summary": "美就業數據超預期，川普仍施壓聯準會降息，並威脅對貿易逆差國家實施關稅。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788532699.A.B77.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 58,
-          "boo": 6,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "Re: [情報] 川普拒絕放慢AI發展",
-          "summary": "川普不放慢AI發展恐助中國蒸餾模型縮短差距，賣鏟子者獲利最多。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789351089.A.388.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 48,
-          "boo": 8,
-          "day": "2026-09-15"
-        },
-        {
-          "title": "[新聞] 川普：有簡短跟習近平提黃仁勳婚外情風波",
-          "summary": "[新聞] 川普：有簡短跟習近平提黃仁勳婚外情風波",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795057336.A.ABD.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 49,
-          "boo": 7,
-          "day": "2026-11-19"
-        },
-        {
-          "title": "[新聞] 沙烏地輸油管線遇襲　川普：伊朗可能是",
-          "summary": "沙烏地輸油管遇襲停擺，川普指伊朗可能為幕後黑手，油價面臨上升壓力。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789221668.A.129.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 39,
-          "boo": 6,
-          "day": "2026-09-13"
-        },
-        {
-          "title": "Re: [情報] 川普拒絕放慢AI發展",
-          "summary": "評論分析美中AI發展差距不僅在硬體與模型，關鍵差距在數據品質與數位化程度。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789362934.A.0B3.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 18,
-          "boo": 5,
-          "day": "2026-09-15"
-        },
-        {
-          "title": "[新聞] 稱伊朗研究生化武器 川普：看元旦後美伊局勢如何發展",
-          "summary": "[新聞] 稱伊朗研究生化武器 川普：看元旦後美伊局勢如何發展",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1795129499.A.03B.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 19,
-          "boo": 1,
-          "day": "2026-11-20"
-        },
-        {
-          "title": "Re: [新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
-          "summary": "評論者批評AI安全警告為炒作題材，指出企業因競爭力落後才出來喊安全，邏輯有疑。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789452340.A.D59.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 15,
-          "boo": 1,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "Re: [新聞] 美就業數據超預期 川普仍發文要求聯準會",
-          "summary": "網友分析聯準會面臨政治壓力，升息一碼年增美國利息支出1000億美元，財政壓力巨大。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1788555331.A.C43.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 15,
-          "boo": 0,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "Re: [新聞] 川普：AI所需唯一護欄是強大又聰明的總統",
-          "summary": "網友指控AI投資形成債務黑洞，營收與投資嚴重不成比例，永動機難以為繼。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1789427826.A.539.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "negative",
-          "push": 3,
-          "boo": 2,
-          "day": "2026-09-16"
-        },
-        {
-          "title": "美國聯邦債務突破40兆美元，川普撙節承諾落空，利息負擔加重",
-          "summary": "美國聯邦債務破40兆美元，川普撙節承諾落空。",
-          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E%E5%9C%8B%E8%81%AF%E9%82%A6%E5%82%B5%E5%8B%99%E7%AA%81%E7%A0%B440%E5%85%86%E7%BE%8E%E5%85%83-%E5%B7%9D%E6%99%AE%E6%92%99%E7%AF%80%E6%89%BF%E8%AB%BE%E8%90%BD%E7%A9%BA-%E5%88%A9%E6%81%AF%E8%B2%A0%E6%93%94%E5%8A%A0%E9%87%8D-000922454.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-04"
-        },
-        {
-          "title": "川普2特使密會普丁逾3小時　克宮：非常有益",
-          "summary": "川普特使與普丁會談超3小時，探討俄烏戰爭和平方案。",
-          "url": "https://tw.news.yahoo.com/%E5%B7%9D%E6%99%AE2%E7%89%B9%E4%BD%BF%E5%AF%86%E6%9C%83%E6%99%AE%E4%B8%81%E9%80%BE3%E5%B0%8F%E6%99%82-%E5%85%8B%E5%AE%AE-%E9%9D%9E%E5%B8%B8%E6%9C%89%E7%9B%8A-000949975.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "neutral",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-06"
-        },
-        {
-          "title": "美中擬9月中旬舉行AI安全對話，川普第二任期來首次雙邊官方會談",
-          "summary": "美中計畫9月中舉辦AI安全對話，為川普第二任期首次雙邊官方會談。",
-          "url": "https://tw.stock.yahoo.com/news/%E7%BE%8E-%E9%99%B8%E6%93%AC9%E6%9C%88%E4%B8%AD%E8%88%89%E8%A1%8Cai%E5%AE%89%E5%85%A8%E5%B0%8D%E8%A9%B1-%E5%B7%9D%E6%99%AE%E7%AC%AC%E4%BA%8C%E4%BB%BB%E6%9C%9F%E4%BE%86%E9%A6%96%E6%AC%A1%E9%9B%99%E9%82%8A%E5%AE%98%E6%96%B9%E6%9C%83%E8%AB%87-001457564.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "neutral",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-07"
-        },
-        {
-          "title": "川普提5000美元全民股息 經濟學者憂通膨再起、赤字恐破3兆美元",
-          "summary": "川普提議全民股息計畫引發經濟學家憂慮，恐加劇通膨與聯邦赤字。",
-          "url": "https://tw.stock.yahoo.com/news/%E5%B7%9D%E6%99%AE%E6%8F%905000%E7%BE%8E%E5%85%83%E5%85%A8%E6%B0%91%E8%82%A1%E6%81%AF-%E7%B6%93%E6%BF%9F%E5%AD%B8%E8%80%85%E6%86%82%E9%80%9A%E8%86%A8%E5%86%8D%E8%B5%B7-%E8%B5%A4%E5%AD%97%E6%81%90%E7%A0%B43%E5%85%86%E7%BE%8E%E5%85%83-001123496.html",
-          "platform": "News",
-          "board": "Yahoo奇摩財經",
-          "sentiment": "negative",
-          "push": 0,
-          "boo": 0,
-          "day": "2026-09-11"
         }
       ]
     },
@@ -16051,10 +16051,10 @@
     },
     {
       "word": "買賣",
-      "count": 62,
-      "total_engagement": 4100,
+      "count": 63,
+      "total_engagement": 4112,
       "sources": {
-        "PTT·Stock": 62
+        "PTT·Stock": 63
       },
       "posts": [
         {
@@ -16311,6 +16311,17 @@
           "day": "2026-09-05"
         },
         {
+          "title": "Re: [情報] 11/20 主動ETF買賣超",
+          "summary": "Re: [情報] 11/20 主動ETF買賣超",
+          "url": "https://www.ptt.cc/bbs/Stock/M.1795213219.A.885.html",
+          "platform": "PTT",
+          "board": "Stock",
+          "sentiment": "neutral",
+          "push": 12,
+          "boo": 0,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[情報] 主動ETF/外資共同買賣超排行 (9/1)",
           "summary": "主動ETF與外資共同買超排行，欣興、臻鼎等科技股獲資金青睞。",
           "url": "https://www.ptt.cc/bbs/Stock/M.1788275471.A.2B9.html",
@@ -16375,26 +16386,15 @@
           "push": 7,
           "boo": 1,
           "day": "2026-09-04"
-        },
-        {
-          "title": "[情報] 主動ETF/外資共同買賣超排行 (11/9)",
-          "summary": "11月9日主動ETF及外資共同買賣超排行，鴻海、藥華藥、研華等股獲投信外資同步加碼。",
-          "url": "https://www.ptt.cc/bbs/Stock/M.1794232124.A.D01.html",
-          "platform": "PTT",
-          "board": "Stock",
-          "sentiment": "neutral",
-          "push": 8,
-          "boo": 0,
-          "day": "2026-11-10"
         }
       ]
     },
     {
       "word": "帳戶",
-      "count": 62,
-      "total_engagement": 1143,
+      "count": 63,
+      "total_engagement": 1206,
       "sources": {
-        "PTT·Bank_Service": 53,
+        "PTT·Bank_Service": 54,
         "News·Yahoo奇摩財經": 5,
         "PTT·Stock": 4
       },
@@ -16419,7 +16419,7 @@
           "sentiment": "neutral",
           "push": 96,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報]",
@@ -16431,6 +16431,17 @@
           "push": 73,
           "boo": 2,
           "day": "2026-09-13"
+        },
+        {
+          "title": "[情報] 華南銀行SnY數位帳戶116年優利活儲公告",
+          "summary": "[情報] 華南銀行SnY數位帳戶116年優利活儲公告",
+          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795153962.A.034.html",
+          "platform": "PTT",
+          "board": "Bank_Service",
+          "sentiment": "neutral",
+          "push": 62,
+          "boo": 0,
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] 提前理財！南韓未成年投資人持股市值飆",
@@ -16463,7 +16474,7 @@
           "sentiment": "neutral",
           "push": 48,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "Re: [情報] (卡片解鎖)2026年數位帳戶優惠總整理",
@@ -16540,7 +16551,7 @@
           "sentiment": "neutral",
           "push": 24,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[問題] 臺企銀第三類數位帳戶提權難不難？",
@@ -16562,7 +16573,7 @@
           "sentiment": "neutral",
           "push": 23,
           "boo": 0,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[情報] 台新銀行與新光銀行合併專區",
@@ -16595,7 +16606,7 @@
           "sentiment": "neutral",
           "push": 18,
           "boo": 1,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[新聞] 獨家／房貸月繳6萬變9萬銀行「沒通知」",
@@ -16650,7 +16661,7 @@
           "sentiment": "neutral",
           "push": 7,
           "boo": 11,
-          "day": "2026-11-20"
+          "day": "2026-11-21"
         },
         {
           "title": "[心得] 久未使用，台中銀行直接建議銷戶",
@@ -16697,6 +16708,17 @@
           "day": "2026-09-16"
         },
         {
+          "title": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
+          "summary": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
+          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795012558.A.0A5.html",
+          "platform": "PTT",
+          "board": "Bank_Service",
+          "sentiment": "neutral",
+          "push": 13,
+          "boo": 0,
+          "day": "2026-11-21"
+        },
+        {
           "title": "[心得] 台企銀臺企銀開始鎖 長期未使用外幣帳戶",
           "summary": "[心得] 台企銀臺企銀開始鎖 長期未使用外幣帳戶",
           "url": "https://www.ptt.cc/bbs/Bank_Service/M.1791343200.A.7D8.html",
@@ -16706,28 +16728,6 @@
           "push": 11,
           "boo": 1,
           "day": "2026-11-17"
-        },
-        {
-          "title": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
-          "summary": "[新聞] 台北富邦銀行帳戶異常轉帳損失23萬元，預",
-          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1795012558.A.0A5.html",
-          "platform": "PTT",
-          "board": "Bank_Service",
-          "sentiment": "neutral",
-          "push": 12,
-          "boo": 0,
-          "day": "2026-11-20"
-        },
-        {
-          "title": "[心得] 不會附檔寄電子對帳單的數位帳戶",
-          "summary": "網友批評多家數位帳戶不提供附檔電子對帳單，造成查詢困擾。",
-          "url": "https://www.ptt.cc/bbs/Bank_Service/M.1785788359.A.069.html",
-          "platform": "PTT",
-          "board": "Bank_Service",
-          "sentiment": "negative",
-          "push": 10,
-          "boo": 1,
-          "day": "2026-09-16"
         }
       ]
     },
