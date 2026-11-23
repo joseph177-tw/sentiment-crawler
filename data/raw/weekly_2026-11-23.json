@@ -1,0 +1,128 @@
+{
+  "end_date": "2026-11-23",
+  "week_days": [
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23"
+  ],
+  "this_week": {
+    "total": 1195,
+    "positive": 0,
+    "neutral": 1195,
+    "negative": 0
+  },
+  "prev_week": {
+    "total": 1310,
+    "positive": 41,
+    "neutral": 1226,
+    "negative": 43
+  },
+  "volume_change_pct": -8.8,
+  "top_topics": [
+    {
+      "title": "[閒聊] 2026/11/19 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1795048218.A.865.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 878,
+      "boo": 120,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/11/17 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794875414.A.745.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 850,
+      "boo": 122,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/11/20 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1795134628.A.C8A.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 822,
+      "boo": 118,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/11/16 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794808807.A.26C.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 772,
+      "boo": 90,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/11/18 盤中閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794961816.A.384.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 832,
+      "boo": 152,
+      "mentions_company": 0
+    },
+    {
+      "title": "[閒聊] 2026/11/20 盤後閒聊",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1795154416.A.EEA.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 677,
+      "boo": 73,
+      "mentions_company": 0
+    },
+    {
+      "title": "[情報] 115年11月16日 三大法人買賣金額統計表",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794812983.A.369.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 403,
+      "boo": 32,
+      "mentions_company": 0
+    },
+    {
+      "title": "[情報] 黃仁勳打破沉默 若獲董事會邀請願重返",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794931597.A.359.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 364,
+      "boo": 22,
+      "mentions_company": 0
+    },
+    {
+      "title": "[創作] NVIDIA (飛兒樂團)",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794828470.A.9CA.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 315,
+      "boo": 2,
+      "mentions_company": 0
+    },
+    {
+      "title": "[新聞] 證交所：若市場非理性連續下跌 將配合政",
+      "url": "https://www.ptt.cc/bbs/Stock/M.1794823347.A.21E.html",
+      "platform": "PTT",
+      "board": "Stock",
+      "sentiment": "neutral",
+      "push": 382,
+      "boo": 77,
+      "mentions_company": 0
+    }
+  ],
+  "topic_gaps": []
+}
